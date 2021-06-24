@@ -570,19 +570,19 @@
                   </a>
                 
                 
-                <h1 id="markdown">Markdown</h1>
-<h2 id="1">1.标题元素</h2>
+                <h1 id="markdown">Markdown<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h1>
+<h2 id="1">1.标题元素<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>一级标题 # + 空格</p>
 <p>二级标题 ## + 空格</p>
 <p>...最多有六级标题  </p>
-<h2 id="2">2.区块元素</h2>
+<h2 id="2">2.区块元素<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>'&gt;' + 空格</p>
 <blockquote>
 <p>这是一个例子</p>
 <p>这是一个例子</p>
 <p>这是一个例子</p>
 </blockquote>
-<h2 id="3">3.强调元素</h2>
+<h2 id="3">3.强调元素<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>*和_都可以表示强调</p>
 <p>使用方式：（在需要强调的部分的头和尾都要加）</p>
 <ul>
@@ -591,7 +591,7 @@
 <li>三个*或者_表示加粗＋倾斜</li>
 <li>两个`</li>
 </ul>
-<h2 id="4">4.列表元素</h2>
+<h2 id="4">4.列表元素<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>‘*’ + 空格   或者   ‘+’ + 空格</p>
 <ul>
 <li>这是一个例子</li>
@@ -603,46 +603,46 @@
 <li>这是一级列表</li>
 <li>这是二级列表</li>
 </ul>
-<h2 id="5">5.代码区块</h2>
-<pre><code class="language-c++"> ``` + 语言(比如C++) + 回车
-</code></pre>
-<pre><code class="language-c++">#include&lt;iostream&gt;
-using namespace std;
+<h2 id="5">5.代码区块<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code> <span class="err">```</span> <span class="o">+</span> <span class="err">语言</span><span class="p">(</span><span class="err">比如</span><span class="n">C</span><span class="o">++</span><span class="p">)</span> <span class="o">+</span> <span class="err">回车</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
 
-int main()
-{
-    cout &lt;&lt; &quot;hello, world.&quot;
-    return 0;
-}
-</code></pre>
-<h2 id="6">6.分割线</h2>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello, world.&quot;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="6">6.分割线<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>三个*+回车</p>
 <p>三个_+回车</p>
 <p>三个-+回车</p>
 <p>效果：</p>
 <hr />
-<h2 id="7">7.超链接</h2>
+<h2 id="7">7.超链接<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p>行内式（更常用）</p>
 <p>格式：[超链接的名字] （URL）</p>
-<pre><code class="language-c++">[百度](https://www.baidu.com/)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="err">百度</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.baidu.com/)</span>
+</code></pre></div>
 <p>参考式（在要多次使用同一个超链接时使用）</p>
 <p>格式：[给网站起的名字]：URL    （相当于定义）</p>
 <p>使用方式：[超链接的名字] [给网站起的名字]</p>
-<pre><code class="language-c++">[百度]:https://www.baidu.com/
-[here][百度]
-</code></pre>
-<h2 id="8">8.数学公式</h2>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="err">百度</span><span class="p">]</span><span class="o">:</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.baidu.com/</span>
+<span class="p">[</span><span class="n">here</span><span class="p">][</span><span class="err">百度</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="8">8.数学公式<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <p>两种方法</p>
 <p>注：在typora中一个 $ 和2个好像都可以打开内联公式</p>
 <p>1.添加数学公式： $$ + 回车</p>
-<pre><code class="language-c++">$$
-   公式内容 
-$$
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">$$</span>
+   <span class="err">公式内容</span> 
+<span class="n">$$</span>
+</code></pre></div>
 <p>2.文件-偏好设置-markdown-打开内联公式</p>
-<pre><code class="language-c++">$公式内容$
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">$公式内容$</span>
+</code></pre></div>
 <p><strong>常用符号</strong> </p>
 <table>
 <thead>
@@ -655,32 +655,32 @@ $$
 <tbody>
 <tr>
 <td align="left">上下标</td>
-<td align="center"><span class="arithmatex">\(x^2\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">x^2</span><script type="math/tex">x^2</script></span></td>
 <td align="left">x^2  x_2</td>
 </tr>
 <tr>
 <td align="left">分式</td>
-<td align="center"><span class="arithmatex">\(\frac{1}{2}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\frac{1}{2}</span><script type="math/tex">\frac{1}{2}</script></span></td>
 <td align="left">\frac{1}{2}</td>
 </tr>
 <tr>
 <td align="left">根号</td>
-<td align="center"><span class="arithmatex">\(\sqrt{2}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\sqrt{2}</span><script type="math/tex">\sqrt{2}</script></span></td>
 <td align="left">\sqrt{2}</td>
 </tr>
 <tr>
 <td align="left">矢量</td>
-<td align="center"><span class="arithmatex">\(\vec{a}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\vec{a}</span><script type="math/tex">\vec{a}</script></span></td>
 <td align="left">\vec{a}</td>
 </tr>
 <tr>
 <td align="left">不定积分</td>
-<td align="center"><span class="arithmatex">\(\int{x}dx\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\int{x}dx</span><script type="math/tex">\int{x}dx</script></span></td>
 <td align="left">\int{x}dx</td>
 </tr>
 <tr>
 <td align="left">定积分</td>
-<td align="center"><span class="arithmatex">\(\int_{1}^{2}{x}dx\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\int_{1}^{2}{x}dx</span><script type="math/tex">\int_{1}^{2}{x}dx</script></span></td>
 <td align="left">\int_{1}^{2}{x}dx</td>
 </tr>
 <tr>
@@ -690,140 +690,145 @@ $$
 </tr>
 <tr>
 <td align="left">极限</td>
-<td align="center"><span class="arithmatex">\(\lim{a+b}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\lim{a+b}</span><script type="math/tex">\lim{a+b}</script></span></td>
 <td align="left">\lim{a+b}</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\lim_{n\rightarrow+\infty}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\lim_{n\rightarrow+\infty}</span><script type="math/tex">\lim_{n\rightarrow+\infty}</script></span></td>
 <td align="left">\lim_{n\rightarrow+\infty}</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\lim_{n\rightarrow+\infty}{a+b}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\lim_{n\rightarrow+\infty}{a+b}</span><script type="math/tex">\lim_{n\rightarrow+\infty}{a+b}</script></span></td>
 <td align="left">\lim_{n\rightarrow+\infty}{a+b}</td>
 </tr>
 <tr>
 <td align="left">累加</td>
-<td align="center"><span class="arithmatex">\(\sum{a}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\sum{a}</span><script type="math/tex">\sum{a}</script></span></td>
 <td align="left">\sum{a}</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\sum_{i=1}^{n}{a_i}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\sum_{i=1}^{n}{a_i}</span><script type="math/tex">\sum_{i=1}^{n}{a_i}</script></span></td>
 <td align="left">\sum_{i=1}^{n}{a_i}</td>
 </tr>
 <tr>
 <td align="left">累乘</td>
-<td align="center"><span class="arithmatex">\(\prod{x}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\prod{x}</span><script type="math/tex">\prod{x}</script></span></td>
 <td align="left">\prod{x}</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\prod_{i=1}^{n}{x_i}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\prod_{i=1}^{n}{x_i}</span><script type="math/tex">\prod_{i=1}^{n}{x_i}</script></span></td>
 <td align="left">\prod_{i=1}^{n}{x_i}</td>
 </tr>
 <tr>
 <td align="left">对数函数</td>
-<td align="center"><span class="arithmatex">\(\ln2\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\ln2</span><script type="math/tex">\ln2</script></span></td>
 <td align="left">\ln2</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\log_{11}{121}\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\log_{11}{121}</span><script type="math/tex">\log_{11}{121}</script></span></td>
 <td align="left">\log_{11}{121}</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="center"><span class="arithmatex">\(\lg10\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\lg10</span><script type="math/tex">\lg10</script></span></td>
 <td align="left">\lg10</td>
 </tr>
 <tr>
 <td align="left">加减</td>
-<td align="center"><span class="arithmatex">\(\pm\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\pm</span><script type="math/tex">\pm</script></span></td>
 <td align="left">\pm</td>
 </tr>
 <tr>
 <td align="left">叉乘</td>
-<td align="center"><span class="arithmatex">\(\times\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span></td>
 <td align="left">\times</td>
 </tr>
 <tr>
 <td align="left">点乘</td>
-<td align="center"><span class="arithmatex">\(\cdot\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\cdot</span><script type="math/tex">\cdot</script></span></td>
 <td align="left">\cdot</td>
 </tr>
 <tr>
 <td align="left">除法</td>
-<td align="center"><span class="arithmatex">\(÷\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">÷</span><script type="math/tex">÷</script></span></td>
 <td align="left">\div</td>
 </tr>
 <tr>
 <td align="left">不等</td>
-<td align="center"><span class="arithmatex">\(\neq\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\neq</span><script type="math/tex">\neq</script></span></td>
 <td align="left">\neq</td>
 </tr>
 <tr>
 <td align="left">恒等</td>
-<td align="center"><span class="arithmatex">\(\equiv\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\equiv</span><script type="math/tex">\equiv</script></span></td>
 <td align="left">\equiv</td>
 </tr>
 <tr>
 <td align="left">小于等于</td>
-<td align="center"><span class="arithmatex">\(\leq\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\leq</span><script type="math/tex">\leq</script></span></td>
 <td align="left">\leq</td>
 </tr>
 <tr>
 <td align="left">大于等于</td>
-<td align="center"><span class="arithmatex">\(\geq\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\geq</span><script type="math/tex">\geq</script></span></td>
 <td align="left">\geq</td>
 </tr>
 <tr>
 <td align="left">约等于</td>
-<td align="center"><span class="arithmatex">\(\approx\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\approx</span><script type="math/tex">\approx</script></span></td>
 <td align="left">\approx</td>
 </tr>
 <tr>
 <td align="left">因为</td>
-<td align="center"><span class="arithmatex">\(\because\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\because</span><script type="math/tex">\because</script></span></td>
 <td align="left">\because</td>
 </tr>
 <tr>
 <td align="left">所以</td>
-<td align="center"><span class="arithmatex">\(\therefore\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\therefore</span><script type="math/tex">\therefore</script></span></td>
 <td align="left">\therefore</td>
 </tr>
 <tr>
 <td align="left">合取</td>
-<td align="center"><span class="arithmatex">\(\wedge\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\wedge</span><script type="math/tex">\wedge</script></span></td>
 <td align="left">\wedge</td>
 </tr>
 <tr>
 <td align="left">析取</td>
-<td align="center"><span class="arithmatex">\(\vee\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\vee</span><script type="math/tex">\vee</script></span></td>
 <td align="left">\vee</td>
 </tr>
 <tr>
 <td align="left">蕴含</td>
-<td align="center"><span class="arithmatex">\(\Rightarrow\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span></td>
 <td align="left">\Rightarrow</td>
 </tr>
 <tr>
 <td align="left">非</td>
-<td align="center"><span class="arithmatex">\(\urcorner\)</span></td>
+<td align="center"><span><span class="MathJax_Preview">\urcorner</span><script type="math/tex">\urcorner</script></span></td>
 <td align="left">\urcorner</td>
 </tr>
 </tbody>
 </table>
 <p>大括号</p>
-<div class="arithmatex">\[
+<div>
+<div class="MathJax_Preview">
 y = \begin{cases} 1，x \geq 0  \\  0, x &lt; 0    \end{cases}
-\]</div>
-<pre><code class="language-c++">y = \begin{cases} 
-1，x \geq 0  \\  
-0, x &lt; 0    
-\end{cases}  
-</code></pre>
+</div>
+<script type="math/tex; mode=display">
+y = \begin{cases} 1，x \geq 0  \\  0, x < 0    \end{cases}
+</script>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="err">\</span><span class="n">begin</span><span class="p">{</span><span class="n">cases</span><span class="p">}</span> 
+<span class="mi">1</span><span class="err">，</span><span class="n">x</span> <span class="err">\</span><span class="n">geq</span> <span class="mi">0</span>  <span class="err">\\</span>  
+<span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>    
+<span class="err">\</span><span class="n">end</span><span class="p">{</span><span class="n">cases</span><span class="p">}</span>  
+</code></pre></div>
 <p>矩阵
 $$
 \begin{bmatrix}
@@ -831,18 +836,18 @@ $$
    c &amp; d
 \end{bmatrix}
 $$</p>
-<pre><code class="language-c++">\begin{bmatrix}
-   a &amp; b \\  
-   c &amp; d
-\end{bmatrix}
-</code></pre>
-<h2 id="9">9.表格元素</h2>
+<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>
+   <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="err">\\</span>  
+   <span class="n">c</span> <span class="o">&amp;</span> <span class="n">d</span>
+<span class="err">\</span><span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="9">9.表格元素<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>typora中使用快捷键 Ctrl+T</p>
-<pre><code class="language-c++">name|score
-----|----
-abcd|100
-defg|0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="o">|</span><span class="n">score</span>
+<span class="o">----|----</span>
+<span class="n">abcd</span><span class="o">|</span><span class="mi">100</span>
+<span class="n">defg</span><span class="o">|</span><span class="mi">0</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -861,16 +866,16 @@ defg|0
 </tr>
 </tbody>
 </table>
-<h2 id="10">10.折叠代码和侧边栏</h2>
+<h2 id="10">10.折叠代码和侧边栏<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <p>typora中折叠侧边栏：文件-偏好设置-外观-侧边栏</p>
 <p>折叠代码：</p>
-<pre><code class="language-c++">&lt;details&gt;
-&lt;summary&gt;tag&lt;/summary&gt;
-&lt;code&gt;
-Hello world!
-&lt;/code&gt;
-&lt;/details&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">details</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">summary</span><span class="o">&gt;</span><span class="n">tag</span><span class="o">&lt;/</span><span class="n">summary</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+<span class="n">Hello</span> <span class="n">world</span><span class="o">!</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
+</code></pre></div>
 <p>效果如下：</p>
 <details>
 <summary>tag</summary>
@@ -879,16 +884,16 @@ Hello world!
 </code>
 </details>
 
-<h2 id="11">11.导出其他格式</h2>
+<h2 id="11">11.导出其他格式<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <p>typora中直接点击文件-导出并选择文件格式即可</p>
 <p>导出为doc之前需要下载pandoc，方法如下：</p>
 <p>typora中选择导出word，typora会给出下载pandoc的github链接，如果是windows，下载 pandoc-2.13-windows-x86_64.msi </p>
 <p>然后 <strong>重启</strong> typora即可使用</p>
-<h2 id="12">12.参考</h2>
+<h2 id="12">12.参考<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
 <p><a href="http://xianbai.me/learn-md/index.html">Introduction | Learning-Markdown (Markdown 入门参考) (xianbai.me)</a></p>
 <p>数学符号：</p>
 <p><a href="https://katex.org/docs/supported.html#math-operators">Supported Functions · KaTeX</a> </p>
-<p>https://www.jb51.net/onlineread/htmlchar.htm</p>
+<p><a href="https://www.jb51.net/onlineread/htmlchar.htm">https://www.jb51.net/onlineread/htmlchar.htm</a></p>
                 
               
               

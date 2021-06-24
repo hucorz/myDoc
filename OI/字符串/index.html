@@ -514,88 +514,88 @@
                   </a>
                 
                 
-                <h1 id="_1">字符串</h1>
-<h2 id="next-kmp">next数组 与 KMP</h2>
-<p><span class="arithmatex">\(O(n+m)\)</span></p>
-<pre><code class="language-c++">//next
-void getNext(char *p, int *next) {
-    next[0] = -1;
-    int i = 0, j = -1;
-    while(i &lt; strlen(p))
-        if(j == -1 || p[i] == p[j]){
-            i++, j++;
-            next[i] = j;
-        }
-        else j = next[j];
-}
-//KMP
-//主体字符串 匹配字符串
-int KMP(char *s, char *p){
-    int i = 0;
-    int j = 0;
-    while(i &lt; strlen(s) &amp;&amp; j &lt; strlen(p))
-        if(j == -1 || s[i] == p[j]) i++, j++;
-        else j = next[j];
-    //返回存在与 p 相同的字串的位置
-    if(j == strlen(p)) return i-j;
-    else return -1;
-}
-</code></pre>
-<h2 id="manacher">Manacher</h2>
-<p><span class="arithmatex">\(O(n)\)</span></p>
-<pre><code class="language-c++">//Manacher
-int Manacher(string s){
-    if(s.length() == 0) return 0;
-    int len = (int)(s.length()*2-1);
-    char *cArry = new char[len];
-    int *pArry = new int[len];
-    //预处理：全都变成奇数回文串
-    for(int i = 0; i &lt; len; i++)
-        cArry[i] = i&amp;1 ? s[(i-1)/2] : '#';
-    //R:最右右边界  C：与R对应的回文中心 maxn：最大回文半径，返回值为maxn-1
-    //R实际上是最右边界的右边一位
-    int R = -1;
-    int C = -1;
-    int maxn = 0;
-    for(int i = 0; i &lt; len; i++){
-        pArry[i] = i &gt;= R ? 1 : min(R-i, pArry[2*C-i]); //取得可能的最短的回文半径 *R是最右边界的右边一位 
-        //暴力计算
-        while(i+pArry[i] &lt; len &amp;&amp; i-pArry[i] &gt; -1){
-            if(cArry[i+pArry[i]] == cArry[i-pArry[i]]) pArry[i]++;
-            else break;
-        }
-        //更新
-        if(i+pArry[i] &gt; R){
-            R = i+pArry[i];
-            C = i;
-        }
-        maxn = maxn(pArry[i], maxn);
-    }
-    //清空动态数组
-    delete[] cArry;
-    delete[] pArry;
+                <h1 id="_1">字符串<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="next-kmp">next数组 与 KMP<a class="headerlink" href="#next-kmp" title="Permanent link">&para;</a></h2>
+<p><span><span class="MathJax_Preview">O(n+m)</span><script type="math/tex">O(n+m)</script></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1">//next</span>
+<span class="kt">void</span> <span class="nf">getNext</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">-1</span> <span class="o">||</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]){</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="n">j</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="c1">//KMP</span>
+<span class="c1">//主体字符串 匹配字符串</span>
+<span class="kt">int</span> <span class="nf">KMP</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">-1</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">j</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+    <span class="c1">//返回存在与 p 相同的字串的位置</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="k">return</span> <span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="manacher">Manacher<a class="headerlink" href="#manacher" title="Permanent link">&para;</a></h2>
+<p><span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Manacher</span>
+<span class="kt">int</span> <span class="nf">Manacher</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">*</span><span class="mi">2-1</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">cArry</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">len</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">pArry</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">len</span><span class="p">];</span>
+    <span class="c1">//预处理：全都变成奇数回文串</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">cArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">&amp;</span><span class="mi">1</span> <span class="o">?</span> <span class="n">s</span><span class="p">[(</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">:</span> <span class="sc">&#39;#&#39;</span><span class="p">;</span>
+    <span class="c1">//R:最右右边界  C：与R对应的回文中心 maxn：最大回文半径，返回值为maxn-1</span>
+    <span class="c1">//R实际上是最右边界的右边一位</span>
+    <span class="kt">int</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">R</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">min</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="n">pArry</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">C</span><span class="o">-</span><span class="n">i</span><span class="p">]);</span> <span class="c1">//取得可能的最短的回文半径 *R是最右边界的右边一位 </span>
+        <span class="c1">//暴力计算</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">-</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">-1</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">cArry</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">==</span> <span class="n">cArry</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+            <span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">//更新</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">){</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">C</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">maxn</span> <span class="o">=</span> <span class="n">maxn</span><span class="p">(</span><span class="n">pArry</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">maxn</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//清空动态数组</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">cArry</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">pArry</span><span class="p">;</span>
 
-    return maxn-1;
-}
-</code></pre>
-<h2 id="_2">最小表示法</h2>
-<p><span class="arithmatex">\(O(n)\)</span></p>
-<pre><code class="language-c++">//最小表示法
-int min_(char *s){
-    int k = 0, i = 0, j = 1, len = strlen(s); // k:匹配长度
-    while(k &lt; len &amp;&amp; i &lt; len &amp;&amp; j &lt; len){
-        if(s[(s+k)%len] == s[(j+k)%len]) k++; 
-        else {
-            s[(s + k) % len] &gt; s[(j + k) % len] ? i = i+k+1 : j = j+k+1;//不同则跳转
-            if(i == j) i++;  //若跳转后不同，要保证比较的双方不同
-            k = 0;
-        } 
-    }
-    return min(i, j);
-}
-</code></pre>
-<h2 id="_3">练习题</h2>
-<h3 id="next-kmp_1">next 与 KMP</h3>
+    <span class="k">return</span> <span class="n">maxn</span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_2">最小表示法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<div class="highlight"><pre><span></span><code><span class="c1">//最小表示法</span>
+<span class="kt">int</span> <span class="nf">min_</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="c1">// k:匹配长度</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">[(</span><span class="n">s</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">%</span><span class="n">len</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[(</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">%</span><span class="n">len</span><span class="p">])</span> <span class="n">k</span><span class="o">++</span><span class="p">;</span> 
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">s</span><span class="p">[(</span><span class="n">s</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">%</span> <span class="n">len</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">s</span><span class="p">[(</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">%</span> <span class="n">len</span><span class="p">]</span> <span class="o">?</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span> <span class="o">:</span> <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="c1">//不同则跳转</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>  <span class="c1">//若跳转后不同，要保证比较的双方不同</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">练习题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="next-kmp_1">next 与 KMP<a class="headerlink" href="#next-kmp_1" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>HDU 1711</p>
 <p>HDU 2087</p>
@@ -608,14 +608,14 @@ int min_(char *s){
 <p>HDU 3336</p>
 <p>HDU 3374 String Problem</p>
 </blockquote>
-<h3 id="manacher_1">Manacher</h3>
+<h3 id="manacher_1">Manacher<a class="headerlink" href="#manacher_1" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>HDU 3068</p>
 <p>HDU 4513</p>
 <p>POJ 3974</p>
 <p>HDU 3294</p>
 </blockquote>
-<h3 id="_4">最小表示法</h3>
+<h3 id="_4">最小表示法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>HDU 3374 String Problem</p>
 </blockquote>
