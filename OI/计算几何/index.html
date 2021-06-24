@@ -1,0 +1,1052 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>计算几何 - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              计算几何
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Markdown/" class="md-nav__link">
+        Makrdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        OI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          计算几何
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        计算几何
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 点和线
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 点和线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.1.1 精度控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.1.2 点和向量存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.1.3 向量的四则运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.1.4 点积 叉积 及 应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215" class="md-nav__link">
+    2.1.5 判断点是否在线段上
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.1.6 求两直线的交点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    2.1.7 线段相交判定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    线段和直线相交判定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    向量旋转与单位化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    点到直线的距离
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    点到线段交点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 圆
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 圆">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 圆的存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    三角形外接圆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    最小圆覆盖
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 凸包
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 凸包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-graham" class="md-nav__link">
+    2.3.1 Graham扫描法 算凸包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 点和线
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 点和线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.1.1 精度控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.1.2 点和向量存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.1.3 向量的四则运算
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.1.4 点积 叉积 及 应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215" class="md-nav__link">
+    2.1.5 判断点是否在线段上
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.1.6 求两直线的交点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    2.1.7 线段相交判定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    线段和直线相交判定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    向量旋转与单位化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    点到直线的距离
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    点到线段交点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 圆
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 圆">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 圆的存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    三角形外接圆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    最小圆覆盖
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 凸包
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 凸包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-graham" class="md-nav__link">
+    2.3.1 Graham扫描法 算凸包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/OI/计算几何.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="2">2 计算几何</h1>
+<h2 id="21">2.1 点和线</h2>
+<h3 id="211">2.1.1 精度控制</h3>
+<pre><code class="language-c++">const double eps = 1e-10;
+double dcmp(double x) { //判断 正/负/0
+    if(fabs(x) &lt; eps) return 0;
+    else return x &gt; 0 ? 1 : -1;
+}
+</code></pre>
+<h3 id="212">2.1.2 点和向量存储</h3>
+<pre><code class="language-c++">struct Vector{
+    double x, y;
+    Point(double x = 0, y = 0):x(x), y(y){}
+    Vector rotate_90() {return Vector(y, -x);} //顺时针90度
+    Vector rotate_90_c() {return Vector(-y, x);} //逆时针90度
+};
+typedef Vector Point;
+</code></pre>
+<h3 id="213">2.1.3 向量的四则运算</h3>
+<pre><code class="language-c++">//这种返回方式似乎有时候会出问题
+//向量+向量=向量  点+向量=点
+Vector operator+(Vector a, Vector b){ 
+    return Vector(a.x+b.x, a.y+b.y); 
+}
+//点-点=向量
+Vector operator-(Vector a, Vector b){ 
+    return Vector(a.x-b.x, a.y-b.y); 
+}
+//向量*数=向量
+Vector operator*(Vector a, double p){ 
+    return Vector(a.x*p, a.y*p); 
+}
+//向量/数=向量
+Vector operator/(Vector a, double p){ 
+    return Vector(a.x/p. a.y/p); 
+}
+</code></pre>
+<h3 id="214">2.1.4 点积 叉积 及 应用</h3>
+<div class="arithmatex">\[\vec{a} \cdot \vec{b} = |a||b|cos\theta\]</div>
+<p><span class="arithmatex">\(<span class="arithmatex">\(|\vec{a} \times \vec{b}| = |a||b|sin\theta\)</span>\)</span>，正负由两向量的相对关系决定</p>
+<pre><code class="language-c++">//点积
+double Dot(Vector a, Vector b){ 
+    return a.x*b.x+a.y*b.y; 
+}
+//叉积
+double Cross(Vector a, Vector b){ 
+    return a.x*b.y-a.y*b.x; 
+}
+
+//应用
+//求模长
+double Length(Vector a){ 
+    return sqrt(Dot(a, a)); 
+}
+//求角度
+double Angle(Vector a, Vector b){ 
+    return acos(Dot(a, b)/Length(a)/Length(b));
+}
+</code></pre>
+<h3 id="215">2.1.5 判断点是否在线段上</h3>
+<pre><code class="language-c++">bool OnSegment(Point p1, Point p2, Point q){  //p1-p2是线段
+    return Cross(p1-q, p2-q) == 0 &amp;&amp; Dot(p1-q, p2-q) &lt;= 0;
+}
+</code></pre>
+<h3 id="216">2.1.6 求两直线的交点</h3>
+<p>由 <span class="arithmatex">\(<span class="arithmatex">\(q_2,q_1,p_2,p_1\)</span>\)</span>确定的两条直线，假设交点为 <span class="arithmatex">\(<span class="arithmatex">\(p_1+t(p_2-p_1)\)</span>\)</span> </p>
+<p>有 <span class="arithmatex">\(<span class="arithmatex">\((q_2-q_1) \times (p_1 + t(p_2-p_1)-q_1)=0\)</span>\)</span></p>
+<p>得 <span class="arithmatex">\(<span class="arithmatex">\(t = \frac{(q_2-q_1)\times(q_1-p_1)}{(q_2-q_1)\times(p_2-p_1)}\)</span>\)</span></p>
+<pre><code class="language-c++">/*Point GetLineIntersection(Point p1, Point p2, Point q1, Point q2){
+    return p1+(p2-p1)*Cross(q2-q1, q1-p1)/Cross(q2-q1, p2-p1)
+}*/
+Point GetLineIntersection(Point p, Vector v1, Point q, Vector v2){
+    return p+v1*Cross(v2, q-p)/Cross(v2, v1);
+} //平行特判
+</code></pre>
+<h3 id="217">2.1.7 线段相交判定</h3>
+<p>判断q1,q2在线段p2-p1两侧 且 p1,p2在线段q2-q1两侧</p>
+<pre><code class="language-c++">bool SegmentProperIntersection(Point p1, Point p2, Point q1, Point q2){
+    double a1 = Cross(p2-p1, q2-p1), a2 = Cross(p2-p1, q1-p1);
+    double a3 = Cross(q2-q1, p1-q1), a4 = Cross(q2-q1, p2-q1);
+    return dcmp(a1)*dcmp(a2)&lt;0 &amp;&amp; dcmp(a3)*dcmp(a4)&lt;0;
+} 
+/*特判端点在另一条线段的情况
+if(OnSegment(p[i],q[i],p[j]) 
+|| OnSegment(p[i],q[i],q[j]) 
+|| OnSegment(p[j],q[j],p[i])
+|| OnSegment(p[j],q[j],q[i])
+)  G[i][j] = G[j][i] = true;
+*/
+</code></pre>
+<h3 id="_1">线段和直线相交判定</h3>
+<pre><code class="language-c++">bool fun(Point a, Point b, Point c, Point d) { //a b 确定直线     c d 确定线段
+    return Cross(a - b, a - c) * Cross(a - b, a - d) &lt;= eps
+}
+</code></pre>
+<h3 id="_2">向量旋转与单位化</h3>
+<p>逆时针：
+$$
+\left[
+\matrix{
+  x^{'} \
+  y^{'} 
+}
+\right]
+=
+\left[
+\matrix{
+  x \
+  y 
+}
+\right]
+\left[
+\matrix{
+  cos\theta &amp; sin\theta\
+  -sin\theta &amp; cos\theta 
+}
+\right]
+$$
+顺时针：
+$$
+\left[
+\matrix{
+  x^{'} \
+  y^{'} 
+}
+\right]
+=
+\left[
+\matrix{
+  x \
+  y 
+}
+\right]
+\left[
+\matrix{
+  cos\theta &amp; -sin\theta\
+  sin\theta &amp; cos\theta 
+}
+\right]
+$$</p>
+<pre><code class="language-c++">//rad 是弧度, 逆时针
+Vector Rotate(Vector a, double rad)
+{
+    return Vector(a.x*cos(rad)-a.y*sin(rad), a.x*sin(rad)+a.y*soc(rad));
+}
+//单位化
+Vector Normal(Vector a)
+{
+    double L = length(a);
+    return Vector(a.x/L, a.y/L);
+}
+</code></pre>
+<h3 id="_3">点到直线的距离</h3>
+<pre><code class="language-c++">double DistaceToLine(Point p, Point a, Point b)
+{
+    Vector v1 = b-a, v2 = p-a;
+    return fabs(Cross(v1, v2))/Length(v1); //平行四边形面积 除/底=高
+}
+</code></pre>
+<h3 id="_4">点到线段交点</h3>
+<h2 id="22">2.2 圆</h2>
+<h3 id="221">2.2.1 圆的存储</h3>
+<pre><code class="language-c++">struct Circle{
+    Point c;
+    double r;
+    Circle(Point a, double b = 0):c(a), r(b){}
+}
+</code></pre>
+<h3 id="_5">三角形外接圆</h3>
+<pre><code class="language-c++">//三点不共线
+Circle circumcircle(Point p1, Point p2, Point p3)
+{
+    Point p = GetLineIntersection((p1+p2)/2, (p2-p1).rotate_90(), (p1+p3)/2, (p3-p1).rotate_90());
+    return Circle(p, Length(p1-p));
+}
+</code></pre>
+<h3 id="_6">最小圆覆盖</h3>
+<p>随机增量法 <span class="arithmatex">\(O(n)\)</span> </p>
+<pre><code class="language-c++">//洛谷 P1742
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+
+const int maxn = 1e5+5;
+typedef struct Vector{
+    double x, y;
+    Vector(double a = 0, double b = 0):x(a),y(b){}
+    Vector rotate_90(){return Vector(y, -x); }
+}Point;
+
+struct Circle{
+    Point c;
+    double r;
+    Circle(Point a, double b):c(a),r(b){}
+};
+
+Point operator-(const Point&amp; a, const Point&amp; b){ return Vector(a.x-b.x, a.y-b.y); }
+Point operator+(const Point&amp; a, const Point&amp; b){ return Vector(a.x+b.x, a.y+b.y); }
+Point operator/(const Point&amp; a, const double&amp; b){ return Vector(a.x/b, a.y/b); }
+Point operator*(const Point&amp; a, const double&amp; b){ return Vector(a.x*b, a.y*b); }
+double Dot(Vector a, Vector b){ return a.x*b.x+a.y*b.y; }
+double Cross(Vector a, Vector b){ return a.x*b.y-a.y*b.x; }
+double Length(Vector a){ return sqrt(Dot(a, a)); }
+
+Point GetLineIntersection(Point p, Vector v1, Point q, Vector v2){
+    return p+v1*Cross(v2, q-p)/Cross(v2, v1);
+}
+
+Circle circumcircle(Point p1, Point p2, Point p3){
+    Point p = GetLineIntersection((p1+p2)/2, (p2-p1).rotate_90(), (p1+p3)/2, (p3-p1).rotate_90());
+    return Circle(p, Length(p1-p));
+}
+
+Circle min_circle(Point *p, int n)  { //最小圆覆盖
+    random_shuffle(p+1, p+1+n);
+    Point o;
+    double r = 0;
+    for(int i = 1; i &lt;= n; i++)
+        if(Length(p[i]-o) &gt; r)
+        {
+            o = p[i], r = 0;
+            for(int j = 1; j &lt; i; j++)
+                if(Length(p[j]-o) &gt; r)
+                {
+                    o = (p[i]+p[j])/2, r = Length(p[i]-p[j])/2;
+                    for(int k = 1; k &lt; j; k++)
+                        if(Length(o-p[k]) &gt; r)
+                        {
+                            Circle tmp = circumcircle(p[i], p[j], p[k]);
+                            o = tmp.c, r = tmp.r;
+                        }
+                }
+        }
+    return Circle(o, r);
+} 
+
+int main(){
+    int n;
+    Point p[maxn];
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; p[i].x &gt;&gt; p[i].y;
+    Circle res =  min_circle(p, n);
+    printf(&quot;%.10lf\n%.10lf %.10lf\n&quot;, res.r, res.c.x, res.c.y);
+    return 0;
+}
+</code></pre>
+<h2 id="23">2.3 凸包</h2>
+<h3 id="231-graham">2.3.1 Graham扫描法 算凸包</h3>
+<p>按x，y坐标升序排列，确定凸包的2的顶点，然后再确定上下两个凸壳</p>
+<p>排序 <span class="arithmatex">\(<span class="arithmatex">\(O(nlogn)\)</span>\)</span> 其他 <span class="arithmatex">\(<span class="arithmatex">\(O(n)\)</span>\)</span> </p>
+<pre><code class="language-c++">bool cmp(Point &amp;p, Point &amp;q){
+    if(p.x != p.x) return p.x &lt; q.x;
+    else return p.y &lt; q.y;
+}
+
+vector&lt;Point&gt; ConvexHull(Point *ps, int n){
+    sort(ps, ps+n, cmp);
+    int k = 0;  //凸包顶点数
+    vector&lt;Point&gt; qs(n*2);
+    //下凸壳
+    for(int i = 0; i &lt; n; i++){  //while要注意
+        while(k &gt; 1 &amp;&amp; Cross(qs[k-1]-qs[k-2], ps[i]-qs[k-1] &lt;= 0)) k--;
+        qs[k++] = ps[i];
+    }
+    //上凸壳
+    for(int i = n-2, t = k; i &gt;= 0; i--){
+        while(k &gt; t &amp;&amp; Cross(qs[k-1]-qs[k-2], ps[i]-qs[k-1] &lt;= 0)) k--;
+        qs[k++] = ps[i];
+    }
+    qs.resize(k-1);
+    return qs;
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E6%95%B0%E8%AE%BA/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 数论" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              数论
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E5%9B%BE%E8%AE%BA/" class="md-footer__link md-footer__link--next" aria-label="Next: 图论" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              图论
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
