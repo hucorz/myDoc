@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>图论 - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              图论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Home.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Markdown.html" class="md-nav__link">
+        Makrdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        OI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E8%AE%BA.html" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95.html" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          图论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E5%9B%BE%E8%AE%BA.html" class="md-nav__link md-nav__link--active">
+        图论
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 图的存储
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 图的存储">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 邻接矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.1.2 邻接表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.1.3 链式前向星
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 最短路
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 最短路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    Bellman-Ford
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    Dijkstra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floyd-warshall" class="md-nav__link">
+    Floyd-Warshall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    路径还原
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    次短路
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 最小生成树
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 最小生成树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    Prim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kruskal" class="md-nav__link">
+    Kruskal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 网络流
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 网络流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dinic" class="md-nav__link">
+    最大流 Dinic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最小费用流
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 二分图匹配
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 二分图匹配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    3.5.1 最大流
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352" class="md-nav__link">
+    3.5.2 匈牙利算法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-hopcroft-karp" class="md-nav__link">
+    3.5.3 Hopcroft-Karp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 连通性相关
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 连通性相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361" class="md-nav__link">
+    3.6.1 强连通分量分解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362" class="md-nav__link">
+    3.6.2 连通分支个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 树上问题
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 树上问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-lca" class="md-nav__link">
+    3.7.1 最近公共祖先(LCA)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372" class="md-nav__link">
+    3.7.2 点分治
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常用结论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sat" class="md-nav__link">
+    2-SAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfs" class="md-nav__link">
+    DFS序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%AD%97%E7%AC%A6%E4%B8%B2.html" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%85%B6%E4%BB%96.html" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 图的存储
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 图的存储">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 邻接矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.1.2 邻接表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.1.3 链式前向星
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 最短路
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 最短路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    Bellman-Ford
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    Dijkstra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floyd-warshall" class="md-nav__link">
+    Floyd-Warshall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    路径还原
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    次短路
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 最小生成树
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 最小生成树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    Prim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kruskal" class="md-nav__link">
+    Kruskal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 网络流
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 网络流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dinic" class="md-nav__link">
+    最大流 Dinic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最小费用流
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 二分图匹配
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 二分图匹配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    3.5.1 最大流
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352" class="md-nav__link">
+    3.5.2 匈牙利算法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-hopcroft-karp" class="md-nav__link">
+    3.5.3 Hopcroft-Karp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 连通性相关
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 连通性相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361" class="md-nav__link">
+    3.6.1 强连通分量分解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362" class="md-nav__link">
+    3.6.2 连通分支个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 树上问题
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 树上问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-lca" class="md-nav__link">
+    3.7.1 最近公共祖先(LCA)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372" class="md-nav__link">
+    3.7.2 点分治
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    常用结论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sat" class="md-nav__link">
+    2-SAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfs" class="md-nav__link">
+    DFS序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/OI/图论.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="3">3 图论</h1>
+<h2 id="31">3.1 图的存储</h2>
+<h3 id="311">3.1.1 邻接矩阵</h3>
+<p>略</p>
+<h3 id="312">3.1.2 邻接表</h3>
+<pre><code class="language-c++">vector&lt;int&gt; es[MAXN];
+/*
+带权边
+struct edge{ int to, w; };
+vector&lt;edge&gt; es[MAXN];
+*/
+</code></pre>
+<h3 id="313">3.1.3 链式前向星</h3>
+<pre><code class="language-c++">struct edge
+{
+    int to, w, next;
+}es[MAX_E];
+
+int cnt = 0;
+
+void init(){
+    memset(head, -1, sizeof head);
+}
+
+void add_edge(int u, int v, int w){   //加边
+    es[cnt].to = v;
+    es[cnt].w = w;
+    es[cnt].next = head[u];
+    head[u] = cnt++;
+}
+/*遍历
+    for(int i = 1; i &lt;= n; i++)
+        for(int j = head[i]; i != -1; j = es[j].next)
+            /*...*/
+*/
+</code></pre>
+<h2 id="32">3.2 最短路</h2>
+<h3 id="bellman-ford">Bellman-Ford</h3>
+<p>单源最短路问题</p>
+<p><span class="arithmatex">\(O(VE)\)</span> 支持负权</p>
+<pre><code class="language-c++">struct edge{ int from, to, w; };
+edge es[MAX_E];
+
+int d[MAX_V];
+int V, E;
+
+void BF(int s){
+    memset(d, INF, sizeof d);
+    d[s] = 0;
+    for(int k = 0; k &lt; V; k++){
+        for(int i = 0; i &lt; E; i++){
+            edge e = es[i];
+            if(d[e.from] != INF &amp;&amp; d[e.to] &gt; d[e.from]+e.w){
+                d[e.to] = d[e.from]+w; //松弛操作
+            }
+        }
+    }
+}
+//循环至多执行 V-1 次，一次松弛操作至少让确定的最短路+1，所以O(VE)，如果第 n 次任然更新了d，表示有负环
+//把所有d[i]初始化为0，就可以找到所有的负圈
+bool find_negative_loop(){
+    memset(d, 0, sizeof d);
+    for(int i = 0; i &lt; V; i++){
+        for(int j = 0; j &lt; E; j++){
+            edge e = es[j];
+            if(d[e.to] &gt; d[e.from]+e.w){
+                d[e.to] = d[e.from]+e.w;
+                if(i == V-1) return true;
+            }
+        }
+    }
+    return false;
+}
+</code></pre>
+<h3 id="dijkstra">Dijkstra</h3>
+<p>单源最短路问题</p>
+<p>不支持负权边</p>
+<p>检查存在<span class="arithmatex">\(d[i][i]\)</span>为负数来判断是否有负环</p>
+<p><span class="arithmatex">\(O(ElogV)\)</span>  用优先队列</p>
+<pre><code class="language-c++">typedef pair&lt;int, int&gt; P; 
+
+vector&lt;P&gt; es[MAX_V];  //邻接表中first表示端点，second表示权值
+int d[MAX_V];
+
+void dijkstra(int s)
+{
+    priority_queue&lt; P, vector&lt;P&gt;, greater&lt;P&gt; &gt; que; //队列中first表示最短路， second表示端点
+    memset(d, INF, sizeof d);
+    d[s] = 0;
+    que.push(P(0, s));
+    while(!que.empty())
+    {
+        P p = que.top(); que.pop();
+        int u = p.second;
+        if(d[u] &lt; p.first) continue;
+
+        for(int i = 0; i &lt; es[u].size(); i++)
+        {
+            int v = es[u][i].first, w = es[u][i].second;
+            if(d[v] &gt; d[u]+w)  //松弛操作
+            {
+                d[v] = d[u]+w;
+                que.push(P(d[v], v));
+            }
+        }
+    }
+}
+</code></pre>
+<p>链式前向星的版本</p>
+<pre><code class="language-c++">struct edge
+{
+    int to, w, next;
+}edge[max_e];
+
+struct node{ 
+    int to, w;
+    bool operator &lt; (const node&amp; a) const{
+        return w &gt; a.w;
+    }
+};
+
+int d[max_v], head[max_v], visited[max_v], n, m, cnt = 0;
+
+void init(){
+    memset(head, -1, sizeof head);
+}
+
+void add_edge(int u, int v, int w){
+    edge[cnt].to = v;
+    edge[cnt].w = w;
+    edge[cnt].next = head[u];
+    head[u] = cnt++; 
+}
+
+void dijkstra(int s){
+    priority_queue&lt;node&gt; que;
+    fill(d, d+n+1, inf);
+    memset(visited, false, sizeof visited);
+
+    d[s] = 0;
+    node tmp;
+    tmp.to = s, tmp.w = 0;
+    que.push(tmp);
+    while(!que.empty()){
+        node t = que.top(); que.pop();
+        if(visited[t.to]) continue;
+        visited[t.to] = true;
+        for(int i = head[t.to]; i != -1; i = edge[i].next){
+            int v = edge[i].to;
+            if(!visited[v] &amp;&amp; d[v] &gt; d[t.to]+edge[i].w){
+                d[v] = d[t.to]+edge[i].w;
+                tmp.to = v, tmp.w = d[v];
+                que.push(tmp);
+            }
+        }
+    }
+}
+
+int main(){
+    init();
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    int a, b, c;
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);
+        add_edge(a, b, c);
+    }
+    dijkstra(1);
+    printf(&quot;%d\n&quot;, d[n]);
+    return 0;
+}
+</code></pre>
+<h3 id="floyd-warshall">Floyd-Warshall</h3>
+<p><span class="arithmatex">\(O(V^3)\)</span></p>
+<p>dp:状态转移方方程  <span class="arithmatex">\(d[k][i][j]=min(d[k-1][i][j],d[k-1][i][k]+d[k-1][k][i])\)</span>, 即 <span class="arithmatex">\(d[i][j] = min(dp[i][k], dp[k][j])\)</span></p>
+<pre><code class="language-c++">int d[MAX_V[MAX_V];
+void floyd()
+{
+    for(int k = 0; k &lt; V; k++)
+        for(int i = 0; i &lt; V; i++)
+            for(int j = 0; j &lt; V; j++)
+                d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
+}   
+</code></pre>
+<h3 id="_1">路径还原</h3>
+<p>在松弛操作时记录每个结点的前趋结点<span class="arithmatex">\(path[i]\)</span>即可, 查询时从后往前遍历</p>
+<h3 id="_2">次短路</h3>
+<pre><code class="language-c++">//每次更新最短路时看看被抛弃的值能不能更新次短路
+typedef pair&lt;int, int&gt; P;
+const int inf = 0x3f3f3f3f;
+
+vector&lt;P&gt; es[max_v];
+
+int n, r, a, b, c;
+int d1[max_v], d2[max_v]; //d2 次短路
+
+void dijkstra(int s){
+    memset(d1, inf, sizeof d1);
+    memset(d2, inf, sizeof d2);
+    priority_queue&lt; P, vector&lt;P&gt;, greater&lt;P&gt; &gt; que;
+
+    d1[s] = 0;
+    que.push(P(0, s));
+    while(!que.empty()){
+        P p = que.top(); que.pop();
+        int u = p.second;
+        if(d2[u] &lt; p.first) continue;
+
+        for(int i = 0; i &lt; es[u].size(); i++){
+            int v = es[u][i].first, w = es[u][i].second;
+            int tmp = p.first+w;
+            if(d1[v] &gt; tmp){
+                swap(tmp, d1[v]);
+                que.push(P(d1[v], v));
+            }
+            if(tmp &lt; d2[v] &amp;&amp; tmp &gt; d1[v]){
+                d2[v] = tmp;
+                que.push(P(d2[v], v));
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="33">3.3 最小生成树</h2>
+<p>前提：图是连通的</p>
+<h3 id="prim">Prim</h3>
+<p><span class="arithmatex">\(O(V^2)\)</span></p>
+<pre><code class="language-c++">vector&lt;edge&gt; es[max_v];
+int dis[MAX_V];
+bool vis[MAX_V];
+
+int prime(){
+    memset(dis, inf, sizeof dis);
+    memset(vis, false, vis);
+    dis[0] = 0; //s
+    int res = 0;
+    while(true){
+        int v = -1, mn = inf;
+        for(int i = 0; i &lt; V; i++)
+            if(!visited[i] &amp;&amp; dis[i] &lt; mn)
+                mn = dis[i], v = i;        
+        if(v == -1) break;
+        vis[v] = true;
+        res += mn;
+        for(int i = 0; i &lt; es[v].size(); i++){
+            edge e = es[v][i];
+            dis[e.to] = min(dis[e.to], e.w);
+        }
+    }
+    return res;
+}
+</code></pre>
+<h3 id="kruskal">Kruskal</h3>
+<p>按照边的权值从小到达，利用并查集判断是否会产出圈，不会就加入</p>
+<p><span class="arithmatex">\(O(ElogV)\)</span></p>
+<pre><code class="language-c++">struct edge{ int from, to, w; };
+edge es[MAX_E];
+
+bool cmp(edge a, edge b){ return a.w &lt; b.w; }
+
+int kruskal(){
+    sort(es, es+E, cmp);
+    init(MAX_V);  //并查集的初始化
+    int res = 0;
+    for(int i = 0; i &lt; E; i++){
+        edge e = es[i];
+        if(!same(e.from, e.to)){
+            unite(e.from, e.to);
+            res += e.w;
+        }
+    }
+    return res;
+}
+</code></pre>
+<h2 id="34">3.4 网络流</h2>
+<h3 id="dinic">最大流 Dinic</h3>
+<pre><code class="language-c++">struct edge{ int to, cap, rev; } //rev记录反向边在 es[to] 中的索引
+
+vector&lt;edge&gt; es[max_v];  //邻接表
+int level[max_v];        //分层图
+int iter[max_v];         //弧优化，记录结点增广过哪些边了，下次就不增广了
+
+void add_edge(int from, int to, int cap)  {//加边
+
+    es[from].push_back(edge{to, cap, es[to].size()});
+    es[to].push_back(edge{from, 0, es[from].size()-1});   
+}
+
+void bfs(int s) {//分层图
+    memset(level, -1, sizeof level);
+    queue&lt;int&gt; que;
+    level[s] = 0;
+    que.push(s);
+    while(!que.empty()){
+        int v = que.front(), que.pop();
+        for(int i = 0; i &lt; es[i].size(); i++){
+            edge &amp;e = es[v][i];
+            if(e.cap &gt; 0 &amp;&amp; level[e.to] &lt; 0){
+                level[e.to] = level[v]+1;
+                que.push(e.to);
+            }
+        }
+    }
+}
+
+int dfs(int cur, int t, int f) { //增广路
+    if(cur == t) return f;
+    for(int &amp;i = iter[cur]; i &lt; es[cur].size(); i++){
+        edge &amp;e = es[cur][i];
+        if(e.cap &gt; 0 &amp;&amp; level[cur] &lt; level[e.to]){
+            int d = dfs(e.to, t, min(f, e.cap));
+            if(d &gt; 0) {
+                e.cap -= d;
+                es[e.to][e.rev].cap += d;
+                return d;
+            }
+        }
+    }
+    return 0;
+}
+
+int max_flow(int s, int t){
+    int flow = 0;
+    while(1){
+        bfs(s);
+        if(level[t] &lt; 0) return flow;
+        memset(iter, 0, sizeof iter);
+        int f;
+        while(f = dfs(s, t, inf) &gt; 0) flow += f;
+    }
+}
+</code></pre>
+<h3 id="_3">最小费用流</h3>
+<p>负权边，用 BF 算法</p>
+<pre><code class="language-c++">const int inf = 0x3f3f3f3f;
+struct edge{int to, cap, cost, rev; }
+
+vector&lt;edge&gt; es[max_v];
+int dist[max_v];
+int pree[max_e], prev[max_v];   //前导顶点的对应的边的索引
+
+void add_edge(int from, int to, int cap, int cost){
+    es[from].push_back(edge{to, cap, cost, es[to].size()});
+    es[to].push_back(edge{from, 0, -cost, es[from].size()-1});
+}
+
+int min_cost_flow(int s, int t, int f) { //起点 终点 流量
+    int res = 0;
+    while(f &gt; 0){
+        memset(dist, inf, sizeof dist);
+        dist[s] = 0;
+        while(true)  
+            bool update = false;
+            for(int i = 0; i &lt; V; i++) {
+                if(dist[i] == inf) continue;
+                for(int j = 0; j &lt; es[i].size(); j++) {
+                    edge &amp;e = es[i][j];
+                    if(e.cap &gt; 0 &amp;&amp; dist[e.to] &gt; dist[e.from]+e.cost)  {
+                        dist[to] = dist[from]+e.cost;
+                        prev[e.to] = i;
+                        pree[e.to] = j;
+                        update = true;
+                    }
+                }
+            }
+            if(!update) break;
+        }
+
+        if(dist[t] == inf) return -1;
+        //沿s到t的最短路尽量增广
+        int d = f;
+        for(int i = t; i != s; i = prev[i])
+            d = min(d, es[prev[i]][pree[i]].cap);
+
+        f -= d;
+        res += d*dist[t];
+        for(int i = t; i != s; i = prev[i]) {
+            edge &amp;e = es[prev[i][pree[i]]];
+            e.cap -= d;
+            es[i][e.rev].cap += d;
+        }
+    }
+    return res;
+}
+</code></pre>
+<h2 id="35">3.5 二分图匹配</h2>
+<h3 id="351">3.5.1 最大流</h3>
+<p>添加原点和汇点，计算最大流</p>
+<pre><code class="language-c++">//计算机处理任务
+bool can[max_n][max_m]; // can[i][j] : 计算机 i 能处理任务 j
+
+void MaxMatch(){
+    //计算机对应的顶点：0 ~ n-1
+    //任务对应的顶点：n ~ n+m-1
+    int s = n+m, t = n+m+1;
+    for(int i = 0; i &lt; n; i++){
+        add_edge(s, i, 1);
+    }
+    for(int i = 0; i &lt; m; i++){
+        add_edge(n+i, t, 1);
+    }
+    for(int i = 0; i &lt; n; i++)
+        for(int j = 0; j &lt; m; j++)
+            add_edge(i, n+j, 1);
+    cout &lt;&lt; max_flow(s, t) &lt;&lt; endl;
+}
+</code></pre>
+<h3 id="352">3.5.2 匈牙利算法</h3>
+<p><span class="arithmatex">\(O(VE)\)</span> </p>
+<pre><code class="language-c++">bool vis[max_v];
+int match[max_v];
+vector&lt;int&gt; es[max_v];
+
+void add_edge(int u, int v){
+    es[u].push_back(v);
+    es[v].push_back(u);
+}
+
+bool dfs(int cur){
+    for(int i = 0; i &lt; es[cur].size(); i++){
+        int v = es[cur][i];
+        if(vis[v]) continue;
+        vis[v] = true;
+        if(!match[v] || dfs(match[v])){
+            match[v] = cur;
+            match[cur] = v;
+            return true;
+        }
+    }
+    return false;
+}
+
+int MaxMatch(){
+    int res = 0;
+    for(int i = 1; i &lt;= n; i++){  //寻找增广路径
+        memset(vis, 0, sizeof vis);
+        if(!match[i] &amp;&amp; dfs(i)) res++;     
+    }
+    return res;
+}
+</code></pre>
+<h3 id="353-hopcroft-karp">3.5.3 Hopcroft-Karp</h3>
+<p><span class="arithmatex">\(O(E\sqrt{V})\)</span> </p>
+<p>HDU 2389</p>
+<pre><code class="language-c++">int match[max_v], dep[max_v];
+vector&lt;int&gt; es[max_v];
+
+bool bfs() {
+    memset(dep, 0, sizeof dep);
+    queue&lt;int&gt; q;
+    for (int i = 1; i &lt;= n; i++)
+        if (!match[i]) q.push(i);
+    bool flag = false;
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (int i = 0; i &lt; es[u].size(); i++) {
+            int v = es[u][i];
+            if (dep[v]) continue;
+            dep[v] = dep[u] + 1;
+            if (!match[v]) flag = true;
+            else dep[match[v]] = dep[v] + 1, q.push(match[v]);
+        }
+    }
+    return flag;
+}
+
+bool dfs(int u) {
+    for (int i = 0; i &lt; es[u].size(); i++) {
+        int v = es[u][i];
+        if (dep[v] != dep[u] + 1) continue;
+        dep[v] = 0;
+        if (!match[v] || dfs(match[v])) {
+            match[v] = u; match[u]  = v;
+             return true;
+        }
+    }
+    return false;
+}
+
+int MaxMatch() {
+    int res = 0;
+    while (bfs()) {
+    for (int i = 1; i &lt;= n; i++)
+        if (!match[i] &amp;&amp; dfs(i)) res++;
+    }
+    return res;
+}
+</code></pre>
+<h2 id="36">3.6 连通性相关</h2>
+<h3 id="361">3.6.1 强连通分量分解</h3>
+<div class="arithmatex">\[O(V+E)\]</div>
+<p>两次DFS，第一遍后序遍历并给顶点标号，第二遍对反向图遍历</p>
+<pre><code class="language-c++">vector&lt;int&gt; G[max_v];
+vector&lt;int&gt; rG[max_v];    //反向图
+vector&lt;int&gt; vs;           //vertex sequence
+bool vis[max_v];
+int cmp[max_v];           //所属强连通图的拓扑序
+
+void add_edge(int u, int v){
+    G[u].push_back(v);
+    rG[v].push_back(u);
+}
+
+void dfs(int v){
+    vis[v] = true;
+    for(int i = 0; i &lt; G[v].size(); i++)
+        if(!vis[G[v][i]]) dfs(G[v][i]);
+    vs.push_back(v);
+}
+
+void rdfs(int v, int k){
+    vis[v] = true;
+    cmp[v] = k;
+    for(int i = 0; i &lt; rG[v].size(); i++)
+        if(!vis[rG[v][i]]) rdfs(rG[v][i], k);
+}
+
+int scc() { //strongly connected component
+    memset(vis, false, sizeof vis);
+    vs.clear();
+    for(int v = 0; v &lt; V; v++)
+        if(!vis[v]) dfs(v);
+
+    memset(vis, false, sizeof vis);
+    int k = 0;
+    for(int i = vs.size()-1; i &gt;= 0; i--)
+        if(!vis[vs[i]]) rdfs(vs[i], k++);
+    return k;
+}
+</code></pre>
+<h3 id="362">3.6.2 连通分支个数</h3>
+<p>并查集</p>
+<h2 id="37">3.7 树上问题</h2>
+<h3 id="371-lca">3.7.1 最近公共祖先(LCA)</h3>
+<div class="arithmatex">\[O(n)\]</div>
+<pre><code class="language-c++">vector&lt;int&gt; G[maxn_v];
+int root, parent[max_v], depth[max_v];
+
+void dfs(int v, int p, int d){
+    parent[v] = p, depth[v] = d;
+    for(int i = 0; i &lt; G[v].size(); i++)
+        if(G[v][i] != p) dfs(G[v][i], v, d+1);
+}
+
+void init(){
+    dfs(root, -1, 0);
+}
+
+int lca(int u, int v){
+    //先把u,v走到同一深度
+    while(depth[u] &gt; depth[v]) u = parent[u]; 
+    while(depth[v] &gt; depth[u]) v = parent[v];
+    //一起向上走
+    while(u != v){
+        u = parent[u], v = parent[v];
+    }
+    return u;
+}
+</code></pre>
+<p>基于二分搜索的算法</p>
+<blockquote>
+<p>对于任意结点v，可以通过 </p>
+<p>parent2[v]  = parent[parent[v]]</p>
+<p>parent4[v] = parent2[parent2[v]]</p>
+<p>...</p>
+<p>得到其向上走 <span class="arithmatex">\(<span class="arithmatex">\(2^k\)</span>\)</span> 步到达的顶点</p>
+</blockquote>
+<p>每次搜索的复杂度： <span class="arithmatex">\(<span class="arithmatex">\(O(logn)\)</span>\)</span>，预处理的复杂度：<span class="arithmatex">\(<span class="arithmatex">\(O(nlogn)\)</span>\)</span> </p>
+<pre><code class="language-c++">vector&lt;int&gt; G[max_v];
+int root, parent[max_k][max_v], depth[max_v];
+
+void dfs(int v, int p, int d){
+    depth[v] = d, parent[v] = p;
+    for(int i = 0; i &lt; G[v].size(); i++)
+        if(G[v][i] != p) dfs(G[v][i], v, d+1);
+}
+
+void init(int V){
+    //预处理parent[0]和depth
+    dfs(root, -1, 0);
+    //预处理parent
+    for(int k = 0; k+1 &lt; max_k; k++)
+        for(int i = 0; i &lt; V; i++) { //parent[k][v] 表示从 v 结点向上走 2^k 次的结点， 超过根时记作-1
+            if(parent[k][i] &lt; 0) parent[k+1][i] = -1;
+            else parent[k+1][i] = parent[k][parent[k][i]];
+        }
+}
+
+int lca(int u, int v){
+    //让u和v走到同一深度
+    if(depth[u] &gt; depth[v]) swap(u, v); //让v的深度深一些
+    for(int k = 0; k &lt; max_k; k++) {
+        if ((depth[v] - depth[u]) &gt;&gt; k &amp; 1) v = parent[k][v]; 
+    }
+    if (u == v) return u;
+    //二分搜索计算LCA
+    for (int k = max_k-1; k &gt;= 0; k--) {
+        if (parent[k][v] != parent[k][u]) {  //如果超过了他们的LCA也一定是一样的,不一样一定还没到LCA
+            v = parent[k][v], u = parent[k][u];
+        }
+    }
+    return parnet[0][u]; //?这里好像不太对?//
+}
+</code></pre>
+<h3 id="372">3.7.2 点分治</h3>
+<p>洛谷 P3806 POJ 1741</p>
+<h2 id="_4">其他</h2>
+<h3 id="_5">常用结论</h3>
+<p>定义：</p>
+<p>匹配：在G中两两没有公共点的边集合M</p>
+<p>边覆盖：G中任意顶点都至少是F中某条边的端点的边集合F</p>
+<p>独立集：在G中两两互不相连的顶点集合S</p>
+<p>顶点覆盖：G中的任意边都至少有一个端点属于S的顶点集合S</p>
+<p>结论：</p>
+<ul>
+<li>
+<p>对于无孤立点的图，|最大匹配|+|最小边覆盖|  =  |V|</p>
+</li>
+<li>
+<p>|最大独立集|+|最小顶点覆盖| = |V| </p>
+</li>
+<li>
+<p>对于二分图，|最大匹配|  =  |最小顶点覆盖|</p>
+</li>
+</ul>
+<p>简单证明：最大匹配时是每一对匹配中，不可能2个点都连接着未匹配的点（不然的话就会有增广路径，最大匹配还可以更大),</p>
+<p>所以2个点中最多一个点连接着未匹配的点，选择那个点作为最小定点覆盖即可</p>
+<h3 id="2-sat">2-SAT</h3>
+<p>布尔方程的可满足性问题</p>
+<p>合取范式： <span class="arithmatex">\(<span class="arithmatex">\((a\vee b\vee\dots)\wedge(c\vee d\vee\dots)\)</span>\)</span></p>
+<p>2-SAT问题：合取范式的每个子句的文字不超过2的布尔方程的可满足性问题</p>
+<p>将每个 <span class="arithmatex">\(<span class="arithmatex">\(a\vee b\)</span>\)</span> 改写成 <span class="arithmatex">\(<span class="arithmatex">\((\urcorner a \Rightarrow b \wedge  \urcorner b \Rightarrow a)\)</span>\)</span>，以 <span class="arithmatex">\(<span class="arithmatex">\(\Rightarrow\)</span>\)</span> 关系为边建有向图，利用强连通分量分解</p>
+<ul>
+<li>
+<p>如果存在 x和<span class="arithmatex">\(<span class="arithmatex">\(\urcorner x\)</span>\)</span>存在同一个强连通分量，无解</p>
+</li>
+<li>
+<p>否则，对于每个布尔变量x，如果x所在的强连通分量的拓扑序在<span class="arithmatex">\(<span class="arithmatex">\(\urcorner x\)</span>\)</span>之后，x为true</p>
+</li>
+</ul>
+<p>因为拓扑序在前的强连通分量可能存在通路到达在后的，所以在后的一定为true</p>
+<h3 id="dfs">DFS序</h3>
+<p>当前结点的 in 和 out 包含了子树的所有结点</p>
+<pre><code class="language-c++">int in[N], out[N], tot = 0;
+void dfs(int x, int dep) {
+    in[x] = ++tot;
+    for (int i = 0; i &lt; es[x].size(); i++) dfs(es[x][i], dep + 1);
+    out[x] = tot;
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 计算几何" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              计算几何
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html" class="md-footer__link md-footer__link--next" aria-label="Next: 数据结构" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              数据结构
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
