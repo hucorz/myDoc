@@ -1357,13 +1357,13 @@ void find_fac(ll n) {
    a^b\equiv
    \begin{cases} 
    a^{b \% \varphi(p)}&amp;gcd(a,p)=1  \<br />
-   a^b&amp;gcd(a,p)\neq1,b&lt;\varphi(p)  \<br />
-   a^{b \% \varphi(p)+\varphi(p)}&amp; gcd(a,p)\neq1,b\geq\varphi(p)
-   \end{cases}
-   (mod\ p)
-   $$</p>
+   a^b&amp;gcd(a,p)\neq1,b&lt;\varphi(p)  \  </p>
 </li>
 </ol>
+<p>\end{cases}
+   (mod\ p)
+   $$</p>
+<p>a^{b \% \varphi(p)+\varphi(p)}&amp;gcd(a,p)\neq1,b\geq\varphi(p)</p>
 <h3 id="_11">求单个数的欧拉函数</h3>
 <p><span class="arithmatex">\(O(\sqrt{n})\)</span></p>
 <pre><code class="language-c++">ll phi(ll n){
