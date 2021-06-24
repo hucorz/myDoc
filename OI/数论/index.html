@@ -1363,6 +1363,12 @@ void find_fac(ll n) {
    $$</p>
 </li>
 </ol>
+<div class="arithmatex">\[
+a^b\equiv
+\begin{cases} 
+a^{b \% \varphi(p)},\quad gcd(a,p)=1  \\  a^{b \% \varphi(p)+\varphi(p)},\quad gcd(a,p)\neq1,b\geq\varphi(p)
+\end{cases}
+\]</div>
 <h3 id="_11">求单个数的欧拉函数</h3>
 <p><span class="arithmatex">\(O(\sqrt{n})\)</span></p>
 <pre><code class="language-c++">ll phi(ll n){
