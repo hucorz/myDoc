@@ -1352,18 +1352,18 @@ void find_fac(ll n) {
 <p>欧拉定理，若 <span class="arithmatex">\(gcd(a,m)=1\)</span>，则 <span class="arithmatex">\(a^{\varphi(m)}\equiv 1(mod \quad m)\)</span> </p>
 </li>
 <li>
-<p>扩展欧拉定理
-   $$
-   a^b\equiv
-   \begin{cases} 
-   a^{b \% \varphi(p)}&amp;gcd(a,p)=1  \<br />
-   a^b&amp;gcd(a,p)\neq1,b&lt;\varphi(p)  </p>
+<p>扩展欧拉定理</p>
 </li>
 </ol>
-<p>\end{cases}
-   (mod\ p)
-   $$</p>
-<p>a^{b \% \varphi(p)+\varphi(p)}&amp;gcd(a,p)\neq1,b\geq\varphi(p)</p>
+<div class="arithmatex">\[
+a^b\equiv
+\begin{cases} 
+a^{b \% \varphi(p)}&amp;gcd(a,p)=1  \\  
+a^b&amp;gcd(a,p)\neq1,b&lt;\varphi(p)  \\
+a^{b \% \varphi(p)+\varphi(p)}&amp;gcd(a,p)\neq1,b\geq\varphi(p)
+\end{cases}
+(mod\ p)
+\]</div>
 <h3 id="_11">求单个数的欧拉函数</h3>
 <p><span class="arithmatex">\(O(\sqrt{n})\)</span></p>
 <pre><code class="language-c++">ll phi(ll n){
