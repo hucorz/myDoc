@@ -743,102 +743,102 @@
                   </a>
                 
                 
-                <h1 id="_1">计算几何</h1>
-<h2 id="_2">点和线</h2>
-<h3 id="_3">精度控制</h3>
-<pre><code class="language-c++">const double eps = 1e-10;
-double dcmp(double x) { //判断 正/负/0
-    if(fabs(x) &lt; eps) return 0;
-    else return x &gt; 0 ? 1 : -1;
-}
-</code></pre>
-<h3 id="_4">点和向量存储</h3>
-<pre><code class="language-c++">struct Vector{
-    double x, y;
-    Point(double x = 0, y = 0):x(x), y(y){}
-    Vector rotate_90() {return Vector(y, -x);} //顺时针90度
-    Vector rotate_90_c() {return Vector(-y, x);} //逆时针90度
-};
-typedef Vector Point;
-</code></pre>
-<h3 id="_5">向量的四则运算</h3>
-<pre><code class="language-c++">//这种返回方式似乎有时候会出问题
-//向量+向量=向量  点+向量=点
-Vector operator+(Vector a, Vector b){ 
-    return Vector(a.x+b.x, a.y+b.y); 
-}
-//点-点=向量
-Vector operator-(Vector a, Vector b){ 
-    return Vector(a.x-b.x, a.y-b.y); 
-}
-//向量*数=向量
-Vector operator*(Vector a, double p){ 
-    return Vector(a.x*p, a.y*p); 
-}
-//向量/数=向量
-Vector operator/(Vector a, double p){ 
-    return Vector(a.x/p. a.y/p); 
-}
-</code></pre>
-<h3 id="_6">点积 叉积 及 应用</h3>
+                <h1 id="_1">计算几何<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">点和线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">精度控制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">;</span>
+<span class="kt">double</span> <span class="nf">dcmp</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//判断 正/负/0</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_4">点和向量存储<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">Vector</span><span class="p">{</span>
+    <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="n">Vector</span> <span class="n">rotate_90</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">);}</span> <span class="c1">//顺时针90度</span>
+    <span class="n">Vector</span> <span class="n">rotate_90_c</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">);}</span> <span class="c1">//逆时针90度</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">Vector</span> <span class="n">Point</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_5">向量的四则运算<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//这种返回方式似乎有时候会出问题</span>
+<span class="c1">//向量+向量=向量  点+向量=点</span>
+<span class="n">Vector</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">);</span> 
+<span class="p">}</span>
+<span class="c1">//点-点=向量</span>
+<span class="n">Vector</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">);</span> 
+<span class="p">}</span>
+<span class="c1">//向量*数=向量</span>
+<span class="n">Vector</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">p</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">p</span><span class="p">);</span> 
+<span class="p">}</span>
+<span class="c1">//向量/数=向量</span>
+<span class="n">Vector</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">p</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">.</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">p</span><span class="p">);</span> 
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_6">点积 叉积 及 应用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[\vec{a} \cdot \vec{b} = |a||b|cos\theta\]</div>
 <p><span class="arithmatex">\(<span class="arithmatex">\(|\vec{a} \times \vec{b}| = |a||b|sin\theta\)</span>\)</span>，正负由两向量的相对关系决定</p>
-<pre><code class="language-c++">//点积
-double Dot(Vector a, Vector b){ 
-    return a.x*b.x+a.y*b.y; 
-}
-//叉积
-double Cross(Vector a, Vector b){ 
-    return a.x*b.y-a.y*b.x; 
-}
+<div class="highlight"><pre><span></span><code><span class="c1">//点积</span>
+<span class="kt">double</span> <span class="nf">Dot</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="c1">//叉积</span>
+<span class="kt">double</span> <span class="nf">Cross</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span> 
+<span class="p">}</span>
 
-//应用
-//求模长
-double Length(Vector a){ 
-    return sqrt(Dot(a, a)); 
-}
-//求角度
-double Angle(Vector a, Vector b){ 
-    return acos(Dot(a, b)/Length(a)/Length(b));
-}
-</code></pre>
-<h3 id="_7">判断点是否在线段上</h3>
-<pre><code class="language-c++">bool OnSegment(Point p1, Point p2, Point q){  //p1-p2是线段
-    return Cross(p1-q, p2-q) == 0 &amp;&amp; Dot(p1-q, p2-q) &lt;= 0;
-}
-</code></pre>
-<h3 id="_8">求两直线的交点</h3>
+<span class="c1">//应用</span>
+<span class="c1">//求模长</span>
+<span class="kt">double</span> <span class="nf">Length</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">Dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span> 
+<span class="p">}</span>
+<span class="c1">//求角度</span>
+<span class="kt">double</span> <span class="nf">Angle</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
+    <span class="k">return</span> <span class="n">acos</span><span class="p">(</span><span class="n">Dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_7">判断点是否在线段上<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">OnSegment</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q</span><span class="p">){</span>  <span class="c1">//p1-p2是线段</span>
+    <span class="k">return</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="n">p2</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">Dot</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="n">p2</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_8">求两直线的交点<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>由 <span class="arithmatex">\(<span class="arithmatex">\(q_2,q_1,p_2,p_1\)</span>\)</span>确定的两条直线，假设交点为 <span class="arithmatex">\(<span class="arithmatex">\(p_1+t(p_2-p_1)\)</span>\)</span> </p>
 <p>有 <span class="arithmatex">\(<span class="arithmatex">\((q_2-q_1) \times (p_1 + t(p_2-p_1)-q_1)=0\)</span>\)</span></p>
 <p>得 <span class="arithmatex">\(<span class="arithmatex">\(t = \frac{(q_2-q_1)\times(q_1-p_1)}{(q_2-q_1)\times(p_2-p_1)}\)</span>\)</span></p>
-<pre><code class="language-c++">/*Point GetLineIntersection(Point p1, Point p2, Point q1, Point q2){
-    return p1+(p2-p1)*Cross(q2-q1, q1-p1)/Cross(q2-q1, p2-p1)
-}*/
-Point GetLineIntersection(Point p, Vector v1, Point q, Vector v2){
-    return p+v1*Cross(v2, q-p)/Cross(v2, v1);
-} //平行特判
-</code></pre>
-<h3 id="_9">线段相交判定</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">/*Point GetLineIntersection(Point p1, Point p2, Point q1, Point q2){</span>
+<span class="cm">    return p1+(p2-p1)*Cross(q2-q1, q1-p1)/Cross(q2-q1, p2-p1)</span>
+<span class="cm">}*/</span>
+<span class="n">Point</span> <span class="nf">GetLineIntersection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">v1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">+</span><span class="n">v1</span><span class="o">*</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">q</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
+<span class="p">}</span> <span class="c1">//平行特判</span>
+</code></pre></div>
+<h3 id="_9">线段相交判定<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>跨立实验：判断q1,q2在线段p2-p1两侧 且 p1,p2在线段q2-q1两侧</p>
-<pre><code class="language-c++">bool SegmentProperIntersection(Point p1, Point p2, Point q1, Point q2){
-    double a1 = Cross(p2-p1, q2-p1), a2 = Cross(p2-p1, q1-p1);
-    double a3 = Cross(q2-q1, p1-q1), a4 = Cross(q2-q1, p2-q1);
-    return dcmp(a1)*dcmp(a2)&lt;0 &amp;&amp; dcmp(a3)*dcmp(a4)&lt;0;
-} 
-/*特判端点在另一条线段的情况
-if(OnSegment(p[i],q[i],p[j]) 
-|| OnSegment(p[i],q[i],q[j]) 
-|| OnSegment(p[j],q[j],p[i])
-|| OnSegment(p[j],q[j],q[i])
-)  G[i][j] = G[j][i] = true;
-*/
-</code></pre>
-<h3 id="_10">线段和直线相交判定</h3>
-<pre><code class="language-c++">bool fun(Point a, Point b, Point c, Point d) { //a b 确定直线     c d 确定线段
-    return Cross(a - b, a - c) * Cross(a - b, a - d) &lt;= eps
-}
-</code></pre>
-<h3 id="_11">向量旋转与单位化</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">SegmentProperIntersection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q2</span><span class="p">){</span>
+    <span class="kt">double</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">,</span> <span class="n">q2</span><span class="o">-</span><span class="n">p1</span><span class="p">),</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">p1</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">q2</span><span class="o">-</span><span class="n">q1</span><span class="p">,</span> <span class="n">p1</span><span class="o">-</span><span class="n">q1</span><span class="p">),</span> <span class="n">a4</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">q2</span><span class="o">-</span><span class="n">q1</span><span class="p">,</span> <span class="n">p2</span><span class="o">-</span><span class="n">q1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">dcmp</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span><span class="o">*</span><span class="n">dcmp</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dcmp</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span><span class="o">*</span><span class="n">dcmp</span><span class="p">(</span><span class="n">a4</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+<span class="cm">/*特判端点在另一条线段的情况</span>
+<span class="cm">if(OnSegment(p[i],q[i],p[j]) </span>
+<span class="cm">|| OnSegment(p[i],q[i],q[j]) </span>
+<span class="cm">|| OnSegment(p[j],q[j],p[i])</span>
+<span class="cm">|| OnSegment(p[j],q[j],q[i])</span>
+<span class="cm">)  G[i][j] = G[j][i] = true;</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h3 id="_10">线段和直线相交判定<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">fun</span><span class="p">(</span><span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="n">Point</span> <span class="n">b</span><span class="p">,</span> <span class="n">Point</span> <span class="n">c</span><span class="p">,</span> <span class="n">Point</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//a b 确定直线     c d 确定线段</span>
+    <span class="k">return</span> <span class="n">Cross</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">Cross</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">eps</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_11">向量旋转与单位化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>逆时针：
 $$
 \left[
@@ -883,135 +883,135 @@ $$
 }
 \right]
 $$</p>
-<pre><code class="language-c++">//rad 是弧度, 逆时针
-Vector Rotate(Vector a, double rad) {
-    return Vector(a.x*cos(rad)-a.y*sin(rad), a.x*sin(rad)+a.y*soc(rad));
-}
-//单位化
-Vector Normal(Vector a) {
-    double L = length(a);
-    return Vector(a.x/L, a.y/L);
-}
-</code></pre>
-<h3 id="_12">点到直线的距离</h3>
-<pre><code class="language-c++">double DistaceToLine(Point p, Point a, Point b) {
-    Vector v1 = b-a, v2 = p-a;
-    return fabs(Cross(v1, v2))/Length(v1); //平行四边形面积 除/底=高
-}
-</code></pre>
-<h2 id="_13">圆</h2>
-<h3 id="_14">圆的存储</h3>
-<pre><code class="language-c++">struct Circle{
-    Point c;
-    double r;
-    Circle(Point a, double b = 0):c(a), r(b){}
-}
-</code></pre>
-<h3 id="_15">三角形外接圆</h3>
-<pre><code class="language-c++">//三点不共线
-Circle circumcircle(Point p1, Point p2, Point p3) {
-    Point p = GetLineIntersection((p1+p2)/2, (p2-p1).rotate_90(), (p1+p3)/2, (p3-p1).rotate_90());
-    return Circle(p, Length(p1-p));
-}
-</code></pre>
-<h3 id="_16">最小圆覆盖</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//rad 是弧度, 逆时针</span>
+<span class="n">Vector</span> <span class="nf">Rotate</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">),</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span><span class="o">+</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">soc</span><span class="p">(</span><span class="n">rad</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="c1">//单位化</span>
+<span class="n">Vector</span> <span class="nf">Normal</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">L</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">L</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_12">点到直线的距离<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">DistaceToLine</span><span class="p">(</span><span class="n">Point</span> <span class="n">p</span><span class="p">,</span> <span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="n">Point</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Vector</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">p</span><span class="o">-</span><span class="n">a</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">fabs</span><span class="p">(</span><span class="n">Cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span> <span class="c1">//平行四边形面积 除/底=高</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_13">圆<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">圆的存储<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">Circle</span><span class="p">{</span>
+    <span class="n">Point</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
+    <span class="n">Circle</span><span class="p">(</span><span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">c</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">r</span><span class="p">(</span><span class="n">b</span><span class="p">){}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_15">三角形外接圆<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//三点不共线</span>
+<span class="n">Circle</span> <span class="nf">circumcircle</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="n">GetLineIntersection</span><span class="p">((</span><span class="n">p1</span><span class="o">+</span><span class="n">p2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">(),</span> <span class="p">(</span><span class="n">p1</span><span class="o">+</span><span class="n">p3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p3</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">Circle</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Length</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">p</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_16">最小圆覆盖<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>随机增量法 <span class="arithmatex">\(O(n)\)</span> </p>
-<pre><code class="language-c++">//洛谷 P1742
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
+<div class="highlight"><pre><span></span><code><span class="c1">//洛谷 P1742</span>
+<span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
 
-const int maxn = 1e5+5;
-typedef struct Vector{
-    double x, y;
-    Vector(double a = 0, double b = 0):x(a),y(b){}
-    Vector rotate_90(){return Vector(y, -x); }
-}Point;
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">1e5</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Vector</span><span class="p">{</span>
+    <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">Vector</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">b</span><span class="p">){}</span>
+    <span class="n">Vector</span> <span class="n">rotate_90</span><span class="p">(){</span><span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span><span class="n">Point</span><span class="p">;</span>
 
-struct Circle{
-    Point c;
-    double r;
-    Circle(Point a, double b):c(a),r(b){}
-};
+<span class="k">struct</span> <span class="nc">Circle</span><span class="p">{</span>
+    <span class="n">Point</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
+    <span class="n">Circle</span><span class="p">(</span><span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span><span class="n">c</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="n">r</span><span class="p">(</span><span class="n">b</span><span class="p">){}</span>
+<span class="p">};</span>
 
-Point operator-(const Point&amp; a, const Point&amp; b){ return Vector(a.x-b.x, a.y-b.y); }
-Point operator+(const Point&amp; a, const Point&amp; b){ return Vector(a.x+b.x, a.y+b.y); }
-Point operator/(const Point&amp; a, const double&amp; b){ return Vector(a.x/b, a.y/b); }
-Point operator*(const Point&amp; a, const double&amp; b){ return Vector(a.x*b, a.y*b); }
-double Dot(Vector a, Vector b){ return a.x*b.x+a.y*b.y; }
-double Cross(Vector a, Vector b){ return a.x*b.y-a.y*b.x; }
-double Length(Vector a){ return sqrt(Dot(a, a)); }
+<span class="n">Point</span> <span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+<span class="n">Point</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+<span class="n">Point</span> <span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">b</span><span class="p">);</span> <span class="p">}</span>
+<span class="n">Point</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">);</span> <span class="p">}</span>
+<span class="kt">double</span> <span class="n">Dot</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">double</span> <span class="n">Cross</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">double</span> <span class="n">Length</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">){</span> <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">Dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span> <span class="p">}</span>
 
-Point GetLineIntersection(Point p, Vector v1, Point q, Vector v2){
-    return p+v1*Cross(v2, q-p)/Cross(v2, v1);
-}
+<span class="n">Point</span> <span class="n">GetLineIntersection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">v1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">+</span><span class="n">v1</span><span class="o">*</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">q</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
+<span class="p">}</span>
 
-Circle circumcircle(Point p1, Point p2, Point p3){
-    Point p = GetLineIntersection((p1+p2)/2, (p2-p1).rotate_90(), (p1+p3)/2, (p3-p1).rotate_90());
-    return Circle(p, Length(p1-p));
-}
+<span class="n">Circle</span> <span class="n">circumcircle</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p3</span><span class="p">){</span>
+    <span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="n">GetLineIntersection</span><span class="p">((</span><span class="n">p1</span><span class="o">+</span><span class="n">p2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">(),</span> <span class="p">(</span><span class="n">p1</span><span class="o">+</span><span class="n">p3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p3</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">Circle</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Length</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">p</span><span class="p">));</span>
+<span class="p">}</span>
 
-Circle min_circle(Point *p, int n)  { //最小圆覆盖
-    random_shuffle(p+1, p+1+n);
-    Point o;
-    double r = 0;
-    for(int i = 1; i &lt;= n; i++)
-        if(Length(p[i]-o) &gt; r)
-        {
-            o = p[i], r = 0;
-            for(int j = 1; j &lt; i; j++)
-                if(Length(p[j]-o) &gt; r)
-                {
-                    o = (p[i]+p[j])/2, r = Length(p[i]-p[j])/2;
-                    for(int k = 1; k &lt; j; k++)
-                        if(Length(o-p[k]) &gt; r)
-                        {
-                            Circle tmp = circumcircle(p[i], p[j], p[k]);
-                            o = tmp.c, r = tmp.r;
-                        }
-                }
-        }
-    return Circle(o, r);
-} 
+<span class="n">Circle</span> <span class="n">min_circle</span><span class="p">(</span><span class="n">Point</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>  <span class="p">{</span> <span class="c1">//最小圆覆盖</span>
+    <span class="n">random_shuffle</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">Point</span> <span class="n">o</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">o</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">o</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">o</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Length</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+                    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">o</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="n">Circle</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">circumcircle</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+                            <span class="n">o</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">.</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">.</span><span class="n">r</span><span class="p">;</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Circle</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+<span class="p">}</span> 
 
-int main(){
-    int n;
-    Point p[maxn];
-    cin &gt;&gt; n;
-    for(int i = 1; i &lt;= n; i++) cin &gt;&gt; p[i].x &gt;&gt; p[i].y;
-    Circle res =  min_circle(p, n);
-    printf(&quot;%.10lf\n%.10lf %.10lf\n&quot;, res.r, res.c.x, res.c.y);
-    return 0;
-}
-</code></pre>
-<h2 id="_17">凸包</h2>
-<h3 id="graham">Graham扫描法 算凸包</h3>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">Point</span> <span class="n">p</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+    <span class="n">Circle</span> <span class="n">res</span> <span class="o">=</span>  <span class="n">min_circle</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.10lf</span><span class="se">\n</span><span class="s">%.10lf %.10lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="n">r</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_17">凸包<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h3 id="graham">Graham扫描法 算凸包<a class="headerlink" href="#graham" title="Permanent link">&para;</a></h3>
 <p>按x，y坐标升序排列，确定凸包的2的顶点，然后再确定上下两个凸壳</p>
 <p>排序 <span class="arithmatex">\(<span class="arithmatex">\(O(nlogn)\)</span>\)</span> 其他 <span class="arithmatex">\(<span class="arithmatex">\(O(n)\)</span>\)</span> </p>
-<pre><code class="language-c++">bool cmp(Point &amp;p, Point &amp;q){
-    if(p.x != p.x) return p.x &lt; q.x;
-    else return p.y &lt; q.y;
-}
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">!=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
 
-vector&lt;Point&gt; ConvexHull(Point *ps, int n){
-    sort(ps, ps+n, cmp);
-    int k = 0;  //凸包顶点数
-    vector&lt;Point&gt; qs(n*2);
-    //下凸壳
-    for(int i = 0; i &lt; n; i++){  //while要注意
-        while(k &gt; 1 &amp;&amp; Cross(qs[k-1]-qs[k-2], ps[i]-qs[k-1] &lt;= 0)) k--;
-        qs[k++] = ps[i];
-    }
-    //上凸壳
-    for(int i = n-2, t = k; i &gt;= 0; i--){
-        while(k &gt; t &amp;&amp; Cross(qs[k-1]-qs[k-2], ps[i]-qs[k-1] &lt;= 0)) k--;
-        qs[k++] = ps[i];
-    }
-    qs.resize(k-1);
-    return qs;
-}
-</code></pre>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">ConvexHull</span><span class="p">(</span><span class="n">Point</span> <span class="o">*</span><span class="n">ps</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">ps</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">cmp</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//凸包顶点数</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">qs</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+    <span class="c1">//下凸壳</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>  <span class="c1">//while要注意</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">Cross</span><span class="p">(</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-1</span><span class="p">]</span><span class="o">-</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-2</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="c1">//上凸壳</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="mi">-2</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">){</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="n">t</span> <span class="o">&amp;&amp;</span> <span class="n">Cross</span><span class="p">(</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-1</span><span class="p">]</span><span class="o">-</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-2</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">))</span> <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">qs</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">ps</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">qs</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">k</span><span class="mi">-1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">qs</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               

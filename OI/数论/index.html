@@ -1127,9 +1127,9 @@
                   </a>
                 
                 
-                <h1 id="_1">数论</h1>
-<h2 id="_2">基础函数</h2>
-<h3 id="gcd">gcd</h3>
+                <h1 id="_1">数论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">基础函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="gcd">gcd<a class="headerlink" href="#gcd" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>设 <span class="arithmatex">\(a/b=d, a\%b=r\)</span></p>
 <p>即 <span class="arithmatex">\(a=b\times d+r\)</span>，所以 <span class="arithmatex">\(gcd(b, r) | a\)</span>，又 <span class="arithmatex">\(gcd(b, r) | b\)</span>，所以 <span class="arithmatex">\(gcd(b, r) | gcd(a, b)\)</span></p>
@@ -1140,12 +1140,12 @@
 <p><span class="arithmatex">\(gcd(a,b)=gcd(a,a+b)=gcd(a,ka+b)\)</span></p>
 <p><span class="arithmatex">\(gcd(ka,kb)=k*gcd(a,b)\)</span> </p>
 <p><span class="arithmatex">\(gcd(a,b,c)=gcd(gcd(a,b),c)\)</span> </p>
-<pre><code class="language-c++">int gcd(int a, int b){ return b ? gcd(b, a%b) : a; }
-</code></pre>
-<h3 id="lcm">lcm</h3>
-<pre><code class="language-c++">int lcm(int a, int b){ return a*b/gcd(a, b); }
-</code></pre>
-<h3 id="exgcd">exgcd</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">b</span> <span class="o">?</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
+<h3 id="lcm">lcm<a class="headerlink" href="#lcm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">lcm</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">/</span><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span> <span class="p">}</span>
+</code></pre></div>
+<h3 id="exgcd">exgcd<a class="headerlink" href="#exgcd" title="Permanent link">&para;</a></h3>
 <p>求   <span class="arithmatex">\(ax + by = gcd(a, b)\)</span>  的一组整数解 x，y</p>
 <blockquote>
 <p>b = 0时，<span class="arithmatex">\(gcd(a, b) = a\)</span> ,    x=1​, y=0  为一组解</p>
@@ -1161,174 +1161,174 @@
 <p>所以 <span class="arithmatex">\(x_{1} = y_{2}\)</span></p>
 <p>​        <span class="arithmatex">\(y_{1} = x_{2} - (a/b)*y_{2}\)</span> </p>
 </blockquote>
-<pre><code class="language-c++">ll exgcd(ll a, ll b, ll &amp;x, ll &amp;y) { //返回 gcd(a, b)
-    if(!b){ 
-        x = 1, y = 0;
-        return a;
-    }
-    ll d = exgcd(b, a%b, x, y);
-    ll t = x;
-    x = y;
-    y = t-(a/b)*y;
-    return d;
-}
-</code></pre>
-<h3 id="_3">快速幂</h3>
-<pre><code class="language-c++">typedef long long ll;
-ll pow(ll a, ll b, ll p) {// a^b (mod p)
-    ll res = 1;
-    while(b){
-        if(b&amp;1) res = res*a%p;
-        a = a*a%p;
-        b &gt;&gt;= 1;
-    }
-    return res;  
-}
-</code></pre>
-<h3 id="_4">快速乘</h3>
-<pre><code class="language-c++">//防止乘法爆ll
-ll mul(ll a, ll b, ll p){
-    ll res = 0;
-    while(b){
-        if(b&amp;1) res = (res + a) % p;
-        a = (a + a) % p;
-        b &gt;&gt;= 1;
-    }
-    return res;
-}
-</code></pre>
-<h2 id="_5">素数</h2>
-<pre><code class="language-c++">bool isprime(int x){
-    if(x &lt;= 1) return false;
-    for(int i = 2; i &lt;= x/i; i++)
-        if(x % i == 0) return false;
-    return true;
-}
-</code></pre>
-<h3 id="_6">埃氏筛素数</h3>
-<pre><code class="language-c++">bool isprime[N+1];  //0 1 是非素数
-void getPrime(){
-    for(int i = 2, i &lt;= N; i++) isprime[i] = true;
-    for(int i = 2; i &lt;= N/i; i++) //如果 x&gt;sqrt(N) 是合数， 在前面就会被筛掉
-        if(isprime[i])
-            for(int j = i*i; j &lt;= N; j += i) //2i, 3i, 5i 都已经筛过，可以从i*i开始
-                isprime[i] = false;     
-}
-</code></pre>
-<h3 id="_7">欧拉筛素数(线性筛)</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">exgcd</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">ll</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//返回 gcd(a, b)</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">){</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">ll</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">ll</span> <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">快速幂<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="n">ll</span> <span class="nf">pow</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span><span class="c1">// a^b (mod p)</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">b</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>  
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_4">快速乘<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//防止乘法爆ll</span>
+<span class="n">ll</span> <span class="nf">mul</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">){</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">b</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_5">素数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">isprime</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="o">/</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_6">埃氏筛素数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isprime</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>  <span class="c1">//0 1 是非素数</span>
+<span class="kt">void</span> <span class="nf">getPrime</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="o">/</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">//如果 x&gt;sqrt(N) 是合数， 在前面就会被筛掉</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span> <span class="c1">//2i, 3i, 5i 都已经筛过，可以从i*i开始</span>
+                <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>     
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_7">欧拉筛素数(线性筛)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(n)\)</span></p>
-<pre><code class="language-c++">int cnt = 0;
-int prime[N+1];   //记录素数
-bool isprime[N+1];  
-void euler(){
-    for(int i = 2; i &lt;= N; i++) isprime[i] = true;
-    for(int i = 2; i &lt;= N; i++){   
-        if(isprime[i]) prime[cnt++] = i;   //记录
-        for(int j = 0; j &lt; cnt &amp;&amp; i * prime[j] &lt;= N; j++){
-            isprime[i*prime[j]] = false;
-            if(i%prime[j] == 0) break;  //保证合数被最小的质因子筛去
-        }
-    }
-}
-</code></pre>
-<h3 id="_8">筛区间内素数</h3>
-<pre><code class="language-c++">//筛[l, r)之间的素数
-//注意区间开闭
-//如果l==1,l++，否则会认为1是素数
-bool isprime_small[MAXN];   //记录前 sqrt(r) 的素数
-bool isprime[MAXN];   //如果i是素数，记isprime[i-l] = true
-void segement_prime(ll l, ll r){
-    for(ll i = 0; i*i &lt; r; i++) isprime_small[i] = true;
-    for(ll i = 0; i &lt; r-l; i++) isprime[i] = true;
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">prime</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>   <span class="c1">//记录素数</span>
+<span class="kt">bool</span> <span class="n">isprime</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>  
+<span class="kt">void</span> <span class="nf">euler</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>   
+        <span class="k">if</span><span class="p">(</span><span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">prime</span><span class="p">[</span><span class="n">cnt</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>   <span class="c1">//记录</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">cnt</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>  <span class="c1">//保证合数被最小的质因子筛去</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_8">筛区间内素数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//筛[l, r)之间的素数</span>
+<span class="c1">//注意区间开闭</span>
+<span class="c1">//如果l==1,l++，否则会认为1是素数</span>
+<span class="kt">bool</span> <span class="n">isprime_small</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>   <span class="c1">//记录前 sqrt(r) 的素数</span>
+<span class="kt">bool</span> <span class="n">isprime</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>   <span class="c1">//如果i是素数，记isprime[i-l] = true</span>
+<span class="kt">void</span> <span class="nf">segement_prime</span><span class="p">(</span><span class="n">ll</span> <span class="n">l</span><span class="p">,</span> <span class="n">ll</span> <span class="n">r</span><span class="p">){</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">isprime_small</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">-</span><span class="n">l</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 
-    for(ll i = 2; i*i &lt; r; i++)
-        if(isprime_small[i]) {    //如果是素数    
-            for(ll j = i*i; j*j &lt; r; j += i) //筛[2, sqrt(b)]
-                isprime_small[j] = false;
-            for(ll j = max(2LL, (l+i-1)/i)*i; j &lt; r; j += i)  //筛[a, b]
-                isprime[j-l] = false; 
-        }
-}
-</code></pre>
-<h3 id="miller-rabin">Miller-Rabin 素性测试</h3>
-<pre><code class="language-c++">bool check(ll a, ll r, ll t, ll n) {
-    ll ret = pow(a, r, n), last = ret;
-    for (int i = 0; i &lt; t; i++) {
-        ret = mul(ret, ret, n);
-        if (ret == 1 &amp;&amp; last != 1 &amp;&amp; last != n - 1) return true;
-        last = ret;
-    }
-    return ret != 1;
-}
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">isprime_small</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>    <span class="c1">//如果是素数    </span>
+            <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">*</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span> <span class="c1">//筛[2, sqrt(b)]</span>
+                <span class="n">isprime_small</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">j</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mf">2L</span><span class="n">L</span><span class="p">,</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">i</span><span class="mi">-1</span><span class="p">)</span><span class="o">/</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span>  <span class="c1">//筛[a, b]</span>
+                <span class="n">isprime</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> 
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="miller-rabin">Miller-Rabin 素性测试<a class="headerlink" href="#miller-rabin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">r</span><span class="p">,</span> <span class="n">ll</span> <span class="n">t</span><span class="p">,</span> <span class="n">ll</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">last</span> <span class="o">=</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">last</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">last</span> <span class="o">!=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ret</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
 
-bool Miller_Rabin(ll n) {
-    if (n == 2) return true;
-    if (n &lt; 2 || !(n &amp; 1)) return false;
-    ll r = n - 1, t = 0;
-    while (!(r &amp; 1)) r &gt;&gt;= 1, t++;
-    for (int i = 1, j; i &lt;= 8; i++) {
-        ll a = rand() % (n - 2) + 2;
-        if (check(a, r, t, n)) return false;
-    }
-    return true;
-}
-</code></pre>
-<h3 id="pollard-rho">Pollard-Rho大数分解</h3>
-<pre><code class="language-c++">ll pollard(ll n) {
-    if (!(n &amp; 1)) return 2;
-    ll c = rand() % (n - 1) + 1;
-    ll x = rand() % (n - 1) + 1, y = x, i = 1, k = 2;
-    while (true) {
-        i++;
-        x = (mul(x, x, n) + c) % n;
-        ll d = gcd(y - x + n, n);
-        if (d != 1 &amp;&amp; d != n) return d;
-        if (y == x) return n;
-        if (i == k) {
-            y = x;
-            k &lt;&lt;= 1;
-        }
-    }
-}
+<span class="kt">bool</span> <span class="nf">Miller_Rabin</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">r</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">r</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">))</span> <span class="n">r</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">a</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="pollard-rho">Pollard-Rho大数分解<a class="headerlink" href="#pollard-rho" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">pollard</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">))</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">c</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">x</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">ll</span> <span class="n">d</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">n</span><span class="p">)</span> <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">k</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-/* 倍增优化
-ll pr(ll n) {
-    ll x = 0, y = 0;
-    ll c = 1ll * rand() % (n - 1) + 1;
-    int step = 0, goal = 1;
-    ll val = 1;
-    for (goal = 1;; goal &lt;&lt;= 1, y = x, val = 1) {
-        for (step = 1; step &lt;= goal; ++step) {
-            x = (mul(x, x, n) + c) % n;
-            val = mul(val, abs(y - x), n);
-            if ((step % 127) == 0) {
-                ll d = gcd(val, n);
-                if (d &gt; 1) return d;
-            }
-        }
-        ll d = gcd(val, n);
-        if (d &gt; 1) return d;
-    }
-}
-*/
+<span class="cm">/* 倍增优化</span>
+<span class="cm">ll pr(ll n) {</span>
+<span class="cm">    ll x = 0, y = 0;</span>
+<span class="cm">    ll c = 1ll * rand() % (n - 1) + 1;</span>
+<span class="cm">    int step = 0, goal = 1;</span>
+<span class="cm">    ll val = 1;</span>
+<span class="cm">    for (goal = 1;; goal &lt;&lt;= 1, y = x, val = 1) {</span>
+<span class="cm">        for (step = 1; step &lt;= goal; ++step) {</span>
+<span class="cm">            x = (mul(x, x, n) + c) % n;</span>
+<span class="cm">            val = mul(val, abs(y - x), n);</span>
+<span class="cm">            if ((step % 127) == 0) {</span>
+<span class="cm">                ll d = gcd(val, n);</span>
+<span class="cm">                if (d &gt; 1) return d;</span>
+<span class="cm">            }</span>
+<span class="cm">        }</span>
+<span class="cm">        ll d = gcd(val, n);</span>
+<span class="cm">        if (d &gt; 1) return d;</span>
+<span class="cm">    }</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
 
-ll fac[10000];
-ll tot = 0;
+<span class="n">ll</span> <span class="n">fac</span><span class="p">[</span><span class="mi">10000</span><span class="p">];</span>
+<span class="n">ll</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-void find_fac(ll n) {
-    if (Miller_Rabin(n)) {
-        fac[tot++] = n;
-        return;
-    }
-    ll p = n;
-    while (p &gt;= n) p = pollard(p);
-    find_fac(p), find_fac(n / p);
-}
-</code></pre>
-<h2 id="_9">欧拉函数</h2>
+<span class="kt">void</span> <span class="nf">find_fac</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Miller_Rabin</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">fac</span><span class="p">[</span><span class="n">tot</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">ll</span> <span class="n">p</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pollard</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="n">find_fac</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">find_fac</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_9">欧拉函数<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>定义: <span class="arithmatex">\(\varphi(n)\)</span>表示小于等于<span class="arithmatex">\(n\)</span>  且与 <span class="arithmatex">\(n\)</span> 互质的数的个数，比如 <span class="arithmatex">\(\varphi(1)=1\)</span></p>
 <p>通式：<span class="arithmatex">\(\varphi(x)=x\prod_{i=1}^n{(1-\frac{1}{p_i})}\)</span>，其中 <span class="arithmatex">\(p_i\)</span>是 <span class="arithmatex">\(x\)</span> 的所有质因数</p>
-<h3 id="_10">基本性质</h3>
+<h3 id="_10">基本性质<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><span class="arithmatex">\(n\)</span> 是质数时，<span class="arithmatex">\(\varphi(n)=n-1\)</span></p>
@@ -1367,75 +1367,74 @@ void find_fac(ll n) {
    a^{b \% \varphi(p)},\quad \quad gcd(a,p)=1  \  a^b,\quad\quad\quad\quad gcd(a,p)\neq1,b&lt;\varphi(p)  \  a^{b \% \varphi(p)+\varphi(p)}, gcd(a,p)\neq1,b\geq\varphi(p)
    \end{cases}
    $$</p>
-<h3 id="_11">求单个数的欧拉函数</h3>
+<h3 id="_11">求单个数的欧拉函数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(\sqrt{n})\)</span></p>
-<pre><code class="language-c++">ll phi(ll n){
-    ll res = n;
-    for(ll i = 2; i*i &lt;= n; i++){
-        if(n%i==0){
-            res -= res/i;
-            while(n%i==0) n/=i;
-        }
-    }
-    if(n &gt; 1) res -= res/n;
-    return res;
-}
-</code></pre>
-<h3 id="_12">埃氏求欧拉函数</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">phi</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+            <span class="n">res</span> <span class="o">-=</span> <span class="n">res</span><span class="o">/</span><span class="n">i</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">n</span><span class="o">/=</span><span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">-=</span> <span class="n">res</span><span class="o">/</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_12">埃氏求欧拉函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(\varphi(x)=x\prod_{i=1}^n{(1-\frac{1}{p_i})}\)</span> </p>
-<pre><code class="language-c++">void euler(int n){
-    for (int i=1; i&lt;=n; i++) phi[i] = i;
-    for (int i=2; i&lt;=n; i++)
-        if (phi[i] == i)//这代表i是质数
-            for (int j=i; j&lt;=n; j += i)
-                phi[j] = phi[j]/i*(i-1);//把i的倍数更新掉
-}
-</code></pre>
-<h3 id="_13">欧拉筛求欧拉函数</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">euler</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span><span class="c1">//这代表i是质数</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">phi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="mi">-1</span><span class="p">);</span><span class="c1">//把i的倍数更新掉</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_13">欧拉筛求欧拉函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(if(i\%prime[j] != 0)\)</span>，则 <span class="arithmatex">\(i\)</span> 与 <span class="arithmatex">\(prime[j]\)</span> 互质</p>
 <p>由积性性质可得，<span class="arithmatex">\(phi[i*prime[j]] = phi[i]*phi[prime[j]]\)</span> </p>
 <p><span class="arithmatex">\(if(i\%prime[j] == 0)\)</span>，则 <span class="arithmatex">\(i\)</span> 中有 <span class="arithmatex">\(i*prime[j]\)</span> 的所有质因子，有</p>
 <p><span class="arithmatex">\(\varphi(i*prime[j])=prime[j]*i*\prod_{k=1}^n{(1-\frac{1}{k_i})}=\varphi(i)*prime[j]\)</span>  </p>
-<pre><code class="language-c++">int prime[maxn], cnt = 0;
-bool vis[maxn];
-void euler(int n){
-    phi[1]=1;  //1要特判 
-    for (int i=2; i &lt; =n; i++){
-        if (vis[i] == 0){  //i是质数 
-            prime[cnt++] = i;
-            phi[i] = i-1;
-        }
-        for (int j=1; j &lt; cnt &amp;&amp; prime[j]*i &lt;= n; j++){
-            vis[i*prime[j]] = 1;
-            if (i%prime[j] == 0){
-                phi[i*prime[j]] = phi[i]*prime[j];//若prime[j]是i的质因子，则根据计算公式，i已经包括i*prime[j]的所有质因子 
-                break;//保证每个数只会被自己最小的因子筛掉一次 
-            }
-            else phi[i*prime[j]] = phi[i]*phi[prime[j]];//积性函数的性质 
-        }
-    }
-}
-
-</code></pre>
-<h2 id="_14">中国剩余定理</h2>
-<h3 id="crt">CRT</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">prime</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">euler</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">phi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">//1要特判 </span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="o">=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>  <span class="c1">//i是质数 </span>
+            <span class="n">prime</span><span class="p">[</span><span class="n">cnt</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="mi">-1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">cnt</span> <span class="o">&amp;&amp;</span> <span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+                <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">];</span><span class="c1">//若prime[j]是i的质因子，则根据计算公式，i已经包括i*prime[j]的所有质因子 </span>
+                <span class="k">break</span><span class="p">;</span><span class="c1">//保证每个数只会被自己最小的因子筛掉一次 </span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">phi</span><span class="p">[</span><span class="n">prime</span><span class="p">[</span><span class="n">j</span><span class="p">]];</span><span class="c1">//积性函数的性质 </span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_14">中国剩余定理<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h3 id="crt">CRT<a class="headerlink" href="#crt" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3868 </p>
 <p><span class="arithmatex">\(X ≡ r_{i} ( mod\quad m_{i} )\)</span></p>
 <p>要求：<span class="arithmatex">\(m_i\)</span> 两两互质</p>
-<pre><code class="language-c++">ll CRT(ll n, ll *r, ll *m){
-    ll res = 0, M = 1;
-    for(int i = 0; i &lt; n; i++) M *= m[i]; 
-    for(int i = 0; i &lt; n; i++) {
-        ll x, y;
-        ll tmp = M / m[i];
-        ll d = exgcd(tmp, m[i], x, y);   //gcd(tmp, m[i]) = 1
-        x = (x%m[i]+m[i])%m[i];  
-        res = (res + tmp*x*r[i]) % M;   //可能需要用到快速乘防止溢出
-    }
-    return (res + M) % M;
-}
-</code></pre>
-<h3 id="excrt">EXCRT</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">CRT</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">ll</span> <span class="o">*</span><span class="n">m</span><span class="p">){</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">M</span> <span class="o">*=</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">ll</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">M</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">ll</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>   <span class="c1">//gcd(tmp, m[i]) = 1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">%</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">%</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>  
+        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">tmp</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="n">M</span><span class="p">;</span>   <span class="c1">//可能需要用到快速乘防止溢出</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">M</span><span class="p">)</span> <span class="o">%</span> <span class="n">M</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="excrt">EXCRT<a class="headerlink" href="#excrt" title="Permanent link">&para;</a></h3>
 <p>洛谷 P4777</p>
 <p><span class="arithmatex">\(X ≡ r_{i} ( mod\quad m_{i} )\)</span></p>
 <p>不要求 <span class="arithmatex">\(m_i\)</span> 两两互质</p>
@@ -1460,24 +1459,24 @@ res+x\times M_{k-1}
 $$
  通解为 <span class="arithmatex">\(特解 + x^{'}M_k\)</span></p>
 </blockquote>
-<pre><code class="language-c++">ll EXCRT(ll n, ll *r, ll *m){
-    ll res = r[0], M = m[0];
-    ll x, y;
-    for(int i = 1; i &lt; n; i++) {
-        ll c = (r[i] - res%m[i] +m[i]) % m[i];
-        ll d = exgcd(M, m[i], x, y), bg = m[i]/d;
-        x = (x%bg+bg)%bg; 
-        if(c%d != 0) return -1;  //无解,因为无法让余数扩大成c
-        x = mul(x, c/d, bg);  //快速乘
-        res += x*M;
-        M *= bg;  //lcm
-        res = (res%M+M)%M;
-    }
-    return res;
-}
-</code></pre>
-<h2 id="_15">同余问题</h2>
-<h3 id="_16">逆元</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">EXCRT</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">ll</span> <span class="o">*</span><span class="n">m</span><span class="p">){</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">res</span><span class="o">%</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">ll</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">bg</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">d</span><span class="p">;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">%</span><span class="n">bg</span><span class="o">+</span><span class="n">bg</span><span class="p">)</span><span class="o">%</span><span class="n">bg</span><span class="p">;</span> 
+        <span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="o">%</span><span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>  <span class="c1">//无解,因为无法让余数扩大成c</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="p">,</span> <span class="n">bg</span><span class="p">);</span>  <span class="c1">//快速乘</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">x</span><span class="o">*</span><span class="n">M</span><span class="p">;</span>
+        <span class="n">M</span> <span class="o">*=</span> <span class="n">bg</span><span class="p">;</span>  <span class="c1">//lcm</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span><span class="o">%</span><span class="n">M</span><span class="o">+</span><span class="n">M</span><span class="p">)</span><span class="o">%</span><span class="n">M</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_15">同余问题<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">逆元<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>同余不满足除法，        <span class="arithmatex">\(a/b\quad mod \quad  p\quad != (a\quad mod\quad p)/(b\quad mod\quad p)\)</span></p>
 <p>引入 <span class="arithmatex">\(b\)</span> 的逆元 <span class="arithmatex">\(x\)</span>, 即       <span class="arithmatex">\(b*x = 1 (mod\quad p)\)</span> ，b 与 p 互质</p>
@@ -1486,53 +1485,53 @@ $$
 <p>​                                       <span class="arithmatex">\(a*x = k (mod\quad p)\)</span></p>
 </blockquote>
 <p>注意：<strong>b 和 p 互质，b 才有关于 p 的逆元</strong></p>
-<h3 id="_17">费马小定理求逆元</h3>
+<h3 id="_17">费马小定理求逆元<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>费马小定理 ：如果<span class="arithmatex">\(p\)</span>为质数，且 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(p\)</span> 互质(即 <span class="arithmatex">\(a\)</span> 不是 <span class="arithmatex">\(p\)</span> 的倍数)，则  <span class="arithmatex">\(a^{p-1} \equiv 1 （mod\quad p)\)</span></p>
 <p>所以有  <span class="arithmatex">\(a * a^{p-2} \equiv 1 (mod\quad p)\)</span>,   即   <span class="arithmatex">\(a^{p-2} (mod\quad p)\)</span>  是 a 的逆元</p>
 </blockquote>
-<pre><code class="language-c++">//用快速幂
-ll pow(ll a, ll p){
-    int res = 1;
-    int d = p-2;
-    while(d)    {
-        if(d&amp;1) res = res*a%p;
-        a = a*a%p;
-        d &gt;&gt;= 1;
-    }
-    return res;  
-}
-</code></pre>
-<h3 id="_18">拓展欧几里得求逆元</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//用快速幂</span>
+<span class="n">ll</span> <span class="nf">pow</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">p</span><span class="mi">-2</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">d</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>  
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_18">拓展欧几里得求逆元<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>如果 <span class="arithmatex">\(b\)</span> 与 <span class="arithmatex">\(p\)</span> 互质，即 <span class="arithmatex">\(gcd(b, p) = 1\)</span></p>
 <p>要解  <span class="arithmatex">\(b*x = 1 (mod\quad p)\)</span> , 即求  <span class="arithmatex">\(bx + yp = 1 = gcd(b, p)\)</span>  的解 <span class="arithmatex">\(x\)</span></p>
 </blockquote>
-<pre><code class="language-c++">ll inv(ll b, ll p) {
-    ll x, y;
-    ll d = exgcd(b, p, x, y);
-  return d == 1 ? (x+p)%p : -1;   //返回 -1 说明 b,p 不互质
-}
-</code></pre>
-<h3 id="_19">欧拉函数求逆元</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">inv</span><span class="p">(</span><span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">d</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">p</span><span class="p">)</span><span class="o">%</span><span class="nl">p</span> <span class="p">:</span> <span class="mi">-1</span><span class="p">;</span>   <span class="c1">//返回 -1 说明 b,p 不互质</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_19">欧拉函数求逆元<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3811</p>
 <p>是费小的推广，不要求 <span class="arithmatex">\(p\)</span> 为质数，但 <span class="arithmatex">\(gcd(a,p)=1\)</span></p>
 <p><span class="arithmatex">\(a^{\varphi(p)}\equiv1(mod\quad p)\)</span>，所以其逆元为 <span class="arithmatex">\(a^{\varphi(n)-1}\)</span></p>
-<pre><code class="language-c++">ll phi(ll n){
-    ll res = n;
-    for(ll i = 2; i*i &lt;= n; i++)    {
-        if(n%i==0)
-        {
-            res -= res/i;
-            while(n%i==0) n/=i;
-        }
-    }
-    if(n &gt; 1) res -= res/n;
-    return res;
-}
-ans = pow(a, phi(p)-1,p);
-</code></pre>
-<h3 id="_20">阶乘逆元</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">phi</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">ll</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">res</span> <span class="o">-=</span> <span class="n">res</span><span class="o">/</span><span class="n">i</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">n</span><span class="o">/=</span><span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">-=</span> <span class="n">res</span><span class="o">/</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="mi">-1</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="_20">阶乘逆元<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>求阶乘的逆元，先用费马小定理求出 n! 在 p 下的逆元，再往前推</p>
 <p>假设 n! 的逆元为<span class="arithmatex">\([n!]^{-1}\)</span>,  要求 <span class="arithmatex">\((n-1)!\)</span> 的逆元</p>
@@ -1541,15 +1540,15 @@ ans = pow(a, phi(p)-1,p);
 $$
 所以，<span class="arithmatex">\((n-1)!\)</span> 的逆元就是 <span class="arithmatex">\(n[n!]^{-1}\)</span> </p>
 </blockquote>
-<pre><code class="language-c++">void fa_inv(ll n, ll p){
-    fact[0] = 1; //factorial
-    for(int i = 1; i &lt;= n; i++) fact[i] = fact[i-1]*i % p;
-    finv[N] = pow(fact[n], p-2, p);
-    for(int i = n-1; i &gt;= 0; i--)
-        finv[i] = (i+1)*finv[i+1]%p;
-}
-</code></pre>
-<h3 id="_21">线性求逆元(打表)</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">fa_inv</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">){</span>
+    <span class="n">fact</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//factorial</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">finv</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">fact</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">p</span><span class="mi">-2</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="mi">-1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+        <span class="n">finv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">finv</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_21">线性求逆元(打表)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3811</p>
 <p>要求出 1~n 中所有数对 <span class="arithmatex">\(p\)</span> 的逆元，选择打表</p>
 <blockquote>
@@ -1562,14 +1561,14 @@ $$
 <p>得递推公式          <span class="arithmatex">\(i^{-1} ≡ -（p/i) * (p\quad mod\quad i)^{-1} (mod\quad p)\)</span></p>
 <p>整理得                  <span class="arithmatex">\(inv[i] = (p - p/i) * inv[p\%i] \% p\)</span>   其中 p % i 比 i 小</p>
 </blockquote>
-<pre><code class="language-c++">void inverse=-(int n, int p)
-{
-    inv[1] = 1;
-    for(int i = 2; i &lt;= n; i++)
-        inv[i] = (ll)(p - p/i) * inv[p%i] % p;
-}
-</code></pre>
-<h3 id="lucas">Lucas定理</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">inverse</span><span class="o">=-</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">inv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">inv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ll</span><span class="p">)(</span><span class="n">p</span> <span class="o">-</span> <span class="n">p</span><span class="o">/</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">inv</span><span class="p">[</span><span class="n">p</span><span class="o">%</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="lucas">Lucas定理<a class="headerlink" href="#lucas" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3807 HDU 3037</p>
 <blockquote>
 <p>解决组合数取余的问题： (p必须是素数,不然不能用费马小定理求逆元)
@@ -1583,129 +1582,129 @@ n = n_k p^k+n_{k-1} p^{k-1}+\cdots+n_1p+n_0
 m=m_k p^k+m_{k-1} p^{k-1}+\cdots+m_1p+m_0
 \]</div>
 </blockquote>
-<pre><code class="language-c++">//预处理阶乘
-void getFact(ll p) 
-{
-    fact[0] = 1;
-    for(ll i = 1; i &lt;= p; i++)
-        f[i] = f[i-1]*i%p;
-}
-//计算组合数
-ll comb(ll n, ll m, ll p)
-{
-    if(m&gt;n) return 0;
-    return fact[n]*pow(f[m],p-2, p)%p*pow(f[n-m], p-2, p)%p;  //费马小定理求逆元
-}
+<div class="highlight"><pre><span></span><code><span class="c1">//预处理阶乘</span>
+<span class="kt">void</span> <span class="nf">getFact</span><span class="p">(</span><span class="n">ll</span> <span class="n">p</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="n">fact</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//计算组合数</span>
+<span class="n">ll</span> <span class="nf">comb</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="n">m</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="o">&gt;</span><span class="n">n</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">fact</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">m</span><span class="p">],</span><span class="n">p</span><span class="mi">-2</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">%</span><span class="n">p</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">],</span> <span class="n">p</span><span class="mi">-2</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>  <span class="c1">//费马小定理求逆元</span>
+<span class="p">}</span>
 
-ll lucas(ll n, ll m, ll p)
-{
-    if(!m) return 1;
-    return lucas(n/p, m/p, p)%p*comb(n%p, m%p, p)%p;
-}
-</code></pre>
-<h3 id="bsgs">BSGS</h3>
+<span class="n">ll</span> <span class="nf">lucas</span><span class="p">(</span><span class="n">ll</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="n">m</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">m</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">lucas</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">p</span><span class="p">,</span> <span class="n">m</span><span class="o">/</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">%</span><span class="n">p</span><span class="o">*</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">p</span><span class="p">,</span> <span class="n">m</span><span class="o">%</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">%</span><span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="bsgs">BSGS<a class="headerlink" href="#bsgs" title="Permanent link">&para;</a></h3>
 <p>求 <span class="arithmatex">\(a^x=b(mod\ \ p)\)</span> 的 <span class="arithmatex">\(x\)</span> 最小的解</p>
-<pre><code class="language-c++">ll bsgs(ll a, ll b, ll p) {
-    map&lt;ll, ll&gt; hash;
-    hash.clear();
-    b %= p;
-    ll t = sqrt(p) + 1;
-    for (ll i = 0; i &lt; t; i++) hash[b * ksm(a, i, p) % p] = i;
-    a = ksm(a, t, p);
-    if (!a) return b == 0 ? 1 : -1;
-    for (ll i = 1; i &lt;= t; i++) {
-        ll val = ksm(a, i, p);
-        int j = hash.find(val) == hash.end() ? -1 : hash[val];
-        if (j &gt;= 0 &amp;&amp; i * t - j &gt;= 0) return i * t - j;
-    }
-    return -1;   //无解
-}
-</code></pre>
-<h2 id="_22">数值分析</h2>
-<h3 id="simpson">Simpson 公式</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="nf">bsgs</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span> <span class="n">hash</span><span class="p">;</span>
+    <span class="n">hash</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+    <span class="n">b</span> <span class="o">%=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">hash</span><span class="p">[</span><span class="n">b</span> <span class="o">*</span> <span class="n">ksm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ksm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">a</span><span class="p">)</span> <span class="k">return</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">val</span> <span class="o">=</span> <span class="n">ksm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">hash</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">==</span> <span class="n">hash</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">?</span> <span class="mi">-1</span> <span class="o">:</span> <span class="n">hash</span><span class="p">[</span><span class="n">val</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">t</span> <span class="o">-</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">t</span> <span class="o">-</span> <span class="n">j</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>   <span class="c1">//无解</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_22">数值分析<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<h3 id="simpson">Simpson 公式<a class="headerlink" href="#simpson" title="Permanent link">&para;</a></h3>
 <p>如果原函数是次数不超过二次的多项式，可以精确计算积分值，只需要知道端点和中点的值
 $$
 \int_{a}^{b}{f(x)}dx \approx \frac{b-a}{6}(\quad f(a)+4f(\frac{a+b}{2})+f(b)\quad)
 $$</p>
-<h3 id="_23">高斯约旦消元</h3>
+<h3 id="_23">高斯约旦消元<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3389</p>
 <p><span class="arithmatex">\(O(n^3)\)</span>，方程数和未知数都要求是n，结果在 <span class="arithmatex">\(a[i][n+1]\)</span>中，返回值1表示有唯一解，0表示无解</p>
-<pre><code class="language-c++">const double eps = 1e-8;
-int guass_jordan(int n)
-{
-    for(int i = 1; i &lt;= n; i++)
-    {
-        int r = i;
-        for(int j = i; j &lt;= n; j++)//把正在处理的未知数系数绝对值最大的放上来
-            if(fabs(a[r][i]) &lt; fabs(a[j][i])) 
-                r = j;
-        if(r != i) //交换
-            for(int j = 1; j &lt;= n+1; j++)
-                swap(a[i][j], a[r][j]);
-        if(fabs(a[i][i]) &lt; eps) return 0;  //无解
-        for(int j = i+1; j &lt;= n+1; j++) a[i][j] /= a[i][i];  //系数化为1,注意i+1，如果从i开始会影响到后面
-        for(int j = 1; j &lt;= n; j++)
-            if(j != i)
-                for(int k = i+1; k &lt;= n+1; k++)  //注意i+1，如果从i开始会影响到后面
-                    a[j][k] -= a[i][k]*a[j][i];  
-    }
-    return 1;
-}
-</code></pre>
-<h2 id="_24">其他</h2>
-<h3 id="_25">裴蜀定理</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">guass_jordan</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="c1">//把正在处理的未知数系数绝对值最大的放上来</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">fabs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span> 
+                <span class="n">r</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="c1">//交换</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//无解</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>  <span class="c1">//系数化为1,注意i+1，如果从i开始会影响到后面</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>  <span class="c1">//注意i+1，如果从i开始会影响到后面</span>
+                    <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">-=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>  
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_24">其他<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<h3 id="_25">裴蜀定理<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>若 <span class="arithmatex">\(a,b\)</span>是整数,且 <span class="arithmatex">\(gcd(a,b)=d\)</span>，那么对于任意的整数 <span class="arithmatex">\(x,y\)</span>, <span class="arithmatex">\(ax+by\)</span> 都一定是 <span class="arithmatex">\(d\)</span> 的倍数，即 <span class="arithmatex">\(d|(ax+by)\)</span> </p>
 <p>特别地，一定存在整数<span class="arithmatex">\(x,y\)</span>，使<span class="arithmatex">\(ax+by=d\)</span>成立。</p>
 <p>重要推论：<span class="arithmatex">\(a,b\)</span>互质的充要条件是存在整数 <span class="arithmatex">\(x,y\)</span> 使 <span class="arithmatex">\(ax+by=1\)</span> </p>
-<h3 id="_26">唯一分解定理</h3>
+<h3 id="_26">唯一分解定理<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>正整数<span class="arithmatex">\(N\)</span>的标准分解式：<span class="arithmatex">\(N=p_1^{a_1}p_2^{a_2}...p_n^{a_n}\)</span> </p>
 <p>那<span class="arithmatex">\(N\)</span>的正因数个数为 <span class="arithmatex">\(\sigma_0(N)=(1+a_1)(1+a_2)...(1+a_n)\)</span> </p>
 <p>所有正因数的和为<span class="arithmatex">\(\sigma_1(N)=(1+p_1+p_1^2+...+p_1^{a_1})...(1+p_n+p_n^2+...+p_n^{a_n})\)</span> </p>
-<h3 id="_27">整数分块</h3>
+<h3 id="_27">整数分块<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(\frac{n}{1}+\frac{n}{2}+\frac{n}{3}+..+\frac{n}{n}\)</span>的和</p>
-<pre><code class="language-c++">ll ans = 0;
-for (int l = 1, r; l &lt;= n; l = r + 1) {
-    r = n / (n / l);  //每段区间的右端点
-    ans += (ll)(n / l) * (r - l + 1);
-}
-</code></pre>
-<h3 id="_28">斯特林公式</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">l</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">l</span><span class="p">);</span>  <span class="c1">//每段区间的右端点</span>
+    <span class="n">ans</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ll</span><span class="p">)(</span><span class="n">n</span> <span class="o">/</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_28">斯特林公式<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
 n! \approx \sqrt{2 \pi n}(\frac{n}{e})^n
 \]</div>
 <p>用 <span class="arithmatex">\(log10\)</span> 快速计算大数的位数</p>
-<h3 id="_29">错排公式</h3>
+<h3 id="_29">错排公式<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
 f(n) = (n-1)(f(n-1)f(n-2))
 \]</div>
-<h3 id="_30">容斥原理</h3>
+<h3 id="_30">容斥原理<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <p>HDU 4135
 $$
 |U(A_i)|=\sum_{1\leq i\leq m}{|A_i|}-\sum_{i\leq i&lt;j\leq m}{|A_i\bigcap A_j|}+ \dots+(-1)^{m+1}\sum|A_1\bigcap A_2\bigcap \dots\bigcap A_m|
 $$</p>
-<pre><code class="language-c++">void solve()
-{
-    int res = 0;
-    for(int i = 1; i &lt; (1&lt;&lt;m); i++)
-    {
-        int cnt = 0;
-        for(int j = i; j != 0; j &gt;&gt;= 1) cnt += j&amp;1;
-        ll lcm = 1;
-        for(int j = 0; j &lt; m; j++)
-        {
-            if( (i&gt;&gt;j) &amp; 1)
-            {
-                lcm = lcm / gcd(lcm, num[j]) * num[j];  //eg,是2的倍数不一定是4的倍数 
-                if(lcm &gt; n) break;
-            }
-        }
-        if(cnt % 2 == 0) res -= n/lcm;
-        else res += n/lcm;
-    }
-    cout &lt;&lt; res;
-}
-</code></pre>
-<h3 id="catalan">Catalan数</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">m</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">cnt</span> <span class="o">+=</span> <span class="n">j</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">ll</span> <span class="n">lcm</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;&gt;</span><span class="n">j</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">lcm</span> <span class="o">=</span> <span class="n">lcm</span> <span class="o">/</span> <span class="n">gcd</span><span class="p">(</span><span class="n">lcm</span><span class="p">,</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>  <span class="c1">//eg,是2的倍数不一定是4的倍数 </span>
+                <span class="k">if</span><span class="p">(</span><span class="n">lcm</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">res</span> <span class="o">-=</span> <span class="n">n</span><span class="o">/</span><span class="n">lcm</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">res</span> <span class="o">+=</span> <span class="n">n</span><span class="o">/</span><span class="n">lcm</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="catalan">Catalan数<a class="headerlink" href="#catalan" title="Permanent link">&para;</a></h3>
 <p>设 h(n) 表示 Catalan数的第n项，<span class="arithmatex">\(h(0) = 1, h(1) = 1\)</span>   </p>
 <ul>
 <li>递推式：<span class="arithmatex">\(h(n)=h(0)*h(n-1)+h(1)*h(n-2)+...+h(n-1)*h(0)(n\geq2)\)</span> </li>
@@ -1714,7 +1713,7 @@ $$</p>
 <li>递推关系的另类解：<span class="arithmatex">\(h(n)=C(2n,n)-C(2n,n-1)(n=0,1,2,...)\)</span> </li>
 </ul>
 <p>eg：进出栈，电影购票，圆内连弦，凸多边形的剖分，n对括号形成的合法括号表达式的个数， n+1个数连乘不同的乘法顺序数、</p>
-<h3 id="bellstirling">Bell数和Stirling数</h3>
+<h3 id="bellstirling">Bell数和Stirling数<a class="headerlink" href="#bellstirling" title="Permanent link">&para;</a></h3>
 <ul>
 <li>第一类 Stirling数递推式：<span class="arithmatex">\(S(i,j)=(i-1)*S(i-1,j)+S(i-1,j-1)\)</span> </li>
 </ul>

@@ -537,58 +537,58 @@
                   </a>
                 
                 
-                <h1 id="_1">其他</h1>
-<h2 id="_2">博弈论</h2>
-<h3 id="nim">NIM</h3>
+                <h1 id="_1">其他<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">博弈论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="nim">NIM<a class="headerlink" href="#nim" title="Permanent link">&para;</a></h3>
 <p>必胜态：<span class="arithmatex">\(<span class="arithmatex">\(a_1XORa_2XOR\dots XORa_n \neq 0\)</span>\)</span></p>
 <p>必败态：<span class="arithmatex">\(<span class="arithmatex">\(a_1XORa_2XOR\dots XORa_n = 0\)</span>\)</span></p>
 <p><strong>其他：</strong></p>
 <p>Staircase Nim：POJ 1704</p>
-<h3 id="grundy">Grundy值</h3>
-<pre><code class="language-c++">void grundy() {
-    grundy[0] = 0; //必败，其实也可以不写让j从0开始
-    int maxa = *max_element(a, a+n);
-    for(int j = 1; j &lt;= maxa; j++){
-        set&lt;int&gt; s;
-        for(int i = 0; i &lt; k; i++)
-            if(a[i] &lt;= j) 
-                s.insert(grundy(j-a[i]));
+<h3 id="grundy">Grundy值<a class="headerlink" href="#grundy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">grundy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">grundy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//必败，其实也可以不写让j从0开始</span>
+    <span class="kt">int</span> <span class="n">maxa</span> <span class="o">=</span> <span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">maxa</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">)</span> 
+                <span class="n">s</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">grundy</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
 
-        int g = 0;
-        while(s.count(g) != 0) g++;
-        grundy[j] = g;
-    }
-}
-</code></pre>
-<h2 id="_3">离散化</h2>
-<pre><code class="language-c++">//白书P164，二维坐标离散化
-typedef long long ll;
-const int maxn = 600;
+        <span class="kt">int</span> <span class="n">g</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">g</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">grundy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">离散化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//白书P164，二维坐标离散化</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>
 
-int x1[maxn], x2[maxn], y1[maxn], y2[maxn];
-int n; 
+<span class="kt">int</span> <span class="n">x1</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">x2</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">y1</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">y2</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span> 
 
-int compress(int *x1, int *x2, int w)  {
-    vector&lt;int&gt; vec;
+<span class="kt">int</span> <span class="nf">compress</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">)</span>  <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
 
-    for (int i = 0; i &lt; n; i++) {
-        for (int d = -1; d &lt;= 1; d++) {
-            int tx1 = x1[i] + d, tx2 = x2[i] + d;
-            if (tx1 &gt;= 1 &amp;&amp; tx1 &lt;= w) vec.push_back(tx1);
-            if (tx2 &gt;= 1 &amp;&amp; tx2 &lt;= w) vec.push_back(tx2);
-        }
-    }
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">d</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">tx1</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">tx2</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">tx1</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">tx1</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">)</span> <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tx1</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">tx2</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">tx2</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">)</span> <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tx2</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    sort(vec.begin(), vec.end());
-    vec.erase(unique(vec.begin(), vec.end()), vec.end());
+    <span class="n">sort</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">vec</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
-    for (int i = 0; i &lt; n; i++) {
-        x1[i] = find(vec.begin(), vec.end(), x1[i]) - vec.begin();
-        x2[i] = find(vec.begin(), vec.end(), x2[i]) - vec.begin();
-    }
-    return vec.size();
-}
-</code></pre>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+        <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
