@@ -1000,488 +1000,488 @@
 <h3 id="_3">邻接矩阵</h3>
 <p><span class="arithmatex">\(G[i][j]=1\)</span> 表示有一条边从 <span class="arithmatex">\(i\)</span> 到 <span class="arithmatex">\(j\)</span>  </p>
 <h3 id="_4">邻接表</h3>
-<pre><code class="language-c++">vector&lt;int&gt; es[MAXN];
-/*
-带权边
-struct edge{ int to, w; };
-vector&lt;edge&gt; es[MAXN];
-*/
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="cm">/*</span>
+<span class="cm">带权边</span>
+<span class="cm">struct edge{ int to, w; };</span>
+<span class="cm">vector&lt;edge&gt; es[MAXN];</span>
+<span class="cm">*/</span>
+</code></pre></div>
 <h3 id="_5">链式前向星</h3>
-<pre><code class="language-c++">struct edge {
-    int to, w, next;
-}es[MAX_E];
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="n">es</span><span class="p">[</span><span class="n">MAX_E</span><span class="p">];</span>
 
-int cnt = 0;
+<span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-void init() {
-    memset(head, -1, sizeof head);
-}
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">head</span><span class="p">);</span>
+<span class="p">}</span>
 
-void add_edge(int u, int v, int w) {   //加边
-    es[cnt].to = v;
-    es[cnt].w = w;
-    es[cnt].next = head[u];
-    head[u] = cnt++;
-}
-/*遍历
-    for(int i = 1; i &lt;= n; i++)
-        for(int j = head[i]; i != -1; j = es[j].next)
-*/
-</code></pre>
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//加边</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">to</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+    <span class="n">head</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*遍历</span>
+<span class="cm">    for(int i = 1; i &lt;= n; i++)</span>
+<span class="cm">        for(int j = head[i]; i != -1; j = es[j].next)</span>
+<span class="cm">*/</span>
+</code></pre></div>
 <h2 id="_6">最短路</h2>
 <h3 id="bellman-ford">Bellman-Ford</h3>
 <p>单源最短路问题</p>
 <p><span class="arithmatex">\(O(VE)\)</span> 支持负权</p>
-<pre><code class="language-c++">struct edge{ int from, to, w; };
-edge es[MAX_E];
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span> <span class="p">};</span>
+<span class="n">edge</span> <span class="n">es</span><span class="p">[</span><span class="n">MAX_E</span><span class="p">];</span>
 
-int d[MAX_V];
-int V, E;
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">V</span><span class="p">,</span> <span class="n">E</span><span class="p">;</span>
 
-void BF(int s){
-    memset(d, INF, sizeof d);
-    d[s] = 0;
-    for(int k = 0; k &lt; V; k++){
-        for(int i = 0; i &lt; E; i++){
-            edge e = es[i];
-            if(d[e.from] != INF &amp;&amp; d[e.to] &gt; d[e.from]+e.w){
-                d[e.to] = d[e.from]+w; //松弛操作
-            }
-        }
-    }
-}
-//循环至多执行 V-1 次，一次松弛操作至少让确定的最短路+1，所以O(VE)，如果第 n 次任然更新了d，表示有负环
-//把所有d[i]初始化为0，就可以找到所有的负圈
-bool find_negative_loop(){
-    memset(d, 0, sizeof d);
-    for(int i = 0; i &lt; V; i++){
-        for(int j = 0; j &lt; E; j++){
-            edge e = es[j];
-            if(d[e.to] &gt; d[e.from]+e.w){
-                d[e.to] = d[e.from]+e.w;
-                if(i == V-1) return true;
-            }
-        }
-    }
-    return false;
-}
-</code></pre>
+<span class="kt">void</span> <span class="nf">BF</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">){</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">INF</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INF</span> <span class="o">&amp;&amp;</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">){</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">w</span><span class="p">;</span> <span class="c1">//松弛操作</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//循环至多执行 V-1 次，一次松弛操作至少让确定的最短路+1，所以O(VE)，如果第 n 次任然更新了d，表示有负环</span>
+<span class="c1">//把所有d[i]初始化为0，就可以找到所有的负圈</span>
+<span class="kt">bool</span> <span class="nf">find_negative_loop</span><span class="p">(){</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">){</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">V</span><span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="dijkstra">Dijkstra</h3>
 <p>单源最短路问题</p>
 <p>不支持负权边</p>
 <p>检查存在 <span class="arithmatex">\(d[i][i]\)</span> 为负数来判断是否有负环</p>
 <p><span class="arithmatex">\(O(ElogV)\)</span>  用优先队列</p>
-<pre><code class="language-c++">typedef pair&lt;int, int&gt; P; 
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span> 
 
-vector&lt;P&gt; es[MAX_V];  //邻接表中first表示端点，second表示权值
-int d[MAX_V];
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>  <span class="c1">//邻接表中first表示端点，second表示权值</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
 
-void dijkstra(int s) {
-    priority_queue&lt; P, vector&lt;P&gt;, greater&lt;P&gt; &gt; que; //队列中first表示最短路， second表示端点
-    memset(d, INF, sizeof d);
-    d[s] = 0;
-    que.push(P(0, s));
-    while(!que.empty()) {
-        P p = que.top(); que.pop();
-        int u = p.second;
-        if(d[u] &lt; p.first) continue;
-        for(int i = 0; i &lt; es[u].size(); i++) {
-            int v = es[u][i].first, w = es[u][i].second;
-            if(d[v] &gt; d[u]+w) { //松弛操作
-                d[v] = d[u]+w;
-                que.push(P(d[v], v));
-            }
-        }
-    }
-}
-</code></pre>
+<span class="kt">void</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span> <span class="n">P</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">que</span><span class="p">;</span> <span class="c1">//队列中first表示最短路， second表示端点</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">INF</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d</span><span class="p">);</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">));</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">P</span> <span class="n">p</span> <span class="o">=</span> <span class="n">que</span><span class="p">.</span><span class="n">top</span><span class="p">();</span> <span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">+</span><span class="n">w</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//松弛操作</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">+</span><span class="n">w</span><span class="p">;</span>
+                <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">v</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="floyd-warshall">Floyd-Warshall</h3>
 <p><span class="arithmatex">\(O(V^3)\)</span></p>
 <p>dp:状态转移方方程  <span class="arithmatex">\(d[k][i][j]=min(d[k-1][i][j],d[k-1][i][k]+d[k-1][k][i])\)</span>, 即 <span class="arithmatex">\(d[i][j] = min(dp[i][k], dp[k][j])\)</span></p>
-<pre><code class="language-c++">int d[MAX_V[MAX_V];
-void floyd() {
-    for(int k = 0; k &lt; V; k++)
-        for(int i = 0; i &lt; V; i++)
-            for(int j = 0; j &lt; V; j++)
-                d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
-}   
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">floyd</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+<span class="p">}</span>   
+</code></pre></div>
 <h3 id="_7">路径还原</h3>
 <p>在松弛操作时记录每个结点的前趋结点<span class="arithmatex">\(path[i]\)</span>即可, 查询时从后往前遍历</p>
 <h3 id="_8">次短路</h3>
-<pre><code class="language-c++">//每次更新最短路时看看被抛弃的值能不能更新次短路
-typedef pair&lt;int, int&gt; P;
-const int inf = 0x3f3f3f3f;
+<div class="highlight"><pre><span></span><code><span class="c1">//每次更新最短路时看看被抛弃的值能不能更新次短路</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
 
-vector&lt;P&gt; es[max_v];
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 
-int n, r, a, b, c;
-int d1[max_v], d2[max_v]; //d2 次短路
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d1</span><span class="p">[</span><span class="n">max_v</span><span class="p">],</span> <span class="n">d2</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span> <span class="c1">//d2 次短路</span>
 
-void dijkstra(int s){
-    memset(d1, inf, sizeof d1);
-    memset(d2, inf, sizeof d2);
-    priority_queue&lt; P, vector&lt;P&gt;, greater&lt;P&gt; &gt; que;
+<span class="kt">void</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">){</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d1</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">d2</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">d2</span><span class="p">);</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span> <span class="n">P</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">que</span><span class="p">;</span>
 
-    d1[s] = 0;
-    que.push(P(0, s));
-    while(!que.empty()){
-        P p = que.top(); que.pop();
-        int u = p.second;
-        if(d2[u] &lt; p.first) continue;
+    <span class="n">d1</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">));</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="n">P</span> <span class="n">p</span> <span class="o">=</span> <span class="n">que</span><span class="p">.</span><span class="n">top</span><span class="p">();</span> <span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">d2</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
 
-        for(int i = 0; i &lt; es[u].size(); i++){
-            int v = es[u][i].first, w = es[u][i].second;
-            int tmp = p.first+w;
-            if(d1[v] &gt; tmp){
-                swap(tmp, d1[v]);
-                que.push(P(d1[v], v));
-            }
-            if(tmp &lt; d2[v] &amp;&amp; tmp &gt; d1[v]){
-                d2[v] = tmp;
-                que.push(P(d2[v], v));
-            }
-        }
-    }
-}
-</code></pre>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="o">+</span><span class="n">w</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tmp</span><span class="p">){</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">d1</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+                <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">d1</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">v</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tmp</span> <span class="o">&lt;</span> <span class="n">d2</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">d1</span><span class="p">[</span><span class="n">v</span><span class="p">]){</span>
+                <span class="n">d2</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+                <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">d2</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">v</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_9">最小生成树</h2>
 <p>前提：图是连通的</p>
 <h3 id="prim">Prim</h3>
 <p><span class="arithmatex">\(O(V^2)\)</span></p>
-<pre><code class="language-c++">vector&lt;edge&gt; es[max_v];
-int dis[MAX_V];
-bool vis[MAX_V];
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">dis</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
 
-int prime(){
-    memset(dis, inf, sizeof dis);
-    memset(vis, false, vis);
-    dis[0] = 0; //s
-    int res = 0;
-    while(true){
-        int v = -1, mn = inf;
-        for(int i = 0; i &lt; V; i++)
-            if(!visited[i] &amp;&amp; dis[i] &lt; mn)
-                mn = dis[i], v = i;        
-        if(v == -1) break;
-        vis[v] = true;
-        res += mn;
-        for(int i = 0; i &lt; es[v].size(); i++){
-            edge e = es[v][i];
-            dis[e.to] = min(dis[e.to], e.w);
-        }
-    }
-    return res;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">prime</span><span class="p">(){</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">dis</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dis</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">vis</span><span class="p">);</span>
+    <span class="n">dis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//s</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">,</span> <span class="n">mn</span> <span class="o">=</span> <span class="n">inf</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mn</span><span class="p">)</span>
+                <span class="n">mn</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">v</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>        
+        <span class="k">if</span><span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">-1</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">mn</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">dis</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">],</span> <span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="kruskal">Kruskal</h3>
 <p>按照边的权值从小到达，利用并查集判断是否会产出圈，不会就加入</p>
 <p><span class="arithmatex">\(O(ElogV)\)</span></p>
-<pre><code class="language-c++">struct edge{ int from, to, w; };
-edge es[MAX_E];
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span> <span class="p">};</span>
+<span class="n">edge</span> <span class="n">es</span><span class="p">[</span><span class="n">MAX_E</span><span class="p">];</span>
 
-bool cmp(edge a, edge b){ return a.w &lt; b.w; }
+<span class="kt">bool</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">edge</span> <span class="n">a</span><span class="p">,</span> <span class="n">edge</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">w</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">w</span><span class="p">;</span> <span class="p">}</span>
 
-int kruskal(){
-    sort(es, es+E, cmp);
-    init(MAX_V);  //并查集的初始化
-    int res = 0;
-    for(int i = 0; i &lt; E; i++){
-        edge e = es[i];
-        if(!same(e.from, e.to)){
-            unite(e.from, e.to);
-            res += e.w;
-        }
-    }
-    return res;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">kruskal</span><span class="p">(){</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">es</span><span class="p">,</span> <span class="n">es</span><span class="o">+</span><span class="n">E</span><span class="p">,</span> <span class="n">cmp</span><span class="p">);</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">MAX_V</span><span class="p">);</span>  <span class="c1">//并查集的初始化</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">E</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">same</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">)){</span>
+            <span class="n">unite</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_10">网络流</h2>
 <h3 id="dinic">最大流 Dinic</h3>
-<pre><code class="language-c++">struct edge{ int to, cap, rev; } //rev记录反向边在 es[to] 中的索引
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">rev</span><span class="p">;</span> <span class="p">}</span> <span class="c1">//rev记录反向边在 es[to] 中的索引</span>
 
-vector&lt;edge&gt; es[max_v];  //邻接表
-int level[max_v];        //分层图
-int iter[max_v];         //弧优化，记录结点增广过哪些边了，下次就不增广了
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>  <span class="c1">//邻接表</span>
+<span class="kt">int</span> <span class="n">level</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>        <span class="c1">//分层图</span>
+<span class="kt">int</span> <span class="n">iter</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>         <span class="c1">//弧优化，记录结点增广过哪些边了，下次就不增广了</span>
 
-void add_edge(int from, int to, int cap)  {//加边
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cap</span><span class="p">)</span>  <span class="p">{</span><span class="c1">//加边</span>
 
-    es[from].push_back(edge{to, cap, es[to].size()});
-    es[to].push_back(edge{from, 0, es[from].size()-1});   
-}
+    <span class="n">es</span><span class="p">[</span><span class="n">from</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">edge</span><span class="p">{</span><span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">es</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">size</span><span class="p">()});</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">edge</span><span class="p">{</span><span class="n">from</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">es</span><span class="p">[</span><span class="n">from</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">});</span>   
+<span class="p">}</span>
 
-void bfs(int s) {//分层图
-    memset(level, -1, sizeof level);
-    queue&lt;int&gt; que;
-    level[s] = 0;
-    que.push(s);
-    while(!que.empty()){
-        int v = que.front(), que.pop();
-        for(int i = 0; i &lt; es[i].size(); i++){
-            edge &amp;e = es[v][i];
-            if(e.cap &gt; 0 &amp;&amp; level[e.to] &lt; 0){
-                level[e.to] = level[v]+1;
-                que.push(e.to);
-            }
-        }
-    }
-}
+<span class="kt">void</span> <span class="nf">bfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span><span class="c1">//分层图</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">level</span><span class="p">);</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">que</span><span class="p">;</span>
+    <span class="n">level</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">que</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span> <span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">edge</span> <span class="o">&amp;</span><span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+                <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-int dfs(int cur, int t, int f) { //增广路
-    if(cur == t) return f;
-    for(int &amp;i = iter[cur]; i &lt; es[cur].size(); i++){
-        edge &amp;e = es[cur][i];
-        if(e.cap &gt; 0 &amp;&amp; level[cur] &lt; level[e.to]){
-            int d = dfs(e.to, t, min(f, e.cap));
-            if(d &gt; 0) {
-                e.cap -= d;
-                es[e.to][e.rev].cap += d;
-                return d;
-            }
-        }
-    }
-    return 0;
-}
+<span class="kt">int</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">cur</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//增广路</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">cur</span> <span class="o">==</span> <span class="n">t</span><span class="p">)</span> <span class="k">return</span> <span class="n">f</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">i</span> <span class="o">=</span> <span class="n">iter</span><span class="p">[</span><span class="n">cur</span><span class="p">];</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">cur</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">edge</span> <span class="o">&amp;</span><span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">cur</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">level</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]){</span>
+            <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">min</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">cap</span><span class="p">));</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">-=</span> <span class="n">d</span><span class="p">;</span>
+                <span class="n">es</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">][</span><span class="n">e</span><span class="p">.</span><span class="n">rev</span><span class="p">].</span><span class="n">cap</span> <span class="o">+=</span> <span class="n">d</span><span class="p">;</span>
+                <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-int max_flow(int s, int t){
-    int flow = 0;
-    while(1){
-        bfs(s);
-        if(level[t] &lt; 0) return flow;
-        memset(iter, 0, sizeof iter);
-        int f;
-        while(f = dfs(s, t, inf) &gt; 0) flow += f;
-    }
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">max_flow</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">flow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+        <span class="n">bfs</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">level</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">flow</span><span class="p">;</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">iter</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">f</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">f</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">inf</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">flow</span> <span class="o">+=</span> <span class="n">f</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_11">最小费用流</h3>
 <p>负权边，用 BF 算法</p>
-<pre><code class="language-c++">const int inf = 0x3f3f3f3f;
-struct edge{int to, cap, cost, rev; }
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span><span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">rev</span><span class="p">;</span> <span class="p">}</span>
 
-vector&lt;edge&gt; es[max_v];
-int dist[max_v];
-int pree[max_e], prev[max_v];   //前导顶点的对应的边的索引
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">dist</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">pree</span><span class="p">[</span><span class="n">max_e</span><span class="p">],</span> <span class="n">prev</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>   <span class="c1">//前导顶点的对应的边的索引</span>
 
-void add_edge(int from, int to, int cap, int cost){
-    es[from].push_back(edge{to, cap, cost, es[to].size()});
-    es[to].push_back(edge{from, 0, -cost, es[from].size()-1});
-}
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="p">){</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">from</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">edge</span><span class="p">{</span><span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">es</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">size</span><span class="p">()});</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">edge</span><span class="p">{</span><span class="n">from</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">cost</span><span class="p">,</span> <span class="n">es</span><span class="p">[</span><span class="n">from</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">});</span>
+<span class="p">}</span>
 
-int min_cost_flow(int s, int t, int f) { //起点 终点 流量
-    int res = 0;
-    while(f &gt; 0){
-        memset(dist, inf, sizeof dist);
-        dist[s] = 0;
-        while(true)  
-            bool update = false;
-            for(int i = 0; i &lt; V; i++) {
-                if(dist[i] == inf) continue;
-                for(int j = 0; j &lt; es[i].size(); j++) {
-                    edge &amp;e = es[i][j];
-                    if(e.cap &gt; 0 &amp;&amp; dist[e.to] &gt; dist[e.from]+e.cost)  {
-                        dist[to] = dist[from]+e.cost;
-                        prev[e.to] = i;
-                        pree[e.to] = j;
-                        update = true;
-                    }
-                }
-            }
-            if(!update) break;
-        }
+<span class="kt">int</span> <span class="nf">min_cost_flow</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//起点 终点 流量</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">f</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dist</span><span class="p">);</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>  
+            <span class="kt">bool</span> <span class="n">update</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">inf</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">edge</span> <span class="o">&amp;</span><span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">e</span><span class="p">.</span><span class="n">cost</span><span class="p">)</span>  <span class="p">{</span>
+                        <span class="n">dist</span><span class="p">[</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">+</span><span class="n">e</span><span class="p">.</span><span class="n">cost</span><span class="p">;</span>
+                        <span class="n">prev</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                        <span class="n">pree</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+                        <span class="n">update</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">update</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        if(dist[t] == inf) return -1;
-        //沿s到t的最短路尽量增广
-        int d = f;
-        for(int i = t; i != s; i = prev[i])
-            d = min(d, es[prev[i]][pree[i]].cap);
+        <span class="k">if</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">inf</span><span class="p">)</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+        <span class="c1">//沿s到t的最短路尽量增广</span>
+        <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">s</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">es</span><span class="p">[</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">pree</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">cap</span><span class="p">);</span>
 
-        f -= d;
-        res += d*dist[t];
-        for(int i = t; i != s; i = prev[i]) {
-            edge &amp;e = es[prev[i][pree[i]]];
-            e.cap -= d;
-            es[i][e.rev].cap += d;
-        }
-    }
-    return res;
-}
-</code></pre>
+        <span class="n">f</span> <span class="o">-=</span> <span class="n">d</span><span class="p">;</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">d</span><span class="o">*</span><span class="n">dist</span><span class="p">[</span><span class="n">t</span><span class="p">];</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">s</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">edge</span> <span class="o">&amp;</span><span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">pree</span><span class="p">[</span><span class="n">i</span><span class="p">]]];</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">-=</span> <span class="n">d</span><span class="p">;</span>
+            <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">e</span><span class="p">.</span><span class="n">rev</span><span class="p">].</span><span class="n">cap</span> <span class="o">+=</span> <span class="n">d</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_12">二分图匹配</h2>
 <h3 id="_13">最大流</h3>
 <p>添加原点和汇点，计算最大流</p>
-<pre><code class="language-c++">//计算机处理任务
-bool can[max_n][max_m]; // can[i][j] : 计算机 i 能处理任务 j
+<div class="highlight"><pre><span></span><code><span class="c1">//计算机处理任务</span>
+<span class="kt">bool</span> <span class="n">can</span><span class="p">[</span><span class="n">max_n</span><span class="p">][</span><span class="n">max_m</span><span class="p">];</span> <span class="c1">// can[i][j] : 计算机 i 能处理任务 j</span>
 
-void MaxMatch(){
-    //计算机对应的顶点：0 ~ n-1
-    //任务对应的顶点：n ~ n+m-1
-    int s = n+m, t = n+m+1;
-    for(int i = 0; i &lt; n; i++){
-        add_edge(s, i, 1);
-    }
-    for(int i = 0; i &lt; m; i++){
-        add_edge(n+i, t, 1);
-    }
-    for(int i = 0; i &lt; n; i++)
-        for(int j = 0; j &lt; m; j++)
-            add_edge(i, n+j, 1);
-    cout &lt;&lt; max_flow(s, t) &lt;&lt; endl;
-}
-</code></pre>
+<span class="kt">void</span> <span class="nf">MaxMatch</span><span class="p">(){</span>
+    <span class="c1">//计算机对应的顶点：0 ~ n-1</span>
+    <span class="c1">//任务对应的顶点：n ~ n+m-1</span>
+    <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">add_edge</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">add_edge</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">max_flow</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_14">匈牙利算法</h3>
 <p><span class="arithmatex">\(O(VE)\)</span> </p>
-<pre><code class="language-c++">bool vis[max_v];
-int match[max_v];
-vector&lt;int&gt; es[max_v];
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">match</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 
-void add_edge(int u, int v){
-    es[u].push_back(v);
-    es[v].push_back(u);
-}
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="n">es</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
 
-bool dfs(int cur){
-    for(int i = 0; i &lt; es[cur].size(); i++){
-        int v = es[cur][i];
-        if(vis[v]) continue;
-        vis[v] = true;
-        if(!match[v] || dfs(match[v])){
-            match[v] = cur;
-            match[cur] = v;
-            return true;
-        }
-    }
-    return false;
-}
+<span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">cur</span><span class="p">){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">cur</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">cur</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">||</span> <span class="n">dfs</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">])){</span>
+            <span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>
+            <span class="n">match</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
 
-int MaxMatch(){
-    int res = 0;
-    for(int i = 1; i &lt;= n; i++){  //寻找增广路径
-        memset(vis, 0, sizeof vis);
-        if(!match[i] &amp;&amp; dfs(i)) res++;     
-    }
-    return res;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">MaxMatch</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>  <span class="c1">//寻找增广路径</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">vis</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="n">res</span><span class="o">++</span><span class="p">;</span>     
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="hopcroft-karp">Hopcroft-Karp</h3>
 <p><span class="arithmatex">\(O(E\sqrt{V})\)</span> </p>
 <p>HDU 2389</p>
-<pre><code class="language-c++">int match[max_v], dep[max_v];
-vector&lt;int&gt; es[max_v];
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">match</span><span class="p">[</span><span class="n">max_v</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 
-bool bfs() {
-    memset(dep, 0, sizeof dep);
-    queue&lt;int&gt; q;
-    for (int i = 1; i &lt;= n; i++)
-        if (!match[i]) q.push(i);
-    bool flag = false;
-    while (!q.empty()) {
-        int u = q.front(); q.pop();
-        for (int i = 0; i &lt; es[u].size(); i++) {
-            int v = es[u][i];
-            if (dep[v]) continue;
-            dep[v] = dep[u] + 1;
-            if (!match[v]) flag = true;
-            else dep[match[v]] = dep[v] + 1, q.push(match[v]);
-        }
-    }
-    return flag;
-}
+<span class="kt">bool</span> <span class="nf">bfs</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">dep</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dep</span><span class="p">);</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+            <span class="n">dep</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dep</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">flag</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="k">else</span> <span class="n">dep</span><span class="p">[</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span> <span class="o">=</span> <span class="n">dep</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">flag</span><span class="p">;</span>
+<span class="p">}</span>
 
-bool dfs(int u) {
-    for (int i = 0; i &lt; es[u].size(); i++) {
-        int v = es[u][i];
-        if (dep[v] != dep[u] + 1) continue;
-        dep[v] = 0;
-        if (!match[v] || dfs(match[v])) {
-            match[v] = u; match[u]  = v;
-             return true;
-        }
-    }
-    return false;
-}
+<span class="kt">bool</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="n">dep</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">||</span> <span class="n">dfs</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="n">match</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span> <span class="n">match</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>  <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+             <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
 
-int MaxMatch() {
-    int res = 0;
-    while (bfs()) {
-    for (int i = 1; i &lt;= n; i++)
-        if (!match[i] &amp;&amp; dfs(i)) res++;
-    }
-    return res;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">MaxMatch</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">bfs</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">match</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="n">res</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="_15">连通性相关</h2>
 <h3 id="_16">强连通分量分解</h3>
 <p><span class="arithmatex">\(O(V+E)\)</span></p>
 <p>两次DFS，第一遍后序遍历并给顶点标号，第二遍对反向图遍历</p>
-<pre><code class="language-c++">vector&lt;int&gt; G[max_v];
-vector&lt;int&gt; rG[max_v];    //反向图
-vector&lt;int&gt; vs;           //vertex sequence
-bool vis[max_v];
-int cmp[max_v];           //所属强连通图的拓扑序
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">rG</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>    <span class="c1">//反向图</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vs</span><span class="p">;</span>           <span class="c1">//vertex sequence</span>
+<span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">cmp</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>           <span class="c1">//所属强连通图的拓扑序</span>
 
-void add_edge(int u, int v){
-    G[u].push_back(v);
-    rG[v].push_back(u);
-}
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+    <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="n">rG</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
 
-void dfs(int v){
-    vis[v] = true;
-    for(int i = 0; i &lt; G[v].size(); i++)
-        if(!vis[G[v][i]]) dfs(G[v][i]);
-    vs.push_back(v);
-}
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+    <span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]])</span> <span class="n">dfs</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">vs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
 
-void rdfs(int v, int k){
-    vis[v] = true;
-    cmp[v] = k;
-    for(int i = 0; i &lt; rG[v].size(); i++)
-        if(!vis[rG[v][i]]) rdfs(rG[v][i], k);
-}
+<span class="kt">void</span> <span class="nf">rdfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">){</span>
+    <span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">cmp</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">rG</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">rG</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]])</span> <span class="n">rdfs</span><span class="p">(</span><span class="n">rG</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">k</span><span class="p">);</span>
+<span class="p">}</span>
 
-int scc() { //strongly connected component
-    memset(vis, false, sizeof vis);
-    vs.clear();
-    for(int v = 0; v &lt; V; v++)
-        if(!vis[v]) dfs(v);
+<span class="kt">int</span> <span class="nf">scc</span><span class="p">()</span> <span class="p">{</span> <span class="c1">//strongly connected component</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">vis</span><span class="p">);</span>
+    <span class="n">vs</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">v</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">dfs</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 
-    memset(vis, false, sizeof vis);
-    int k = 0;
-    for(int i = vs.size()-1; i &gt;= 0; i--)
-        if(!vis[vs[i]]) rdfs(vs[i], k++);
-    return k;
-}
-</code></pre>
+    <span class="n">memset</span><span class="p">(</span><span class="n">vis</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">vis</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">vs</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">vs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span> <span class="n">rdfs</span><span class="p">(</span><span class="n">vs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">k</span><span class="o">++</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_17">连通分支个数</h3>
 <p>并查集</p>
 <h2 id="_18">树上问题</h2>
 <h3 id="lca">最近公共祖先(LCA)</h3>
 <p><span class="arithmatex">\(O(n)\)</span></p>
-<pre><code class="language-c++">vector&lt;int&gt; G[maxn_v];
-int root, parent[max_v], depth[max_v];
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">maxn_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">[</span><span class="n">max_v</span><span class="p">],</span> <span class="n">depth</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 
-void dfs(int v, int p, int d){
-    parent[v] = p, depth[v] = d;
-    for(int i = 0; i &lt; G[v].size(); i++)
-        if(G[v][i] != p) dfs(G[v][i], v, d+1);
-}
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">){</span>
+    <span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p</span><span class="p">)</span> <span class="n">dfs</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
 
-void init(){
-    dfs(root, -1, 0);
-}
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
 
-int lca(int u, int v){
-    //先把u,v走到同一深度
-    while(depth[u] &gt; depth[v]) u = parent[u]; 
-    while(depth[v] &gt; depth[u]) v = parent[v];
-    //一起向上走
-    while(u != v){
-        u = parent[u], v = parent[v];
-    }
-    return u;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">lca</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+    <span class="c1">//先把u,v走到同一深度</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">u</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> 
+    <span class="k">while</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="n">v</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+    <span class="c1">//一起向上走</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">){</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">v</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>基于二分搜索的算法</p>
 <blockquote>
 <p>对于任意结点v，可以通过 </p>
@@ -1491,42 +1491,42 @@ int lca(int u, int v){
 <p>得到其向上走 <span class="arithmatex">\(<span class="arithmatex">\(2^k\)</span>\)</span> 步到达的顶点</p>
 </blockquote>
 <p>每次搜索的复杂度： <span class="arithmatex">\(O(logn)\)</span>，预处理的复杂度：<span class="arithmatex">\(O(nlogn)\)</span></p>
-<pre><code class="language-c++">vector&lt;int&gt; G[max_v];
-int root, parent[max_k][max_v], depth[max_v];
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">[</span><span class="n">max_k</span><span class="p">][</span><span class="n">max_v</span><span class="p">],</span> <span class="n">depth</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 
-void dfs(int v, int p, int d){
-    depth[v] = d, parent[v] = p;
-    for(int i = 0; i &lt; G[v].size(); i++)
-        if(G[v][i] != p) dfs(G[v][i], v, d+1);
-}
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">){</span>
+    <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span> <span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p</span><span class="p">)</span> <span class="n">dfs</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
 
-void init(int V){
-    //预处理parent[0]和depth
-    dfs(root, -1, 0);
-    //预处理parent
-    for(int k = 0; k+1 &lt; max_k; k++)
-        for(int i = 0; i &lt; V; i++) { //parent[k][v] 表示从 v 结点向上走 2^k 次的结点， 超过根时记作-1
-            if(parent[k][i] &lt; 0) parent[k+1][i] = -1;
-            else parent[k+1][i] = parent[k][parent[k][i]];
-        }
-}
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">V</span><span class="p">){</span>
+    <span class="c1">//预处理parent[0]和depth</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="c1">//预处理parent</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">max_k</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//parent[k][v] 表示从 v 结点向上走 2^k 次的结点， 超过根时记作-1</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+            <span class="k">else</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">]];</span>
+        <span class="p">}</span>
+<span class="p">}</span>
 
-int lca(int u, int v){
-    //让u和v走到同一深度
-    if(depth[u] &gt; depth[v]) swap(u, v); //让v的深度深一些
-    for(int k = 0; k &lt; max_k; k++) {
-        if ((depth[v] - depth[u]) &gt;&gt; k &amp; 1) v = parent[k][v]; 
-    }
-    if (u == v) return u;
-    //二分搜索计算LCA
-    for (int k = max_k-1; k &gt;= 0; k--) {
-        if (parent[k][v] != parent[k][u]) {  //如果超过了他们的LCA也一定是一样的,不一样一定还没到LCA
-            v = parent[k][v], u = parent[k][u];
-        }
-    }
-    return parnet[0][u]; //?这里好像不太对?//
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">lca</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+    <span class="c1">//让u和v走到同一深度</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span> <span class="c1">//让v的深度深一些</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">max_k</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">-</span> <span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&gt;&gt;</span> <span class="n">k</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">v</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">v</span><span class="p">];</span> 
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+    <span class="c1">//二分搜索计算LCA</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">max_k</span><span class="mi">-1</span><span class="p">;</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">u</span><span class="p">])</span> <span class="p">{</span>  <span class="c1">//如果超过了他们的LCA也一定是一样的,不一样一定还没到LCA</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">v</span><span class="p">],</span> <span class="n">u</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">u</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">parnet</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">u</span><span class="p">];</span> <span class="c1">//?这里好像不太对?//</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_19">点分治</h3>
 <p>洛谷 P3806 POJ 1741</p>
 <h2 id="_20">其他</h2>
@@ -1566,13 +1566,13 @@ int lca(int u, int v){
 <p>因为拓扑序在前的强连通分量可能存在通路到达在后的，所以在后的一定为true</p>
 <h3 id="dfs">DFS序</h3>
 <p>当前结点的 in 和 out 包含了子树的所有结点</p>
-<pre><code class="language-c++">int in[N], out[N], tot = 0;
-void dfs(int x, int dep) {
-    in[x] = ++tot;
-    for (int i = 0; i &lt; es[x].size(); i++) dfs(es[x][i], dep + 1);
-    out[x] = tot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dep</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">in</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">tot</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">dfs</span><span class="p">(</span><span class="n">es</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">dep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">tot</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               

@@ -679,9 +679,9 @@
 <p>一级标题 <code>#</code> + 空格</p>
 <p>二级标题 <code>##</code>+ 空格</p>
 <p>...最多有六级标题  </p>
-<pre><code class="language-markdown"># Markdown
-## 基本语法
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gh"># Markdown</span>
+<span class="gu">## 基本语法</span>
+</code></pre></div>
 <h3 id="_3">引用</h3>
 <p><code>&gt;</code> + 空格</p>
 <blockquote>
@@ -702,8 +702,8 @@
 <li>两个<code>*</code>或者<code>_</code>表示<strong>加粗</strong></li>
 <li>三个<code>*</code>或者<code>_</code>表示<strong><em>加粗＋倾斜</em></strong></li>
 </ul>
-<pre><code>`*` 可以用于强调一些字符，效果如下
-</code></pre>
+<div class="highlight"><pre><span></span><code>`*` 可以用于强调一些字符，效果如下
+</code></pre></div>
 <p><code>*</code></p>
 <h3 id="_5">列表</h3>
 <p><code>*</code> + 空格   或者   <code>+</code> + 空格</p>
@@ -717,17 +717,17 @@
 <li>这是二级列表</li>
 </ul>
 <h3 id="_6">代码块</h3>
-<pre><code class="language-c++"> ``` + 语言(比如C++) + 回车
-</code></pre>
-<pre><code class="language-c++">#include&lt;iostream&gt;
-using namespace std;
+<div class="highlight"><pre><span></span><code> <span class="err">```</span> <span class="o">+</span> <span class="err">语言</span><span class="p">(</span><span class="err">比如</span><span class="n">C</span><span class="o">++</span><span class="p">)</span> <span class="o">+</span> <span class="err">回车</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
 
-int main()
-{
-    cout &lt;&lt; &quot;hello, world.&quot;
-    return 0;
-}
-</code></pre>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello, world.&quot;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="_7">分割线</h3>
 <p>三个或者更多的<code>+</code> 或 <code>_</code> 或 <code>-</code> + 回车</p>
 <p>效果：</p>
@@ -735,32 +735,32 @@ int main()
 <h3 id="_8">超链接与图片</h3>
 <p><strong>行内式</strong></p>
 <p>格式：[名字] （URL）</p>
-<pre><code class="language-c++">[百度](https://www.baidu.com/)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="err">百度</span><span class="p">](</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.baidu.com/)</span>
+</code></pre></div>
 <p>效果如下：</p>
 <p><a href="https://www.baidu.com/">百度</a> </p>
 <p><strong>参考式</strong></p>
 <p>在要多次使用同一个超链接时使用</p>
 <p>格式：[给网站起的名字]：URL    （相当于定义）</p>
 <p>使用方式：[超链接的名字] [给网站起的名字]</p>
-<pre><code class="language-c++">[百度]:https://www.baidu.com/
-[here][百度]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="err">百度</span><span class="p">]</span><span class="o">:</span><span class="nl">https</span><span class="p">:</span><span class="c1">//www.baidu.com/</span>
+<span class="p">[</span><span class="n">here</span><span class="p">][</span><span class="err">百度</span><span class="p">]</span>
+</code></pre></div>
 <p><strong>图片</strong> </p>
 <p>也有行内式与参考式，只是在前面加个<code>!</code> </p>
-<pre><code>![图片名][具体地址，本地或者网页]
-</code></pre>
+<div class="highlight"><pre><span></span><code>![图片名][具体地址，本地或者网页]
+</code></pre></div>
 <h3 id="_9">数学公式</h3>
 <p>1.内联式</p>
 <p>typora中 文件-偏好设置-markdown-打开内联公式</p>
-<pre><code class="language-markdown">$公式内容$
-</code></pre>
+<div class="highlight"><pre><span></span><code>$公式内容$
+</code></pre></div>
 <p>2.非内联式</p>
 <p>添加数学公式： <code>$$</code> + 回车</p>
-<pre><code class="language-c++">$$
-   公式内容 
-$$
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">$$</span>
+   <span class="err">公式内容</span> 
+<span class="n">$$</span>
+</code></pre></div>
 <p><strong>常用符号</strong> </p>
 <table>
 <thead>
@@ -941,12 +941,12 @@ y =
 0&amp;x &lt; 0    
 \end{cases}
 \]</div>
-<pre><code class="language-c++">y = 
-\begin{cases} 
-1  &amp;x\geq 0  \\  
-0  &amp;x&lt;0    
-\end{cases}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> 
+<span class="err">\</span><span class="n">begin</span><span class="p">{</span><span class="n">cases</span><span class="p">}</span> 
+<span class="mi">1</span>  <span class="o">&amp;</span><span class="n">x</span><span class="err">\</span><span class="n">geq</span> <span class="mi">0</span>  <span class="err">\\</span>  
+<span class="mi">0</span>  <span class="o">&amp;</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span>    
+<span class="err">\</span><span class="n">end</span><span class="p">{</span><span class="n">cases</span><span class="p">}</span>
+</code></pre></div>
 <p>矩阵 </p>
 <div class="arithmatex">\[
 \begin{bmatrix}
@@ -954,18 +954,18 @@ y =
    c &amp; d
 \end{bmatrix}
 \]</div>
-<pre><code class="language-c++">\begin{bmatrix}
-   a &amp; b \\ 
-   c &amp; d
-\end{bmatrix}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>
+   <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="err">\\</span> 
+   <span class="n">c</span> <span class="o">&amp;</span> <span class="n">d</span>
+<span class="err">\</span><span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>
+</code></pre></div>
 <h3 id="_10">表格元素</h3>
 <p>typora 中使用快捷键 Ctrl+T</p>
-<pre><code class="language-c++">name|score
-----|----
-abcd|100
-defg|0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="o">|</span><span class="n">score</span>
+<span class="o">----|----</span>
+<span class="n">abcd</span><span class="o">|</span><span class="mi">100</span>
+<span class="n">defg</span><span class="o">|</span><span class="mi">0</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -987,13 +987,13 @@ defg|0
 <h3 id="_11">折叠代码和侧边栏</h3>
 <p>typora中折叠侧边栏：文件-偏好设置-外观-侧边栏</p>
 <p>折叠代码：</p>
-<pre><code class="language-c++">&lt;details&gt;
-&lt;summary&gt;tag&lt;/summary&gt;
-&lt;code&gt;
-Hello world!
-&lt;/code&gt;
-&lt;/details&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">details</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">summary</span><span class="o">&gt;</span><span class="n">tag</span><span class="o">&lt;/</span><span class="n">summary</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+<span class="n">Hello</span> <span class="n">world</span><span class="o">!</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
+</code></pre></div>
 <p>效果如下：</p>
 <details>
 <summary>tag</summary>
