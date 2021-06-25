@@ -1065,11 +1065,11 @@
                   </a>
                 
                 
-                <h1 id="_1">图论</h1>
-<h2 id="_2">图的存储</h2>
-<h3 id="_3">邻接矩阵</h3>
+                <h1 id="_1">图论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">图的存储<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">邻接矩阵<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(G[i][j]=1\)</span> 表示有一条边从 <span class="arithmatex">\(i\)</span> 到 <span class="arithmatex">\(j\)</span>  </p>
-<h3 id="_4">邻接表</h3>
+<h3 id="_4">邻接表<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
 <span class="cm">/*</span>
 <span class="cm">带权边</span>
@@ -1077,7 +1077,7 @@
 <span class="cm">vector&lt;edge&gt; es[MAXN];</span>
 <span class="cm">*/</span>
 </code></pre></div>
-<h3 id="_5">链式前向星</h3>
+<h3 id="_5">链式前向星<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span><span class="n">es</span><span class="p">[</span><span class="n">MAX_E</span><span class="p">];</span>
@@ -1099,8 +1099,8 @@
 <span class="cm">        for(int j = head[i]; i != -1; j = es[j].next)</span>
 <span class="cm">*/</span>
 </code></pre></div>
-<h2 id="_6">最短路</h2>
-<h3 id="bellman-ford">Bellman-Ford</h3>
+<h2 id="_6">最短路<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="bellman-ford">Bellman-Ford<a class="headerlink" href="#bellman-ford" title="Permanent link">&para;</a></h3>
 <p>单源最短路问题</p>
 <p><span class="arithmatex">\(O(VE)\)</span> 支持负权</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span> <span class="p">};</span>
@@ -1137,7 +1137,7 @@
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="dijkstra">Dijkstra</h3>
+<h3 id="dijkstra">Dijkstra<a class="headerlink" href="#dijkstra" title="Permanent link">&para;</a></h3>
 <p>单源最短路问题</p>
 <p>不支持负权边</p>
 <p>检查存在 <span class="arithmatex">\(d[i][i]\)</span> 为负数来判断是否有负环</p>
@@ -1166,7 +1166,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="floyd-warshall">Floyd-Warshall</h3>
+<h3 id="floyd-warshall">Floyd-Warshall<a class="headerlink" href="#floyd-warshall" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(V^3)\)</span></p>
 <p>dp:状态转移方方程  <span class="arithmatex">\(d[k][i][j]=min(d[k-1][i][j],d[k-1][i][k]+d[k-1][k][i])\)</span>, 即 <span class="arithmatex">\(d[i][j] = min(dp[i][k], dp[k][j])\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
@@ -1177,9 +1177,9 @@
                 <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
 <span class="p">}</span>   
 </code></pre></div>
-<h3 id="_7">路径还原</h3>
+<h3 id="_7">路径还原<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>在松弛操作时记录每个结点的前趋结点<span class="arithmatex">\(path[i]\)</span>即可, 查询时从后往前遍历</p>
-<h3 id="_8">次短路</h3>
+<h3 id="_8">次短路<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">//每次更新最短路时看看被抛弃的值能不能更新次短路</span>
 <span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
@@ -1216,9 +1216,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_9">最小生成树</h2>
+<h2 id="_9">最小生成树<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>前提：图是连通的</p>
-<h3 id="prim">Prim</h3>
+<h3 id="prim">Prim<a class="headerlink" href="#prim" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(V^2)\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">dis</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
@@ -1245,7 +1245,7 @@
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="kruskal">Kruskal</h3>
+<h3 id="kruskal">Kruskal<a class="headerlink" href="#kruskal" title="Permanent link">&para;</a></h3>
 <p>按照边的权值从小到达，利用并查集判断是否会产出圈，不会就加入</p>
 <p><span class="arithmatex">\(O(ElogV)\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span> <span class="p">};</span>
@@ -1267,8 +1267,8 @@
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_10">网络流</h2>
-<h3 id="dinic">最大流 Dinic</h3>
+<h2 id="_10">网络流<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="dinic">最大流 Dinic<a class="headerlink" href="#dinic" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span> <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">rev</span><span class="p">;</span> <span class="p">}</span> <span class="c1">//rev记录反向边在 es[to] 中的索引</span>
 
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>  <span class="c1">//邻接表</span>
@@ -1325,7 +1325,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_11">最小费用流</h3>
+<h3 id="_11">最小费用流<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>负权边，用 BF 算法</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
 <span class="k">struct</span> <span class="nc">edge</span><span class="p">{</span><span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">rev</span><span class="p">;</span> <span class="p">}</span>
@@ -1378,8 +1378,8 @@
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_12">二分图匹配</h2>
-<h3 id="_13">最大流</h3>
+<h2 id="_12">二分图匹配<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">最大流<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>添加原点和汇点，计算最大流</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//计算机处理任务</span>
 <span class="kt">bool</span> <span class="n">can</span><span class="p">[</span><span class="n">max_n</span><span class="p">][</span><span class="n">max_m</span><span class="p">];</span> <span class="c1">// can[i][j] : 计算机 i 能处理任务 j</span>
@@ -1400,7 +1400,7 @@
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">max_flow</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_14">匈牙利算法</h3>
+<h3 id="_14">匈牙利算法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(VE)\)</span> </p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">vis</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">match</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
@@ -1434,7 +1434,7 @@
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="hopcroft-karp">Hopcroft-Karp</h3>
+<h3 id="hopcroft-karp">Hopcroft-Karp<a class="headerlink" href="#hopcroft-karp" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(E\sqrt{V})\)</span> </p>
 <p>HDU 2389</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">match</span><span class="p">[</span><span class="n">max_v</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
@@ -1481,8 +1481,8 @@
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_15">连通性相关</h2>
-<h3 id="_16">强连通分量分解</h3>
+<h2 id="_15">连通性相关<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">强连通分量分解<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(V+E)\)</span></p>
 <p>两次DFS，第一遍后序遍历并给顶点标号，第二遍对反向图遍历</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
@@ -1523,10 +1523,10 @@
     <span class="k">return</span> <span class="n">k</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_17">连通分支个数</h3>
+<h3 id="_17">连通分支个数<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>并查集</p>
-<h2 id="_18">树上问题</h2>
-<h3 id="lca">最近公共祖先(LCA)</h3>
+<h2 id="_18">树上问题<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="lca">最近公共祖先(LCA)<a class="headerlink" href="#lca" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">\(O(n)\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">maxn_v</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span><span class="p">[</span><span class="n">max_v</span><span class="p">],</span> <span class="n">depth</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
@@ -1597,10 +1597,10 @@
     <span class="k">return</span> <span class="n">parnet</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">u</span><span class="p">];</span> <span class="c1">//?这里好像不太对?//</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_19">点分治</h3>
+<h3 id="_19">点分治<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3806 POJ 1741</p>
-<h2 id="_20">其他</h2>
-<h3 id="_21">二分图相关结论</h3>
+<h2 id="_20">其他<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="_21">二分图相关结论<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>定义：</p>
 <p>匹配：在G中两两没有公共点的边集合M</p>
 <p>边覆盖：G中任意顶点都至少是F中某条边的端点的边集合F</p>
@@ -1620,7 +1620,7 @@
 </ul>
 <p>简单证明：最大匹配时是每一对匹配中，不可能2个点都连接着未匹配的点（不然的话就会有增广路径，最大匹配还可以更大),</p>
 <p>所以2个点中最多一个点连接着未匹配的点，选择那个点作为最小定点覆盖即可</p>
-<h3 id="2-sat">2-SAT</h3>
+<h3 id="2-sat">2-SAT<a class="headerlink" href="#2-sat" title="Permanent link">&para;</a></h3>
 <p>布尔方程的可满足性问题</p>
 <p>合取范式： <span class="arithmatex">\((a\vee b\vee\dots)\wedge(c\vee d\vee\dots)\)</span></p>
 <p>2-SAT问题：合取范式的每个子句的文字不超过2的布尔方程的可满足性问题</p>
@@ -1634,7 +1634,7 @@
 </li>
 </ul>
 <p>因为拓扑序在前的强连通分量可能存在通路到达在后的，所以在后的一定为true</p>
-<h3 id="dfs">DFS序</h3>
+<h3 id="dfs">DFS序<a class="headerlink" href="#dfs" title="Permanent link">&para;</a></h3>
 <p>当前结点的 in 和 out 包含了子树的所有结点</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dep</span><span class="p">)</span> <span class="p">{</span>

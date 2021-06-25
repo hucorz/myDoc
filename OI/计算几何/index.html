@@ -823,16 +823,16 @@
                   </a>
                 
                 
-                <h1 id="_1">计算几何</h1>
-<h2 id="_2">点和线</h2>
-<h3 id="_3">精度控制</h3>
+                <h1 id="_1">计算几何<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">点和线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">精度控制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">;</span>
 <span class="kt">double</span> <span class="nf">dcmp</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//判断 正/负/0</span>
     <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_4">点和向量存储</h3>
+<h3 id="_4">点和向量存储<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">Vector</span><span class="p">{</span>
     <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
     <span class="n">Point</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
@@ -841,7 +841,7 @@
 <span class="p">};</span>
 <span class="k">typedef</span> <span class="n">Vector</span> <span class="n">Point</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="_5">向量的四则运算</h3>
+<h3 id="_5">向量的四则运算<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">//这种返回方式似乎有时候会出问题</span>
 <span class="c1">//向量+向量=向量  点+向量=点</span>
 <span class="n">Vector</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
@@ -860,7 +860,7 @@
     <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">.</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">p</span><span class="p">);</span> 
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_6">点积 叉积 及 应用</h3>
+<h3 id="_6">点积 叉积 及 应用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[\vec{a} \cdot \vec{b} = |a||b|cos\theta\]</div>
 <p><span class="arithmatex">\(<span class="arithmatex">\(|\vec{a} \times \vec{b}| = |a||b|sin\theta\)</span>\)</span>，正负由两向量的相对关系决定</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//点积</span>
@@ -882,12 +882,12 @@
     <span class="k">return</span> <span class="n">acos</span><span class="p">(</span><span class="n">Dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_7">判断点是否在线段上</h3>
+<h3 id="_7">判断点是否在线段上<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">OnSegment</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q</span><span class="p">){</span>  <span class="c1">//p1-p2是线段</span>
     <span class="k">return</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="n">p2</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">Dot</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="n">p2</span><span class="o">-</span><span class="n">q</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_8">求两直线的交点</h3>
+<h3 id="_8">求两直线的交点<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>由 <span class="arithmatex">\(<span class="arithmatex">\(q_2,q_1,p_2,p_1\)</span>\)</span>确定的两条直线，假设交点为 <span class="arithmatex">\(<span class="arithmatex">\(p_1+t(p_2-p_1)\)</span>\)</span> </p>
 <p>有 <span class="arithmatex">\(<span class="arithmatex">\((q_2-q_1) \times (p_1 + t(p_2-p_1)-q_1)=0\)</span>\)</span></p>
 <p>得 <span class="arithmatex">\(<span class="arithmatex">\(t = \frac{(q_2-q_1)\times(q_1-p_1)}{(q_2-q_1)\times(p_2-p_1)}\)</span>\)</span></p>
@@ -898,7 +898,7 @@
     <span class="k">return</span> <span class="n">p</span><span class="o">+</span><span class="n">v1</span><span class="o">*</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">q</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">Cross</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">v1</span><span class="p">);</span>
 <span class="p">}</span> <span class="c1">//平行特判</span>
 </code></pre></div>
-<h3 id="_9">线段相交判定</h3>
+<h3 id="_9">线段相交判定<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>跨立实验：判断q1,q2在线段p2-p1两侧 且 p1,p2在线段q2-q1两侧</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">SegmentProperIntersection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">q2</span><span class="p">){</span>
     <span class="kt">double</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">,</span> <span class="n">q2</span><span class="o">-</span><span class="n">p1</span><span class="p">),</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">Cross</span><span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">,</span> <span class="n">q1</span><span class="o">-</span><span class="n">p1</span><span class="p">);</span>
@@ -913,12 +913,12 @@
 <span class="cm">)  G[i][j] = G[j][i] = true;</span>
 <span class="cm">*/</span>
 </code></pre></div>
-<h3 id="_10">线段和直线相交判定</h3>
+<h3 id="_10">线段和直线相交判定<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">fun</span><span class="p">(</span><span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="n">Point</span> <span class="n">b</span><span class="p">,</span> <span class="n">Point</span> <span class="n">c</span><span class="p">,</span> <span class="n">Point</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//a b 确定直线     c d 确定线段</span>
     <span class="k">return</span> <span class="n">Cross</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">Cross</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">eps</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_11">向量旋转与单位化</h3>
+<h3 id="_11">向量旋转与单位化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>逆时针：
 $$
 \left[
@@ -973,28 +973,28 @@ $$</p>
     <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">L</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_12">点到直线的距离</h3>
+<h3 id="_12">点到直线的距离<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">DistaceToLine</span><span class="p">(</span><span class="n">Point</span> <span class="n">p</span><span class="p">,</span> <span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="n">Point</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Vector</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">p</span><span class="o">-</span><span class="n">a</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">fabs</span><span class="p">(</span><span class="n">Cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span><span class="o">/</span><span class="n">Length</span><span class="p">(</span><span class="n">v1</span><span class="p">);</span> <span class="c1">//平行四边形面积 除/底=高</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_13">圆</h2>
-<h3 id="_14">圆的存储</h3>
+<h2 id="_13">圆<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">圆的存储<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">Circle</span><span class="p">{</span>
     <span class="n">Point</span> <span class="n">c</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
     <span class="n">Circle</span><span class="p">(</span><span class="n">Point</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">c</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">r</span><span class="p">(</span><span class="n">b</span><span class="p">){}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_15">三角形外接圆</h3>
+<h3 id="_15">三角形外接圆<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">//三点不共线</span>
 <span class="n">Circle</span> <span class="nf">circumcircle</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="n">GetLineIntersection</span><span class="p">((</span><span class="n">p1</span><span class="o">+</span><span class="n">p2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">(),</span> <span class="p">(</span><span class="n">p1</span><span class="o">+</span><span class="n">p3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">p3</span><span class="o">-</span><span class="n">p1</span><span class="p">).</span><span class="n">rotate_90</span><span class="p">());</span>
     <span class="k">return</span> <span class="n">Circle</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Length</span><span class="p">(</span><span class="n">p1</span><span class="o">-</span><span class="n">p</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_16">最小圆覆盖</h3>
+<h3 id="_16">最小圆覆盖<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>随机增量法 <span class="arithmatex">\(O(n)\)</span> </p>
 <div class="highlight"><pre><span></span><code><span class="c1">//洛谷 P1742</span>
 <span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -1065,8 +1065,8 @@ $$</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_17">凸包</h2>
-<h3 id="graham">Graham扫描法 算凸包</h3>
+<h2 id="_17">凸包<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h3 id="graham">Graham扫描法 算凸包<a class="headerlink" href="#graham" title="Permanent link">&para;</a></h3>
 <p>按x，y坐标升序排列，确定凸包的2的顶点，然后再确定上下两个凸壳</p>
 <p>排序 <span class="arithmatex">\(<span class="arithmatex">\(O(nlogn)\)</span>\)</span> 其他 <span class="arithmatex">\(<span class="arithmatex">\(O(n)\)</span>\)</span> </p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">){</span>

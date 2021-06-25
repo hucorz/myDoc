@@ -685,8 +685,8 @@
                   </a>
                 
                 
-                <h1 id="_1">数据结构</h1>
-<h2 id="_2">树状数组</h2>
+                <h1 id="_1">数据结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">树状数组<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>单点更新 区间查询</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span> <span class="c1">//原数组和树状数组</span>
 
@@ -758,7 +758,7 @@ $</p>
 <p>​    $ = \sum_{i=1}^{r}{d_i \times(r+1)}-\sum_{i=1}^{r}{d_i \times i}$</p>
 <p>所以维护2个树状数组 sum1[i] = d[i]，sum2[i] = d[i]*(i-1) </p>
 </blockquote>
-<h2 id="_3">线段树</h2>
+<h2 id="_3">线段树<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="cm">/*区间和的线段树*/</span>
 <span class="c1">//建树</span>
 <span class="kt">void</span> <span class="nf">build</span><span class="p">(</span><span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">ll</span> <span class="n">l</span><span class="p">,</span> <span class="n">ll</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
@@ -802,7 +802,7 @@ $</p>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_4">并查集</h2>
+<h2 id="_4">并查集<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">fa</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
 <span class="c1">//初始化</span>
 <span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
@@ -848,8 +848,8 @@ $</p>
     <span class="p">}</span>  
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_5">栈</h2>
-<h3 id="_6">单调栈</h3>
+<h2 id="_5">栈<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">单调栈<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">//求出每个元素左右第一个小于它的元素的下标</span>
 <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="p">{</span>
@@ -870,8 +870,8 @@ $</p>
     <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_7">可持久化数据结构</h2>
-<h3 id="_8">可持久化线段树(主席树)</h3>
+<h2 id="_7">可持久化数据结构<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">可持久化线段树(主席树)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>洛谷 P3834</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//一般开32倍空间</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mf">2e5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
@@ -922,7 +922,7 @@ $</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_9">二位前缀和</h2>
+<h2 id="_9">二位前缀和<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">//预处理</span>
 <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
