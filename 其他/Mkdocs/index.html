@@ -623,16 +623,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#logofavicon" class="md-nav__link">
-    logo/favicon
+  <a href="#logo-favicon" class="md-nav__link">
+    logo &amp;&amp; favicon
   </a>
   
-    <nav class="md-nav" aria-label="logo/favicon">
+    <nav class="md-nav" aria-label="logo &amp;&amp; favicon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logo-favicon" class="md-nav__link">
-    文档的 logo 和 favicon
+  <a href="#logo-favicon_1" class="md-nav__link">
+    文档的 logo &amp;&amp; favicon
   </a>
   
 </li>
@@ -804,16 +804,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#logofavicon" class="md-nav__link">
-    logo/favicon
+  <a href="#logo-favicon" class="md-nav__link">
+    logo &amp;&amp; favicon
   </a>
   
-    <nav class="md-nav" aria-label="logo/favicon">
+    <nav class="md-nav" aria-label="logo &amp;&amp; favicon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logo-favicon" class="md-nav__link">
-    文档的 logo 和 favicon
+  <a href="#logo-favicon_1" class="md-nav__link">
+    文档的 logo &amp;&amp; favicon
   </a>
   
 </li>
@@ -892,21 +892,20 @@
                 
                 
                 <h1 id="material-for-mkdocs">基于Material for MkDocs搭建静态文档<a class="headerlink" href="#material-for-mkdocs" title="Permanent link">&para;</a></h1>
-<p>Mkdocs可以十分方便的建立一个静态文档，比如 <a href="https://oi-wiki.org/">OI Wiki (oi-wiki.org) </a>，此文档基于 Mkdocs </p>
+<p>Mkdocs 可以十分方便的建立一个静态文档，比如 <a href="https://oi-wiki.org/">OI Wiki</a>，此文档也是基于 Mkdocs </p>
 <p>此文档内容仅是基于个人经历的理解</p>
 <p>可能需要的用到的工具：Markdown，python3</p>
-<p>对于配置方面的问题，如果出了问题个人建议还是参考官方文档 <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs - Material for MkDocs (squidfunk.github.io)</a></p>
 <h2 id="_1">安装/初始化/配置范例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>利用 python3 自带的 pip 工具在 cmd 中输入</p>
+<p>利用 python3 自带的 <code>pip</code> 工具在 cmd 中输入</p>
 <div class="highlight"><pre><span></span><code>pip install mkdocs mkdocs-material
 </code></pre></div>
-<p>如果后面提示 'mkdocs' 不是内部或外部命令.... 的话就需要自己加一下环境变量，此处不展开</p>
+<p>如果后面提示 'mkdocs' 不是内部或外部命令.... 的话就需要自己加一下环境变量，此处不展开说明</p>
 <h3 id="_3">初始化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>在你想要新建文档的目录启动 cmd，并输入以下命令</p>
 <div class="highlight"><pre><span></span><code>mkdocs new my-project
 </code></pre></div>
-<p>然后打开新建的文件夹打开 mkdocs.yml，以下列出我写此文档时的配置并配上了注释作为参考</p>
+<p>然后打开新建的文件夹打开 <code>mkdocs.yml</code>，以下列出我写此文档时的配置并配上了注释作为参考</p>
 <div class="highlight"><pre><span></span><code># site
 site_name: hucorz&#39;s Docs                      # 文档的名字，会体现在左上角
 site_url: https://hucorz.github.io/myDoc/     # 网站的链接，似乎点击左上角的logo后会进去，我也没做实验
@@ -937,12 +936,12 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
   palette:
-    primary: &#39;white&#39;     # 配色
+    primary: &#39;white&#39;                          # 配色
     accent: &#39;indigo&#39;
-  logo: &#39;img/cat-solid.svg&#39; # 左上角logo
+  logo: &#39;img/cat-solid.svg&#39;                   # 左上角logo
   icon: 
     repo: fontawesome/brands/github-alt # repo的logo
-  favicon: &#39;img/favicon.ico&#39;   #网页图标
+  favicon: &#39;img/favicon.ico&#39;                  #网页图标
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -950,11 +949,11 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight      # 代码高亮
+  - pymdownx.highlight                        # 代码高亮
   - pymdownx.superfences
   - toc:
-      permalink: true   # 每个标题后面的 锚链接
-      #toc_depth: 2      # table of content 显示的级数，0就不会显示
+      permalink: true                         # 每个标题后面的 锚链接
+      #toc_depth: 2                           # table of content 显示的级数，0就不会显示
 
 
 
@@ -965,24 +964,27 @@ extra_javascript:
 
 plugins:
   - search:
-      lang: ja    # 实测搜索语言改成日本可以支持中文搜搜
+      lang: ja                               # 实测搜索语言改成日本可以支持中文搜搜
 </code></pre></div>
 <h2 id="github">部署 github<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
 <p>这里的步骤可能需要科学上网，不过 github 有时候也不需要</p>
-<p>首先需要一个 github 账号，然后新建一个空仓库，并利用 git 将仓库 clone 到本地，这里不展开，因为本蒟蒻也不是很懂，网上的博客还是很多</p>
+<p>首先需要一个 github 账号，然后新建一个空仓库，并利用 <code>git</code> 将仓库 clone 到本地，这里不展开，因为本蒟蒻也不是很懂，网上的博客还是很多</p>
 <p>仅讲一下我遇到的问题：</p>
+<blockquote>
 <p>Failed to connect to github.com port 443: Timed out</p>
-<p>解决方法：给 git 设置代理</p>
-<p>科学上网时打开win10设置里的代理设置，找到代理的地址和端口</p>
+</blockquote>
+<p>解决方法：给 <code>git</code> 设置代理</p>
+<p>科学上网时打开 win10 设置里的代理设置，找到代理的地址和端口</p>
 <div class="highlight"><pre><span></span><code>git config --global http.proxy 172.17.18.80:8080  # 后面是 地址:端口
 </code></pre></div>
 <p>查看是否成功</p>
 <div class="highlight"><pre><span></span><code>git config --get http.proxy
 </code></pre></div>
+<p>克隆成功后把 <code>.yml</code> 和 <code>docs</code> 放在克隆文件夹里，然后在此文件夹启动 cmd，输入以下指令即可部署</p>
+<div class="highlight"><pre><span></span><code>mkdocs gh-deploy
+</code></pre></div>
 <h2 id="_4">美化配置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">Changing the colors - Material for MkDocs (squidfunk.github.io)</a>   </p>
-<p>这里依旧强调一下参考官方博客，因为本蒟蒻发现网上的配置有些似乎不起效或者报错，当然也可能是我的问题，也可能是 Material 更新后改了配置的格式，所以强调一下官方文档的重要性</p>
-<p>下面仅写了我配置的</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">官方文档</a>  </p>
 <h3 id="_5">文档名称<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>site_name: hucorz&#39;s Docs                    
 site_url: https://hucorz.github.io/myDoc/    
@@ -992,47 +994,42 @@ site_url: https://hucorz.github.io/myDoc/
   name: &#39;material&#39;
 </code></pre></div>
 <h4 id="_7">配色<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">Changing the colors - Material for MkDocs (squidfunk.github.io)</a> </p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">配色相关配置</a> </p>
 <div class="highlight"><pre><span></span><code>theme:
  palette:
     primary: &#39;white&#39;
     accent: &#39;indigo&#39;
 </code></pre></div>
 <h4 id="_8">导航页<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/">Setting up navigation - Material for MkDocs (squidfunk.github.io)</a></p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/">导航页相关配置</a></p>
 <div class="highlight"><pre><span></span><code>features: 
     - navigation.tabs
     - navigation.tabs.sticky
 </code></pre></div>
-<h4 id="logofavicon">logo/favicon<a class="headerlink" href="#logofavicon" title="Permanent link">&para;</a></h4>
-<h5 id="logo-favicon">文档的 logo 和 favicon<a class="headerlink" href="#logo-favicon" title="Permanent link">&para;</a></h5>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/">Changing the logo and icons - Material for MkDocs (squidfunk.github.io)</a> </p>
-<p>文档中给出了三个网站：</p>
-<p><a href="https://materialdesignicons.com/">Material Design Icons</a></p>
-<p><a href="https://fontawesome.com/v5.15/icons?d=gallery&amp;p=2&amp;m=free">Free Icons | Font Awesome</a>     我的就是在这里找的，不会用，就直接下载下来用了</p>
-<p><a href="https://primer.style/octicons/">Octicons (primer.style)</a> </p>
-<p>当然也可以自己找图片，但效果可能会差一些</p>
-<div class="highlight"><pre><span></span><code>theme:
+<h4 id="logo-favicon">logo &amp;&amp; favicon<a class="headerlink" href="#logo-favicon" title="Permanent link">&para;</a></h4>
+<h5 id="logo-favicon_1">文档的 logo &amp;&amp; favicon<a class="headerlink" href="#logo-favicon_1" title="Permanent link">&para;</a></h5>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/">logo &amp;&amp; favicon 相关配置</a> </p>
+<div class="highlight"><pre><span></span><code>theme:    # 这两个我都是下下来后用的
     logo: &#39;img/cat-solid.svg&#39; 
-    icon: 
-        repo: fontawesome/brands/github-alt 
     favicon: &#39;img/favicon.ico&#39;
 </code></pre></div>
 <h5 id="repo-logo">repo 的 logo<a class="headerlink" href="#repo-logo" title="Permanent link">&para;</a></h5>
-<p>你需要先在配置中添加 repo 的名字和 url</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/">repo 相关配置</a> </p>
+<p>你需要先在配置中添加 <code>repo</code> 的名字和 <code>url</code> </p>
 <div class="highlight"><pre><span></span><code>repo_name: &#39;hucorz/myDoc&#39;
 repo_url: https://github.com/hucorz/myDoc
 </code></pre></div>
-<p>然后logo参考官方文档：</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/">Adding a git repository - Material for MkDocs (squidfunk.github.io)</a> </p>
+<p>然后 logo 参考的官方文档：</p>
 <div class="highlight"><pre><span></span><code>theme:
   icon: 
     repo: fontawesome/brands/github-alt 
 </code></pre></div>
 <h3 id="_9">扩展<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="markdown">markdown扩展<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h4>
-<p>数学公式</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/reference/mathjax/">MathJax - Material for MkDocs (squidfunk.github.io)</a></p>
+<ul>
+<li>数学公式</li>
+</ul>
+<p><a href="https://squidfunk.github.io/mkdocs-material/reference/mathjax/">MathJax - Material for MkDocs</a></p>
 <div class="highlight"><pre><span></span><code>markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
@@ -1042,29 +1039,33 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 </code></pre></div>
-<p>代码高亮</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/reference/code-blocks/">Code blocks - Material for MkDocs (squidfunk.github.io)</a> </p>
+<ul>
+<li>代码高亮</li>
+</ul>
+<p><a href="https://squidfunk.github.io/mkdocs-material/reference/code-blocks/">Code blocks - Material for MkDocs</a> </p>
 <div class="highlight"><pre><span></span><code>markdown_extensions:
   - pymdownx.highlight      # code hilight
   - pymdownx.superfences
 </code></pre></div>
-<p>toc（我也不知道这是啥意思）</p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#table-of-contents">Setting up navigation - Material for MkDocs (squidfunk.github.io)</a></p>
+<ul>
+<li>toc</li>
+</ul>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#table-of-contents">Setting up navigation - Material for MkDocs </a></p>
 <div class="highlight"><pre><span></span><code>markdown_extensions:    # 这2个都是和每个markdown文档的标题有关
   - toc:
       permalink: true   # 开启每个标题后面的 锚链接
       #toc_depth: 2     # 大纲显示的级数,越高显示的越多，不写都显示，0不显示
 </code></pre></div>
 <h4 id="_10">支持中文搜索<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/">Setting up site search - Material for MkDocs (squidfunk.github.io)</a> </p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/">Setting up site search - Material for MkDocs </a> </p>
 <div class="highlight"><pre><span></span><code>plugins:
   - search:
       lang: ja
 </code></pre></div>
 <h2 id="_11">参考<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p><a href="https://derrors.github.io/">1.介绍 - 基于 Material for MkDocs 搭建静态网页 (derrors.github.io)</a></p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs - Material for MkDocs (squidfunk.github.io)</a></p>
-<p><a href="https://blog.csdn.net/a_haideyanlei/article/details/84922833?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control">Failed to connect to github.com port 443: Timed out_天生我材必有用-CSDN博客</a></p>
+<p><a href="https://derrors.github.io/">1.介绍 - 基于 Material for MkDocs 搭建静态网页</a></p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs - Material for MkDocs</a> </p>
+<p><a href="https://blog.csdn.net/a_haideyanlei/article/details/84922833?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control">Failed to connect to github.com port 443: Timed out_天生我材必有用-CSDN博客</a> </p>
                 
               
               
