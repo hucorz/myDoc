@@ -749,8 +749,8 @@
 <p>一级标题 <code>#</code> + 空格</p>
 <p>二级标题 <code>##</code>+ 空格</p>
 <p>...最多有六级标题</p>
-<div class="highlight"><pre><span></span><code># Markdown
-## 基本语法
+<div class="highlight"><pre><span></span><code><span class="gh"># Markdown</span>
+<span class="gu">## 基本语法</span>
 </code></pre></div>
 <h3 id="_3">引用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><code>&gt;</code> + 空格</p>
@@ -773,7 +773,7 @@
 <li>三个<code>*</code>或者<code>_</code>表示 <strong><em>加粗＋倾斜</em></strong></li>
 </ul>
 <p>`可以用于强调一些字符，语法如下：</p>
-<div class="highlight"><pre><span></span><code>`+`
+<div class="highlight"><pre><span></span><code><span class="sb">`+`</span>
 </code></pre></div>
 <p>效果：</p>
 <p><code>+</code></p>
@@ -792,14 +792,15 @@
 </ul>
 <h3 id="_6">代码块<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code> ``` + 语言(比如C++) + 回车
+</code></pre></div>
+<p>效果如下:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>
 
-#include&lt;iostream&gt;
-using namespace std;
-
-int main() {
-    cout &lt;&lt; &quot;hello, world.&quot;
-    return 0;
-}
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello, world.&quot;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3 id="_7">分割线<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>三个或者更多的<code>+</code> 或 <code>_</code> 或 <code>-</code> + 回车</p>
@@ -808,7 +809,7 @@ int main() {
 <h3 id="_8">超链接与图片<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><strong>行内式</strong></p>
 <p>格式：[名字] (URL)</p>
-<div class="highlight"><pre><span></span><code>[百度](https://www.baidu.com/)
+<div class="highlight"><pre><span></span><code>[<span class="nt">百度</span>](<span class="na">https://www.baidu.com/</span>)
 </code></pre></div>
 <p>效果如下：</p>
 <p><a href="https://www.baidu.com/">百度</a></p>
@@ -816,8 +817,8 @@ int main() {
 <p>在要多次使用同一个超链接时使用</p>
 <p>格式：[给网站起的名字]：URL （相当于定义）</p>
 <p>使用方式：[超链接的名字] [给网站起的名字]</p>
-<div class="highlight"><pre><span></span><code>[百度]:https://www.baidu.com/
-[here][百度]
+<div class="highlight"><pre><span></span><code>[<span class="nl">百度</span>]:<span class="na">https://www.baidu.com/</span>
+[<span class="nt">here</span>][<span class="nl">百度</span>]
 </code></pre></div>
 <p><strong>图片</strong></p>
 <p>也有行内式与参考式，需要在前面加个<code>!</code></p>
@@ -829,9 +830,9 @@ int main() {
 <div class="highlight"><pre><span></span><code>$公式内容$
 </code></pre></div>
 <p>2.非内联式</p>
-<p>添加数学公式： <code>$$</code> + 回车</p>
+<p>添加数学公式：</p>
 <div class="highlight"><pre><span></span><code>$$
-   公式内容 
+公式内容
 $$
 </code></pre></div>
 <p><strong>常用符号</strong></p>
@@ -1011,40 +1012,34 @@ $$
 <div class="arithmatex">\[
 y = 
 \begin{cases} 
-1  &amp;x\geq0 \\ 
-0  &amp;x &lt; 0 
+1  &amp;x\geq 0  \\  
+0  &amp;x&lt;0    
 \end{cases}
 \]</div>
-<div class="highlight"><pre><span></span><code>```
-y = 
+<div class="highlight"><pre><span></span><code>y = 
 \begin{cases} 
 1  &amp;x\geq 0  \\  
 0  &amp;x&lt;0    
 \end{cases}
-```
 </code></pre></div>
 <p>矩阵
 $$
 \begin{bmatrix}
        a &amp; b \ 
        c &amp; d
-    \end{bmatrix}
+\end{bmatrix}
 $$</p>
-<div class="highlight"><pre><span></span><code>```
-\begin{bmatrix}
+<div class="highlight"><pre><span></span><code>\begin{bmatrix}
        a &amp; b \\ 
        c &amp; d
 \end{bmatrix}
-```
 </code></pre></div>
 <h3 id="_10">表格元素<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>typora 中使用快捷键 Ctrl+T</p>
-<div class="highlight"><pre><span></span><code>```
-name|score
+<div class="highlight"><pre><span></span><code>name|score
 ----|----
 abcd|100
 defg|0
-```
 </code></pre></div>
 <table>
 <thead>
@@ -1067,14 +1062,12 @@ defg|0
 <h3 id="_11">折叠代码和侧边栏<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>typora中折叠侧边栏：文件-偏好设置-外观-侧边栏</p>
 <p>折叠代码：</p>
-<div class="highlight"><pre><span></span><code>```
-&lt;details&gt;
+<div class="highlight"><pre><span></span><code>&lt;details&gt;
 &lt;summary&gt;tag&lt;/summary&gt;
 &lt;code&gt;
 Hello world!
 &lt;/code&gt;
 &lt;/details&gt;
-```
 </code></pre></div>
 <p>效果如下：</p>
 <details>
@@ -1088,10 +1081,8 @@ Hello world!
 <p>typora 中可以直接点击 文件-导出 并选择文件格式即可</p>
 <p>导出为 word 之前需要下载 pandoc，具体可以参考网上博客</p>
 <h2 id="_13">参考<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p><a href="http://xianbai.me/learn-
-md/index.html">Introduction | Learning-Markdown (Markdown 入门参考)</a></p>
-<p><a href="https://katex.org/docs/supported.html#math-
-operators">Supported Functions · KaTeX</a></p>
+<p><a href="http://xianbai.me/learn-md/index.html">Introduction | Learning-Markdown (Markdown 入门参考)</a></p>
+<p><a href="https://katex.org/docs/supported.html#math-operators">Supported Functions · KaTeX</a></p>
 <p><a href="https://blog.csdn.net/dabokele/article/details/79577072">Mathjax公式教程_dabokele的博客-CSDN博客_mathjax公式</a></p>
                 
               
