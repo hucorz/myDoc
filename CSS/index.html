@@ -229,6 +229,22 @@
   </li>
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -497,6 +513,48 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        其他
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -529,6 +587,129 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#css_1" class="md-nav__link">
+    CSS引入方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基础选择器
+  </a>
+  
+    <nav class="md-nav" aria-label="基础选择器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    标签选择器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    类选择器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    id选择器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    通配符选择器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    复合选择器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    常用属性总结
+  </a>
+  
+    <nav class="md-nav" aria-label="常用属性总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    字体属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    文本属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    其他
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    类名规范
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    一些实例
+  </a>
+  
+    <nav class="md-nav" aria-label="一些实例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    图片居中对齐
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -550,18 +731,293 @@
 <p>Cascading Style Sheets：层叠样式表</p>
 <p>和 HTML 一样也是一种标记语言</p>
 <p>作用：美化 HTML 文档，实现结构（HTML）与样式（CSS）相分离</p>
+<p>选择器分类：基础选择器 和 复合选择器</p>
 <h2 id="_1">基础概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>CSS 规则的构成：选择器(HTML中的标签) + 一条或多条声明</p>
+<p>CSS 规则的构成：选择器(HTML标签) + 一条或多条声明</p>
 <p>一般写在 <span class="arithmatex">\(&lt;head&gt;\)</span> 中</p>
 <p>eg：</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>  <span class="c">/*style 可以写在任何地方*/</span>
         <span class="nt">p</span> <span class="p">{</span>  
             <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>  <span class="c">/*段落设置为红色*/</span>
             <span class="k">font-size</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/*字体大小12像素*/</span>
         <span class="p">}</span>
     <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="css_1">CSS引入方式<a class="headerlink" href="#css_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>行内式，在标签的属性里直接添加样式 <span class="arithmatex">\(&lt;p\ style="\ color:red;\ "&gt;\)</span>，适合修改简单样式，没有与结构分离</p>
+</li>
+<li>
+<p>嵌入式，写在 html 页面内部，即 <span class="arithmatex">\(&lt;style&gt;&lt;/style&gt;\)</span> 中，并没有完全与结构分离</p>
+</li>
+<li>
+<p>链接式，单独写在 CSS 文件中，适用于样式比较多的时候，实现了与结构分离</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>/*.css文件中*/
+不需要写 <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>, 只需要写样式
+/*.html文件中*/
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css文件路径&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="_2">基础选择器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>基础选择器由单个选择器组成</p>
+<h3 id="_3">标签选择器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>标签名作为选择器</p>
+<div class="highlight"><pre><span></span><code>标签名 {
+    属性1: 属性值1;
+    ...
+}
+</code></pre></div>
+<h3 id="_4">类选择器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>可以单独选择一个或几个标签，一个标签也可以有多个类名，用 <code>.</code> 来定义</p>
+<div class="highlight"><pre><span></span><code>.类名 {
+    属性1: 属性值1;
+    ...
+}
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;类名&quot;</span><span class="p">&gt;</span> eg <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;类名1 类名2&quot;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="id">id选择器<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
+<p>为标有特定 id 的 HTML元素 指定样式，用 <code>#</code> 来定义</p>
+<p>与类选择器的区别在于，id选择器只能调用一次</p>
+<div class="highlight"><pre><span></span><code>#类名 {
+    属性1: 属性值1;
+    ...
+}
+</code></pre></div>
+<h3 id="_5">通配符选择器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>为页面中所有的元素指定样式，用 <code>*</code> 来定义</p>
+<p>不需要调用</p>
+<div class="highlight"><pre><span></span><code>* {
+    属性1: 属性值1;
+    ...
+}
+</code></pre></div>
+<h2 id="_6">复合选择器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">常用属性总结<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">字体属性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>字体，大小，粗细，文本样式</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>属性值举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>font-family</td>
+<td>字体</td>
+<td>"Microsoft YaHei"</td>
+</tr>
+<tr>
+<td>font-size</td>
+<td>大小</td>
+<td>20px（不会影响标题）</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>粗细</td>
+<td>700（加粗:100，普通:100）</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>文字样式</td>
+<td>normal（斜体:italic）</td>
+</tr>
+</tbody>
+</table>
+<p>复合属性</p>
+<div class="highlight"><pre><span></span><code>/*font: font-style font-weight font-size/line-height font-family*/
+/*上面的顺序不能更改*/
+/*font-size 和 font-famliy 不可以省略*/
+font: italic 700 16px &#39;Microsoft yahei&#39;;
+</code></pre></div>
+<h3 id="_9">文本属性<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>文本的外观属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>属性值举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>颜色</td>
+<td>red / #FF0000</td>
+</tr>
+<tr>
+<td>text-align</td>
+<td>水平对齐</td>
+<td>center / left / right</td>
+</tr>
+<tr>
+<td>text-decoration</td>
+<td>装饰文本</td>
+<td>none / underline / overline / line-through</td>
+</tr>
+<tr>
+<td>text-indent</td>
+<td>首行缩进</td>
+<td>10px / 2em（2个当前文字大小）</td>
+</tr>
+<tr>
+<td>ling-height</td>
+<td>行间距</td>
+<td>26px</td>
+</tr>
+</tbody>
+</table>
+<p>装饰属性取 none 常用在取消超链接的下划线</p>
+<h3 id="_10">其他<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>width / height</td>
+<td>高度 / 宽度</td>
+</tr>
+<tr>
+<td>background-color</td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td>margin</td>
+<td></td>
+</tr>
+<tr>
+<td>padding</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_11">类名规范<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>类名含义</th>
+<th>类名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>页尾 / 页脚</td>
+<td>footer</td>
+</tr>
+<tr>
+<td>图片</td>
+<td>pic</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_12">工具<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>FSCaputer：测行高，拾色器</p>
+<h2 id="_13">一些实例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">图片居中对齐<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.pic {
+    text-align:center;
+}
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pic&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
                 
               

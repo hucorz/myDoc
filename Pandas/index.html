@@ -1,0 +1,847 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/Pandas/">
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Pandas - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pandas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pandas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Markdown/" class="md-tabs__link">
+      Makrdown
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        课程笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../HTML/" class="md-tabs__link">
+      HTML
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/hucorz/myDoc/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Markdown/" class="md-nav__link">
+        Makrdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        OI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        课程笔记
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="课程笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          课程笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        其他
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dataframe" class="md-nav__link">
+    DataFrame
+  </a>
+  
+    <nav class="md-nav" aria-label="DataFrame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataframe_1" class="md-nav__link">
+    创建 DataFrame
+  </a>
+  
+    <nav class="md-nav" aria-label="创建 DataFrame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    用字典创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    用数组创建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe_2" class="md-nav__link">
+    空 DataFrame
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    索引设置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe_3" class="md-nav__link">
+    读取 DataFrame
+  </a>
+  
+    <nav class="md-nav" aria-label="读取 DataFrame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    按列读取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    按行读取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/Pandas.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="pandas">Pandas<a class="headerlink" href="#pandas" title="Permanent link">&para;</a></h1>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/index.html">pandas documentation — pandas 1.2.4 documentation (pydata.org)</a> </p>
+<h2 id="dataframe">DataFrame<a class="headerlink" href="#dataframe" title="Permanent link">&para;</a></h2>
+<h3 id="dataframe_1">创建 DataFrame<a class="headerlink" href="#dataframe_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1">#  数据  索引（行标签） 列标签  数据类型  拷贝数据  </span>
+</code></pre></div>
+<h4 id="_1">用字典创建<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;one&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="s2">&quot;two&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="s2">&quot;three&quot;</span><span class="p">:[</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="s1">&#39;李四&#39;</span><span class="p">,</span><span class="mi">999</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]}</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="_2">用数组创建<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="c1">#创建一个6行4列的数组</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCD&#39;</span><span class="p">),</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;2006-10-1&#39;</span><span class="p">,</span><span class="s1">&#39;第六行&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="dataframe_2">空 DataFrame<a class="headerlink" href="#dataframe_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;grade&#39;</span><span class="p">,</span><span class="s1">&#39;class&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="_3">索引设置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>创建 df 是不指定索引默认会从 0 开始</p>
+<p><strong>set_index</strong>：将 df 中的某列设置为索引</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># drop默认为True, 表示设置索引后将该列删除</span>
+</code></pre></div>
+<p><strong>reset_index</strong>：重置索引</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># drop默认为False, 表示原索引将作为数据保留</span>
+</code></pre></div>
+<h3 id="dataframe_3">读取 DataFrame<a class="headerlink" href="#dataframe_3" title="Permanent link">&para;</a></h3>
+<p>loc 都是行名和列名，iloc 都是行号和列号</p>
+<p>loc 不支持行号切片</p>
+<h4 id="_4">按列读取<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 按列名</span>
+<span class="n">f</span><span class="o">.</span><span class="n">列名</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;列名&#39;</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;列名1&#39;</span><span class="p">,</span> <span class="s1">&#39;列名2&#39;</span><span class="p">,</span><span class="o">...</span><span class="p">]]</span>  <span class="c1"># series Dataframe Dataframe</span>
+
+<span class="c1"># 按列号 iloc</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># [0,2)列</span>
+</code></pre></div>
+<h4 id="_5">按行读取<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>```python</p>
+<h1 id="loc">按行标签 loc（行标签不一定是字符串<a class="headerlink" href="#loc" title="Permanent link">&para;</a></h1>
+<p>df.loc['行标签'] / df.loc[['行标签']] / df.loc[['行标签1','行标签2',...]]  # series Dataframe Dataframe</p>
+<h1 id="iloc">按行号 iloc<a class="headerlink" href="#iloc" title="Permanent link">&para;</a></h1>
+<p>df.iloc[行号] / df.iloc[[行号]] / df.iloc[[行号1,行号2,...]] / df.iloc[行号1:行号2]# 第一个是series 后面的是Dataframe 
+ ```</p>
+<h4 id="_6">按单元格读取<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="n">row</span><span class="p">]</span> <span class="c1"># df[&#39;a&#39;][1]</span>
+
+<span class="o">/*</span> <span class="n">loc</span> <span class="o">*/</span>
+<span class="c1"># 一个单元格</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+
+<span class="c1"># 一行多列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">][[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">firstCol</span><span class="p">:</span><span class="n">endCol</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">firstCol</span><span class="p">:</span><span class="n">endCol</span><span class="p">]</span>
+
+<span class="c1"># 多行一列 行号不能用切片</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">]][</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">]]</span><span class="o">.</span><span class="n">col</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">],</span><span class="n">col</span><span class="p">]</span>
+
+<span class="c1"># 多行多列 行号不能用切片</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">],[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">]][[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row3</span><span class="p">],</span><span class="n">firstCol</span><span class="p">:</span><span class="n">endCol</span><span class="p">]</span>
+
+<span class="o">/*</span> <span class="n">iloc</span> <span class="o">*/</span> 
+<span class="c1"># 一个单元格 不支持df.iloc[rowNo,col]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">]</span><span class="o">.</span><span class="n">col</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">,</span><span class="n">colNo</span><span class="p">]</span> 
+
+<span class="c1"># 一行多列 不支持df.iloc[rowNo,[col1,col2]],df.iloc[rowNo,firstColNo:endColNo]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">,</span><span class="n">firestColNo</span><span class="p">:</span><span class="n">endColNo</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">][[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rowNo</span><span class="p">][</span><span class="n">firesCol</span><span class="p">:</span><span class="n">endCol</span><span class="p">]</span>
+
+<span class="c1"># 多行一列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">rowNo1</span><span class="p">,</span><span class="n">rowNo2</span><span class="p">],</span><span class="n">colNo</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">firstRowNo</span><span class="p">:</span><span class="n">endRowNo</span><span class="p">,</span><span class="n">colNo</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">rowNo1</span><span class="p">,</span><span class="n">rowNo2</span><span class="p">]][</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">firstRowNo</span><span class="p">:</span><span class="n">endRowNo</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+
+<span class="c1"># 多行多列</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">firstRowNo</span><span class="p">:</span><span class="n">endRowNo</span><span class="p">,</span><span class="n">firstColNo</span><span class="p">:</span><span class="n">endColNo</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">RowNo1</span><span class="p">,</span><span class="n">RowNo2</span><span class="p">],[</span><span class="n">ColNo1</span><span class="p">,</span><span class="n">ColNo2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">firstRowNo</span><span class="p">:</span><span class="n">endRowNo</span><span class="p">][[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span>
+</code></pre></div>
+<h3 id="_7">赋值<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>如果用一个列表或数组赋值，其长度必须相同</p>
+<h4 id="_8">按列赋值<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">col</span><span class="o">=</span><span class="n">colList</span><span class="o">/</span><span class="n">colValue</span>  
+<span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">=</span><span class="n">colList</span><span class="o">/</span><span class="n">colValue</span>
+<span class="c1"># eg: df.A=[1,2,3,4,5,6],df[&#39;A&#39;]=0</span>
+</code></pre></div>
+<h4 id="_9">按行赋值<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">=</span><span class="n">rowList</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">=</span><span class="n">rowValue</span>
+</code></pre></div>
+<h4 id="_10">多行多列赋值<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">row1</span><span class="p">,</span><span class="n">row2</span><span class="p">],[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span><span class="o">=</span><span class="n">value</span><span class="o">/</span><span class="n">valueList</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">rowNo1</span><span class="p">,</span><span class="n">rowNo2</span><span class="p">],[</span><span class="n">colNo1</span><span class="p">,</span><span class="n">colNo2</span><span class="p">]]</span><span class="o">=</span><span class="n">value</span><span class="o">/</span><span class="n">valueList</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">rowNo1</span><span class="p">,</span><span class="n">rowNo2</span><span class="p">]][[</span><span class="n">col1</span><span class="p">,</span><span class="n">col2</span><span class="p">]]</span><span class="o">=</span><span class="n">value</span><span class="o">/</span><span class="n">valueList</span>
+</code></pre></div>
+<h4 id="_11">其他<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="n">df</span> <span class="o">==</span> <span class="s1">&#39;NR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># 所有 NR 替换成 0</span>
+</code></pre></div>
+<h3 id="_12">增加数据<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_13">删除数据<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">其他<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="__version">__version<a class="headerlink" href="#__version" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">__version__</span> <span class="c1"># 查看版本</span>
+</code></pre></div>
+<h4 id="read_csv-to_string">read_csv() / to_string()<a class="headerlink" href="#read_csv-to_string" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;nba.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="c1">#to_string() 用于返回 DataFrame 类型的数据，如果不使用该函数，则输出结果为数据的前面 5 行和末尾 5 行，中间部分以 ... 代替</span>
+</code></pre></div>
+<h4 id="to_csv">to_csv()<a class="headerlink" href="#to_csv" title="Permanent link">&para;</a></h4>
+<p>使用 <strong>to_csv()</strong> 方法将 DataFrame 存储为 csv 文件</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;site.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="headn-tailn">head(n) / tail(n)<a class="headerlink" href="#headn-tailn" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 读取前10行，默认为5行</span>
+</code></pre></div>
+<h4 id="info">info()<a class="headerlink" href="#info" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span> <span class="c1"># 返回表格的基本信息</span>
+</code></pre></div>
+<h4 id="to_numpy">to_numpy()<a class="headerlink" href="#to_numpy" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1"># 转换为 numpy</span>
+</code></pre></div>
+<h2 id="_15">参考<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p><a href="https://blog.csdn.net/xtfge0915/article/details/52938740">pandas 入门：DataFrame的创建，读写，插入和删除_不去想结果，一直在路上-CSDN博客_dataframe</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
