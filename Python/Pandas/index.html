@@ -198,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
         备考笔记
       </a>
     </li>
@@ -232,7 +232,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
         Python
       </a>
     </li>
@@ -468,8 +468,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E5%8F%82%E8%80%83/" class="md-nav__link">
-        参考
+      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
       </a>
     </li>
   
@@ -560,6 +560,18 @@
           Python
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
           
             
   
@@ -752,8 +764,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#read_csv-to_string" class="md-nav__link">
-    read_csv() / to_string()
+  <a href="#read_csv" class="md-nav__link">
+    read_csv()
   </a>
   
 </li>
@@ -773,15 +785,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    info()
+  <a href="#to_numpy" class="md-nav__link">
+    to_numpy()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#to_numpy" class="md-nav__link">
-    to_numpy()
+  <a href="#to_string" class="md-nav__link">
+    to_string()
   </a>
   
 </li>
@@ -1074,8 +1086,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#read_csv-to_string" class="md-nav__link">
-    read_csv() / to_string()
+  <a href="#read_csv" class="md-nav__link">
+    read_csv()
   </a>
   
 </li>
@@ -1095,15 +1107,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    info()
+  <a href="#to_numpy" class="md-nav__link">
+    to_numpy()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#to_numpy" class="md-nav__link">
-    to_numpy()
+  <a href="#to_string" class="md-nav__link">
+    to_string()
   </a>
   
 </li>
@@ -1240,11 +1252,17 @@
 <h4 id="__version">__version<a class="headerlink" href="#__version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">__version__</span> <span class="c1"># 查看版本</span>
 </code></pre></div>
-<h4 id="read_csv-to_string">read_csv() / to_string()<a class="headerlink" href="#read_csv-to_string" title="Permanent link">&para;</a></h4>
+<h4 id="read_csv">read_csv()<a class="headerlink" href="#read_csv" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;nba.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
-<span class="c1">#to_string() 用于返回 DataFrame 类型的数据，如果不使用该函数，则输出结果为数据的前面 5 行和末尾 5 行，中间部分以 ... 代替</span>
 </code></pre></div>
+<p>常用属性：</p>
+<ul>
+<li>sep：分隔符，如 sep=','</li>
+<li>header：指定一行为表头，如 header=0 即指定第一行为表头</li>
+<li>name：指定表头，如name=['a','b]</li>
+<li>header不指定，name不指定：第一行作为表头</li>
+<li>header指定，name指定：先用header指定行作为表头，然后用name覆盖，相当于删除了header指定的行，并用name指定表头</li>
+</ul>
 <h4 id="to_csv">to_csv()<a class="headerlink" href="#to_csv" title="Permanent link">&para;</a></h4>
 <p>使用 <strong>to_csv()</strong> 方法将 DataFrame 存储为 csv 文件</p>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;site.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
@@ -1252,14 +1270,16 @@
 <h4 id="headn-tailn">head(n) / tail(n)<a class="headerlink" href="#headn-tailn" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 读取前10行，默认为5行</span>
 </code></pre></div>
-<h4 id="info">info()<a class="headerlink" href="#info" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span> <span class="c1"># 返回表格的基本信息</span>
-</code></pre></div>
 <h4 id="to_numpy">to_numpy()<a class="headerlink" href="#to_numpy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1"># 转换为 numpy</span>
 </code></pre></div>
+<h4 id="to_string">to_string()<a class="headerlink" href="#to_string" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="c1">#to_string() 用于返回 DataFrame 类型的数据，如果不使用该函数，则输出结果为数据的前面 5 行和末尾 5 行，中间部分以 ... 代替</span>
+</code></pre></div>
 <h2 id="_15">参考<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p><a href="https://blog.csdn.net/xtfge0915/article/details/52938740">pandas 入门：DataFrame的创建，读写，插入和删除_不去想结果，一直在路上-CSDN博客_dataframe</a></p>
+<p><a href="https://blog.csdn.net/xtfge0915/article/details/52938740">pandas 入门：DataFrame的创建，读写，插入和删除_不去想结果，一直在路上-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/traditional/p/12514914.html">详解pandas的read_csv方法 - 古明地盆 - 博客园 </a></p>
                 
               
               
@@ -1279,7 +1299,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HTML" rel="prev">
+        <a href="../%E8%AF%B4%E6%98%8E/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 说明" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1288,7 +1308,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              HTML
+              说明
             </div>
           </div>
         </a>

@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E5%8F%82%E8%80%83/">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/Python/Matplotlib/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>参考 - hucorz's Docs</title>
+        <title>Matplotlib - hucorz's Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#matplotlib" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              参考
+              Matplotlib
             
           </span>
         </div>
@@ -192,15 +192,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
         备考笔记
       </a>
     </li>
@@ -232,7 +230,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Python/Pandas/" class="md-tabs__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
         Python
       </a>
     </li>
@@ -445,14 +443,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         备考笔记
@@ -468,21 +464,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        参考
+    <li class="md-nav__item">
+      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
       </a>
-      
     </li>
   
 
@@ -492,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../%E5%A4%87%E8%80%83%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         数据库系统
       </a>
     </li>
@@ -576,7 +562,19 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Pandas/" class="md-nav__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pandas/" class="md-nav__link">
         Pandas
       </a>
     </li>
@@ -588,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Pymssql/" class="md-nav__link">
+      <a href="../Pymssql/" class="md-nav__link">
         Pymssql
       </a>
     </li>
@@ -600,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Python/Streamlit/" class="md-nav__link">
+      <a href="../Streamlit/" class="md-nav__link">
         Streamlit
       </a>
     </li>
@@ -683,8 +681,55 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    Matplotlib
+  </a>
+  
+    <nav class="md-nav" aria-label="Matplotlib">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyplot" class="md-nav__link">
+    pyplot()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    坐标轴
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contourf-contour" class="md-nav__link">
+    contourf() / contour()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    其他
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -696,15 +741,101 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/备考笔记/参考.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/Python/Matplotlib.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>此文档仅作为课程应试复习笔记和参考文档</p>
-<p>参考：</p>
-<p>数据库： 数据库基础教程（第三版） 顾韵华 电子工业出版社</p>
+                  <h1>Matplotlib</h1>
+                
+                <h2 id="matplotlib">Matplotlib<a class="headerlink" href="#matplotlib" title="Permanent link">&para;</a></h2>
+<p><a href="https://matplotlib.org/stable/contents.html">Overview — Matplotlib 3.4.2 documentation</a> </p>
+<h3 id="pyplot"><strong>pyplot()</strong><a class="headerlink" href="#pyplot" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">ply</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="n">fmt</span><span class="p">],</span> <span class="p">[</span><span class="n">x2</span><span class="p">],</span> <span class="n">y2</span><span class="p">,</span> <span class="p">[</span><span class="n">fmt2</span><span class="p">],</span> <span class="o">...</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="c1"># https://blog.csdn.net/sinat_36219858/article/details/79800460</span>
+<span class="c1"># color=&#39;red&#39;    全部点设置为红色</span>
+<span class="c1"># marker=&#39;.&#39;     点形为圆点</span>
+<span class="c1"># linestyle=&#39;&#39;   线型为空，也即点与点之间不用线连接</span>
+
+<span class="c1"># plot(&#39;xlabel&#39;, &#39;ylabel&#39;, data=obj) 带标签的数据作图</span>
+<span class="c1"># markeredgecolor or mec:   color</span>
+<span class="c1"># markeredgewidth or mew:   float</span>
+<span class="c1"># markersize or ms: float</span>
+<span class="c1"># linewidth or lw:  float</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 颜色参数</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="n">character</span>        <span class="n">color</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="err">``</span><span class="s1">&#39;b&#39;</span><span class="err">``</span>          <span class="n">blue</span> <span class="n">蓝</span>
+    <span class="err">``</span><span class="s1">&#39;g&#39;</span><span class="err">``</span>          <span class="n">green</span> <span class="n">绿</span>
+    <span class="err">``</span><span class="s1">&#39;r&#39;</span><span class="err">``</span>          <span class="n">red</span> <span class="n">红</span>
+    <span class="err">``</span><span class="s1">&#39;c&#39;</span><span class="err">``</span>          <span class="n">cyan</span> <span class="n">蓝绿</span>
+    <span class="err">``</span><span class="s1">&#39;m&#39;</span><span class="err">``</span>          <span class="n">magenta</span> <span class="n">洋红</span>
+    <span class="err">``</span><span class="s1">&#39;y&#39;</span><span class="err">``</span>          <span class="n">yellow</span> <span class="n">黄</span>
+    <span class="err">``</span><span class="s1">&#39;k&#39;</span><span class="err">``</span>          <span class="n">black</span> <span class="n">黑</span>
+    <span class="err">``</span><span class="s1">&#39;w&#39;</span><span class="err">``</span>          <span class="n">white</span> <span class="n">白</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+<span class="c1">#  点型参数</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="n">character</span>        <span class="n">description</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="err">``</span><span class="s1">&#39;.&#39;</span><span class="err">``</span>          <span class="n">point</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;,&#39;</span><span class="err">``</span>          <span class="n">pixel</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;o&#39;</span><span class="err">``</span>          <span class="n">circle</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;v&#39;</span><span class="err">``</span>          <span class="n">triangle_down</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;^&#39;</span><span class="err">``</span>          <span class="n">triangle_up</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;&lt;&#39;</span><span class="err">``</span>          <span class="n">triangle_left</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;&gt;&#39;</span><span class="err">``</span>          <span class="n">triangle_right</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;1&#39;</span><span class="err">``</span>          <span class="n">tri_down</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;2&#39;</span><span class="err">``</span>          <span class="n">tri_up</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;3&#39;</span><span class="err">``</span>          <span class="n">tri_left</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;4&#39;</span><span class="err">``</span>          <span class="n">tri_right</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;s&#39;</span><span class="err">``</span>          <span class="n">square</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;p&#39;</span><span class="err">``</span>          <span class="n">pentagon</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;*&#39;</span><span class="err">``</span>          <span class="n">star</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;h&#39;</span><span class="err">``</span>          <span class="n">hexagon1</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;H&#39;</span><span class="err">``</span>          <span class="n">hexagon2</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;+&#39;</span><span class="err">``</span>          <span class="n">plus</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;x&#39;</span><span class="err">``</span>          <span class="n">x</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;D&#39;</span><span class="err">``</span>          <span class="n">diamond</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;d&#39;</span><span class="err">``</span>          <span class="n">thin_diamond</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;|&#39;</span><span class="err">``</span>          <span class="n">vline</span> <span class="n">marker</span>
+    <span class="err">``</span><span class="s1">&#39;_&#39;</span><span class="err">``</span>          <span class="n">hline</span> <span class="n">marker</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+<span class="c1"># 线型参数</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="n">character</span>        <span class="n">description</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+    <span class="err">``</span><span class="s1">&#39;-&#39;</span><span class="err">``</span>          <span class="n">solid</span> <span class="n">line</span> <span class="n">style</span> <span class="n">实线</span>
+    <span class="err">``</span><span class="s1">&#39;--&#39;</span><span class="err">``</span>         <span class="n">dashed</span> <span class="n">line</span> <span class="n">style</span> <span class="n">虚线</span>
+    <span class="err">``</span><span class="s1">&#39;-.&#39;</span><span class="err">``</span>         <span class="n">dash</span><span class="o">-</span><span class="n">dot</span> <span class="n">line</span> <span class="n">style</span> <span class="n">点画线</span>
+    <span class="err">``</span><span class="s1">&#39;:&#39;</span><span class="err">``</span>          <span class="n">dotted</span> <span class="n">line</span> <span class="n">style</span> <span class="n">点线</span>
+    <span class="o">=============</span>    <span class="o">===============================</span>
+</code></pre></div>
+<h3 id="_1">坐标轴<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="c1"># left, right = xlim()  # return the current xlim</span>
+<span class="c1"># xlim(left, right)     # set the xlim to left, right</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="c1"># fontsize:数字或’small’，‘large’，‘medium’</span>
+
+<span class="c1"># plt.xlabel(r&#39;$b$&#39;,fontsize=16)</span>
+</code></pre></div>
+<h3 id="contourf-contour">contourf() / contour()<a class="headerlink" href="#contourf-contour" title="Permanent link">&para;</a></h3>
+<p>绘制等高线，contourf()会填充轮廓</p>
+<div class="highlight"><pre><span></span><code><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">contourf</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,]</span> <span class="n">Z</span><span class="p">,</span> <span class="p">[</span><span class="n">levels</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="c1"># https://blog.csdn.net/lens___/article/details/83960810</span>
+<span class="c1"># colors:colors=&#39;black&#39;</span>
+<span class="c1"># cmap:colormap 热力图 cmap=plt.cm.hot</span>
+<span class="c1"># alpha:float, default 1, between 0 (transparent) and 1 (opaque)</span>
+<span class="c1"># 等高线密集程度:plt.contour(X, Y, f(X, Y),  8, colors=&#39;black&#39;),其中8为密集程度</span>
+</code></pre></div>
+<h3 id="_2">其他<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="err">‘</span><span class="n">agg</span><span class="err">’</span><span class="p">)</span><span class="c1"># 在执行import matplotlib.pyplot as plt前运行, 不会显示绘图</span>
+</code></pre></div>
                 
               
               
@@ -720,41 +851,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../OI/STL/" class="md-footer__link md-footer__link--prev" aria-label="Previous: STL" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              STL
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--next" aria-label="Next: 数据库系统" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              数据库系统
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
