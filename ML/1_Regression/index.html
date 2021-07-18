@@ -1077,9 +1077,11 @@
 <h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
 <p>单个参数直接求微分，多个参数求偏微分
 $$
+\begin{align}
 L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \
 \frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \
 \frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
+\end{align}
 $$</p>
 <div class="arithmatex">\[
 \begin{align}
@@ -1111,14 +1113,16 @@ if(\frac{\partial L}{\partial w}==0 \&amp;\&amp; \frac{\partial L}{\partial b}==
 </li>
 </ul>
 <div class="arithmatex">\[
+\begin{align}
 if \ \ x_s=Pidgey: \ \ \ \ \ \ \ y=b_1+w_1\cdot x_{cp} \\
 if \ \ x_s=Weedle: \ \ \ \ \ \ y=b_2+w_2\cdot x_{cp} \\
 if \ \ x_s=Caterpie: \ \ \ \ y=b_3+w_3\cdot x_{cp} \\
 if \ \ x_s=Eevee: \ \ \ \ \ \ \ \ \ y=b_4+w_4\cdot x_{cp}
+\end{align}
 \]</div>
 <h3 id="regularization-overfitting">regularization 解决 overfitting<a class="headerlink" href="#regularization-overfitting" title="Permanent link">&para;</a></h3>
-<p>正则化解决过拟合问题</p>
-<p>$$
+<p>正则化解决过拟合问题
+$$
 L=\sum\limits_i^n(\widehat{y}^i-(b+\sum\limits_{j}w_jx_j))^2+\lambda\sum(w_i)^2
 $$
 希望 <span class="arithmatex">\(w_i\)</span> 比较小而得到一个平滑的曲线，这里的 λ 需要我们手动去调整以取得最好的值</p>
