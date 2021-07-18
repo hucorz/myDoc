@@ -1140,31 +1140,31 @@ $$
 <p>知道了某一组 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 就可以计算出 Posterior Probability（后验概率），然后利用后验概率可以计算出极大似然估计，那么能够使极大似然估计值最大的那组 <span class="arithmatex">\(w^*\)</span> 和 <span class="arithmatex">\(b^*\)</span> 就是最有可能产生当前 Training Data 的一组参数</p>
 <p>这里假定二元分类，class1 的概率是 1-class2 的概率</p>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Notes/3_Logistic_Regression_2.png" width="80%;" /></p>
-<p>将上式变形：
-$$
-\begin{split}
-&amp;w^<em>,b^</em>=\arg \max\limits_{w,b} L(w,b)=\arg\min\limits_{w,b}(-\ln L(w,b)) \
-&amp;\begin{equation}
-\begin{split}
--\ln L(w,b)=&amp;-\ln f_{w,b}(x^1)\
-&amp;-\ln f_{w,b}(x^2)\
-&amp;-\ln(1-f_{w,b}(x^3))\
+<p>将上式变形：</p>
+<div class="arithmatex">\[
+w^*,b^*=\arg \max\limits_{w,b} L(w,b)=\arg\min\limits_{w,b}(-\ln L(w,b))
+\]</div>
+<div class="arithmatex">\[
+\begin{align}
+-\ln L(w,b)=&amp;-\ln f_{w,b}(x^1)\\
+&amp;-\ln f_{w,b}(x^2)\\
+&amp;-\ln(1-f_{w,b}(x^3))\\
 &amp;\ -...
-\end{split}
-\end{equation}
-\end{split}
+\end{align}
 $$
-为了统一格式，把 output  <span class="arithmatex">\(\hat{y}=1\)</span> 代表 class1，output  <span class="arithmatex">\(\hat{y}=0\)</span> 代表 class2
+为了统一格式，把 output  $\hat{y}=1$ 代表 class1，output  $\hat{y}=0$ 代表 class2
 $$
-\begin{split}
--\ln L(w,b)=&amp;-[\hat{y}^1 \ln f_{w,b}(x^1)+(1-\hat{y}^1)ln(1-f_{w,b}(x^1))]\
-&amp;-[\hat{y}^2 \ln f_{w,b}(x^2)+(1-\hat{y}^2)ln(1-f_{w,b}(x^2))]\
-&amp;-[\hat{y}^3 \ln f_{w,b}(x^3)+(1-\hat{y}^3)ln(1-f_{w,b}(x^3))]\
-&amp;\ -...\
--\ln L(w,b)=&amp;\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
-\end{split}
+\begin{align}
+-\ln L(w,b)=&amp;-[\hat{y}^1 \ln f_{w,b}(x^1)+(1-\hat{y}^1)ln(1-f_{w,b}(x^1))]\\
+&amp;-[\hat{y}^2 \ln f_{w,b}(x^2)+(1-\hat{y}^2)ln(1-f_{w,b}(x^2))]\\
+&amp;-[\hat{y}^3 \ln f_{w,b}(x^3)+(1-\hat{y}^3)ln(1-f_{w,b}(x^3))]\\
+&amp;\ -...
+\end{align}
 $$
-这个形式其实就是 <strong>两个 Bernoulli distribution (两点分布)的 cross entropy (交叉熵)</strong>，把这个作为 Loss Function</p>
+$$
+-\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
+\]</div>
+<p>这个形式其实就是 <strong>两个 Bernoulli distribution (两点分布)的 cross entropy (交叉熵)</strong>，把这个作为 Loss Function</p>
 <p>于是我们把 极大似然估计 的式子变成了 交叉熵 作为 Loss Function 以方便微分</p>
 <h4 id="cross-entropy">Cross Entropy<a class="headerlink" href="#cross-entropy" title="Permanent link">&para;</a></h4>
 <p><a href="https://zhuanlan.zhihu.com/p/54066141">笔记 | 什么是Cross Entropy - 知乎</a></p>
@@ -1176,11 +1176,17 @@ $$
 <h3 id="step-3find-the-best-function">step 3：Find the best function<a class="headerlink" href="#step-3find-the-best-function" title="Permanent link">&para;</a></h3>
 <p>即找到使 Loss Function 即 Cross Entropy 最小的一组 <span class="arithmatex">\(w^*,b^*\)</span>，这里运用 Gradient Descent
 $$
+\begin{align}
 P_{w,b}(C_1|x)=\sigma(z)=\frac{1}{1+e^{-z}} \
 z=w\cdot x+b=\sum\limits_i w_ix_i+b
+\end{align}
 $$</p>
 <div class="arithmatex">\[
-f_{w,b}(x)=P_{w,b}(C_1|x) \\
+\begin{align}
+f_{w,b}(x)=P_{w,b}(C_1|x)
+\end{align}
+\]</div>
+<div class="arithmatex">\[
 -\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
 \]</div>
 <p>Sigmoid Function 的微分公式：
@@ -1253,22 +1259,22 @@ $$
 <p>softmax 的 output，就拿来当 z 的 probability</p>
 <h3 id="multi-class-classification_1">multi-class classification 的过程<a class="headerlink" href="#multi-class-classification_1" title="Permanent link">&para;</a></h3>
 <p>input x 经过三个式子后分别生成 <span class="arithmatex">\(z_1,z_2,z_3\)</span>，经过 softmax 后转换成 <span class="arithmatex">\(y_1,y_2,y_3\)</span>，这分别是三个 class 的 posterior probability</p>
-<p>为了计算交叉熵，不能把 targrt 设为 1,2,3，这里使用向量
-$$
+<p>为了计算交叉熵，不能把 targrt 设为 1,2,3，这里使用向量</p>
+<div class="arithmatex">\[
 \hat{y}=
 \begin{bmatrix}
-1\0\0
-\end{bmatrix}<em>{x \ ∈ \ class 1}
+1\\0\\0
+\end{bmatrix}_{x \ ∈ \ class 1}
 \hat{y}=
 \begin{bmatrix}
-0\1\0
-\end{bmatrix}</em>{x \ ∈ \ class 2}
+0\\1\\0
+\end{bmatrix}_{x \ ∈ \ class 2}
 \hat{y}=
 \begin{bmatrix}
-0\0\1
+0\\0\\1
 \end{bmatrix}_{x \ ∈ \ class 3}
-$$
-<img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Notes/3_Logistic_Regression_12.png" width="80%;" /></p>
+\]</div>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Notes/3_Logistic_Regression_12.png" width="80%;" /></p>
 <p>然后计算 <span class="arithmatex">\(y，\hat{y}\)</span> 之间的交叉熵，<span class="arithmatex">\(-\sum\limits_{i=1}^3 \hat{y}_i \ln y_i\)</span> </p>
 <h2 id="limitation-of-logistic-regression">Limitation of Logistic Regression<a class="headerlink" href="#limitation-of-logistic-regression" title="Permanent link">&para;</a></h2>
 <p>Logistic Regression 有很强的限制，因为他的 boundary 是一条直线，而对于下面的例子</p>
@@ -1389,11 +1395,17 @@ $$
     
       <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
       
-        <script src="../../javascripts/config.js"></script>
-      
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
   </body>

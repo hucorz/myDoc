@@ -1043,13 +1043,12 @@
 <p>Regression 并不适用于 output 是离散的函数</p>
 <p>而且需要注意的是如果是 多元分类，不能把 class1's target 设为 1， class2's target 设为 2，class3's target 设为 3，因为这样做就默认 class1 和 class2 相比 和 class3 更加接近</p>
 <h3 id="ideal-alternatives">Ideal Alternatives<a class="headerlink" href="#ideal-alternatives" title="Permanent link">&para;</a></h3>
-<p>Function Model：function f(x) 里面设另外一个function g(x)
-$$
-x\Rightarrow 
+<p>Function Model：function f(x) 里面设另外一个function g(x) </p>
+<p>$$
 f(x)=
 \begin{cases}
-g(x) &gt; 0 \ then \ output = class1 \
-g(x) &lt; 0 \ then \ output = class2
+g(x)&gt;0  &amp;output=class1 \
+g(x)&lt;0  &amp;output=class2 
 \end{cases}
 $$
 为什么又能用数值表示 class 了？ 因为那是针对 Regression 的 Loss function 而言的，所以我们需要重新定义一个 Loss Function
@@ -1080,8 +1079,10 @@ $$
 <p>得到 <span class="arithmatex">\(x|C_1 \ x|C_2\)</span> 的高斯分布后把 <span class="arithmatex">\(x\)</span> 代入即可得到 <span class="arithmatex">\(P(x|C_1) \ P(x|C_2)\)</span> </p>
 <h3 id="do-classification">Do Classification<a class="headerlink" href="#do-classification" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
+\begin{align}
 if \ P(C_1|x) &gt; 0.5 \Rightarrow x \ belongs \ class1 \\
 if \ P(C_2|x) &gt; 0.5 \Rightarrow x \ belongs \ class2
+\end{align}
 \]</div>
 <p>在只考虑宝可梦的 Defense 和 SP Denfense 时这样做出来的效果的出来的准确率并不高，即使考虑了6个 features 准确率也只有 64%，表现比较糟糕</p>
 <h2 id="modifying-model">Modifying Model<a class="headerlink" href="#modifying-model" title="Permanent link">&para;</a></h2>
@@ -1191,11 +1192,17 @@ $$
     
       <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
       
-        <script src="../../javascripts/config.js"></script>
-      
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
   </body>

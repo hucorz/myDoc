@@ -1075,14 +1075,14 @@
 <p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 <span class="arithmatex">\(y=b+ \sum w_ix_i\)</span> </p>
 <p>Loss function： <span class="arithmatex">\(L(f)=L(w,b)=\sum_{n=1}^{10}(\widehat{y}^n-(b+w \cdot x^{n}_{cp}))^2\)</span> </p>
 <h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
-<p>单个参数直接求微分，多个参数求偏微分
-$$
+<p>单个参数直接求微分，多个参数求偏微分</p>
+<div class="arithmatex">\[
 \begin{align}
-L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \
-\frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \
+L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \\
+\frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \\
 \frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
 \end{align}
-$$</p>
+\]</div>
 <div class="arithmatex">\[
 \begin{align}
 w^1=w^0-η\frac{\partial L}{\partial w}|_{w=w^0,b=b^0} \ \ \ \ \ \ \ \  \ b^1=b^0-η\frac{\partial L}{\partial b}|_{w=w^0,b=b^0} \\
@@ -1309,11 +1309,17 @@ $$
     
       <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
       
-        <script src="../../javascripts/config.js"></script>
-      
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
   </body>
