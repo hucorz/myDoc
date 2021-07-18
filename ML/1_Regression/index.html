@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E5%85%B6%E4%BB%96/Mkdocs/">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/1_Regression/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
     
     
       
-        <title>Mkdocs - hucorz's Docs</title>
+        <title>Regression - hucorz's Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#material-for-mkdocs" class="md-skip">
+        <a href="#regression" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mkdocs
+              Regression
             
           </span>
         </div>
@@ -240,13 +240,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
         ML
       </a>
     </li>
@@ -256,15 +258,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
         其他
       </a>
     </li>
@@ -647,12 +647,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         ML
@@ -670,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         说明
       </a>
     </li>
@@ -680,11 +682,149 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../ML/1_Regression/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Regression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Regression
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression_1" class="md-nav__link">
+    Regression 具体过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-model" class="md-nav__link">
+    Linear Model 线性模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent 梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    非线性的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization-overfitting" class="md-nav__link">
+    regularization 解决 overfitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" class="md-nav__link">
+    Adaptive Learning rates
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Learning rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradicent-descent" class="md-nav__link">
+    Stochastic Gradicent Descent
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    Feature Scaling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-variance" class="md-nav__link">
+    Bias and Variance
+  </a>
+  
+    <nav class="md-nav" aria-label="Bias and Variance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-or-variance" class="md-nav__link">
+    如何处理 bias 大 or variance 大的情况呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-set-validation-set" class="md-nav__link">
+    training set 和 validation set
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -694,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ML/2_Classification/" class="md-nav__link">
+      <a href="../2_Classification/" class="md-nav__link">
         Classification
       </a>
     </li>
@@ -706,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
         Logistic Regression
       </a>
     </li>
@@ -725,14 +865,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
         其他
@@ -748,186 +886,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Mkdocs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
         Mkdocs
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装/初始化/配置范例
-  </a>
-  
-    <nav class="md-nav" aria-label="安装/初始化/配置范例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    初始化
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    部署 github
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    美化配置
-  </a>
-  
-    <nav class="md-nav" aria-label="美化配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    文档名称
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    文档主题
-  </a>
-  
-    <nav class="md-nav" aria-label="文档主题">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    配色
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    导航页
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logo-favicon" class="md-nav__link">
-    logo &amp;&amp; favicon
-  </a>
-  
-    <nav class="md-nav" aria-label="logo &amp;&amp; favicon">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logo-favicon_1" class="md-nav__link">
-    文档的 logo &amp;&amp; favicon
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repo-logo" class="md-nav__link">
-    repo 的 logo
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    扩展
-  </a>
-  
-    <nav class="md-nav" aria-label="扩展">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown" class="md-nav__link">
-    markdown扩展
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    支持中文搜索
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    参考
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -937,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Markdown/" class="md-nav__link">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
         Markdown
       </a>
     </li>
@@ -966,8 +929,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -976,23 +937,66 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression_1" class="md-nav__link">
+    Regression 具体过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-model" class="md-nav__link">
+    Linear Model 线性模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent 梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    安装/初始化/配置范例
-  </a>
-  
-    <nav class="md-nav" aria-label="安装/初始化/配置范例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    安装
+    非线性的模型
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    初始化
+  <a href="#regularization-overfitting" class="md-nav__link">
+    regularization 解决 overfitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" class="md-nav__link">
+    Adaptive Learning rates
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Learning rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradicent-descent" class="md-nav__link">
+    Stochastic Gradicent Descent
   </a>
   
 </li>
@@ -1001,69 +1005,32 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#github" class="md-nav__link">
-    部署 github
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    Feature Scaling
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    美化配置
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-variance" class="md-nav__link">
+    Bias and Variance
   </a>
   
-    <nav class="md-nav" aria-label="美化配置">
+    <nav class="md-nav" aria-label="Bias and Variance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    文档名称
+  <a href="#bias-or-variance" class="md-nav__link">
+    如何处理 bias 大 or variance 大的情况呢？
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    文档主题
-  </a>
-  
-    <nav class="md-nav" aria-label="文档主题">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    配色
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    导航页
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logo-favicon" class="md-nav__link">
-    logo &amp;&amp; favicon
-  </a>
-  
-    <nav class="md-nav" aria-label="logo &amp;&amp; favicon">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logo-favicon_1" class="md-nav__link">
-    文档的 logo &amp;&amp; favicon
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repo-logo" class="md-nav__link">
-    repo 的 logo
+  <a href="#training-set-validation-set" class="md-nav__link">
+    training set 和 validation set
   </a>
   
 </li>
@@ -1075,45 +1042,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    扩展
-  </a>
-  
-    <nav class="md-nav" aria-label="扩展">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown" class="md-nav__link">
-    markdown扩展
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    支持中文搜索
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    参考
-  </a>
   
 </li>
       
@@ -1129,190 +1057,175 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/其他/Mkdocs.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/1_Regression.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="material-for-mkdocs">基于Material for MkDocs搭建静态文档<a class="headerlink" href="#material-for-mkdocs" title="Permanent link">&para;</a></h1>
-<p>Mkdocs 可以十分方便的建立一个静态文档，比如 <a href="https://oi-wiki.org/">OI Wiki</a>，此文档也是基于 Mkdocs</p>
-<p>此文档内容仅是基于个人经历的理解</p>
-<p>可能需要的用到的工具：<code>Markdown</code>，<code>python3</code></p>
-<h2 id="_1">安装/初始化/配置范例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>利用 python3 自带的 <code>pip</code> 工具在 cmd 中输入</p>
-<div class="highlight"><pre><span></span><code>pip install mkdocs mkdocs-material
+                  <h1>Regression</h1>
+                
+                <h2 id="regression">Regression<a class="headerlink" href="#regression" title="Permanent link">&para;</a></h2>
+<h3 id="regression_1">Regression 具体过程<a class="headerlink" href="#regression_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>定义一个 model 即 function set</li>
+<li>定义一个 goodness of function 损失函数去评估该 function 的好坏</li>
+<li>找一个最好的 function</li>
+</ul>
+<h3 id="linear-model">Linear Model 线性模型<a class="headerlink" href="#linear-model" title="Permanent link">&para;</a></h3>
+<p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 $y=b+ \sum w_ix_i $ </p>
+<p>Loss function： $ L(f)=L(w,b)=\sum_{n=1}^{10}(\widehat{y}^n-(b+w \cdot x^{n}_{cp}))^2$ </p>
+<h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
+<p>单个参数直接求微分，多个参数求偏微分
+$$
+L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \
+\frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \
+\frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
+$$</p>
+<p>$$
+w^1=w^0-η\frac{\partial L}{\partial w}|<em>{w=w^0,b=b^0} \ \ \ \ \ \ \ \  \ b^1=b^0-η\frac{\partial L}{\partial b}|</em>{w=w^0,b=b^0} \
+w^2=w^1-η\frac{\partial L}{\partial w}|<em>{w=w^1,b=b^1} \ \ \ \ \ \ \ \  \ b^2=b^1-η\frac{\partial L}{\partial b}|</em>{w=w^1,b=b^1} \
+... \
+w^{i+1}=w^{i}-η\frac{\partial L}{\partial w}|<em>{w=w^{i},b=b^{i}} \ \ \ \ \ \ \ \  \ b^{i+1}=b^{i}-η\frac{\partial L}{\partial b}|</em>{w=w^{i},b=b^{i}} \
+if(\frac{\partial L}{\partial w}==0 \&amp;\&amp; \frac{\partial L}{\partial b}==0) \ \ \ then \ \ stop
+$$
+缺点：找到的点未必是极小值点</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># eg: y = b + w * x 计算梯度微分的函数 getGrad()</span>
+<span class="k">def</span> <span class="nf">getGrad</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+    <span class="c1"># initial b_grad and w_grad</span>
+    <span class="n">b_grad</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="n">w_grad</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">b_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="n">w_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b_grad</span><span class="p">,</span><span class="n">w_grad</span><span class="p">)</span>
 </code></pre></div>
-<p>如果后面提示 'mkdocs' 不是内部或外部命令.... 的话就需要自己加一下环境变量，此处不展开说明</p>
-<h3 id="_3">初始化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>在你想要新建文档的目录启动 cmd，并输入以下命令    </p>
-<div class="highlight"><pre><span></span><code>mkdocs new my-project
-</code></pre></div>
-<p>然后打开新建的文件夹打开 <code>mkdocs.yml</code>，以下列出我写此文档时的配置并配上了注释作为参考    </p>
-<div class="highlight"><pre><span></span><code># site
-site_name: hucorz&#39;s Docs                      # 文档的名字，会体现在左上角
-site_url: https://hucorz.github.io/myDoc/     # 网站的链接，似乎点击左上角的logo后会进去，我也没做实验
-
-# repo
-repo_name: &#39;hucorz/myDoc&#39;                     # github仓库的名字，会体现在右上角
-repo_url: https://github.com/hucorz/myDoc     # github仓库的链接，点击右上角的logo后会进去
-
-nav:                                          # 导航页，具体内容要基于自己文档的内容
-  - Home: &#39;index.md&#39;                          # : 后面是文件的名字，前面是文档中显示的名字，可以嵌套
-  - Makrdown: &#39;Markdown.md&#39;
-  - OI: 
-    - 参考: &#39;OI/参考.md&#39;
-    - 数论: &#39;OI/数论.md&#39;
-    - 计算几何: &#39;OI/计算几何.md&#39;
-    - 图论: &#39;OI/图论.md&#39;
-    - 数据结构: &#39;OI/数据结构.md&#39;
-    - 字符串: &#39;OI/字符串.md&#39;
-    - 其他: &#39;OI/其他.md&#39;
-    - STL: &#39;OI/STL.md&#39;
-  - 课程笔记: 
-    - 参考: &#39;课程笔记/参考.md&#39;
-    - 数据库系统: &#39;课程笔记/数据库系统.md&#39;
-
-theme:                                        
-  name: &#39;material&#39;                            # 主题，就用 material
-  features:                                   # 这后面是主题的配置，具体我会写在文档后面
-    - navigation.tabs
-    - navigation.tabs.sticky
-  palette:
-    primary: &#39;white&#39;                          # 配色
-    accent: &#39;indigo&#39;
-  logo: &#39;img/cat-solid.svg&#39;                   # 左上角logo
-  icon: 
-    repo: fontawesome/brands/github-alt # repo的logo
-  favicon: &#39;img/favicon.ico&#39;                  #网页图标
-
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight                        # 代码高亮
-  - pymdownx.superfences
-  - toc:
-      permalink: true                         # 每个标题后面的 锚链接
-      #toc_depth: 2                           # table of content 显示的级数，0就不会显示
-
-extra_javascript:
-  - javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-plugins:
-  - search:
-      lang: ja                               # 实测搜索语言改成日本可以支持中文搜搜
-</code></pre></div>
-<h2 id="github">部署 github<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
-<p>这里的步骤可能需要科学上网，不过 github 有时候也不需要</p>
-<p>首先需要一个 github 账号，然后新建一个空仓库，并利用 <code>git</code> 将仓库 clone 到本地，这里不展开，因为本蒟蒻也不是很懂，网上的博客还是很多</p>
-<p>仅讲一下我遇到的问题：</p>
+<h3 id="_1">非线性的模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><span class="arithmatex">\((x_{cp})^2\)</span> 的 model ：training data 中 model 越复杂 error 会越低，但 testing data 中 error 会变大，overfitting</p>
+</li>
+<li>
+<p>考虑种族、类别的影响</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+if \ \ x_s=Pidgey: \ \ \ \ \ \ \ y=b_1+w_1\cdot x_{cp} \\
+if \ \ x_s=Weedle: \ \ \ \ \ \ y=b_2+w_2\cdot x_{cp} \\
+if \ \ x_s=Caterpie: \ \ \ \ y=b_3+w_3\cdot x_{cp} \\
+if \ \ x_s=Eevee: \ \ \ \ \ \ \ \ \ y=b_4+w_4\cdot x_{cp}
+\]</div>
+<h3 id="regularization-overfitting">regularization 解决 overfitting<a class="headerlink" href="#regularization-overfitting" title="Permanent link">&para;</a></h3>
+<p>正则化解决过拟合问题</p>
+<p><span class="arithmatex">\(L=\sum\limits_i^n(\widehat{y}^i-(b+\sum\limits_{j}w_jx_j))^2+\lambda\sum(w_i)^2\)</span> </p>
+<p>希望 <span class="arithmatex">\(w_i\)</span> 比较小而得到一个平滑的曲线，这里的 λ 需要我们手动去调整以取得最好的值</p>
+<h3 id="adaptive-learning-rates">Adaptive Learning rates<a class="headerlink" href="#adaptive-learning-rates" title="Permanent link">&para;</a></h3>
+<p>learning rate 大了小了都不好</p>
+<p>一个简答的原则：learning rate 通常是随着参数的 update 越来越小的</p>
+<p>eg：<span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> （第 t 次 update）</p>
+<h4 id="adagrad">Adagrad<a class="headerlink" href="#adagrad" title="Permanent link">&para;</a></h4>
 <blockquote>
-<p>Failed to connect to github.com port 443: Timed out</p>
+<p>Divide the learning rate of each parameter by the root mean square(方均根) of its previous derivatives</p>
 </blockquote>
-<p>解决方法：给 <code>git</code> 设置代理</p>
-<p>科学上网时打开 win10 设置里的代理设置，找到代理的地址和端口    </p>
-<div class="highlight"><pre><span></span><code>git config --global http.proxy 172.17.18.80:8080  # 后面是 地址:端口
-</code></pre></div>
-<p>查看是否成功    </p>
-<div class="highlight"><pre><span></span><code>git config --get http.proxy
-</code></pre></div>
-<p>克隆成功后把 <code>.yml</code> 和 <code>docs</code> 放在克隆文件夹里，然后在此文件夹启动 cmd，输入以下指令即可部署    </p>
-<div class="highlight"><pre><span></span><code>mkdocs gh-deploy
-</code></pre></div>
-<h2 id="_4">美化配置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">官方文档</a></p>
-<h3 id="_5">文档名称<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>site_name: hucorz&#39;s Docs                    
-site_url: https://hucorz.github.io/myDoc/
-</code></pre></div>
-<h3 id="_6">文档主题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>theme:                                        
-  name: &#39;material&#39;
-</code></pre></div>
-<h4 id="_7">配色<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-
-colors/">配色相关配置</a>    </p>
-<div class="highlight"><pre><span></span><code>theme:
- palette:
-    primary: &#39;white&#39;
-    accent: &#39;indigo&#39;
-</code></pre></div>
-<h4 id="_8">导航页<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-
-navigation/">导航页相关配置</a>    </p>
-<div class="highlight"><pre><span></span><code>features: 
-    - navigation.tabs
-    - navigation.tabs.sticky
-</code></pre></div>
-<h4 id="logo-favicon">logo &amp;&amp; favicon<a class="headerlink" href="#logo-favicon" title="Permanent link">&para;</a></h4>
-<h5 id="logo-favicon_1">文档的 logo &amp;&amp; favicon<a class="headerlink" href="#logo-favicon_1" title="Permanent link">&para;</a></h5>
-<p><a href="https://squidfunk.github.io/mkdocs-
-material/setup/changing-the-logo-and-icons/">logo &amp;&amp; favicon 相关配置</a>    </p>
-<div class="highlight"><pre><span></span><code>theme:    # 这两个我都是下下来后用的
-    logo: &#39;img/cat-solid.svg&#39; 
-    favicon: &#39;img/favicon.ico&#39;
-</code></pre></div>
-<h5 id="repo-logo">repo 的 logo<a class="headerlink" href="#repo-logo" title="Permanent link">&para;</a></h5>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-
-repository/">repo 相关配置</a></p>
-<p>你需要先在配置中添加 <code>repo</code> 的名字和 <code>url</code>    </p>
-<div class="highlight"><pre><span></span><code>repo_name: &#39;hucorz/myDoc&#39;
-repo_url: https://github.com/hucorz/myDoc
-</code></pre></div>
-<p>然后 logo 参考的官方文档：    </p>
-<div class="highlight"><pre><span></span><code>theme:
-  icon: 
-    repo: fontawesome/brands/github-alt
-</code></pre></div>
-<h3 id="_9">扩展<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="markdown">markdown扩展<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h4>
+<p>Adagrad 将不同参数的 learning rate 分开考虑，update到后面速度会越来越慢，这是adaptive算法中最简单的一种
+$$
+\begin{equation}
+\begin{split}
+&amp;Adagrad\
+&amp;w^1=w^0-\frac{\eta^0}{\sigma^0}\cdot g^0, \ \ \ \sigma^0=\sqrt{(g^0)^2} \
+&amp;w^2=w^1-\frac{\eta^1}{\sigma^1}\cdot g^1, \ \ \ \sigma^1=\sqrt{\frac{1}{2}[(g^0)^2+(g^1)^2]} \
+&amp;w^3=w^2-\frac{\eta2}{\sigma^2}\cdot g^2, \ \ \ \sigma^2=\sqrt{\frac{1}{3}[(g^0)^2+(g^1)^2+(g^2)^2]} \
+&amp;... \
+&amp;w^{t+1}=w^t-\frac{\eta^t}{\sigma^t}\cdot g^t, \ \ \ \sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}
+\end{split}
+\end{equation}
+$$
+<span class="arithmatex">\(g^t\)</span> 表示 Loss 对 w 的偏微分</p>
+<p>由于 <span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> 和 <span class="arithmatex">\(\sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}\)</span> 中都有一个 <span class="arithmatex">\(\sqrt{\frac{1}{1+t}}\)</span> 的因子，两者相消，即可得到 adagrad 的最终表达式：</p>
+<p>$$
+w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t
+$$
+<strong>Adagrad 的 contradiction 解释</strong></p>
+<p>我们在做 gradient descent 的时候，希望的是当梯度值即微分值<span class="arithmatex">\(g^t\)</span>越大的时候更新的步伐要更大一些，但是 Adagrad 的表达式中，分母表示梯度越大步伐越小，分子却表示梯度越大步伐越大，两者似乎相互矛盾</p>
+<p>在一些 paper 里是这样解释的：Adagrad 要考虑的是，这个 gradient 有多 surprise，即反差有多大，假设 t=4 的时候 <span class="arithmatex">\(g^4\)</span> 与前面的 gradient 反差特别大，那么 <span class="arithmatex">\(g^t\)</span> 与 <span class="arithmatex">\(\sqrt{\frac{1}{t+1}\sum\limits_{i=0}^t(g^i)^2}\)</span> 之间的大小反差就会比较大，它们的商就会把这一反差效果体现出来</p>
+<p><strong>gradient 越大，离最低点越远这件事情在有多个参数的情况下是不一定成立的</strong> </p>
+<p>实际上，对于一个二次函数 <span class="arithmatex">\(y=ax^2+bx+c\)</span> 来说，最小值点的 <span class="arithmatex">\(x=-\frac{b}{2a}\)</span>，而对于任意一点<span class="arithmatex">\(x_0\)</span>，它迈出最好的步伐长度是 <span class="arithmatex">\(|x_0+\frac{b}{2a}|=|\frac{2ax_0+b}{2a}|\)</span> (这样就一步迈到最小值点了)，联系该函数的一阶和二阶导数 <span class="arithmatex">\(y'=2ax+b\)</span>、<span class="arithmatex">\(y''=2a\)</span>，可以发现the best step is <span class="arithmatex">\(|\frac{y'}{y''}|\)</span>，也就是说他不仅跟一阶导数(gradient)有关，还跟二阶导师有关，因此我们可以通过这种方法重新比较上面的a和c点，就可以得到比较正确的答案</p>
+<p>再来回顾Adagrad的表达式：<span class="arithmatex">\(w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t\)</span></p>
+<p><span class="arithmatex">\(g^t\)</span> 就是一次微分，而分母中的 <span class="arithmatex">\(\sum\limits_{i=0}^t(g^i)^2\)</span> 反映了二次微分的大小，所以 Adagrad 想要做的事情就是，在不增加任何额外运算的前提下，想办法去估测二次微分的值</p>
+<h4 id="stochastic-gradicent-descent">Stochastic Gradicent Descent<a class="headerlink" href="#stochastic-gradicent-descent" title="Permanent link">&para;</a></h4>
+<p>随机梯度下降的方法可以让训练更快速，传统的 gradient descent 的思路是看完所有的样本点之后再构建 loss function，然后去 update 参数；而 stochastic gradient descent 的做法是，看到一个样本点就 update 一次，因此它的 loss function 不是所有样本点的 error 平方和，而是这个随机样本点的error平方</p>
+<h3 id="feature-scaling">Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permanent link">&para;</a></h3>
+<p>特征缩放，当多个特征的分布范围很不一样时，最好将这些不同 feature 的范围缩放成一样，即将特征的指标标准化</p>
+<p><strong>如何做 feature scaling</strong> </p>
+<p>假设有 R 个 example (上标i表示第i个样本点)，<span class="arithmatex">\(x^1,x^2,x^3,...,x^r,...x^R\)</span>，每一笔 example，它里面都有一组 feature (下标j表示该样本点的第j个特征)</p>
+<p>对每一个 <span class="arithmatex">\(demension_i\)</span>，都去算出它的平均值 <span class="arithmatex">\(mean=m_i\)</span>，以及标准差 <span class="arithmatex">\(standard deviation=\sigma_i\)</span></p>
+<p>对第 r 个 example 的第 i 个 component，减掉均值，除以标准差，即 <span class="arithmatex">\(x_i^r=\frac{x_i^r-m_i}{\sigma_i}\)</span>，即把每一个参数化成标准的正态分布</p>
+<p><strong>对gradient decent的帮助</strong></p>
+<p>帮助我们更好的 update 参数</p>
+<h3 id="bias-and-variance">Bias and Variance<a class="headerlink" href="#bias-and-variance" title="Permanent link">&para;</a></h3>
+<p>比较简单的model，variance比较小，bias比较大，甚至它的范围没有包含真正的 target</p>
+<p>而比较复杂的model，bias比较小，variance比较大</p>
+<p>必须要知道自己的 error 主要来自于哪里，现在的问题是 bias 大，还是 variance 大？</p>
 <ul>
-<li>数学公式</li>
+<li>如果 model 没有办法 fit training data 的 examples，代表 bias 比较大，这时是 underfitting</li>
+<li>如果 model 可以 fit training data，在 training data 上得到小的 error，但是在 testing data 上，却得到一个大的 error，代表 variance 比较大，这时是 overfitting</li>
 </ul>
-<p><a href="https://squidfunk.github.io/mkdocs-
-material/reference/mathjax/">MathJax - Material for MkDocs</a>    </p>
-<div class="highlight"><pre><span></span><code>markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-
-extra_javascript:
-  - javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-</code></pre></div>
+<h4 id="bias-or-variance"><strong>如何处理 bias 大 or variance 大的情况呢？</strong><a class="headerlink" href="#bias-or-variance" title="Permanent link">&para;</a></h4>
 <ul>
-<li>代码高亮</li>
+<li><strong>bias 比较大</strong> </li>
 </ul>
-<p><a href="https://squidfunk.github.io/mkdocs-
-material/reference/code-blocks/">Code blocks - Material for MkDocs</a>    </p>
-<div class="highlight"><pre><span></span><code>markdown_extensions:
-  - pymdownx.highlight      # code hilight
-  - pymdownx.superfences
-</code></pre></div>
+<p>redesign，重新设计你的 model</p>
 <ul>
-<li>toc（table of content）</li>
+<li>
+<p>增加更多的 features 作为 model 的 input 输入变量</p>
+<p>比如 pokemon 的例子里，只考虑进化前 cp 值可能不够，还要考虑 hp 值、species 种类...作为model 新的 input 变量</p>
+</li>
+<li>
+<p>让 model 变得更复杂，增加高次项</p>
+<p>比如原本只是 linear model，现在考虑增加二次项、三次项...</p>
+</li>
+<li>
+<p><strong>variance 比较大</strong> </p>
+</li>
+<li>
+<p>增加data</p>
+<ul>
+<li>如果没有办法 collect 更多的 data，其实有一招，根据你对这个问题的理解，自己去generate 更多“假的” data </li>
+<li>比如手写数字识别，因为每个人手写数字的角度都不一样，那就把所有 training data 里面的数字都左转15°，右转15°</li>
+<li>比如做火车的影像辨识，只有从左边开过来的火车影像资料，没有从右边开过来的火车影像资料，该怎么办？实际上可以把每张图片都左右颠倒，就 generate 出右边的火车数据了，这样就多了一倍 data 出来</li>
+<li>比如做语音辨识的时候，只有男生说的“你好”，没有女生说的“你好”，那就用男生的声音用一个变声器把它转化一下，这样男女生的声音就可以互相转化，这样 data 就可以多出来</li>
+<li>比如现在你只有录音室里录下的声音，但是 detection 实际要在真实场景下使用的，那你就去真实场景下录一些噪音加到原本的声音里，就可以 generate 出符合条件的 data 了</li>
 </ul>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#table-of-contents">Setting up navigation - Material for MkDocs</a>    </p>
-<div class="highlight"><pre><span></span><code>markdown_extensions:    # 这2个都是和每个markdown文档的标题有关
-  - toc:
-      permalink: true   # 开启每个标题后面的 锚链接
-      #toc_depth: 2     # toc显示的级数,越高显示的越多，不写都显示，0不显示
-</code></pre></div>
-<h4 id="_10">支持中文搜索<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/">Setting up site search - Material for MkDocs</a>    </p>
-<div class="highlight"><pre><span></span><code>plugins:
-  - search:
-      lang: ja
-</code></pre></div>
-<h2 id="_11">参考<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p><a href="https://derrors.github.io/">1.介绍 - 基于 Material for MkDocs 搭建静态网页</a></p>
-<p><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs - Material forMkDocs</a></p>
-<p><a href="https://blog.csdn.net/a_haideyanlei/article/details/84922833?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control">Failed to connect to github.com port 443: Timed out_天生我材必有用-CSDN博客</a></p>
+</li>
+<li>
+<p>Regularization(正规化)</p>
+<ul>
+<li>就是在 loss function 里面再加一个与 model 高次项系数相关的 term，它会希望你的 model 里高次项的参数越小越好，也就是说希望你今天找出来的曲线越平滑越好；这个新加的 term前面可以有一个 weight，代表你希望你的曲线有多平滑</li>
+<li>加了 regularization 以后，因为你强迫所有的曲线都要比较平滑，所以这个时候也会让你的variance 变小；但 regularization 是可能会伤害 bias 的，因为它实际上调整了 function set 的 space 范围，变成它只包含那些比较平滑的曲线，这个缩小的 space 可能没有包含原先在更大 space 内的 <span class="arithmatex">\(\widehat{f}\)</span>，因此伤害了 bias，所以当你做 regularization 的时候，需要调整 regularization 的 weight，在 variance 和 bias 之间取得平衡</li>
+</ul>
+</li>
+<li>
+<p>不应该做的事</p>
+</li>
+</ul>
+<p>拿做好的 model 通过 testing data 得出的 error 来评价这个 model，然后觉得这个 model 不好，回去修改参数 </p>
+<h4 id="training-set-validation-set">training set 和 validation set<a class="headerlink" href="#training-set-validation-set" title="Permanent link">&para;</a></h4>
+<p>把你的 training set 分成两组：</p>
+<ul>
+<li>一组是真正拿来 training model 的，叫做 training set (训练集)</li>
+<li>另外一组不拿它来 training model，而是拿它来选 model，叫做 validation set (验证集)</li>
+</ul>
+<p>先在 training set 上找出每个 model 最好的 function <span class="arithmatex">\(f^*\)</span>，然后用 validation set 来选择你的 model </p>
+<p>如果感觉分成 2 部分 training data 变少的话，可以这样做：已经从 validation 决定 model3 是最好的model，那就定住 model3 不变 (function的表达式不变)，然后用全部的 data 在 model3 上面再训练一次 (使用全部的 data 去更新 model3 表达式的参数)</p>
+<p>这个时候，如果你把这个训练好的 model 的 <span class="arithmatex">\(f^*\)</span>apply 到 public testing set 上面，你可能会得到一个大于0.5的 error，虽然这么做，你得到的 error 表面上看起来是比较大的，但是<strong>这个时候你在 public set 上的 error 才能够真正反映你在 private set 上的 error</strong> </p>
+<p><strong>如何划分 training set 和 validation set？</strong> </p>
+<p>validation set 可能自带 bias，对结果不利</p>
+<ul>
+<li><strong>N-flod Cross Validation</strong> </li>
+</ul>
+<p>如果你不相信某一次分 train 和 validation 的结果的话，那你就分很多种不同的样子</p>
+<p>比如说，如果你做 3-flod 的 validation，意思就是你把 training set 分成三份，你每一次拿其中一份当做 validation set，另外两份当 training</p>
+<p>分别在每个情境下都计算一下3个model 的 error，然后计算一下它的 average error，选择一个 error 最小的</p>
+<p>然后把用整个完整的 training data 重新训练一遍参数，再去 testing data 上 test</p>
                 
               
               
@@ -1332,7 +1245,7 @@ material/reference/code-blocks/">Code blocks - Material for MkDocs</a>    </p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../ML/3_Logistic%20Regression/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression" rel="prev">
+        <a href="../%E8%AF%B4%E6%98%8E/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 说明" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1341,20 +1254,20 @@ material/reference/code-blocks/">Code blocks - Material for MkDocs</a>    </p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Logistic Regression
+              说明
             </div>
           </div>
         </a>
       
       
         
-        <a href="../Markdown/" class="md-footer__link md-footer__link--next" aria-label="Next: Markdown" rel="next">
+        <a href="../2_Classification/" class="md-footer__link md-footer__link--next" aria-label="Next: Classification" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Markdown
+              Classification
             </div>
           </div>
           <div class="md-footer__button md-icon">
