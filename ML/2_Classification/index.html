@@ -1045,11 +1045,10 @@
 <h3 id="ideal-alternatives">Ideal Alternatives<a class="headerlink" href="#ideal-alternatives" title="Permanent link">&para;</a></h3>
 <p>Function Model：function f(x) 里面设另外一个function g(x) </p>
 <p>$$
-f(x)=
-\begin{cases}
-g(x)&gt;0  &amp;output=class1 \
-g(x)&lt;0  &amp;output=class2 
-\end{cases}
+\begin{align}
+g(x)&gt;0\ \ output=class1 \
+g(x)&lt;0\ \ output=class2 
+\end{align}
 $$
 为什么又能用数值表示 class 了？ 因为那是针对 Regression 的 Loss function 而言的，所以我们需要重新定义一个 Loss Function
 $$
