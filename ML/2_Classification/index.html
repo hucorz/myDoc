@@ -1043,14 +1043,16 @@
 <p>Regression 并不适用于 output 是离散的函数</p>
 <p>而且需要注意的是如果是 多元分类，不能把 class1's target 设为 1， class2's target 设为 2，class3's target 设为 3，因为这样做就默认 class1 和 class2 相比 和 class3 更加接近</p>
 <h3 id="ideal-alternatives">Ideal Alternatives<a class="headerlink" href="#ideal-alternatives" title="Permanent link">&para;</a></h3>
-<p>Function Model：function f(x) 里面设另外一个function g(x) </p>
-<p>$$
-\begin{align}
-g(x)&gt;0\ \ output=class1 \
-g(x)&lt;0\ \ output=class2 
-\end{align}
-$$
-为什么又能用数值表示 class 了？ 因为那是针对 Regression 的 Loss function 而言的，所以我们需要重新定义一个 Loss Function
+<p>Function Model：function f(x) 里面设另外一个function g(x)</p>
+<div class="arithmatex">\[
+x\Rightarrow
+f(x)=
+\begin{cases}
+g(x)&gt;0&amp;output=class1 \\
+g(x)&lt;0&amp;output=class2 
+\end{cases}
+\]</div>
+<p>为什么又能用数值表示 class 了？ 因为那是针对 Regression 的 Loss function 而言的，所以我们需要重新定义一个 Loss Function
 $$
 Loss=\sum\limits_n\delta(f(x^n)≠\hat{y}^n)
 $$
