@@ -1072,7 +1072,7 @@
 <li>找一个最好的 function</li>
 </ul>
 <h3 id="linear-model">Linear Model 线性模型<a class="headerlink" href="#linear-model" title="Permanent link">&para;</a></h3>
-<p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 $y=b+ \sum w_ix_i $ </p>
+<p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 <span class="arithmatex">\(y=b+ \sum w_ix_i\)</span> </p>
 <p>Loss function： <span class="arithmatex">\(L(f)=L(w,b)=\sum_{n=1}^{10}(\widehat{y}^n-(b+w \cdot x^{n}_{cp}))^2\)</span> </p>
 <h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
 <p>单个参数直接求微分，多个参数求偏微分
@@ -1082,11 +1082,13 @@ L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \
 \frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
 $$</p>
 <div class="arithmatex">\[
+\begin{align}
 w^1=w^0-η\frac{\partial L}{\partial w}|_{w=w^0,b=b^0} \ \ \ \ \ \ \ \  \ b^1=b^0-η\frac{\partial L}{\partial b}|_{w=w^0,b=b^0} \\
 w^2=w^1-η\frac{\partial L}{\partial w}|_{w=w^1,b=b^1} \ \ \ \ \ \ \ \  \ b^2=b^1-η\frac{\partial L}{\partial b}|_{w=w^1,b=b^1} \\
 ... \\
 w^{i+1}=w^{i}-η\frac{\partial L}{\partial w}|_{w=w^{i},b=b^{i}} \ \ \ \ \ \ \ \  \ b^{i+1}=b^{i}-η\frac{\partial L}{\partial b}|_{w=w^{i},b=b^{i}} \\
 if(\frac{\partial L}{\partial w}==0 \&amp;\&amp; \frac{\partial L}{\partial b}==0) \ \ \ then \ \ stop
+\end{align}
 \]</div>
 <p>缺点：找到的点未必是极小值点</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># eg: y = b + w * x 计算梯度微分的函数 getGrad()</span>
@@ -1159,7 +1161,7 @@ $$
 <p>特征缩放，当多个特征的分布范围很不一样时，最好将这些不同 feature 的范围缩放成一样，即将特征的指标标准化</p>
 <p><strong>如何做 feature scaling</strong> </p>
 <p>假设有 R 个 example (上标i表示第i个样本点)，<span class="arithmatex">\(x^1,x^2,x^3,...,x^r,...x^R\)</span>，每一笔 example，它里面都有一组 feature (下标j表示该样本点的第j个特征)</p>
-<p>对每一个 <span class="arithmatex">\(demension_i\)</span>，都去算出它的平均值 <span class="arithmatex">\(mean=m_i\)</span>，以及标准差 <span class="arithmatex">\(standard deviation=\sigma_i\)</span></p>
+<p>对每一个 <span class="arithmatex">\(demension_i\)</span>，都去算出它的平均值 <span class="arithmatex">\(mean=m_i\)</span>，以及标准差 <span class="arithmatex">\(standard\ deviation=\sigma_i\)</span></p>
 <p>对第 r 个 example 的第 i 个 component，减掉均值，除以标准差，即 <span class="arithmatex">\(x_i^r=\frac{x_i^r-m_i}{\sigma_i}\)</span>，即把每一个参数化成标准的正态分布</p>
 <p><strong>对gradient decent的帮助</strong></p>
 <p>帮助我们更好的 update 参数</p>
