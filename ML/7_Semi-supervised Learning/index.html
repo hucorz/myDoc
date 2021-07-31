@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/1_Regression/">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/7_Semi-supervised%20Learning/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>Regression - hucorz's Docs</title>
+        <title>Semi Supervised Learning - hucorz's Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#regression" class="md-skip">
+        <a href="#semi-supervised-learning" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regression
+              Semi Supervised Learning
             
           </span>
         </div>
@@ -686,149 +686,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Regression
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../1_Regression/" class="md-nav__link">
         Regression
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#regression" class="md-nav__link">
-    Regression
-  </a>
-  
-    <nav class="md-nav" aria-label="Regression">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#regression_1" class="md-nav__link">
-    Regression 具体过程
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linear-model" class="md-nav__link">
-    Linear Model 线性模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gradient-descent" class="md-nav__link">
-    Gradient Descent 梯度下降
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    非线性的模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regularization-overfitting" class="md-nav__link">
-    regularization 解决 overfitting
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptive-learning-rates" class="md-nav__link">
-    Adaptive Learning rates
-  </a>
-  
-    <nav class="md-nav" aria-label="Adaptive Learning rates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adagrad" class="md-nav__link">
-    Adagrad
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stochastic-gradicent-descent" class="md-nav__link">
-    Stochastic Gradicent Descent
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#feature-scaling" class="md-nav__link">
-    Feature Scaling
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bias-and-variance" class="md-nav__link">
-    Bias and Variance
-  </a>
-  
-    <nav class="md-nav" aria-label="Bias and Variance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bias-or-variance" class="md-nav__link">
-    如何处理 bias 大 or variance 大的情况呢？
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#training-set-validation-set" class="md-nav__link">
-    training set 和 validation set
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -896,11 +758,174 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Semi Supervised Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Semi Supervised Learning
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervised-learning" class="md-nav__link">
+    Supervised Learning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semi-supervised-learning_1" class="md-nav__link">
+    Semi-supervised Learning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-semi-supervised-learning-help" class="md-nav__link">
+    Why semi-supervised learning help？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generative-model" class="md-nav__link">
+    Generative Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-density-separation-assumption" class="md-nav__link">
+    Low-density Separation Assumption
+  </a>
+  
+    <nav class="md-nav" aria-label="Low-density Separation Assumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-training" class="md-nav__link">
+    Self Training
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entropy-based-regularization" class="md-nav__link">
+    Entropy-based Regularization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semi-supervised-svm" class="md-nav__link">
+    Semi-supervised SVM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smoothness-assumption" class="md-nav__link">
+    Smoothness Assumption
+  </a>
+  
+    <nav class="md-nav" aria-label="Smoothness Assumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digits-detection" class="md-nav__link">
+    digits detection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-classification" class="md-nav__link">
+    file classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-and-then-label" class="md-nav__link">
+    cluster and then label
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-based-approach" class="md-nav__link">
+    Graph-based Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#better-representation" class="md-nav__link">
+    Better Representation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1017,6 +1042,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1025,66 +1052,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regression" class="md-nav__link">
-    Regression
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
-    <nav class="md-nav" aria-label="Regression">
+    <nav class="md-nav" aria-label="Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regression_1" class="md-nav__link">
-    Regression 具体过程
+  <a href="#supervised-learning" class="md-nav__link">
+    Supervised Learning
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#linear-model" class="md-nav__link">
-    Linear Model 线性模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gradient-descent" class="md-nav__link">
-    Gradient Descent 梯度下降
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    非线性的模型
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regularization-overfitting" class="md-nav__link">
-    regularization 解决 overfitting
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptive-learning-rates" class="md-nav__link">
-    Adaptive Learning rates
-  </a>
-  
-    <nav class="md-nav" aria-label="Adaptive Learning rates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adagrad" class="md-nav__link">
-    Adagrad
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stochastic-gradicent-descent" class="md-nav__link">
-    Stochastic Gradicent Descent
+  <a href="#semi-supervised-learning_1" class="md-nav__link">
+    Semi-supervised Learning
   </a>
   
 </li>
@@ -1093,32 +1077,46 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#feature-scaling" class="md-nav__link">
-    Feature Scaling
+      
+        <li class="md-nav__item">
+  <a href="#why-semi-supervised-learning-help" class="md-nav__link">
+    Why semi-supervised learning help？
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#bias-and-variance" class="md-nav__link">
-    Bias and Variance
+      
+        <li class="md-nav__item">
+  <a href="#generative-model" class="md-nav__link">
+    Generative Model
   </a>
   
-    <nav class="md-nav" aria-label="Bias and Variance">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-density-separation-assumption" class="md-nav__link">
+    Low-density Separation Assumption
+  </a>
+  
+    <nav class="md-nav" aria-label="Low-density Separation Assumption">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bias-or-variance" class="md-nav__link">
-    如何处理 bias 大 or variance 大的情况呢？
+  <a href="#self-training" class="md-nav__link">
+    Self Training
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#training-set-validation-set" class="md-nav__link">
-    training set 和 validation set
+  <a href="#entropy-based-regularization" class="md-nav__link">
+    Entropy-based Regularization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semi-supervised-svm" class="md-nav__link">
+    Semi-supervised SVM
   </a>
   
 </li>
@@ -1127,9 +1125,59 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#smoothness-assumption" class="md-nav__link">
+    Smoothness Assumption
+  </a>
+  
+    <nav class="md-nav" aria-label="Smoothness Assumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digits-detection" class="md-nav__link">
+    digits detection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-classification" class="md-nav__link">
+    file classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-and-then-label" class="md-nav__link">
+    cluster and then label
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-based-approach" class="md-nav__link">
+    Graph-based Approach
+  </a>
+  
+</li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#better-representation" class="md-nav__link">
+    Better Representation
+  </a>
   
 </li>
       
@@ -1145,183 +1193,217 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/1_Regression.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/7_Semi-supervised Learning.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Regression</h1>
-                
-                <h2 id="regression">Regression<a class="headerlink" href="#regression" title="Permanent link">&para;</a></h2>
-<h3 id="regression_1">Regression 具体过程<a class="headerlink" href="#regression_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>定义一个 model 即 function set</li>
-<li>定义一个 goodness of function 损失函数去评估该 function 的好坏</li>
-<li>找一个最好的 function</li>
-</ul>
-<h3 id="linear-model">Linear Model 线性模型<a class="headerlink" href="#linear-model" title="Permanent link">&para;</a></h3>
-<p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 <span class="arithmatex">\(y=b+ \sum w_ix_i\)</span> </p>
-<p>Loss function： <span class="arithmatex">\(L(f)=L(w,b)=\sum_{n=1}^{10}(\widehat{y}^n-(b+w \cdot x^{n}_{cp}))^2\)</span> </p>
-<h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
-<p>单个参数直接求微分，多个参数求偏微分</p>
-<div class="arithmatex">\[
-\begin{align}
-L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \\
-\frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \\
-\frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
-\end{align}
-\]</div>
-<div class="arithmatex">\[
-\begin{align}
-w^1=w^0-η\frac{\partial L}{\partial w}|_{w=w^0,b=b^0} \ \ \ \ \ \ \ \  \ b^1=b^0-η\frac{\partial L}{\partial b}|_{w=w^0,b=b^0} \\
-w^2=w^1-η\frac{\partial L}{\partial w}|_{w=w^1,b=b^1} \ \ \ \ \ \ \ \  \ b^2=b^1-η\frac{\partial L}{\partial b}|_{w=w^1,b=b^1} \\
-... \\
-w^{i+1}=w^{i}-η\frac{\partial L}{\partial w}|_{w=w^{i},b=b^{i}} \ \ \ \ \ \ \ \  \ b^{i+1}=b^{i}-η\frac{\partial L}{\partial b}|_{w=w^{i},b=b^{i}} \\
-if(\frac{\partial L}{\partial w}==0 \&amp;\&amp; \frac{\partial L}{\partial b}==0) \ \ \ then \ \ stop
-\end{align}
-\]</div>
-<p>缺点：找到的点未必是极小值点</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># eg: y = b + w * x 计算梯度微分的函数 getGrad()</span>
-<span class="k">def</span> <span class="nf">getGrad</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
-    <span class="c1"># initial b_grad and w_grad</span>
-    <span class="n">b_grad</span><span class="o">=</span><span class="mf">0.0</span>
-    <span class="n">w_grad</span><span class="o">=</span><span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">b_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-        <span class="n">w_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">b_grad</span><span class="p">,</span><span class="n">w_grad</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="_1">非线性的模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><span class="arithmatex">\((x_{cp})^2\)</span> 的 model ：training data 中 model 越复杂 error 会越低，但 testing data 中 error 会变大，overfitting</p>
-</li>
-<li>
-<p>考虑种族、类别的影响</p>
-</li>
-</ul>
-<div class="arithmatex">\[
-\begin{align}
-if \ \ x_s=Pidgey: \ \ \ \ \ \ \ y=b_1+w_1\cdot x_{cp} \\
-if \ \ x_s=Weedle: \ \ \ \ \ \ y=b_2+w_2\cdot x_{cp} \\
-if \ \ x_s=Caterpie: \ \ \ \ y=b_3+w_3\cdot x_{cp} \\
-if \ \ x_s=Eevee: \ \ \ \ \ \ \ \ \ y=b_4+w_4\cdot x_{cp}
-\end{align}
-\]</div>
-<h3 id="regularization-overfitting">regularization 解决 overfitting<a class="headerlink" href="#regularization-overfitting" title="Permanent link">&para;</a></h3>
-<p>正则化解决过拟合问题
-$$
-L=\sum\limits_i^n(\widehat{y}^i-(b+\sum\limits_{j}w_jx_j))^2+\lambda\sum(w_i)^2
-$$
-希望 <span class="arithmatex">\(w_i\)</span> 比较小而得到一个平滑的曲线，这里的 λ 需要我们手动去调整以取得最好的值</p>
-<h3 id="adaptive-learning-rates">Adaptive Learning rates<a class="headerlink" href="#adaptive-learning-rates" title="Permanent link">&para;</a></h3>
-<p>learning rate 大了小了都不好</p>
-<p>一个简答的原则：learning rate 通常是随着参数的 update 越来越小的</p>
-<p>eg：<span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> （第 t 次 update）</p>
-<h4 id="adagrad">Adagrad<a class="headerlink" href="#adagrad" title="Permanent link">&para;</a></h4>
+                <h1 id="semi-supervised-learning">Semi-supervised Learning<a class="headerlink" href="#semi-supervised-learning" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>Divide the learning rate of each parameter by the root mean square(方均根) of its previous derivatives</p>
+<p>半监督学习：
+Semi-supervised Learning for Generative Model
+Low-density Separation Assumption：非黑即白
+Smoothness Assumption：近朱者赤，近墨者黑
+Better Representation：去芜存菁，化繁为简</p>
 </blockquote>
-<p>Adagrad 将不同参数的 learning rate 分开考虑，update到后面速度会越来越慢，这是adaptive算法中最简单的一种
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>为什么要做 Semi-supervised Learning，因为 data 的 input 很容易得到，但是很多都缺 output（label）</p>
+<h3 id="supervised-learning">Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\((x^r,\hat y^r)_{r=1}^R\)</span>​</p>
+<p>在 training data 中每一组 data 的 input <span class="arithmatex">\(x\)</span>​ 都有 output <span class="arithmatex">\(y\)</span>​​​​ </p>
+<h3 id="semi-supervised-learning_1">Semi-supervised Learning<a class="headerlink" href="#semi-supervised-learning_1" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(\{(x^r,\hat y^r)\}_{r=1}^R\} + \{x^u\}_{u=R}^{R+U}\)</span>​</p>
+<p>Supervised Learning 加上没有 output 的 data，而且通常 <span class="arithmatex">\(U&gt;&gt;R\)</span>​​ ​</p>
+<p>Semi-supervised learning分为以下两种情况：</p>
+<ul>
+<li>Transductive Learning：unlabeled data is the testing data</li>
+</ul>
+<p>即，把 testing data 当做无标签的 training data 使用，适用于事先已经知道 testing data 的情况 (比如一些比赛的时候，只知道 data 的 feature 而不知道 output)</p>
+<ul>
+<li>Inductive Learning：unlabeled data is not the testing data</li>
+</ul>
+<p>即，不把 testing data 的 feature 拿去给机器训练，适用于事先并不知道 testing data 的情况 (更普遍的情况)</p>
+<h2 id="why-semi-supervised-learning-help">Why semi-supervised learning help？<a class="headerlink" href="#why-semi-supervised-learning-help" title="Permanent link">&para;</a></h2>
+<p>unlabelled data 虽然只有 input 但它的分布可以给我们一些信息，以下为例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_1.png" width="50%;"/></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_2.png" width="50%;"/></p>
+<p>semi-supervised learning 的使用往往伴随着假设，而该假设的合理与否，决定了结果的好坏程度；比如上图中的 unlabeled data，它显然是一只狗，而特征分布却与猫被划分在了一起，很可能是由于这两张图片的背景都是绿色导致的，因此假设是否合理显得至关重要</p>
+<h2 id="generative-model">Generative Model<a class="headerlink" href="#generative-model" title="Permanent link">&para;</a></h2>
+<p>在监督学习中我们学习过通过后验概率得出 x 所属的类别</p>
+<p>下图实线是 Supervised Generative Model 得出的结果，绿色的点是没有 label 的 data，显然原先的 <span class="arithmatex">\(u,\Sigma\)</span> 是不合理的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_3.png"/></p>
+<p>以上是直观上的解释，接下来进行具体推导 (假设做二元分类)：</p>
+<ul>
+<li>
+<p>利用有 label 的 data 初始化一组参数：<span class="arithmatex">\(\theta=\{P(C_1),P(C_2),u^1,u^2,\Sigma\}\)</span></p>
+</li>
+<li>
+<p>step1：利用上面初始 model 计算每一笔 unlabeled data <span class="arithmatex">\(x^u\)</span> 属于 class1 的概率<span class="arithmatex">\(P_{\theta}(C_1|x^u)\)</span></p>
+</li>
+<li>
+<p>step2：update model</p>
+</li>
+</ul>
+<p>如果不考虑 unlabeled data，则先验概率显然为属于 class1 的样本点数 <span class="arithmatex">\(N_1\)</span> / 总的样本点数 <span class="arithmatex">\(N\)</span>，即 <span class="arithmatex">\(P(C_1)=\frac{N_1}{N}\)</span>​</p>
+<p>而考虑 unlabeled data 时，分子还要加上所有 unlabeled data 属于 class1 的概率和，此时它们被看作小数，可以理解为按照概率一部分属于 <span class="arithmatex">\(C_1\)</span>，一部分属于 <span class="arithmatex">\(C_2\)</span>
+  $$
+  P(C_1)=\frac{N_1+\sum_{x^u}P(C_1|x^u)}{N}
+  $$
+  同理，对于均值，原先的 mean <span class="arithmatex">\(u_1=\frac{1}{N_1}\sum\limits_{x^r\in C_1} x^r\)</span> 加上根据概率对 <span class="arithmatex">\(x^u\)</span> 求和再归一化的结果即可
+  $$
+  u_1=\frac{1}{N_1}\sum\limits_{x^r\in C_1} x^r+\frac{1}{\sum_{x^u}P(C_1|x^u)}\sum\limits_{x^u}P(C_1|x^u)x^u
+  $$
+  剩余的参数同理，接下来就有了一组新的参数 <span class="arithmatex">\(\theta'\)</span>，于是回到 step1-&gt;step2-&gt;step1循环</p>
+<ul>
+<li>
+<p>理论上该方法保证是可以收敛的，而一开始给 <span class="arithmatex">\(\theta\)</span> 的初始值会影响收敛的结果，类似 gradient descent</p>
+</li>
+<li>
+<p>上述的 step1 就是 EM algorithm 里的 E，step2 则是 M</p>
+</li>
+</ul>
+<p>以上的推导基于的基本思想是，把 unlabeled data <span class="arithmatex">\(x^u\)</span> 看成是可以划分的，一部分属于 <span class="arithmatex">\(C_1\)</span>，一部分属于 <span class="arithmatex">\(C_2\)</span>，此时它的概率 <span class="arithmatex">\(P_{\theta}(x^u)=P_{\theta}(x^u|C_1)P(C_1)+P_{\theta}(x^u|C_2)P(C_2)\)</span>，实际上我们在利用极大似然函数更新参数的时候，就利用了该拆分的结果：</p>
+<div class="arithmatex">\[
+max:logL(\theta)=\sum\limits_{x^r} logP_{\theta}(x^r)+\sum\limits_{x^u}logP_{\theta}(x^u)
+\]</div>
+<p>但这个式子不是 convex，所以解的时候要用 EM algorithm，其实就是要 iterative 的去 solve，就是上面的 step</p>
+<p><a href="https://zhuanlan.zhihu.com/p/40991784">EM算法详解 - 知乎 </a></p>
+<h2 id="low-density-separation-assumption">Low-density Separation Assumption<a class="headerlink" href="#low-density-separation-assumption" title="Permanent link">&para;</a></h2>
+<p>接下来介绍一种新的方法，它基于的假设是 Low-density separation</p>
+<p>通俗来讲，就是这个世界是非黑即白的，在两个 class 的交界处 data 的密度 (density)是很低的，它们之间会有一道明显的鸿沟</p>
+<h3 id="self-training">Self Training<a class="headerlink" href="#self-training" title="Permanent link">&para;</a></h3>
+<p>是 low-density separation 最具代表性也最简单的方法</p>
+<ul>
+<li>从 labelled data 中训练一个 model（训练方法没有限制）</li>
+<li>然后用该 model 去对 unlabelled data 算出 label，也叫做 pseudo label</li>
+<li>从 unlabelled data 中选出一些 data 添加到 labelled data 中，如何挑选需要自己设计</li>
+<li>回头再去训练</li>
+</ul>
+<p>注：该方法对 Regression 是不适用的，因为 Regression output 是一个数量</p>
+<p>实际上，该方法与之前提到的 generative model 还是挺像的，区别在于：</p>
+<ul>
+<li>Self Training使用的是 hard label：假设一笔data强制属于某个 class</li>
+<li>Generative Model使用的是 soft label：假设一笔 data 可以按照概率划分，不同部分属于不同 class</li>
+</ul>
+<p>在 neural network 里使用 soft label 是没有用的，丢进去重新训练后依旧是同样的参数，所以 low density separation 就是通过强制分类来提升分类效果的方法</p>
+<h3 id="entropy-based-regularization">Entropy-based Regularization<a class="headerlink" href="#entropy-based-regularization" title="Permanent link">&para;</a></h3>
+<p>hard label 的方式有些太武断了，而 entropy-based regularization 则做了相应的改进：<span class="arithmatex">\(y^u=f^*_{\theta^*}(x^u)\)</span>，其中 <span class="arithmatex">\(y^u\)</span>​​ 是一个<strong>概率分布 (distribution)</strong>，如果通过 entropy-based regularization 得到的分布集中在某个 class 上的话，那这个 model 就是好的，而如果分布是比较分散的，那这个 model 就是不好的</p>
+<p>利用一个 output 的 distribution 的 entropy 来告诉你它的集中程度：
 $$
-\begin{equation}
-\begin{split}
-&amp;Adagrad\
-&amp;w^1=w^0-\frac{\eta^0}{\sigma^0}\cdot g^0, \ \ \ \sigma^0=\sqrt{(g^0)^2} \
-&amp;w^2=w^1-\frac{\eta^1}{\sigma^1}\cdot g^1, \ \ \ \sigma^1=\sqrt{\frac{1}{2}[(g^0)^2+(g^1)^2]} \
-&amp;w^3=w^2-\frac{\eta2}{\sigma^2}\cdot g^2, \ \ \ \sigma^2=\sqrt{\frac{1}{3}[(g^0)^2+(g^1)^2+(g^2)^2]} \
-&amp;... \
-&amp;w^{t+1}=w^t-\frac{\eta^t}{\sigma^t}\cdot g^t, \ \ \ \sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}
-\end{split}
-\end{equation}
+E(y^u)=-\sum\limits_{m=1}^5 y_m^u ln(y_m^u)
 $$
-<span class="arithmatex">\(g^t\)</span> 表示 Loss 对 w 的偏微分</p>
-<p>由于 <span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> 和 <span class="arithmatex">\(\sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}\)</span> 中都有一个 <span class="arithmatex">\(\sqrt{\frac{1}{1+t}}\)</span> 的因子，两者相消，即可得到 adagrad 的最终表达式：</p>
-<p>$$
-w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t
+entropy 越大，distribution 就越分散，entropy 越小，distribution 就越集中</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_4.png"/></p>
+<p>我们的目标是在 labeled data 上分类要正确，在 unlabeled data 上，output 的 entropy 要越小越好，此时就要修改 loss function
 $$
-<strong>Adagrad 的 contradiction 解释</strong></p>
-<p>我们在做 gradient descent 的时候，希望的是当梯度值即微分值<span class="arithmatex">\(g^t\)</span>越大的时候更新的步伐要更大一些，但是 Adagrad 的表达式中，分母表示梯度越大步伐越小，分子却表示梯度越大步伐越大，两者似乎相互矛盾</p>
-<p>在一些 paper 里是这样解释的：Adagrad 要考虑的是，这个 gradient 有多 surprise，即反差有多大，假设 t=4 的时候 <span class="arithmatex">\(g^4\)</span> 与前面的 gradient 反差特别大，那么 <span class="arithmatex">\(g^t\)</span> 与 <span class="arithmatex">\(\sqrt{\frac{1}{t+1}\sum\limits_{i=0}^t(g^i)^2}\)</span> 之间的大小反差就会比较大，它们的商就会把这一反差效果体现出来</p>
-<p><strong>gradient 越大，离最低点越远这件事情在有多个参数的情况下是不一定成立的</strong> </p>
-<p>实际上，对于一个二次函数 <span class="arithmatex">\(y=ax^2+bx+c\)</span> 来说，最小值点的 <span class="arithmatex">\(x=-\frac{b}{2a}\)</span>，而对于任意一点<span class="arithmatex">\(x_0\)</span>，它迈出最好的步伐长度是 <span class="arithmatex">\(|x_0+\frac{b}{2a}|=|\frac{2ax_0+b}{2a}|\)</span> (这样就一步迈到最小值点了)，联系该函数的一阶和二阶导数 <span class="arithmatex">\(y'=2ax+b\)</span>、<span class="arithmatex">\(y''=2a\)</span>，可以发现the best step is <span class="arithmatex">\(|\frac{y'}{y''}|\)</span>，也就是说他不仅跟一阶导数(gradient)有关，还跟二阶导师有关，因此我们可以通过这种方法重新比较上面的a和c点，就可以得到比较正确的答案</p>
-<p>再来回顾 Adagrad 的表达式：<span class="arithmatex">\(w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t\)</span></p>
-<p><span class="arithmatex">\(g^t\)</span> 就是一次微分，而分母中的 <span class="arithmatex">\(\sum\limits_{i=0}^t(g^i)^2\)</span> 反映了二次微分的大小，所以 Adagrad 想要做的事情就是，在不增加任何额外运算的前提下，想办法去估测二次微分的值</p>
-<h4 id="stochastic-gradicent-descent">Stochastic Gradicent Descent<a class="headerlink" href="#stochastic-gradicent-descent" title="Permanent link">&para;</a></h4>
-<p>随机梯度下降的方法可以让训练更快速，传统的 gradient descent 的思路是看完所有的样本点之后再构建 loss function，然后去 update 参数；而 stochastic gradient descent 的做法是，看到一个样本点就 update 一次，因此它的 loss function 不是所有样本点的 error 平方和，而是这个随机样本点的 error 平方</p>
-<h3 id="feature-scaling">Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permanent link">&para;</a></h3>
-<p>特征缩放，当多个特征的分布范围很不一样时，最好将这些不同 feature 的范围缩放成一样，即将特征的指标标准化</p>
-<p><strong>如何做 feature scaling</strong> </p>
-<p>假设有 R 个 example (上标i表示第i个样本点)，<span class="arithmatex">\(x^1,x^2,x^3,...,x^r,...x^R\)</span>，每一笔 example，它里面都有一组 feature (下标j表示该样本点的第j个特征)</p>
-<p>对每一个 <span class="arithmatex">\(demension_i\)</span>，都去算出它的平均值 <span class="arithmatex">\(mean=m_i\)</span>，以及标准差 <span class="arithmatex">\(standard\ deviation=\sigma_i\)</span></p>
-<p>对第 r 个 example 的第 i 个 component，减掉均值，除以标准差，即 <span class="arithmatex">\(x_i^r=\frac{x_i^r-m_i}{\sigma_i}\)</span>，即把每一个参数化成标准的正态分布</p>
-<p><strong>对gradient decent的帮助</strong></p>
-<p>帮助我们更好的 update 参数</p>
-<h3 id="bias-and-variance">Bias and Variance<a class="headerlink" href="#bias-and-variance" title="Permanent link">&para;</a></h3>
-<p>比较简单的model，variance比较小，bias比较大，甚至它的范围没有包含真正的 target</p>
-<p>而比较复杂的model，bias比较小，variance比较大</p>
-<p>必须要知道自己的 error 主要来自于哪里，现在的问题是 bias 大，还是 variance 大？</p>
+min:L=\sum\limits_{x^r} C(y^r,\hat y^r) + \lambda \sum\limits_{x^u} E(y^u)
+$$
+labeled data 的 Cross Entropy 和 unlabeled data 的 entropy 加权相加（权值需要自己定）</p>
+<p>可以发现该式长得很像 regularization，这也就是 entropy regularization 的名称由来</p>
+<h3 id="semi-supervised-svm">Semi-supervised SVM<a class="headerlink" href="#semi-supervised-svm" title="Permanent link">&para;</a></h3>
+<p>SVM 要做的是，给你两个 class 的 data，去找一个 boundary：</p>
 <ul>
-<li>如果 model 没有办法 fit training data 的 examples，代表 bias 比较大，这时是 underfitting</li>
-<li>如果 model 可以 fit training data，在 training data 上得到小的 error，但是在 testing data 上，却得到一个大的 error，代表 variance 比较大，这时是 overfitting</li>
+<li>要有最大的 margin，让这两个 class 分的越开越好</li>
+<li>要有最小的分类错误</li>
 </ul>
-<h4 id="bias-or-variance"><strong>如何处理 bias 大 or variance 大的情况呢？</strong><a class="headerlink" href="#bias-or-variance" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>bias 比较大</strong> </li>
-</ul>
-<p>redesign，重新设计你的 model</p>
+<p>对于 unlabelled data 则穷尽所有可能的 label，然后对每一种可能的结果都去算 SVM，再找出可以让 margin 最大，同时又 minimize error 的那种情况</p>
+<p>SVM paper：Thorsten Joachims, ”<em>Transductive</em> <em>Inference for Text Classification using Support Vector Machines”,</em> ICML, 1999</p>
+<p>paper 中给出了 n 很大的时候的解决方法，思想是：一开始你先得到一些 label，然后每次改一笔 unlabeled data 的 label，看看可不可以让你的 objective function 变大，如果变大就去改变该 label</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_5.png"/></p>
+<h2 id="smoothness-assumption">Smoothness Assumption<a class="headerlink" href="#smoothness-assumption" title="Permanent link">&para;</a></h2>
+<h3 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h3>
+<p>smoothness assumption 的基本精神是：近朱者赤，近墨者黑</p>
+<p>粗糙的定义是相似的 x 具有相同的 <span class="arithmatex">\(\hat y\)</span>，精确的定义是：</p>
 <ul>
 <li>
-<p>增加更多的 features 作为 model 的 input 输入变量</p>
-<p>比如 pokemon 的例子里，只考虑进化前 cp 值可能不够，还要考虑 hp 值、species 种类...作为model 新的 input 变量</p>
+<p>x的分布是不平均的</p>
 </li>
 <li>
-<p>让 model 变得更复杂，增加高次项</p>
-<p>比如原本只是 linear model，现在考虑增加二次项、三次项...</p>
+<p>如果 <span class="arithmatex">\(x^1\)</span>​ 和 <span class="arithmatex">\(x^2\)</span>​ 在一个 high density region 上很接近的话，那么 <span class="arithmatex">\(\hat y^1\)</span> ​和 <span class="arithmatex">\(\hat y^2\)</span> ​就是相同的</p>
 </li>
-<li>
-<p><strong>variance 比较大</strong> </p>
-</li>
-<li>
-<p>增加data</p>
+</ul>
+<p>也就是这两个点可以在样本点高密度集中分布的区域块中有一条可连接的路径，即 connected by a high density path</p>
+<h3 id="digits-detection">digits detection<a class="headerlink" href="#digits-detection" title="Permanent link">&para;</a></h3>
+<p>手写数字辨识为例，显然最右侧的 2 和 3 在 pixel 上会更接近一些；但如果把所有连续变化的 2 放进来，那它们其实都是 2</p>
+<p>人脸的过渡数据也同理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_6.png"/></p>
+<h3 id="file-classification">file classification<a class="headerlink" href="#file-classification" title="Permanent link">&para;</a></h3>
+<p>Smoothness Assumption 在文件分类上是非常有用的</p>
+<p>假设对天文学 (astronomy) 和旅行 (travel) 的文章进行分类，它们各自有专属的词汇，此时如果 unlabeled data 与 label data 的词汇是相同或重合 (overlap) 的，那么就很容易分类；但在真实的情况下，unlabeled data 和 labeled data 之间可能没有任何重复的 words，因为世界上的词汇太多了，sparse 的分布很难会使 overlap 发生</p>
+<p>但如果unlabeled data足够多，就会以一种相似传递的形式，建立起文档之间相似的桥梁</p>
+<h3 id="cluster-and-then-label">cluster and then label<a class="headerlink" href="#cluster-and-then-label" title="Permanent link">&para;</a></h3>
+<p>在具体实现上，有一种简单的方法是cluster and then label，也就是先把 data 分成几个 cluster 后再去 train，但这种方法不一定会得到好的结果，因为它的假设是你可以把同一个 class 的样本点 cluster 在一起，而这其实是没那么容易的，比如 对图像的划分</p>
+<h3 id="graph-based-approach">Graph-based Approach<a class="headerlink" href="#graph-based-approach" title="Permanent link">&para;</a></h3>
+<p>之前讲的是比较直觉的做法，接下来引入 Graph Structure 来表达 connected by a high density path 这件事</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_7.png"/></p>
+<p>把所有的 data points 都建成一个 graph，有时候建立 vertex 之间的关系是比较容易的，比如网页之间的链接关系、论文之间的引用关系；但有时候需要你自己去寻找 vertex 之间的关系</p>
+<p>graph 的好坏，对结果起着至关重要的影响，而如何 build graph 却是一件 heuristic 的事情，需要凭着经验和直觉来做</p>
 <ul>
-<li>如果没有办法 collect 更多的 data，其实有一招，根据你对这个问题的理解，自己去generate 更多“假的” data </li>
-<li>比如手写数字识别，因为每个人手写数字的角度都不一样，那就把所有 training data 里面的数字都左转15°，右转15°</li>
-<li>比如做火车的影像辨识，只有从左边开过来的火车影像资料，没有从右边开过来的火车影像资料，该怎么办？实际上可以把每张图片都左右颠倒，就 generate 出右边的火车数据了，这样就多了一倍 data 出来</li>
-<li>比如做语音辨识的时候，只有男生说的“你好”，没有女生说的“你好”，那就用男生的声音用一个变声器把它转化一下，这样男女生的声音就可以互相转化，这样 data 就可以多出来</li>
-<li>比如现在你只有录音室里录下的声音，但是 detection 实际要在真实场景下使用的，那你就去真实场景下录一些噪音加到原本的声音里，就可以 generate 出符合条件的 data 了</li>
-</ul>
+<li>
+<p>首先定义两个object <span class="arithmatex">\(x^i,x^j\)</span>之间的相似度 <span class="arithmatex">\(s(x^i, x^j)\)</span></p>
 </li>
 <li>
-<p>Regularization(正规化)</p>
-<ul>
-<li>就是在 loss function 里面再加一个与 model 高次项系数相关的 term，它会希望你的 model 里高次项的参数越小越好，也就是说希望你今天找出来的曲线越平滑越好；这个新加的 term前面可以有一个 weight，代表你希望你的曲线有多平滑</li>
-<li>加了 regularization 以后，因为你强迫所有的曲线都要比较平滑，所以这个时候也会让你的variance 变小；但 regularization 是可能会伤害 bias 的，因为它实际上调整了 function set 的 space 范围，变成它只包含那些比较平滑的曲线，这个缩小的 space 可能没有包含原先在更大 space 内的 <span class="arithmatex">\(\widehat{f}\)</span>，因此伤害了 bias，所以当你做 regularization 的时候，需要调整 regularization 的 weight，在 variance 和 bias 之间取得平衡</li>
-</ul>
+<p>算完相似度后，就可以建graph了，方式有很多种：</p>
 </li>
 <li>
-<p>不应该做的事</p>
+<p>k nearest neighbor：k 邻近法，与周围最接近的 k 个点连接</p>
+</li>
+<li>
+<p>e-neighborhood：每个 point 与相似度超过某个特定 threshold e 的点相连</p>
+</li>
+<li>
+<p>除此之外，还可以给 Edge 特定的 weight，让它与相似度 <span class="arithmatex">\(s(x^i,x^j)\)</span>​ 成正比</p>
+</li>
+<li>
+<p>建议用 RBM function 来确定相似度：<span class="arithmatex">\(s(x^i,x^j)=e^{-\gamma||x^i-x^j||^2 }\)</span>​</p>
+<p>这里<span class="arithmatex">\(x^i,x^j\)</span>​均为vector，计算它们的 Euclidean Distance (欧几里得距离)，加上参数后再去 exponential</p>
+</li>
+<li>
+<p>至于加exponential，经验上来说通常是可以帮助提升 performance的，在这里只有当 <span class="arithmatex">\(x^i,x^j\)</span>​ 非常接近的时候，singularity 才会大；只要距离稍微远一点，singularity 就会下降得很快，变得很小</p>
+</li>
+<li>
+<p>使用 exponential 的 RBM function 可以做到只有非常近的两个点才能相连，稍微远一点就无法相连的效果</p>
 </li>
 </ul>
-<p>拿做好的 model 通过 testing data 得出的 error 来评价这个 model，然后觉得这个 model 不好，回去修改参数 </p>
-<h4 id="training-set-validation-set">training set 和 validation set<a class="headerlink" href="#training-set-validation-set" title="Permanent link">&para;</a></h4>
-<p>把你的 training set 分成两组：</p>
+<p>graph-based approach 需要收集到的 data 足够多，否则可能传递到一半，graph 就断掉了，information 的传递就失效了 </p>
+<p>介绍完了如何定性使用 graph，接下来介绍一下如何定量使用 graph</p>
+<p>定量的使用方式是定义 label 的 smoothness，下图中，edge 上的数字是 weight，<span class="arithmatex">\(x^i\)</span> 是data，<span class="arithmatex">\(y^i\)</span> 是 label，计算 smoothness 的方式为：
+$$
+S=\frac{1}{2}\sum\limits_{i,j} w_{i,j}(y^i-y^j)^2
+$$
+我们期望 smooth 的值<strong>越小越好</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_8.png"/></p>
+<p>如果把 labeled data 和 unlabeled data 的 y 组成一个( R+U) dim vector，即
+$$
+y=\left [\begin{matrix} 
+...y^i...y^j
+\end{matrix} \right ]^T
+$$
+于是 smooth 可以改写为：
+$$
+S=\frac{1}{2}\sum\limits_{i,j} w_{i,j}(y^i-y^j)^2=y^TLy
+$$
+其中 L 为 (R+U)×(R+U) matrix，称为 <strong>Graph Laplacian</strong>， 定义为 <span class="arithmatex">\(L=D-W\)</span> </p>
 <ul>
-<li>一组是真正拿来 training model 的，叫做 training set (训练集)</li>
-<li>另外一组不拿它来 training model，而是拿它来选 model，叫做 validation set (验证集)</li>
+<li>W：把 data point 两两之间 weight 的关系建成 matrix，代表了 <span class="arithmatex">\(x^i\)</span> 与 <span class="arithmatex">\(x^j\)</span> 之间的weight值</li>
+<li>D：把 W 的每一个 row 上的值加起来放在该行对应的 diagonal 上即可</li>
 </ul>
-<p>先在 training set 上找出每个 model 最好的 function <span class="arithmatex">\(f^*\)</span>，然后用 validation set 来选择你的 model </p>
-<p>如果感觉分成 2 部分 training data 变少的话，可以这样做：已经从 validation 决定 model3 是最好的model，那就定住 model3 不变 (function的表达式不变)，然后用全部的 data 在 model3 上面再训练一次 (使用全部的 data 去更新 model3 表达式的参数)</p>
-<p>这个时候，如果你把这个训练好的 model 的 <span class="arithmatex">\(f^*\)</span>apply 到 public testing set 上面，你可能会得到一个大于0.5的 error，虽然这么做，你得到的 error 表面上看起来是比较大的，但是<strong>这个时候你在 public set 上的 error 才能够真正反映你在 private set 上的 error</strong> </p>
-<p><strong>如何划分 training set 和 validation set？</strong> </p>
-<p>validation set 可能自带 bias，对结果不利</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_9.png"/></p>
+<p>对 <span class="arithmatex">\(S=y^TLy\)</span> 来说，y 是 label，是 neural network 的 output，取决于 neural network 的parameters，因此要在原来仅针对 labeled data 的 loss function 中加上这一项，得到：
+$$
+L=\sum\limits_{x^r}C(y^r,\hat y^r) + \lambda S
+$$
+<span class="arithmatex">\(\lambda S\)</span>​​ 实际上也是一个 regularization </p>
+<p>训练目标：</p>
 <ul>
-<li><strong>N-flod Cross Validation</strong> </li>
+<li>labeled data 的 cross entropy 越小越好 (neural network 的 output 跟真正的 label 越接近越好)</li>
+<li>smooth S 越小越好 (neural network 的 output，不管是 labeled 还是 unlabeled，都要符合 Smoothness Assumption 的假设)</li>
 </ul>
-<p>如果你不相信某一次分 train 和 validation 的结果的话，那你就分很多种不同的样子</p>
-<p>比如说，如果你做 3-flod 的 validation，意思就是你把 training set 分成三份，你每一次拿其中一份当做 validation set，另外两份当 training</p>
-<p>分别在每个情境下都计算一下3个model 的 error，然后计算一下它的 average error，选择一个 error 最小的</p>
-<p>然后把用整个完整的 training data 重新训练一遍参数，再去 testing data 上 test</p>
+<p>具体训练的时候，不一定只局限于 neural network 的 output 要 smooth，可以对中间任意一个 hidden layer 加上 smooth 的限制</p>
+<h2 id="better-representation">Better Representation<a class="headerlink" href="#better-representation" title="Permanent link">&para;</a></h2>
+<p>Better Representation 的精神是，去芜存菁，化繁为简</p>
+<p>就是找到一个 data 的 feature 核心</p>
+<p>算法具体思路和内容到 unsupervised learning 的时候再介绍</p>
                 
               
               
@@ -1341,7 +1423,7 @@ $$
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../%E8%AF%B4%E6%98%8E/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 说明" rel="prev">
+        <a href="../6_Recurrent%20Neural%20Network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RNN" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1350,20 +1432,20 @@ $$
               <span class="md-footer__direction">
                 Previous
               </span>
-              说明
+              RNN
             </div>
           </div>
         </a>
       
       
         
-        <a href="../2_Classification/" class="md-footer__link md-footer__link--next" aria-label="Next: Classification" rel="next">
+        <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-footer__link md-footer__link--next" aria-label="Next: Unsupervised Learning Word Embedding" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Classification
+              Unsupervised Learning Word Embedding
             </div>
           </div>
           <div class="md-footer__button md-icon">

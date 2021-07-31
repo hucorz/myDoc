@@ -9,19 +9,21 @@
       
       
       
-      <link rel="icon" href="/myDoc/img/favicon.ico">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/6_Recurrent%20Neural%20Network/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>hucorz's Docs</title>
+        <title>RNN - hucorz's Docs</title>
       
     
     
-      <link rel="stylesheet" href="/myDoc/assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
       
         
-        <link rel="stylesheet" href="/myDoc/assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
         
           
           
@@ -57,12 +59,17 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
-    <script>function __prefix(e){return new URL("/myDoc/",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#recurrent-neural-network" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -71,9 +78,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/myDoc/." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
       
-  <img src="/myDoc/img/cat-solid.svg" alt="logo">
+  <img src="../../img/cat-solid.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -89,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              RNN
             
           </span>
         </div>
@@ -164,7 +171,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="/myDoc/." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -179,7 +186,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
         OI
       </a>
     </li>
@@ -195,7 +202,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
         笔记
       </a>
     </li>
@@ -211,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
         前端
       </a>
     </li>
@@ -227,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
         Python
       </a>
     </li>
@@ -237,13 +244,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
         ML
       </a>
     </li>
@@ -259,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/myDoc/%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
         其他
       </a>
     </li>
@@ -286,9 +295,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/myDoc/." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
       
-  <img src="/myDoc/img/cat-solid.svg" alt="logo">
+  <img src="../../img/cat-solid.svg" alt="logo">
 
     </a>
     hucorz's Docs
@@ -317,7 +326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -353,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
         参考
       </a>
     </li>
@@ -365,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
         数论
       </a>
     </li>
@@ -377,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
         计算几何
       </a>
     </li>
@@ -389,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
         图论
       </a>
     </li>
@@ -401,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
         数据结构
       </a>
     </li>
@@ -413,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
         字符串
       </a>
     </li>
@@ -425,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
         其他
       </a>
     </li>
@@ -437,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/OI/STL/" class="md-nav__link">
+      <a href="../../OI/STL/" class="md-nav__link">
         STL
       </a>
     </li>
@@ -479,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         数据库系统
       </a>
     </li>
@@ -521,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
         HTML
       </a>
     </li>
@@ -563,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         说明
       </a>
     </li>
@@ -575,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/Numpy/" class="md-nav__link">
+      <a href="../../Python/Numpy/" class="md-nav__link">
         Numpy
       </a>
     </li>
@@ -587,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/Pandas/" class="md-nav__link">
+      <a href="../../Python/Pandas/" class="md-nav__link">
         Pandas
       </a>
     </li>
@@ -599,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/Matplotlib/" class="md-nav__link">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
         Matplotlib
       </a>
     </li>
@@ -611,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/Pymssql/" class="md-nav__link">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
         Pymssql
       </a>
     </li>
@@ -623,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/Python/Streamlit/" class="md-nav__link">
+      <a href="../../Python/Streamlit/" class="md-nav__link">
         Streamlit
       </a>
     </li>
@@ -642,12 +651,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         ML
@@ -665,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         说明
       </a>
     </li>
@@ -677,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/1_Regression/" class="md-nav__link">
+      <a href="../1_Regression/" class="md-nav__link">
         Regression
       </a>
     </li>
@@ -689,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/2_Classification/" class="md-nav__link">
+      <a href="../2_Classification/" class="md-nav__link">
         Classification
       </a>
     </li>
@@ -701,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/3_Logistic%20Regression/" class="md-nav__link">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
         Logistic Regression
       </a>
     </li>
@@ -713,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/4_Deep%20learning/" class="md-nav__link">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
         Deep Learning
       </a>
     </li>
@@ -725,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
         CNN
       </a>
     </li>
@@ -735,11 +746,85 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/myDoc/ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RNN
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         RNN
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-concept" class="md-nav__link">
+    Basic Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-learn" class="md-nav__link">
+    How to learn?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to learn?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loss-function" class="md-nav__link">
+    Loss Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipping" class="md-nav__link">
+    Clipping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-applications" class="md-nav__link">
+    More Applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -749,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
         Semi Supervised Learning
       </a>
     </li>
@@ -761,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
         Unsupervised Learning Word Embedding
       </a>
     </li>
@@ -773,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/Pytorch/" class="md-nav__link">
+      <a href="../Pytorch/" class="md-nav__link">
         Pytorch
       </a>
     </li>
@@ -785,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/ML/Keras/" class="md-nav__link">
+      <a href="../Keras/" class="md-nav__link">
         Keras
       </a>
     </li>
@@ -827,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
         Mkdocs
       </a>
     </li>
@@ -839,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/myDoc/%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
         Markdown
       </a>
     </li>
@@ -859,11 +944,142 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-concept" class="md-nav__link">
+    Basic Concept
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-learn" class="md-nav__link">
+    How to learn?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to learn?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loss-function" class="md-nav__link">
+    Loss Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipping" class="md-nav__link">
+    Clipping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-applications" class="md-nav__link">
+    More Applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/6_Recurrent Neural Network.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="recurrent-neural-network">Recurrent Neural Network<a class="headerlink" href="#recurrent-neural-network" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>RNN：循环神经网络</p>
+</blockquote>
+<h2 id="basic-concept">Basic Concept<a class="headerlink" href="#basic-concept" title="Permanent link">&para;</a></h2>
+<p>Slot Filling：Slot Filling 希望实现的是给出一个句子，如 I would like to arrive Taipei on November 2nd 后，能够得到其中 2 个主要内容，Destination：Taipei，time of arrival：November 2nd，所以叫 Slot Filling（槽填充）</p>
+<p>input 因为是单词所以可以用 1-of-N encoding，除此之外，我们还要加一个 dimension for "Others"，也可以用 Word hashing</p>
+<p>1111</p>
+<p>但还有一个问题就是，并不一定都是 arrive 的，也有可能是 leave Taipei 的，所以我们要给 Neural network 更多的 memory，去记住前面的信息</p>
+<p>可以用 2 个额外的 memory 去 store 前面的信息，并把他们也作为input</p>
+<p>以下图为例，memory 的初始值设为 0，Neural network 的 weight 都是 1，bias 都是 0，第一层 layer 的 output 会存储到 memory 中作为下一次的 input</p>
+<p>22222</p>
+<p>大体的流程如下（同一个 network 使用多次）</p>
+<p>3333</p>
+<p>当然也可以是 deep 的，每一层的 layer 的 output 都存储下来</p>
+<p>4444</p>
+<p>上面的叫做 Elman Network，还有其他不同 sturcuture 的 network 比如 Jordan Network 能得到更好的结果，因为它的 output <span class="arithmatex">\(y^t\)</span> 是有 target 的​</p>
+<p>5555</p>
+<p>Bidirectional RNN</p>
+<p>RNN 也可以是双向的，正向做的同时逆向做，并得到 <span class="arithmatex">\(y^t\)</span>​​​，这样的话 Neuron Network 能够同时看两边</p>
+<p>6666</p>
+<p>Long Short-term Memory（LSTM）</p>
+<p>每个 Memory Cell 都有一个 input gate，output gate，forget gate，什么时候打开 input gate，打开 output gate，打开 forget gate 都是 network 自己学到的</p>
+<p>可以看成有 4 个 input，1 个 output</p>
+<p>77777</p>
+<p><span class="arithmatex">\(c^{'}\)</span>​ 是新的存储在 memory 中的值</p>
+<p>8888</p>
+<p>下图是个例子，<span class="arithmatex">\(x_1\)</span> 表示 input data,<span class="arithmatex">\(x_2 = 1\)</span> 表示 input gate 打开，<span class="arithmatex">\(x_2=-1\)</span> 表示 forget gate 打开，<span class="arithmatex">\(x_3=1\)</span>​​ 表示 output gate 打开，每一个 weight 和 bias 都是 train 出来的</p>
+<p>LSTM 相比于普通的 Network 需要 4 倍的参数</p>
+<p>999</p>
+<p>LSTM 的真正形态：除了当前时间点的 input 外还有上一个时间点的 output 和 peephole（把存在 memory 中的值也加进 input）</p>
+<p>Keras 中支持三种 LSTM：LSTM，GRU，SimpleRNN</p>
+<p>1010</p>
+<h2 id="how-to-learn">How to learn?<a class="headerlink" href="#how-to-learn" title="Permanent link">&para;</a></h2>
+<h3 id="loss-function">Loss Function<a class="headerlink" href="#loss-function" title="Permanent link">&para;</a></h3>
+<p>每一个 output 的与 label 的 cross entropy 的和</p>
+<p>1111</p>
+<p>update 的方法也是用 backpropagation，叫做 backpropagation through time（BPTT），在 time sequence 上运作，这里不展开</p>
+<p>不幸的是，RNN-based network 是不太容易 train 的，total loss 并不是一直下降的而且在一些地方非常的平坦，一些地方非常的陡峭</p>
+<p>1212</p>
+<h3 id="clipping">Clipping<a class="headerlink" href="#clipping" title="Permanent link">&para;</a></h3>
+<p>通过 Clipping 解决 total loss 的图像陡峭的问题</p>
+<p>Clipping 是在 update 的过程中当 gradient 大于某个值时，让它就等于某个值，即设定一个 threshold</p>
+<p>会出现这样的原因不是因为 activation function，当把 sigmoid function 改成 ReLU 后 performance 反而会变差</p>
+<p>下面用一个最简单的例子来解释为什么会有这种情况</p>
+<p>当除了 neuron transition 之间的 weight 都是 1 时，第一个 input 改变一点，对 ouput 的影响就会非常大，learning rate 太大太小都会有问题</p>
+<p>1313</p>
+<p>解决这个问题被广泛采取的方法就是 LSTM，它可以把 loss 图像中平坦的地方拿掉（避免 gradient 特别小），这样就可以放心的把 learning rate 设小一些；因为 如果 weight 的值对 memory 的产生了影响，这个影响会一直存在（除非 forget 掉）</p>
+<p>Gated Recurrent Unit（GRU）simpler than LSTM 只有 2 个 gate，所以参数比 LSTM 少，如果 overfitting 了可以尝试</p>
+<h3 id="more-applications">More Applications<a class="headerlink" href="#more-applications" title="Permanent link">&para;</a></h3>
+<p>Sentiment Analysis：判断评价的正负面</p>
+<p>判断文章的 key term             </p>
+<p>Both input and output are both sequences，but the output is shorter，比如 Speech Recognition             </p>
+<p>后面  Applications 还讲了很多</p>
+<p>。。。。。。</p>
+                
+              
+              
+                
+
 
               
             </article>
@@ -874,6 +1090,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../5_Convolutional%20Neural%20Network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CNN" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              CNN
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../7_Semi-supervised%20Learning/" class="md-footer__link md-footer__link--next" aria-label="Next: Semi Supervised Learning" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Semi Supervised Learning
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -894,10 +1145,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/myDoc/", "features": ["navigation.tabs", "navigation.tabs.sticky"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "/myDoc/assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="/myDoc/assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

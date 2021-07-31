@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/%E8%AF%B4%E6%98%8E/">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/Keras/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>说明 - hucorz's Docs</title>
+        <title>Keras - hucorz's Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#keras" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              说明
+              Keras
             
           </span>
         </div>
@@ -252,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
         ML
       </a>
     </li>
@@ -674,21 +674,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         说明
       </a>
-      
     </li>
   
 
@@ -804,11 +794,113 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Keras/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Keras
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Keras
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-keras" class="md-nav__link">
+    Why Keras
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-data" class="md-nav__link">
+    prepare data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    process
+  </a>
+  
+    <nav class="md-nav" aria-label="process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1define-a-set-of-functionneural-network" class="md-nav__link">
+    step 1：define a set of function——neural network
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2goodness-of-functioncross-entropy" class="md-nav__link">
+    Step 2：goodness of function——cross entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3pick-the-best-function" class="md-nav__link">
+    Step 3：pick the best function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-and-load-models" class="md-nav__link">
+    Save and Load Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-predict" class="md-nav__link">
+    Testing and Predict
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix：手写数字识别完整代码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -892,6 +984,83 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-keras" class="md-nav__link">
+    Why Keras
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-data" class="md-nav__link">
+    prepare data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    process
+  </a>
+  
+    <nav class="md-nav" aria-label="process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1define-a-set-of-functionneural-network" class="md-nav__link">
+    step 1：define a set of function——neural network
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2goodness-of-functioncross-entropy" class="md-nav__link">
+    Step 2：goodness of function——cross entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3pick-the-best-function" class="md-nav__link">
+    Step 3：pick the best function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-and-load-models" class="md-nav__link">
+    Save and Load Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-predict" class="md-nav__link">
+    Testing and Predict
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    Appendix：手写数字识别完整代码
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -902,23 +1071,122 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/说明.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/Keras.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>李宏毅老师机器学习的笔记</p>
-<p>参考：</p>
-<p>课程视频：<a href="https://www.bilibili.com/video/BV1L7411d76h">李宏毅教授的机器学习课程(2020版全集)<em>哔哩哔哩</em></a> </p>
-<p>李宏毅老师的个人网站：<a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2020-spring.html">ML 2020 Spring (ntu.edu.tw)</a> </p>
-<p>Youtube：<a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ">Hung-yi Lee - YouTube</a> </p>
-<p>笔记参考：</p>
-<ul>
-<li><a href="https://github.com/Sakura-gh/ML-notes">Sakura-gh/ML-notes: notes about machine learning (github.com)</a> </li>
-<li><a href="https://scarleatt.github.io/">Scarleatt</a> </li>
-</ul>
-<p>我的 homework 记录：<a href="http://myblog.hucorz.top/categories/ML/">分类: ML | hucorz</a> </p>
+                <h1 id="keras">Keras<a class="headerlink" href="#keras" title="Permanent link">&para;</a></h1>
+<h2 id="why-keras">Why Keras<a class="headerlink" href="#why-keras" title="Permanent link">&para;</a></h2>
+<p>tensorflow 和另外一个功能相近的 toolkit theano 很难在短时间内精通</p>
+<p>Keras 是比较容易去学习和使用的，并且它也有足够的弹性，除非你自己想要做 deep learning 的研究，去设计一个自己的 network，否则多数你可以想到的 network，在 Keras 里都有现成的 function 可以拿来使用；因为它背后就是 tensorflow or theano，所以如果你想要精进自己的能力的话，你永远可以去改 Keras 背后的tensorflow 的 code，然后做更厉害的事情</p>
+<p>而且，现在 Keras 已经成为了 Tensorflow 官方的 API，它像搭积木一样简单</p>
+<h2 id="prepare-data">prepare data<a class="headerlink" href="#prepare-data" title="Permanent link">&para;</a></h2>
+<p>使用的data是MNIST的Data：http://yann.lecun.com/exdb/mnist/</p>
+<p>Keras提供了自动下载MNIST data的function：http://keras.io/datasets/</p>
+<p>MNIST 是手写数字的数据集</p>
+<h2 id="process">process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
+<p>DOC：<a href="https://keras.io/api/">Keras API reference</a></p>
+<p>首先要先导入keras包：<code>from keras.models import Sequential</code></p>
+<h3 id="step-1define-a-set-of-functionneural-network">step 1：define a set of function——neural network<a class="headerlink" href="#step-1define-a-set-of-functionneural-network" title="Permanent link">&para;</a></h3>
+<p>先用<code>Sequential()</code>宣告建立一个model</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+</code></pre></div>
+<p>然后开始叠 layer 以构成一个 neural network，这里的例子一共有2层，每层 500 个 nuits（units）</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p><code>add</code>：加一层 hidden layer</p>
+<p><code>Dense</code>：加一个 <strong>Fully connected</strong> 的 layer</p>
+<p><code>input_dim</code>：只在第一层 layer 前面加一个 input，这里是一个 28*28=784 的 vector，代表 img</p>
+<p><code>units</code>：一层 layer 中 units(neuron) 的数量</p>
+<p><code>activation</code>：激活函数，一些可选的例子：softplus, softsign, relu, tanh, hard_sigmoid, linear</p>
+<p>最后一层 output 是 10 维，分别表示数字 1~10，用 softmax 使得几率之和变成一个概率分布</p>
+<h3 id="step-2goodness-of-functioncross-entropy">Step 2：goodness of function——cross entropy<a class="headerlink" href="#step-2goodness-of-functioncross-entropy" title="Permanent link">&para;</a></h3>
+<p>利用 <code>model.compile</code> 去定义 loss function</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p><code>loss</code>: 使用的 loss function</p>
+<p><code>optimizer</code>: 系数的更新方式，一些可选的例子：Adagrad, Nadam</p>
+<h3 id="step-3pick-the-best-function">Step 3：pick the best function<a class="headerlink" href="#step-3pick-the-best-function" title="Permanent link">&para;</a></h3>
+<p>用 <code>model.fit</code> 去 training</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batcha_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p><code>x_train</code>：前 2 个参数是 train_data，以手写数字辨识为例，一张图片是 28*28=784 的 vector，样本量为 10000，那么 x_train 就一个 10000*784 的 numpy array；y_train 是一个 10000*10 的 numpy array</p>
+<p><code>batch_size</code>：batch 的大小，即每个随机选择多少个样本来 update 参数</p>
+<p><code>nb_epoch</code>：对每个 batch update 参数的次数，以上面的参数为例，10000 个 data，100 个为一个 batch，则有 100 个 batch，所以一共 update 2000 次（一个 epoch 中每个 batch 只 update 一次参数）</p>
+<p>如果 batch_size=0 就是 <strong>Stochastic Gradient Descent</strong> (随机梯度下降法)</p>
+<p>运用了 GPU 的平行运算后，batch_size=10 和 batch_size=1 在 update 一次参数上的速度基本是一样的，但 batch_size 也不能开太大，GPU 是有极限的。而且在 gradient descent 的时候可能会卡在 local minima</p>
+<h2 id="save-and-load-models">Save and Load Models<a class="headerlink" href="#save-and-load-models" title="Permanent link">&para;</a></h2>
+<p>Keras 可以把 train 好的 model 保存起来并直接使用保存好的 model，参考：<a href="https://keras.io/getting_started/faq/#what-are-my-options-for-saving-models">Keras FAQ</a>  </p>
+<h2 id="testing-and-predict">Testing and Predict<a class="headerlink" href="#testing-and-predict" title="Permanent link">&para;</a></h2>
+<p>用 <code>model.evaluate</code> 计算正确率</p>
+<div class="highlight"><pre><span></span><code><span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total loss on Testing Set:&#39;</span><span class="p">,</span><span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy of Testing Set:&#39;</span><span class="p">,</span><span class="n">score</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<p>用 <code>model.predict</code> 来做 predict</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="appendix">Appendix：手写数字识别完整代码<a class="headerlink" href="#appendix" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="kn">import</span> <span class="n">SGD</span><span class="p">,</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">np_utils</span>
+<span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+
+<span class="c1"># categorical_crossentropy</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">():</span>  
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">number</span><span class="p">]</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">number</span><span class="p">]</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="c1"># convert class vectors to binary class matrices</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span>
+    <span class="c1"># x_test=np.random.normal(x_test)</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mi">255</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mi">255</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># load training data and testing data</span>
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+
+    <span class="c1"># define network structure</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+
+    <span class="c1"># set configurations</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+                  <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+    <span class="c1"># train model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># evaluate the model and output the accuracy</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Acc:&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<blockquote>
+<p>Test Acc: 0.9439</p>
+</blockquote>
                 
               
               
@@ -938,7 +1206,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../Python/Streamlit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Streamlit" rel="prev">
+        <a href="../Pytorch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pytorch" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -947,20 +1215,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Streamlit
+              Pytorch
             </div>
           </div>
         </a>
       
       
         
-        <a href="../1_Regression/" class="md-footer__link md-footer__link--next" aria-label="Next: Regression" rel="next">
+        <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-footer__link md-footer__link--next" aria-label="Next: Mkdocs" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Regression
+              Mkdocs
             </div>
           </div>
           <div class="md-footer__button md-icon">
