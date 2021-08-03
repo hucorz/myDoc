@@ -1304,20 +1304,20 @@ z=W_1 x_{i-2}+W_2 x_{i-1}=W(x_{i-2}+x_{i-1})
 $$
 <img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Unsupervised_Learning_Word Embedding/Unsupervised Learning Word Embedding_3.png"/></p>
 <p>在实际操作时如何保证 <span class="arithmatex">\(W_1\)</span> 和 <span class="arithmatex">\(W_2\)</span>​ 一样呢？</p>
-<p>原本的 update 的参数：
-$$
+<p>原本的 update 的参数：</p>
+<div class="arithmatex">\[
 \begin{align}
-w_i=w_i-\eta \frac{\partial C}{\partial w_i}\
+w_i=w_i-\eta \frac{\partial C}{\partial w_i}\\
 w_j=w_j-\eta \frac{\partial C}{\partial w_j}
 \end{align}
-$$
-为了保证 <span class="arithmatex">\(w_i=w_j\)</span>：
-$$
+\]</div>
+<p>为了保证 <span class="arithmatex">\(w_i=w_j\)</span>：</p>
+<div class="arithmatex">\[
 \begin{align}
-w_i=w_i-\eta \frac{\partial C}{\partial w_i}-\eta \frac{\partial C}{\partial w_j}\
+w_i=w_i-\eta \frac{\partial C}{\partial w_i}-\eta \frac{\partial C}{\partial w_j}\\
 w_j=w_j-\eta \frac{\partial C}{\partial w_j}-\eta \frac{\partial C}{\partial w_i}
 \end{align}
-$$</p>
+\]</div>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Unsupervised_Learning_Word Embedding/Unsupervised Learning Word Embedding_4.png"/></p>
 <h4 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h4>
 <p>训练只要上网爬一下文章数据就行</p>

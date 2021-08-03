@@ -1222,20 +1222,20 @@ $$
 <blockquote>
 <p>Divide the learning rate of each parameter by the root mean square(方均根) of its previous derivatives</p>
 </blockquote>
-<p>Adagrad 将不同参数的 learning rate 分开考虑，update到后面速度会越来越慢，这是adaptive算法中最简单的一种
-$$
+<p>Adagrad 将不同参数的 learning rate 分开考虑，update到后面速度会越来越慢，这是adaptive算法中最简单的一种</p>
+<div class="arithmatex">\[
 \begin{equation}
 \begin{split}
-&amp;Adagrad\
-&amp;w^1=w^0-\frac{\eta^0}{\sigma^0}\cdot g^0, \ \ \ \sigma^0=\sqrt{(g^0)^2} \
-&amp;w^2=w^1-\frac{\eta^1}{\sigma^1}\cdot g^1, \ \ \ \sigma^1=\sqrt{\frac{1}{2}[(g^0)^2+(g^1)^2]} \
-&amp;w^3=w^2-\frac{\eta2}{\sigma^2}\cdot g^2, \ \ \ \sigma^2=\sqrt{\frac{1}{3}[(g^0)^2+(g^1)^2+(g^2)^2]} \
-&amp;... \
+&amp;Adagrad\\
+&amp;w^1=w^0-\frac{\eta^0}{\sigma^0}\cdot g^0, \ \ \ \sigma^0=\sqrt{(g^0)^2} \\
+&amp;w^2=w^1-\frac{\eta^1}{\sigma^1}\cdot g^1, \ \ \ \sigma^1=\sqrt{\frac{1}{2}[(g^0)^2+(g^1)^2]} \\
+&amp;w^3=w^2-\frac{\eta2}{\sigma^2}\cdot g^2, \ \ \ \sigma^2=\sqrt{\frac{1}{3}[(g^0)^2+(g^1)^2+(g^2)^2]} \\
+&amp;... \\
 &amp;w^{t+1}=w^t-\frac{\eta^t}{\sigma^t}\cdot g^t, \ \ \ \sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}
 \end{split}
 \end{equation}
-$$
-<span class="arithmatex">\(g^t\)</span> 表示 Loss 对 w 的偏微分</p>
+\]</div>
+<p><span class="arithmatex">\(g^t\)</span> 表示 Loss 对 w 的偏微分</p>
 <p>由于 <span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> 和 <span class="arithmatex">\(\sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}\)</span> 中都有一个 <span class="arithmatex">\(\sqrt{\frac{1}{1+t}}\)</span> 的因子，两者相消，即可得到 adagrad 的最终表达式：</p>
 <p>$$
 w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t

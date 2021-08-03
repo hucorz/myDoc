@@ -1250,8 +1250,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="_6">点积 叉积 及 应用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<div class="arithmatex">\[\vec{a} \cdot \vec{b} = |a||b|cos\theta\]</div>
-<p><span class="arithmatex">\(<span class="arithmatex">\(|\vec{a} \times \vec{b}| = |a||b|sin\theta\)</span>\)</span>，正负由两向量的相对关系决定</p>
+<p><span class="arithmatex">\(\vec{a} \cdot \vec{b} = |a||b|cos\theta\)</span>​</p>
+<p><span class="arithmatex">\(|\vec{a} \times \vec{b}| = |a||b|sin\theta\)</span>，正负由两向量的相对关系决定</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//点积</span>
 <span class="kt">double</span> <span class="nf">Dot</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="n">Vector</span> <span class="n">b</span><span class="p">){</span> 
     <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="o">+</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span> 
@@ -1277,9 +1277,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="_8">求两直线的交点<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>由 <span class="arithmatex">\(<span class="arithmatex">\(q_2,q_1,p_2,p_1\)</span>\)</span>确定的两条直线，假设交点为 <span class="arithmatex">\(<span class="arithmatex">\(p_1+t(p_2-p_1)\)</span>\)</span> </p>
-<p>有 <span class="arithmatex">\(<span class="arithmatex">\((q_2-q_1) \times (p_1 + t(p_2-p_1)-q_1)=0\)</span>\)</span></p>
-<p>得 <span class="arithmatex">\(<span class="arithmatex">\(t = \frac{(q_2-q_1)\times(q_1-p_1)}{(q_2-q_1)\times(p_2-p_1)}\)</span>\)</span></p>
+<p>由 <span class="arithmatex">\(q_2,q_1,p_2,p_1\)</span>​​确定的两条直线，假设交点为 <span class="arithmatex">\(p_1+t(p_2-p_1)\)</span>​​​</p>
+<p>有 <span class="arithmatex">\((q_2-q_1) \times (p_1 + t(p_2-p_1)-q_1)=0\)</span>​</p>
+<p>得 <span class="arithmatex">\(t = \frac{(q_2-q_1)\times(q_1-p_1)}{(q_2-q_1)\times(p_2-p_1)}\)</span>​</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/*Point GetLineIntersection(Point p1, Point p2, Point q1, Point q2){</span>
 <span class="cm">    return p1+(p2-p1)*Cross(q2-q1, q1-p1)/Cross(q2-q1, p2-p1)</span>
 <span class="cm">}*/</span>
@@ -1308,50 +1308,50 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="_11">向量旋转与单位化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>逆时针：
-$$
+<p>逆时针：</p>
+<div class="arithmatex">\[
 \left[
 \matrix{
-  x^{'} \
+  x^{'} \\
   y^{'} 
 }
 \right]
 =
 \left[
 \matrix{
-  x \
+  x \\
   y 
 }
 \right]
 \left[
 \matrix{
-  cos\theta &amp; sin\theta\
+  cos\theta &amp; sin\theta\\
   -sin\theta &amp; cos\theta 
 }
 \right]
-$$
-顺时针：
-$$
+\]</div>
+<p>顺时针：</p>
+<div class="arithmatex">\[
 \left[
 \matrix{
-  x^{'} \
+  x^{'} \\
   y^{'} 
 }
 \right]
 =
 \left[
 \matrix{
-  x \
+  x \\
   y 
 }
 \right]
 \left[
 \matrix{
-  cos\theta &amp; -sin\theta\
+  cos\theta &amp; -sin\theta\\
   sin\theta &amp; cos\theta 
 }
 \right]
-$$</p>
+\]</div>
 <div class="highlight"><pre><span></span><code><span class="c1">//rad 是弧度, 逆时针</span>
 <span class="n">Vector</span> <span class="nf">Rotate</span><span class="p">(</span><span class="n">Vector</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span><span class="o">-</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">),</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span><span class="o">+</span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">soc</span><span class="p">(</span><span class="n">rad</span><span class="p">));</span>
@@ -1457,7 +1457,7 @@ $$</p>
 <h2 id="_17">凸包<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <h3 id="graham">Graham扫描法 算凸包<a class="headerlink" href="#graham" title="Permanent link">&para;</a></h3>
 <p>按x，y坐标升序排列，确定凸包的2的顶点，然后再确定上下两个凸壳</p>
-<p>排序 <span class="arithmatex">\(<span class="arithmatex">\(O(nlogn)\)</span>\)</span> 其他 <span class="arithmatex">\(<span class="arithmatex">\(O(n)\)</span>\)</span> </p>
+<p>排序 <span class="arithmatex">\(O(nlogn)\)</span>​​ 其他 <span class="arithmatex">\(O(n)\)</span>​​</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">q</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">!=</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">return</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>

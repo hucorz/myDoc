@@ -1552,12 +1552,12 @@ $$
 <p>再初始化 <span class="arithmatex">\(v_0=0\)</span>​，<span class="arithmatex">\(v_0\)</span>​ 就是 RMSProp 里计算 gradient 的 root mean square 的 <span class="arithmatex">\(\sigma\)</span>​</p>
 <p>最后初始化 <span class="arithmatex">\(t=0\)</span>​，t 用来表示时间点</p>
 <ul>
-<li>
-<p>先算出 gradient <span class="arithmatex">\(g_t\)</span>
-  $$
+<li>先算出 gradient <span class="arithmatex">\(g_t\)</span>​​​ </li>
+</ul>
+<p>$$
   g_t=\nabla <em>{\theta}f_t(\theta</em>{t-1})
   $$</p>
-</li>
+<ul>
 <li>
 <p>再根据过去要走的 movement  <span class="arithmatex">\(m_{t-1}\)</span> 和 gradient <span class="arithmatex">\(g_t\)</span>，算出现在要走的 movement <span class="arithmatex">\(m_t\)</span>——Momentum
   $$
@@ -1571,20 +1571,20 @@ $$
   $$</p>
 </li>
 <li>
-<p>接下来做了一个原来 RMSProp 和 Momentum 里没有的东西，就是 bias correction，它使 <span class="arithmatex">\(m_t\)</span>​​​ 和 <span class="arithmatex">\(v_t\)</span>​​​​ 都除上一个值，这个值本来比较小，后来会越来越接近于1（<span class="arithmatex">\(\beta_1^t\)</span> 和 <span class="arithmatex">\(\beta_2^t\)</span> 会越来越小）
-  $$
+<p>接下来做了一个原来 RMSProp 和 Momentum 里没有的东西，就是 bias correction，它使 <span class="arithmatex">\(m_t\)</span>​​​ 和 <span class="arithmatex">\(v_t\)</span>​​​​ 都除上一个值，这个值本来比较小，后来会越来越接近于1（<span class="arithmatex">\(\beta_1^t\)</span> 和 <span class="arithmatex">\(\beta_2^t\)</span> 会越来越小）</p>
+</li>
+</ul>
+<p>$$
   \begin{align}
   \hat{m}_t=\frac{m_t}{1-\beta_1^t} \ 
   \hat{v}_t=\frac{v_t}{1-\beta_2^t}
   \end{align}
   $$</p>
-</li>
-<li>
-<p>最后做 update，把 Momentum 建议你的方向 <span class="arithmatex">\(\hat{m_t}\)</span> 乘上 learning rate <span class="arithmatex">\(\alpha\)</span>，再除掉 RMSProp normalize 后建议的 learning rate 分母，然后得到 update 的 movement
+<ul>
+<li>最后做 update，把 Momentum 建议你的方向 <span class="arithmatex">\(\hat{m_t}\)</span> 乘上 learning rate <span class="arithmatex">\(\alpha\)</span>，再除掉 RMSProp normalize 后建议的 learning rate 分母，然后得到 update 的 movement
   $$
   \theta_t=\theta_{t-1}-\frac{\alpha \cdot \hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}
-  $$</p>
-</li>
+  $$</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Deep_learning/Deep learning_14.png" /></p>
 <h3 id="good-results-on-testing-data">Good Results on Testing Data？<a class="headerlink" href="#good-results-on-testing-data" title="Permanent link">&para;</a></h3>
@@ -1598,21 +1598,21 @@ $$
 <h4 id="regularization">Regularization<a class="headerlink" href="#regularization" title="Permanent link">&para;</a></h4>
 <p>regularization 就是在原来的 loss function 上额外增加几个 term，对每一个参数都设置一个惩罚项，可以让最后的 model 变平滑以防止 overfitting</p>
 <p>下面的范数似乎和其他地方不太一样</p>
-<p>L2 regularization：定义新的 loss function
-$$
+<p>L2 regularization：定义新的 loss function</p>
+<div class="arithmatex">\[
 \begin{align}
-L'(\theta)&amp;=L(\theta)+\frac{1}{2}\lambda||\theta||_2 \
+L'(\theta)&amp;=L(\theta)+\frac{1}{2}\lambda||\theta||_2 \\
 ||\theta||_2&amp;=(w_1)^2+(w_2)^2+...
 \end{align}
-$$
-L1 regularization：定义新的 loss function
-$$
+\]</div>
+<p>L1 regularization：定义新的 loss function</p>
+<div class="arithmatex">\[
 \begin{align}
-L'(\theta)&amp;=L(\theta)+\frac{1}{2}\lambda||\theta||_1 \
+L'(\theta)&amp;=L(\theta)+\frac{1}{2}\lambda||\theta||_1 \\
 ||\theta||_2&amp;=|w_1|+|w_2|+...
 \end{align}
-$$
-Q：L1 regularization 如何微分？</p>
+\]</div>
+<p>Q：L1 regularization 如何微分？</p>
 <p>A：V 字形，右边是 1，左边是 -1， 为 0 随便给一个值比如 0</p>
 <p>L2 regularization 当参数比较小的时候下降的会很慢，参数比较大的时候下降的时候会很快，所以最后 train 出来的参数都是比较小的</p>
 <p>L1 regularization 每次都下降固定的值，所以 train 出来有很多参数接近 0，也会有很大的值</p>

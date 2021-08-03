@@ -1343,7 +1343,7 @@ labeled data 的 Cross Entropy 和 unlabeled data 的 entropy 加权相加（权
 <p>首先定义两个object <span class="arithmatex">\(x^i,x^j\)</span>之间的相似度 <span class="arithmatex">\(s(x^i, x^j)\)</span></p>
 </li>
 <li>
-<p>算完相似度后，就可以建graph了，方式有很多种：</p>
+<p>算完相似度后，就可以建 graph 了，方式有很多种：</p>
 </li>
 <li>
 <p>k nearest neighbor：k 邻近法，与周围最接近的 k 个点连接</p>
@@ -1356,10 +1356,10 @@ labeled data 的 Cross Entropy 和 unlabeled data 的 entropy 加权相加（权
 </li>
 <li>
 <p>建议用 RBM function 来确定相似度：<span class="arithmatex">\(s(x^i,x^j)=e^{-\gamma||x^i-x^j||^2 }\)</span>​</p>
-<p>这里<span class="arithmatex">\(x^i,x^j\)</span>​均为vector，计算它们的 Euclidean Distance (欧几里得距离)，加上参数后再去 exponential</p>
+<p>这里<span class="arithmatex">\(x^i,x^j\)</span>​均为 vector，计算它们的 Euclidean Distance (欧几里得距离)，加上参数后再去 exponential</p>
 </li>
 <li>
-<p>至于加exponential，经验上来说通常是可以帮助提升 performance的，在这里只有当 <span class="arithmatex">\(x^i,x^j\)</span>​ 非常接近的时候，singularity 才会大；只要距离稍微远一点，singularity 就会下降得很快，变得很小</p>
+<p>至于加 exponential，经验上来说通常是可以帮助提升 performance的，在这里只有当 <span class="arithmatex">\(x^i,x^j\)</span>​ 非常接近的时候，singularity 才会大；只要距离稍微远一点，singularity 就会下降得很快，变得很小</p>
 </li>
 <li>
 <p>使用 exponential 的 RBM function 可以做到只有非常近的两个点才能相连，稍微远一点就无法相连的效果</p>
@@ -1373,7 +1373,7 @@ S=\frac{1}{2}\sum\limits_{i,j} w_{i,j}(y^i-y^j)^2
 $$
 我们期望 smooth 的值<strong>越小越好</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Semi_supervised_learning/Semi-supervised Learning_8.png"/></p>
-<p>如果把 labeled data 和 unlabeled data 的 y 组成一个( R+U) dim vector，即
+<p>如果把 labeled data 和 unlabeled data 的 y 组成一个 (R+U) dim vector，即
 $$
 y=\left [\begin{matrix} 
 ...y^i...y^j

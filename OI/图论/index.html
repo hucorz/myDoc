@@ -1947,7 +1947,7 @@
 <p>parent2[v]  = parent[parent[v]]</p>
 <p>parent4[v] = parent2[parent2[v]]</p>
 <p>...</p>
-<p>得到其向上走 <span class="arithmatex">\(<span class="arithmatex">\(2^k\)</span>\)</span> 步到达的顶点</p>
+<p>得到其向上走 <span class="arithmatex">\(2^k\)</span>​ 步到达的顶点</p>
 </blockquote>
 <p>每次搜索的复杂度： <span class="arithmatex">\(O(logn)\)</span>，预处理的复杂度：<span class="arithmatex">\(O(nlogn)\)</span></p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">max_v</span><span class="p">];</span>
@@ -2013,16 +2013,16 @@
 <p>布尔方程的可满足性问题</p>
 <p>合取范式： <span class="arithmatex">\((a\vee b\vee\dots)\wedge(c\vee d\vee\dots)\)</span></p>
 <p>2-SAT问题：合取范式的每个子句的文字不超过2的布尔方程的可满足性问题</p>
-<p>将每个 <span class="arithmatex">\(<span class="arithmatex">\(a\vee b\)</span>\)</span> 改写成 <span class="arithmatex">\(<span class="arithmatex">\((\urcorner a \Rightarrow b \wedge  \urcorner b \Rightarrow a)\)</span>\)</span>，以 <span class="arithmatex">\(\Rightarrow\)</span> 关系为边建有向图，利用强连通分量分解</p>
+<p>将每个 <span class="arithmatex">\(a\vee b\)</span> 改写成 <span class="arithmatex">\((\urcorner a \Rightarrow b \wedge  \urcorner b \Rightarrow a)\)</span>，以 <span class="arithmatex">\(\Rightarrow\)</span>​ 关系为边建有向图，利用强连通分量分解</p>
 <ul>
 <li>
-<p>如果存在 x和<span class="arithmatex">\(<span class="arithmatex">\(\urcorner x\)</span>\)</span>存在同一个强连通分量，无解</p>
+<p>如果存在 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(\urcorner x\)</span> ​​存在同一个强连通分量，无解</p>
 </li>
 <li>
-<p>否则，对于每个布尔变量x，如果x所在的强连通分量的拓扑序在<span class="arithmatex">\(\urcorner x\)</span>之后，<span class="arithmatex">\(x\)</span>为true</p>
+<p>否则，对于每个布尔变量 <span class="arithmatex">\(x\)</span>，如果 <span class="arithmatex">\(x\)</span> 所在的强连通分量的拓扑序在 <span class="arithmatex">\(\urcorner x\)</span> 之后，<span class="arithmatex">\(x\)</span>​​ 为true</p>
 </li>
 </ul>
-<p>因为拓扑序在前的强连通分量可能存在通路到达在后的，所以在后的一定为true</p>
+<p>因为拓扑序在前的强连通分量可能存在通路到达在后的，所以在后的一定为 true</p>
 <h3 id="dfs">DFS序<a class="headerlink" href="#dfs" title="Permanent link">&para;</a></h3>
 <p>当前结点的 in 和 out 包含了子树的所有结点</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">out</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>

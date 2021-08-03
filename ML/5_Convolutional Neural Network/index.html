@@ -1467,7 +1467,7 @@ max pooling 架构：针对property 3</p>
 <p>有一个问题是，一个 Convolution 有 25 个 filter 得到 25 个 feature map，repeat 第二个 Convolution 也有 25 个 filter，是不是会有 25*25 个 feature map</p>
 <p>其实不是，第二次 feature map 会考虑深度，ouyput 还是 25 个</p>
 <h2 id="flatten">Flatten<a class="headerlink" href="#flatten" title="Permanent link">&para;</a></h2>
-<p>convolution 和 max pooling之后，就是 FLatten 和 Fully connected Feedforward network 的部分</p>
+<p>convolution 和 max pooling 之后，就是 FLatten 和 Fully connected Feedforward network 的部分</p>
 <p>Flatten 就是把 feature map 拉直，然后丢进 Fully connected Feedforward network </p>
 <h2 id="cnn-in-keras">CNN in Keras<a class="headerlink" href="#cnn-in-keras" title="Permanent link">&para;</a></h2>
 <p>与 DNN 没什么不同，需要改变的是 network structure，以及 input 的 format</p>
@@ -1563,15 +1563,15 @@ max pooling 架构：针对property 3</p>
 <h3 id="what-does-filter-do">what does filter do<a class="headerlink" href="#what-does-filter-do" title="Permanent link">&para;</a></h3>
 <p>在 CNN 中第一个 Convolution 的 filter 是比较容易理解的，看它最终的值是什么就知道它在 detect 什么东西，但是后面的就不好分析了，它考虑的范围不仅是 3*3 的 pixel，还是长宽为 3*3，高为 25 的 cubic（以上面为例子），那一个 filter 到底在做什么呢？</p>
 <p>把第二个 Convolution 的某一个 filter 的 output 拿出来，是一个 11*11 的 matrix，里面的每一个 element 记作 <span class="arithmatex">\(a^k_{ij}\)</span>​，k 表示第 k 个 filter </p>
-<p><span class="arithmatex">\(a^k\)</span>​ 叫做 <strong>Degree of the activation of the k-th filter</strong>，表示现在的第 k 个 filter，它有多被 activate，直观来讲就是描述现在 input 的东西跟第 k 个 filter 有多接近，它对 filter 的激活程度有多少，是 11<em>11 的 matrix 的 summation
-$$
-a^k=\sum\limits^{11}<em>{i=1}\sum\limits^{11}</em>{j=1} a^k_{ij}
-$$
-然后找到一个 img <span class="arithmatex">\(x^*\)</span>​，使得 <span class="arithmatex">\(a^k\)</span> 最大，那这个 <span class="arithmatex">\(x^*\)</span> 就是 filter 在找的图形
-$$
-x^</em>=\arg \max\limits_x a^k
-$$
-<img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/CNN/CNN_9.png"></p>
+<p><span class="arithmatex">\(a^k\)</span>​ 叫做 <strong>Degree of the activation of the k-th filter</strong>，表示现在的第 k 个 filter，它有多被 activate，直观来讲就是描述现在 input 的东西跟第 k 个 filter 有多接近，它对 filter 的激活程度有多少，是 11*11 的 matrix 的 summation</p>
+<div class="arithmatex">\[
+a^k=\sum\limits^{11}_{i=1}\sum\limits^{11}_{j=1} a^k_{ij}
+\]</div>
+<p>然后找到一个 img <span class="arithmatex">\(x^*\)</span>​，使得 <span class="arithmatex">\(a^k\)</span> 最大，那这个 <span class="arithmatex">\(x^*\)</span> 就是 filter 在找的图形</p>
+<div class="arithmatex">\[
+x^*=\arg \max\limits_x a^k
+\]</div>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/CNN/CNN_9.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/CNN/CNN_10.png"></p>
 <p>上图挑选了 12 个使得其中 filter 的 activation 最大的图像的例子，都是一些 texture </p>
 <h3 id="what-does-neuron-do">what does neuron do<a class="headerlink" href="#what-does-neuron-do" title="Permanent link">&para;</a></h3>
