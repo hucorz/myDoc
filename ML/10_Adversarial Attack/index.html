@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/%E8%AF%B4%E6%98%8E/">
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/10_Adversarial%20Attack/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>说明 - hucorz's Docs</title>
+        <title>Attack ML Models - hucorz's Docs</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#attack-ml-models" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              说明
+              Attack ML Models
             
           </span>
         </div>
@@ -244,15 +244,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
         ML
       </a>
     </li>
@@ -651,14 +649,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       <label class="md-nav__link" for="__nav_6">
         ML
@@ -674,21 +670,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         说明
       </a>
-      
     </li>
   
 
@@ -892,6 +878,103 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attack" class="md-nav__link">
+    Attack
+  </a>
+  
+    <nav class="md-nav" aria-label="Attack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loss-function-for-attack" class="md-nav__link">
+    Loss Function for Attack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraint" class="md-nav__link">
+    Constraint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-attack" class="md-nav__link">
+    How to Attack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attack-approaches" class="md-nav__link">
+    Attack Approaches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#black-box-attack" class="md-nav__link">
+    Black Box Attack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attack-in-the-real-world" class="md-nav__link">
+    Attack in the Real World
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defense" class="md-nav__link">
+    Defense
+  </a>
+  
+    <nav class="md-nav" aria-label="Defense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passive-defense" class="md-nav__link">
+    Passive Defense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proactive-defense" class="md-nav__link">
+    Proactive Defense
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -902,23 +985,88 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/说明.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/10_Adversarial Attack.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>李宏毅老师机器学习的笔记</p>
-<p>参考：</p>
-<p>课程视频：<a href="https://www.bilibili.com/video/BV1L7411d76h">李宏毅教授的机器学习课程(2020版全集)<em>哔哩哔哩</em></a> </p>
-<p>李宏毅老师的个人网站：<a href="https://speech.ee.ntu.edu.tw/~hylee/ml/2020-spring.html">ML 2020 Spring (ntu.edu.tw)</a> </p>
-<p>Youtube：<a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ">Hung-yi Lee - YouTube</a> </p>
-<p>笔记参考：</p>
+                <h1 id="attack-ml-models">Attack ML Models<a class="headerlink" href="#attack-ml-models" title="Permanent link">&para;</a></h1>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>应对来自人类的恶意</p>
+<p>对一张图片加入一些杂讯会对 Classifier 的结果造成影响</p>
+<h2 id="attack">Attack<a class="headerlink" href="#attack" title="Permanent link">&para;</a></h2>
+<p>Attack 就是让一张图片不改变人类对它的辨识的情况下，改变同一个 model 的结果</p>
+<h3 id="loss-function-for-attack">Loss Function for Attack<a class="headerlink" href="#loss-function-for-attack" title="Permanent link">&para;</a></h3>
+<p>在 train 一个 model 时，input <span class="arithmatex">\(x\)</span>​ 是固定的，loss function为 <span class="arithmatex">\(L_{train}(\theta)=C(y^0,y^{true})\)</span>​，通过不断调整 <span class="arithmatex">\(\theta\)</span>​ 的值，使得 <span class="arithmatex">\(L_{train}(\theta)\)</span>​​​ 越小越好</p>
+<p><strong>Non-targeted Attack</strong>：此时 network 的参数 <span class="arithmatex">\(\theta\)</span>​ 是固定的，通过不断调整 input <span class="arithmatex">\(x\)</span>​ 的值使得 <span class="arithmatex">\(L(x')=-C(y',y^{true})\)</span>​​​ 越小越好​，即和原来的 target 越远越好</p>
+<p><strong>Targeted Attack</strong>：此时 network 的参数 <span class="arithmatex">\(\theta\)</span> 是固定的，通过不断调整 input <span class="arithmatex">\(x\)</span> 的值使得 <span class="arithmatex">\(L(x')=-C(y',y^{true})+C(y',y^{false})\)</span>​​​ 越小越好，即和原来的 target 越远越好，和新的 target 越近越好</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_1.png"/></p>
+<p>与此同时还需要限制输入 <span class="arithmatex">\(x^0,x'\)</span>​ 之间的差异（不改变人类对它的辨识的情况），只有这输入之间的差异 d 小于 <span class="arithmatex">\(\epsilon\)</span>​，我们才可以认为 <span class="arithmatex">\(x'\)</span>​ 是与 <span class="arithmatex">\(x^0\)</span>​ 相似的，才达到了 attack 的目的，即使输入尽可能具有迷惑性，从而使网络输出错误的结果</p>
+<h3 id="constraint">Constraint<a class="headerlink" href="#constraint" title="Permanent link">&para;</a></h3>
+<p>计算 d 的方法</p>
 <ul>
-<li><a href="https://github.com/Sakura-gh/ML-notes">Sakura-gh/ML-notes: notes about machine learning (github.com)</a> </li>
-<li><a href="https://scarleatt.github.io/">Scarleatt</a> </li>
+<li>L2-norm，为 <span class="arithmatex">\(x^0,x'\)</span> ​之间每个像素差异的平方和</li>
+<li>L-infinity，为 <span class="arithmatex">\(x^0,x'\)</span>​​ 之间每个像素差异的最大值</li>
 </ul>
-<p>我的 homework 记录：<a href="http://myblog.hucorz.top/categories/ML/">分类: ML | hucorz</a> </p>
+<p>如果改变一张图中的每个 pixel，另外一幅图只改变其中一个 pixel，使得这两者之间的L2-norm 是一样的，但第二种方式得出的 L-infinity 更大</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_2.png"/></p>
+<h3 id="how-to-attack">How to Attack<a class="headerlink" href="#how-to-attack" title="Permanent link">&para;</a></h3>
+<p>就像训练一个 neural network 一样，但需要训练的参数是 <span class="arithmatex">\(x'\)</span>，此时就需要找到一个参数 <span class="arithmatex">\(x^*\)</span>，来最小化 <span class="arithmatex">\(L(x')\)</span>，限制条件是 <span class="arithmatex">\(d(x^0,x')\leq\epsilon\)</span>​
+$$
+x^*=arg\mathop{min}_\limits {d(x^0,x')\leq\epsilon}L(x')
+$$
+<img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_3.png"/></p>
+<p>当 <span class="arithmatex">\(d(x^0,x^t)&gt;\epsilon\)</span> 时，，使用 <span class="arithmatex">\(fix(x^t)\)</span> 来更新，如下图所示，如果超过了 <span class="arithmatex">\(\epsilon\)</span> 那就设为 <span class="arithmatex">\(\epsilon\)</span> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_4.png"/></p>
+<p>假设 <span class="arithmatex">\(x_0\)</span> 是在高维上移动的一个点，在某些维度上移动时，它还是原来的类别的可能性还是很高，但在某贴特定的维度上移动时，只需要移动一点点就会变成一个完全不一样的类别</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_4_1.png"/></p>
+<h3 id="attack-approaches">Attack Approaches<a class="headerlink" href="#attack-approaches" title="Permanent link">&para;</a></h3>
+<ul>
+<li>FGSM (https://arxiv.org/abs/1412.6572)</li>
+<li>Basic iterative method (https://arxiv.org/abs/1607.02533) </li>
+<li>L-BFGS (https://arxiv.org/abs/1312.6199)</li>
+<li>Deepfool (https://arxiv.org/abs/1511.04599)</li>
+<li>JSMA (https://arxiv.org/abs/1511.07528)</li>
+<li>C&amp;W (https://arxiv.org/abs/1608.04644)</li>
+<li>Elastic net attack (https://arxiv.org/abs/1709.04114)</li>
+<li>Spatially Transformed (https://arxiv.org/abs/1801.02612) </li>
+<li>One Pixel Attack (https://arxiv.org/abs/1710.08864)</li>
+<li>...... only list a few</li>
+</ul>
+<p>这些方法的主要区别在于使用了不同的 constrains，或者使用了不同的 optimization methods</p>
+<p>这里介绍一下<strong>FGSM</strong>，它的策略是对每一维的 <span class="arithmatex">\(\frac{\partial L}{\partial x_i}\)</span> 如果是正值取 +1，负值就取 -1；即对于 <span class="arithmatex">\(x^0\)</span> 的所有维，要么<span class="arithmatex">\(+\epsilon\)</span>，要么<span class="arithmatex">\(-\epsilon\)</span>​；这样的话在FGSM里面，我们只在意 gradient 的方向，不在意其具体的大小 </p>
+<h3 id="black-box-attack">Black Box Attack<a class="headerlink" href="#black-box-attack" title="Permanent link">&para;</a></h3>
+<p>攻击一个黑箱，即不知道具体参数的 neuron network，如果知道 black network 的 training data，我们可以利用 data 来 train 一个 proxy network，再利用这个 proxy network 来 attack</p>
+<p>如果得不到 training data 但是 network 是在线版本，可以输入大量图片来制造 data</p>
+<p>这样的方法是很有可能奏效的</p>
+<h3 id="attack-in-the-real-world">Attack in the Real World<a class="headerlink" href="#attack-in-the-real-world" title="Permanent link">&para;</a></h3>
+<p>下面这个例子通过带特殊的眼镜 attack 了一个人脸辨识系统</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_5.png"/></p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_6.png"/></p>
+<h2 id="defense">Defense<a class="headerlink" href="#defense" title="Permanent link">&para;</a></h2>
+<p>Adversarial Attack cannot be defended by weight regularization, dropout and model ensemble</p>
+<p>Two types of defense:</p>
+<ul>
+<li>Passive</li>
+<li>Proactive</li>
+</ul>
+<h3 id="passive-defense">Passive Defense<a class="headerlink" href="#passive-defense" title="Permanent link">&para;</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_7.png"/></p>
+<p>图片丢进 network 前丢进一个 filter，这个 filter 可以是 smoothing</p>
+<p>Q：那么为什么 smoothing 可以达到这种效果呢？</p>
+<p>A：只有某几种方向上的的信号可以使 attack 成功。如果使用了 smoothing 这种 filter，就把这几种信号改变了，那么 attack 就失效了 ；加上 smoothing 并不会伤害原来的图片，所以 network 仍然可以得出正确的结果</p>
+<p>根据这种思想，有学者就提出了 feature squeeze，Squeezer 就是不同的 filter</p>
+<p>对于同一个 input，我们先得出 model 的输出结果 <span class="arithmatex">\(Prediction_0\)</span>​，再根据 <span class="arithmatex">\(Squeeze_1，Squeeze_2\)</span>​ 得出结果 <span class="arithmatex">\(Prediction_1,Prediction_2\)</span>​，如果 <span class="arithmatex">\(Prediction_0\)</span> ​和<span class="arithmatex">\(Prediction_1,Prediction_2\)</span>​​​ 之间的差值 d 很大，那么我们就可以认为 input 是来 attack 的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_8.png"/></p>
+<p>另外一个方法</p>
+<p>对原图片进行缩放并在周围加上 padding，改动不能过大，目的是使某个方向上的攻击失效</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_9.png"/></p>
+<p>Passive Defense 方法如果盾牌机制被泄露了还是无能为力，因为可以把比如前面的 filter 当成第一层 layer</p>
+<h3 id="proactive-defense">Proactive Defense<a class="headerlink" href="#proactive-defense" title="Permanent link">&para;</a></h3>
+<p>思想是自己 attack 训练好的 model，然后把 attack 的图片加进 training data 重新训练</p>
+<p>反复很多次，不断的补漏洞</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Attack_ML_Models/Attack_ML_Models_10.png"/></p>
+<p>但是如果 attacker 知道了我们是使用算法 A 来进行模拟，那么 attacker 可以使用算法 B来进行 attack，那么我们的 network 并不能抵御这种 attack</p>
                 
               
               
@@ -934,41 +1082,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../Python/Streamlit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Streamlit" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Streamlit
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../1_Regression/" class="md-footer__link md-footer__link--next" aria-label="Next: Regression" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Regression
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

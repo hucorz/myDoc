@@ -1037,7 +1037,7 @@
   
     <li class="md-nav__item">
       <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
-        Unsupervised Learning Word Embedding
+        Unsupervised Learning:Word Embedding
       </a>
     </li>
   
@@ -1522,14 +1522,14 @@ $$
 <p>前面已经讲过 Adagrad 的做法，但实际问题中可能远比 Adagrad 能做的问题要来的复杂</p>
 <h5 id="rmsprop">RMSProp<a class="headerlink" href="#rmsprop" title="Permanent link">&para;</a></h5>
 <p>loss function 也有可能一会儿平坦一会儿陡峭，所以你要随时根据 gradient 的大小来快速地调整 learning rate，真正要处理 deep learning 的问题，用 Adagrad 可能是不够的，你需要更 dynamic 的调整 learning rate 的方法，所以产生 了Adagrad 的进阶版——<strong>RMSProp</strong></p>
-<p>learning rate 依旧设置为一个固定的值 <span class="arithmatex">\(\eta\)</span> 除掉一个变化的值 <span class="arithmatex">\(\sigma\)</span>，这个 <span class="arithmatex">\(\sigma\)</span> 等于上一个 <span class="arithmatex">\(\sigma\)</span> 和当前梯度 <span class="arithmatex">\(g\)</span> 的加权方均根（特别的是，在第一个时间点，<span class="arithmatex">\(\sigma^0\)</span>就是第一个算出来的gradient值<span class="arithmatex">\(g^0\)</span>​），即：
-$$
+<p>learning rate 依旧设置为一个固定的值 <span class="arithmatex">\(\eta\)</span> 除掉一个变化的值 <span class="arithmatex">\(\sigma\)</span>，这个 <span class="arithmatex">\(\sigma\)</span> 等于上一个 <span class="arithmatex">\(\sigma\)</span> 和当前梯度 <span class="arithmatex">\(g\)</span> 的加权方均根（特别的是，在第一个时间点，<span class="arithmatex">\(\sigma^0\)</span>就是第一个算出来的gradient值<span class="arithmatex">\(g^0\)</span>​），即：</p>
+<div class="arithmatex">\[
 \begin{align}
-w^{t+1}&amp;=w^t-\frac{\eta}{\sigma^t}g^t \
+w^{t+1}&amp;=w^t-\frac{\eta}{\sigma^t}g^t \\
 \sigma^t&amp;=\sqrt{\alpha(\sigma^{t-1})^2+(1-\alpha)(g^t)^2}
 \end{align}
-$$
-<span class="arithmatex">\(\alpha\)</span>​ 值是可以自由调整的，RMSProp 跟 Adagrad 不同之处在于，Adagrad 的分母是对过程中所有的 gradient 取平方和开根号，也就是说 Adagrad 考虑的是整个过程平均的 gradient 信息；而 RMSProp 虽然也是对所有的 gradient 进行平方和开根号，但是它<strong>用一个 <span class="arithmatex">\(\alpha\)</span>​ 来调整对不同 gradient 的使用程度</strong>，比如你把 <span class="arithmatex">\(\alpha\)</span> 的值设的小一点，意思就是你更倾向于相信新的 gradient 所告诉你的 error surface 的平滑或陡峭程度，而比较无视于旧的gradient 所提供给你的 information</p>
+\]</div>
+<p><span class="arithmatex">\(\alpha\)</span>​ 值是可以自由调整的，RMSProp 跟 Adagrad 不同之处在于，Adagrad 的分母是对过程中所有的 gradient 取平方和开根号，也就是说 Adagrad 考虑的是整个过程平均的 gradient 信息；而 RMSProp 虽然也是对所有的 gradient 进行平方和开根号，但是它<strong>用一个 <span class="arithmatex">\(\alpha\)</span>​ 来调整对不同 gradient 的使用程度</strong>，比如你把 <span class="arithmatex">\(\alpha\)</span> 的值设的小一点，意思就是你更倾向于相信新的 gradient 所告诉你的 error surface 的平滑或陡峭程度，而比较无视于旧的gradient 所提供给你的 information</p>
 <h5 id="momentum">Momentum<a class="headerlink" href="#momentum" title="Permanent link">&para;</a></h5>
 <p>除了 learning rate 的问题以外，在做 deep learning 的时候，很多人担心会卡在 local minimum、saddle point 或是 plateau 的地方；但其实 Yann LeCun 在 07 年的时候，就提出了一个蛮特别的说法，他说你不要太担心 local minima 的问题，因为一旦出现 local minima，它就必须在每一个 dimension 都是山谷的低谷形状，参数非常多时这种概率是非常小的</p>
 <p>有一个 heuristic(启发性) 的方法可以稍微处理一下上面所说的 "卡住" 的问题，它的灵感来自于真实世界：把惯性加到 gradient descent 里面，这件事情就叫做 <strong>Momentum</strong></p>

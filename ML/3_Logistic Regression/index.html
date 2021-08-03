@@ -942,7 +942,7 @@
   
     <li class="md-nav__item">
       <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
-        Unsupervised Learning Word Embedding
+        Unsupervised Learning:Word Embedding
       </a>
     </li>
   
@@ -1215,8 +1215,8 @@
 <p>在 Classification 中得出的结果：
 $$
 \begin{align}
-P_{w,b}(C_1|x)&amp;=\sigma(z)=\frac{1}{1+e^{-z}} \
-z&amp;=w\cdot x+b=\sum\limits_i w_ix_i+b 
+P_{w,b}(C_1|x)=\sigma(z)=\frac{1}{1+e^{-z}} \
+z=w\cdot x+b=\sum\limits_i w_ix_i+b 
 \end{align}
 $$
 其中 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(x\)</span> 都是向量，这个 model 是受 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 控制的，因此我们不必要再去像前面一样计算一大堆东西，而是用这个全新的由 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 决定的 model ——<strong>Logistic Regression(逻辑回归)</strong></p>
@@ -1239,19 +1239,19 @@ w^*,b^*=\arg \max\limits_{w,b} L(w,b)=\arg\min\limits_{w,b}(-\ln L(w,b))
 -\ln L(w,b)=&amp;-\ln f_{w,b}(x^1)\\
 &amp;-\ln f_{w,b}(x^2)\\
 &amp;-\ln(1-f_{w,b}(x^3))\\
-&amp;\ -...
+&amp;-...
 \end{align}
-$$
-为了统一格式，把 output  $\hat{y}=1$ 代表 class1，output  $\hat{y}=0$ 代表 class2
-$$
+\]</div>
+<p>为了统一格式，把 output  <span class="arithmatex">\(\hat{y}=1\)</span>​ 代表 class1，output  <span class="arithmatex">\(\hat{y}=0\)</span>​​ 代表 class2</p>
+<div class="arithmatex">\[
 \begin{align}
 -\ln L(w,b)=&amp;-[\hat{y}^1 \ln f_{w,b}(x^1)+(1-\hat{y}^1)ln(1-f_{w,b}(x^1))]\\
 &amp;-[\hat{y}^2 \ln f_{w,b}(x^2)+(1-\hat{y}^2)ln(1-f_{w,b}(x^2))]\\
 &amp;-[\hat{y}^3 \ln f_{w,b}(x^3)+(1-\hat{y}^3)ln(1-f_{w,b}(x^3))]\\
 &amp;\ -...
 \end{align}
-$$
-$$
+\]</div>
+<div class="arithmatex">\[
 -\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
 \]</div>
 <p>这个形式其实就是 <strong>两个 Bernoulli distribution (两点分布)的 cross entropy (交叉熵)</strong>，把这个作为 Loss Function</p>
@@ -1283,7 +1283,7 @@ f_{w,b}(x)=P_{w,b}(C_1|x)
 $$
 \frac{\partial \sigma(z)}{\partial z}=\sigma(z)(1-\sigma(z))
 $$
-<img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_4.png" width="45%;" /></p>
+<center><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_4.png" width="45%;" /></center></p>
 <p>计算 <span class="arithmatex">\(-\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]\)</span> 对 <span class="arithmatex">\(w_i\)</span> 的偏微分，其中 <span class="arithmatex">\(\hat{y}^n\)</span> 和 <span class="arithmatex">\(1-\hat{y}^n\)</span> 是常数，只需要分别求出 <span class="arithmatex">\(\ln f_{w,b}(x^n)\)</span> 和 <span class="arithmatex">\(\ln (1-f_{w,b}(x^n))\)</span> 对 <span class="arithmatex">\(w_i\)</span> 的偏微分即可，整体推导过程如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_5.png" width="80%;" /></p>
 <p>结果带入得：</p>
