@@ -1,0 +1,3359 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E7%AC%94%E8%AE%B0/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>汇编语言学习笔记 - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              汇编语言学习笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/笔记/汇编语言.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="_1">汇编语言学习笔记<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>b站小甲鱼</p>
+<h1 id="win10">win10配置汇编环境<a class="headerlink" href="#win10" title="Permanent link">&para;</a></h1>
+<p>https://blog.csdn.net/weixin_42109012/article/details/102726296</p>
+<h1 id="1">1 基础知识<a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
+<p>汇编语言的组成</p>
+<p>​   1.汇编指令（机器码的助记符）</p>
+<p>​   2.伪指令（由编译器执行）</p>
+<p>​   3.其他符号（由编译器识别）</p>
+<p>磁盘不同于内存，磁盘上的数据或程序如果不读入内存中，就无法被cpu使用</p>
+<p>CPU要想进行数据的读写，必须和外部器件（即芯片）进行三类信息的交互</p>
+<p>​   1.地址信息：存储单元的地址</p>
+<p>​   2.控制信息：芯片的选择，读或写命令</p>
+<p>​   3.数据信息：读或写的数据</p>
+<p>各类存储器芯片从功能和连接上分类</p>
+<p>​   1.随机存储器RAM</p>
+<p>​   2.装有BIOS的ROM</p>
+<p>​   3.接口卡上的RAM</p>
+<h2 id="_2">注：负数补码的定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>原码取反加一的定义并不具有普适性，比如8位二进制中的-128</p>
+<p>更加普世的定义：一个数的模减去其绝对值</p>
+<p>模的定义：1后面加上参与运算的位数</p>
+<p>所以-128的补码 = 100000000-10000000=10000000</p>
+<h1 id="2-cpu">2 寄存器（CPU工作原理）<a class="headerlink" href="#2-cpu" title="Permanent link">&para;</a></h1>
+<p>CPU=运算器+控制器+寄存器，器件之间通过总线相连</p>
+<p>8086CPU有14个寄存器，名称分别为：</p>
+<p>​   AX，BX，CX，DX，SI，DI，SP，BP，IP，CS，SS，DS，ES，PSW</p>
+<p>通用寄存器用 x 结尾，段寄存器用 s 结尾</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="21">2.1 通用寄存器<a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<p>8086CPU所有的寄存器都是16位的，可以存放2个字节</p>
+<p>AX、BX、CX、DX通常用来存放一般性数据，被称为通用寄存器</p>
+<p>进制：H（十六进制），B（二进制）</p>
+<h2 id="22">2.2 几条汇编指令<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov ax,18   ;AX=18
+mov ah,78   ;AH=78
+add ax,8    ;AX=AX+8
+mov ax,bx   ;AX=BX
+add ax,bx   ;AX+=BX
+inc ax      ;AX+=1
+dec ax      ;AX-=1
+nop         ;占一个字节
+</code></pre></div>
+<h2 id="23">2.3 物理地址和逻辑地址<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<p><strong>逻辑地址</strong>(虚拟地址/相对地址/有效地址)：由段地址和偏移地址组成</p>
+<p><strong>物理地址</strong>(实际地址/绝对地址)：段地址<span class="arithmatex">\(\times\)</span>16+偏移地址</p>
+<h2 id="23_1">2.3 段的概念<a class="headerlink" href="#23_1" title="Permanent link">&para;</a></h2>
+<p>一个段的起始地址一定是16的倍数</p>
+<p>一个段的最大长度是64K</p>
+<h2 id="24">2.4 段寄存器<a class="headerlink" href="#24" title="Permanent link">&para;</a></h2>
+<p>提供段地址的段寄存器</p>
+<table>
+<thead>
+<tr>
+<th>段寄存器</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td>code segment</td>
+</tr>
+<tr>
+<td>DS</td>
+<td>data segment</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>stack segment</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>extra segment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="241-cs-ip">2.4.1 CS / IP<a class="headerlink" href="#241-cs-ip" title="Permanent link">&para;</a></h3>
+<p>CS：代码段寄存器</p>
+<p>IP：指令指针 寄存器</p>
+<p>8086CPU工作过程的简要描述</p>
+<p>​        1.从CS:IP指向内存单元，读取指令，读取的指令进入指令缓冲器</p>
+<p>​        2.IP=IP+所读取指令的长度，从而指向下一条指令</p>
+<p>​        3.执行指令，转到步骤1，重复这个过程</p>
+<p>在8086CPU加电启动或复位后（即CPU刚开始工作时）CS和IP被设置为   CS=FFFFH，IP=0000H</p>
+<p>即在8086PC机刚启动时，CPU从内存FFFF0H单元中读取指令执行，FFFF0H单元中的指令是8086PC机开机后执行的第一条</p>
+<h3 id="242-jmp">2.4.2 jmp<a class="headerlink" href="#242-jmp" title="Permanent link">&para;</a></h3>
+<p>不能通过 mov 改变CS和IP</p>
+<ul>
+<li>同时修改CS/IP</li>
+</ul>
+<p>格式： jmp 段地址：偏移地址</p>
+<div class="highlight"><pre><span></span><code>;eg
+jmp 2AE3:3   ;2AE33H
+jmp 3:0B16   ;00B46H
+</code></pre></div>
+<ul>
+<li>仅修改IP</li>
+</ul>
+<p>格式： jmp 某一合法寄存器</p>
+<div class="highlight"><pre><span></span><code>;eg
+jmp ax        ;类似mov IP,ax
+</code></pre></div>
+<h2 id="25-debug">2.5 DEBUG的使用【实验一】<a class="headerlink" href="#25-debug" title="Permanent link">&para;</a></h2>
+<p>不区分大小写</p>
+<blockquote>
+<ol>
+<li>
+<p>r命令：查看、改变CPU寄存器的内容</p>
+<div class="highlight"><pre><span></span><code>      r后面加寄存器的名称后可以改变CPU寄存器的内容
+</code></pre></div>
+</li>
+<li>
+<p>d命令：查看内存中的内容（可以+具体的逻辑地址+范围）</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>d fff0:0
+d fff0:0 ff
+</code></pre></div>
+<ol>
+<li>e命令：改写内存中的内容</li>
+</ol>
+<div class="highlight"><pre><span></span><code>;从一个单元开始填写数据
+e B810:0000 01 01 02 02 03 03 04 04
+</code></pre></div>
+<ol>
+<li>u命令：将内存汇总的机器指令翻译成汇编指令（可以+具体的逻辑地址+查找范围）</li>
+<li>t命令：执行一条机器指令</li>
+<li>a命令：以汇编指令的格式在内存中写入一条机器指令（不需要写H，a+地址）</li>
+<li>q命令：可以退出</li>
+<li>g命令：跳过（断点）， 加偏移地址跳到具体的某一行</li>
+<li>p命令：</li>
+<li>cls：清屏</li>
+</ol>
+</blockquote>
+<h1 id="3">3 寄存器（内存访问）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<h2 id="31">3.1 内存中字的存储<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>数据的存储方式：大端方式和小端方式（8086处理器采用小端方式）</p>
+<ul>
+<li>大端方式：高字节存储在低地址</li>
+<li>小端方式：高字节存储在高地址</li>
+</ul>
+<h2 id="32-ds">3.2 DS<a class="headerlink" href="#32-ds" title="Permanent link">&para;</a></h2>
+<p>只有在 debug 中添加指令时 [address] 才会被认为是偏移地址，在 masm 中 [address] 会被认为就是 address 这个数</p>
+<div class="highlight"><pre><span></span><code>mov bx,1000H
+mov ds,bx    ;mov不能直接把数据送入段寄存器
+mov bx,0
+mov al,[bx]   ;偏移地址为0的单元(1000:0)的内容送入及寄存器，
+</code></pre></div>
+<p>mov指令的传送功能</p>
+<ul>
+<li>将数据直接送入寄存器，mov<strong>不能直接把数据送入段寄存器</strong></li>
+</ul>
+<p>数据 -&gt; 通用寄存器 -&gt; 段寄存器</p>
+<ul>
+<li>
+<p>将一个寄存器中的内容送入另一个寄存器</p>
+</li>
+<li>
+<p>将一个内存单元中的内容送入一个寄存器</p>
+</li>
+</ul>
+<p>格式 mov 寄存器名, 内存单元</p>
+<p>[...]表示偏移地址，段地址是 ds</p>
+<p>寄存器的内容送入内存单元</p>
+<div class="highlight"><pre><span></span><code>mov [bx],al
+</code></pre></div>
+<h2 id="33-mov-add-sub">3.3 mov / add / sub 指令<a class="headerlink" href="#33-mov-add-sub" title="Permanent link">&para;</a></h2>
+<p><strong>注意</strong>：16位数第一个字是字母的要前缀加 0， 如 0FFFFH</p>
+<p>下面的寄存器都指通用寄存器</p>
+<ul>
+<li>mov指令的几种形式, mov 不能直接用数据修改段寄存器的值</li>
+</ul>
+<p>mov 寄存器，数据</p>
+<p>mov 寄存器，寄存器</p>
+<p>mov 寄存器，内存单元</p>
+<p>mov 内存单元，寄存器</p>
+<p>mov 段寄存器，寄存器</p>
+<p>mov 寄存器，段寄存器</p>
+<ul>
+<li>sub/add 不能对段寄存器操作</li>
+</ul>
+<p>add 寄存器，数据</p>
+<p>add 寄存器，寄存器</p>
+<p>add 寄存器，内存单元</p>
+<p>add 内存单元，寄存器</p>
+<h2 id="34">3.4 栈<a class="headerlink" href="#34" title="Permanent link">&para;</a></h2>
+<p>FILO</p>
+<div class="highlight"><pre><span></span><code>push ax    ;ax中的数据入栈
+pop ax     ;栈顶数据取出给ax
+</code></pre></div>
+<p>栈顶的最大变化范围为 0-FFFFH</p>
+<h3 id="341-ss-sp">3.4.1 SS / SP<a class="headerlink" href="#341-ss-sp" title="Permanent link">&para;</a></h3>
+<p>SS：存放栈订的段地址</p>
+<p>SP：存放栈订的偏移地址</p>
+<ul>
+<li>push ax时，</li>
+</ul>
+<p>1.sp=sp-2  （栈底的地址比栈顶高）</p>
+<p>2.将ax中的内容送入到ss:sp指向的内存单元</p>
+<ul>
+<li>执行pop ax时</li>
+</ul>
+<p>1.将ss:sp指向的内存单元的内容送入到ax中</p>
+<p>​ 注意：这里取出的内容在内存中还是存在的，并没有被重置，下一轮push会覆盖</p>
+<p>2.sp=sp+2</p>
+<p>栈空时，sp指向栈底的下一个单元</p>
+<p>8086cpu不保证对栈的操作不会越界</p>
+<h3 id="342-pop-push">3.4.2 pop / push<a class="headerlink" href="#342-pop-push" title="Permanent link">&para;</a></h3>
+<p>格式：</p>
+<ul>
+<li>
+<p>pop / push 寄存器</p>
+</li>
+<li>
+<p>pop / push 内存单元</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>;eg
+push [0]
+pop [2]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>;将10000H-1000FH这段空间作为栈空间
+mov ax,1000
+mov ss,ax
+mov sp,0010H    ;栈订的地址大,指向栈底的下一个空间单元的地址
+
+push ax
+push bx
+push ds
+</code></pre></div>
+<h3 id="343">3.4.3 寄存器置零的方法<a class="headerlink" href="#343" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>sub ax,ax
+mov ax,0
+xor ax,ax     ;异或
+</code></pre></div>
+<h1 id="4">4 第一个汇编程序<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>源程序由 汇编指令+伪指令+宏指令 组成</p>
+<p>​       伪指令：编译器处理</p>
+<p>​        汇编指令：编译为机器码    </p>
+<p>伪指令</p>
+<p>​        1.没有对应的机器码的指令，不能由CPU直接执行</p>
+<p>​        2.伪指令是由编译器来执行的指令，编译器根据伪指令来进行相关的编译工作</p>
+<h2 id="41-segment-ends">4.1 segment / ends<a class="headerlink" href="#41-segment-ends" title="Permanent link">&para;</a></h2>
+<p>segment和ends是一对成对使用的伪指令</p>
+<p>segment和ends的功能是定义一个段</p>
+<p>​     segment：说明一个段开始</p>
+<p>​     ends：说明一个段结束</p>
+<p>一个段必须有一个名称来标识，使用格式为</p>
+<p>​            段名 segment</p>
+<p>​            段名 ends</p>
+<h2 id="42-end">4.2 end<a class="headerlink" href="#42-end" title="Permanent link">&para;</a></h2>
+<p>结束对程序的编译</p>
+<p>结尾加上</p>
+<h2 id="43-assume">4.3 assume<a class="headerlink" href="#43-assume" title="Permanent link">&para;</a></h2>
+<p>假设某一段寄存器和程序中某一个用 segment/ends 定义的段相关联</p>
+<div class="highlight"><pre><span></span><code>assume cs:codesg
+codesg segment
+...
+codesg ends
+end
+</code></pre></div>
+<h2 id="44">4.4 程序返回<a class="headerlink" href="#44" title="Permanent link">&para;</a></h2>
+<p>DOS中的程序运行</p>
+<p>​        1.DOS是一个单任务操作系统</p>
+<p>​        2.一个程序结束后，将CPU的控制权交还给是他得以运行的程序</p>
+<p>​            我们称这个过程为：程序返回</p>
+<p><code>assembly
+mov ax，4c00H
+int 21H           ;interrupt debug中要用p命令执行</code></p>
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>相关指令</th>
+<th>指令性质</th>
+<th>指令执行者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>段结束</td>
+<td>ends</td>
+<td>伪指令</td>
+<td>编译器</td>
+</tr>
+<tr>
+<td>程序结束</td>
+<td>end</td>
+<td>伪指令</td>
+<td>编译器</td>
+</tr>
+<tr>
+<td>程序返回</td>
+<td>在4.4</td>
+<td>汇编指令</td>
+<td>CPU</td>
+</tr>
+</tbody>
+</table>
+<h2 id="45-exe">4.5 EXE程序加载过程<a class="headerlink" href="#45-exe" title="Permanent link">&para;</a></h2>
+<p>找到一段起始地址为 SA：0000的足够的空间</p>
+<p>在起始的256个字节中创建PSP（DOS利用PSP和加载程序进行通信）</p>
+<p>在PSP之后，即起始地址为 SA+10H：0000开始存放程序</p>
+<h1 id="5-bx-loop">5 [bx] 和 loop  指令<a class="headerlink" href="#5-bx-loop" title="Permanent link">&para;</a></h1>
+<h2 id="51-bx">5.1 [bx]<a class="headerlink" href="#51-bx" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov bx,0
+mov ax,[bx]    ;masm中不能直接 mov ax,[0]，debug中可以
+;masm需要
+mov ax,ds:[0]
+mov ax,ds:[1]
+mov ax,ds:[2]
+</code></pre></div>
+<h2 id="52">5.2 描述性符号 ( )<a class="headerlink" href="#52" title="Permanent link">&para;</a></h2>
+<p>(ax) 表示 ax 中的内容</p>
+<div class="highlight"><pre><span></span><code>(ax) = 0010H
+(21000H) = 0010H
+(ax) = ((ds)*16+2)  ;mov ax,[2]
+((ds)*16+2) = (ax)  ;mov [2],ax
+(ax) = (ax)+2       ;add ax,2
+(ax) = (ax)+(bx)    ;add ax,bx
+
+(sp) = (sp)-2       ;push ax
+((ss)*16+(sp)) = (ax)
+
+(ax) = ((ss)*16+(sp)) ;pop ax
+(sp) = (sp)+2      
+</code></pre></div>
+<h2 id="53-loop">5.3 loop<a class="headerlink" href="#53-loop" title="Permanent link">&para;</a></h2>
+<p>格式： loop 标号</p>
+<p>CPU执行loop指令的时候，要进行两步操作</p>
+<p>​        1.(cx)=(cx)-1;</p>
+<p>​        2.判断cx中的值，若不为零，则转至标号处执行程序。若为零，</p>
+<p>则向下执行。</p>
+<p>通常，loop指令实现循环，cx中存放循环的次数 </p>
+<h2 id="54">5.4 段前缀<a class="headerlink" href="#54" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>mov ax,ds:[0]    ;ds就是段前缀,也可以用cs/ss/es
+</code></pre></div>
+<h2 id="55">5.5 一段安全的空间<a class="headerlink" href="#55" title="Permanent link">&para;</a></h2>
+<p>8086中，随意向一段内存空间写入内容是很危险的</p>
+<p>因为这段空间中可能存放着重要的系统数据或代码</p>
+<p>在一般的PC机中，DOS方式下，DOS和其他合法的程序一般都不会使</p>
+<p>用【0:200~0:2FF】   </p>
+<h1 id="6">6 包含多个段的程序<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
+<h2 id="61">6.1 在代码段中使用数据<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
+<p>dw：define word</p>
+<p>db：define byte</p>
+<p>dd：define dword</p>
+<h2 id="62">6.2 在代码段中使用栈<a class="headerlink" href="#62" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>assume cs:codesg
+
+codesg segment
+
+    dw 0123h,0456h,0789h,0abch,0defh,0fedh,0cbah,0987h
+    dw 0,0,0,0,0,0,0,0,0,0             ;这段空间当作栈
+
+start:  ...
+
+codesg ends
+
+end start
+</code></pre></div>
+<h2 id="63">6.3 将数据/代码/栈/放入不同的段<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
+<p>```assembly
+assume cs:code, ds:data, ss:stack</p>
+<p>data segment
+...
+data ends</p>
+<p>stack segment
+...
+stack ends</p>
+<p>code segment
+start:...
+    mov ax, data
+    mov ds, ax
+code ends</p>
+<p>end start
+ ```</p>
+<p>三个不同的段的段基地址取决于代码中写的先后</p>
+<p>先写的段的段基地址小，后写的段的段基地址大</p>
+<h1 id="7">7 更灵活地定位内存地址<a class="headerlink" href="#7" title="Permanent link">&para;</a></h1>
+<h2 id="71-and-or">7.1 and / or<a class="headerlink" href="#71-and-or" title="Permanent link">&para;</a></h2>
+<p>and：逻辑与，指定位置0</p>
+<p>or：逻辑或，指定位置1</p>
+<div class="highlight"><pre><span></span><code>;eg
+mov al,01100011b
+and al,00111011b
+;执行后 al = 00100011b
+</code></pre></div>
+<h2 id="72">7.2 以字符的形式给出数据<a class="headerlink" href="#72" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>db &#39;unIX&#39;
+mov al,&#39;a&#39;
+</code></pre></div>
+<h2 id="73">7.3 大小写转换问题<a class="headerlink" href="#73" title="Permanent link">&para;</a></h2>
+<p>小写字母 = 大写字母+32</p>
+<p>小写字母 = 大写字母+20H</p>
+<p>大写字母从41H开始，小写字母从61H开始</p>
+<table>
+<thead>
+<tr>
+<th>大写</th>
+<th>二进制</th>
+<th>小写</th>
+<th>二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>01000001</td>
+<td>a</td>
+<td>01100001</td>
+</tr>
+<tr>
+<td>B</td>
+<td>01000010</td>
+<td>b</td>
+<td>01100010</td>
+</tr>
+<tr>
+<td>C</td>
+<td>01000011</td>
+<td>c</td>
+<td>01100011</td>
+</tr>
+<tr>
+<td>D</td>
+<td>01000100</td>
+<td>d</td>
+<td>01100100</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>;大小写转换
+;转小写
+or al,00100000b   ;0x20
+; 转大写
+and al,11011111b  ;0xdf
+</code></pre></div>
+<h2 id="74-bxidata">7.4 [bx+idata]<a class="headerlink" href="#74-bxidata" title="Permanent link">&para;</a></h2>
+<p>[bx+idata] 表示一个内存单元，它的偏移地址是 (bx)+idata</p>
+<div class="highlight"><pre><span></span><code>mov ax,[bx+200]
+;也可以写成如下格式
+mov ax,200[bx]  
+mov ax,[bx].200
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>;2个长度相同的字符串，第一个字符产转大写，第二个转小写
+data segment
+    db &#39;BaSiC&#39;
+    db &#39;MinIX&#39;
+data ends
+;可以用 bx 和 bx+5 分别表示2段数据的起始地址，再自加bx遍历
+    mov ax,data
+    mov ds,ax
+    mov bx,0
+
+    mov cx,5
+s:  mov al,[bx]
+    and al,11011111b   
+    mov [bx],al
+    mov al,[bx+5]
+    ans al,00100000b
+    mov [bx+5],al
+    inc bx
+    loop s
+</code></pre></div>
+<h2 id="75-si-di">7.5 SI / DI<a class="headerlink" href="#75-si-di" title="Permanent link">&para;</a></h2>
+<p>SI / DI 除了<strong>不能分为2个8位的寄存器</strong>外，与 BX 完全相同</p>
+<p>source index/ destination index</p>
+<div class="highlight"><pre><span></span><code>mov ax,[bx+si]
+;可以写成如下格式
+mov ax,[bx][si]
+
+mov ax,[bx+si+200]
+;也可以写成
+mov ax,200[bx][si]
+mov ax,[bx].200[si]     ;结构体中的数组
+mov ax,[bx][si].200
+</code></pre></div>
+<p>## 7.6 双层循环</p>
+<p>loop 只能与 cx 关联</p>
+<p>所以在执行内层循环之前把 cx 的值保存起来，内层循环结束后再把 </p>
+<p>cx 的值赋值回去，用内存中的栈来保存</p>
+<div class="highlight"><pre><span></span><code>;eg通过多层循环将字符串小写转大写
+assume ds:data,ss:stack,cs:code
+
+data segment
+    db &#39;aaaaaa&#39;
+    db &#39;bbbbbb&#39;
+    db &#39;cccccc&#39;
+data ends
+
+stack segment
+    dw 0,0,0,0,0,0,0,0
+stack ends
+
+code segment
+start:  mov ax,stack
+        mov ss,ax
+        mov sp,16        ;16个字节的栈空间
+        mov ax,data
+        mov ds,ax
+
+        mov bx,0        ;bx是每行首元素的地址
+
+        mov cx,3        ;最外层循环
+    s0: push cx         ;入栈
+        mov si,0        ;si是对列进行遍历
+
+        mov cx,6        ;内层循环       
+    s1: mov al,[bx+si]
+        and al,11011111b
+        mov [bx+si],al
+        inc si
+        loop s1
+
+        add si,6
+        pop cx
+        loop s0
+
+        mov ax,4c00h
+        int 21h
+code ends
+
+end start
+</code></pre></div>
+<h1 id="8">8 数据处理的两个基本问题<a class="headerlink" href="#8" title="Permanent link">&para;</a></h1>
+<p>定义描述性符号： reg / sreg</p>
+<h2 id="81-bp">8.1 bp<a class="headerlink" href="#81-bp" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>8086中只有 <strong>bx / si / di / bp</strong> 可以 用在 [ ] 中进行寻址</p>
+</li>
+<li>
+<p>再 [ ] 中只有<strong>四种组合</strong>可以出现 (硬件原因):</p>
+</li>
+</ul>
+<p>bx 和 si，bx 和 di，bp 和 si，bp 和 di</p>
+<ul>
+<li>在 [ ] 中使用 bp，且没有显性的给出段地址时，段地址默认是 ss</li>
+</ul>
+<h2 id="82">8.2 汇编语言中数据位置的表达<a class="headerlink" href="#82" title="Permanent link">&para;</a></h2>
+<ul>
+<li>立即数 idata</li>
+<li>寄存器</li>
+<li>内存，段地址(SA) + 偏移地址(EA)</li>
+</ul>
+<p>## 8.3 指令处理的数据有多长？</p>
+<ul>
+<li>通过寄存器名确定处理数据的长度</li>
+<li>在没有寄存器名的情况下，用 X ptr 指长度， X 为 word / byte</li>
+<li>其他，比如 push 只对字操作</li>
+</ul>
+<h2 id="84-div">8.4 div<a class="headerlink" href="#84-div" title="Permanent link">&para;</a></h2>
+<p>除法指令</p>
+<ul>
+<li>
+<p>除数：8位或者16位，在寄存器或者内存单元中</p>
+</li>
+<li>
+<p>被除数：（默认）放在 AX 或 DX+AX中</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>除数</th>
+<th>被除数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8位</td>
+<td>16位(AX)</td>
+</tr>
+<tr>
+<td>16位</td>
+<td>32位(DX+AX)</td>
+</tr>
+</tbody>
+</table>
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>运算</th>
+<th>8位除数</th>
+<th>16位除数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商</td>
+<td>AL</td>
+<td>AX</td>
+</tr>
+<tr>
+<td>余数</td>
+<td>AH</td>
+<td>DX</td>
+</tr>
+</tbody>
+</table>
+<p>div指令格式： </p>
+<ul>
+<li>div  reg</li>
+<li>div 内存单元</li>
+</ul>
+<div class="highlight"><pre><span></span><code>;eg
+div byte ptr ds:[0]
+;含义:  (al) = (ax) / ((ds)*16+0) 的商
+;      (ah) = (ax) / ((ds)*16+0) 的余数
+
+div word ptr es:[0]
+;含义:  (ax) = ((dx)*10000H+(ax)) / (..) 的商
+;      (dx) = ...的余数
+</code></pre></div>
+<h2 id="85-dup">8.5 dup<a class="headerlink" href="#85-dup" title="Permanent link">&para;</a></h2>
+<p>操作符，由编译器书别处理的符号，用来对数据进行重复</p>
+<p>格式：</p>
+<p>db 重复次数 dup（需要重复的字节型数据），dw，dd 同 </p>
+<div class="highlight"><pre><span></span><code>db 3 dup(0)  ;3个0
+dup 3 duo(0,1,2)  ;3个 0,1,2
+</code></pre></div>
+<h1 id="9">9 转移指令的原理<a class="headerlink" href="#9" title="Permanent link">&para;</a></h1>
+<p>相当于C中的 goto</p>
+<p>8086 CPU中的转移指令的分类</p>
+<ul>
+<li>无条件跳转指令（如 jmp）</li>
+<li>条件跳转指令</li>
+<li>循环指令（如 loop）</li>
+<li>过程（函数）</li>
+<li>中断</li>
+</ul>
+<h2 id="91-offset">9.1 offset<a class="headerlink" href="#91-offset" title="Permanent link">&para;</a></h2>
+<p>功能：取得标号的偏移地址</p>
+<h2 id="92-jmp">9.2 jmp<a class="headerlink" href="#92-jmp" title="Permanent link">&para;</a></h2>
+<p>jmp 可以只修改 ip，也可以同时修改 cs 和 ip</p>
+<p>jmp 指令要给出两种信息</p>
+<ul>
+<li>转移的目的地址</li>
+<li>转移的距离（段间转移，段内短转移，段内近转移）</li>
+</ul>
+<h3 id="921-jmp">9.2.1 依据位移进行转移的 jmp 指令<a class="headerlink" href="#921-jmp" title="Permanent link">&para;</a></h3>
+<p>jmp short 标号</p>
+<p>实现的是<strong>段内短转移</strong>，它对ip的修改范围为-128~127</p>
+<p>也就是说，它向前转移时可以最多越过128个字节，向后转移可以最多越过127个字节</p>
+<p>CPU不需要目的地址就可以实现对ip的修改</p>
+<p>jmp short s 指令的读取和执行过程：</p>
+<p>比如 jmp short s 的机器码是 EB03 </p>
+<ul>
+<li>EB03 进入指令缓冲器</li>
+<li>ip += 2，cs：ip指向下一条指令</li>
+<li>然后 ip += 3，转移到 s 处</li>
+</ul>
+<p>jmp near ptr 标号</p>
+<p>实现<strong>段内近转移</strong>，ip = ip+16位位移，范围是 -32769~32769</p>
+<h3 id="922-jmp">9.2.2 转移的目的地址在指令中的 jmp 指令<a class="headerlink" href="#922-jmp" title="Permanent link">&para;</a></h3>
+<p>jmp far ptr 标号</p>
+<p>实现的是<strong>段间转移</strong>，又称为远转移(段间转移并不代表在不同的段中，只是距离很远)</p>
+<div class="highlight"><pre><span></span><code>jmp far ptr s
+</code></pre></div>
+<h3 id="923-jmp">9.2.3 转移地址在寄存器中的 jmp 指令<a class="headerlink" href="#923-jmp" title="Permanent link">&para;</a></h3>
+<p>jmp 16位寄存器</p>
+<p>功能：ip = （16位寄存器）</p>
+<h3 id="924-jmp">9.2.4 转移地址在内存中的 jmp 指令<a class="headerlink" href="#924-jmp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>jmp word ptr 内存单元地址（段内转移）</li>
+</ul>
+<p>功能：内存单元地址开始处存放的字是转移目的的偏移地址</p>
+<div class="highlight"><pre><span></span><code>mov ax,0123H
+mov ds:[0],ax
+jmp word ptr ds:[0]    ;jmp ax
+</code></pre></div>
+<ul>
+<li>jmp dword ptr 内存单元地址（段间转移）</li>
+</ul>
+<p>功能：内存单元地址开始处存放的2个字中，高地址是转移目的的段地址，低地址是转移目标的偏移地址 </p>
+<h2 id="93-jcxz">9.3 jcxz<a class="headerlink" href="#93-jcxz" title="Permanent link">&para;</a></h2>
+<p>有条件跳转指令（所有的有条件跳转指令都是短转移：loop）</p>
+<p>ip 的修改范围是 -127-128</p>
+<p>格式：jcxz 标号（如果 (cx) = 0，则跳转到标号处执行）</p>
+<p>从jcxz的功能可以看出，它相当于</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">cx</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">jmp</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">标号</span><span class="w"></span>
+</code></pre></div>
+<h2 id="94-loop">9.4 loop<a class="headerlink" href="#94-loop" title="Permanent link">&para;</a></h2>
+<p>loop指令为循环指令</p>
+<h2 id="95">9.5 实验八<a class="headerlink" href="#95" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>assume cs:code
+code segment
+        mov ax,4c00h
+        int 21h
+start:  mov ax,0
+    s:  nop
+        nop
+
+        mov di,offset s
+        mov si,offset s2
+        mov ax,cs:[si]
+        mov cs:[di],ax
+
+    s0: jmp short s
+
+    s1: mov ax,0
+        int 21h
+        mov ax,0
+
+    s2: jmp short s1
+    nop
+code ends
+</code></pre></div>
+<p>最终还是会跳转到代码段的一开始的结束的代码，因为 s2 跳转的位移，而不是 s1 的具体地址</p>
+<h2 id="96">9.6 实验九<a class="headerlink" href="#96" title="Permanent link">&para;</a></h2>
+<p>在屏幕上彩色显示 ‘welcome to masm!'</p>
+<p>具体看教材</p>
+<p>属性字节格式：</p>
+<table>
+<thead>
+<tr>
+<th>位数</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>闪烁BL</td>
+</tr>
+<tr>
+<td>1</td>
+<td>背景R</td>
+</tr>
+<tr>
+<td>2</td>
+<td>背景G</td>
+</tr>
+<tr>
+<td>3</td>
+<td>背景B</td>
+</tr>
+<tr>
+<td>4</td>
+<td>高亮I</td>
+</tr>
+<tr>
+<td>5</td>
+<td>前景R</td>
+</tr>
+<tr>
+<td>6</td>
+<td>前景G</td>
+</tr>
+<tr>
+<td>7</td>
+<td>前景B</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>    2.jmp指令要给出两种信息：
+        1.转移的目的地址
+        2.转移的距离（段间转移、段内短转移、段内近转移）
+9.3 依据位移进行转移的jmp指令
+    1.jmp short 标号【转到标号处执行指令,段内短转移】
+      此格式实现的是：段内短转移，它对ip的修改范围为-128~127
+    2.也就是说，它向前转移时可以最多越过128个字节，负数使用补码表示
+      向后转移可以最多越过127个字节
+    3.CPU不需要目的地址就可以实现对ip的修改
+        jmp指令的机器码中不包含目的地址，但是可以实现跳转
+        实现的方式，是在原地址的基础上进行一个偏移量，即位移
+    4.还有一种和指令“jmp short 标号”功能类似的指令格式：
+        jmp near ptr 标号，它实现的是段内近转移 
+        功能为：(ip)=(ip)+16位位移
+        jmp short 标号是8位的位移，而jmp near ptr 标号是16位位移
+9.4 转移的目的地址在指令中的jmp指令
+    前面讲的jmp指令，其对应的机器码中并没有转移的目的地址，而是相对于当前ip的转移位移
+    1.指令“jmp far ptr 标号”
+        实现的是段间转移，又称为远转移,这时机器码中应该明确给出【段地址】
+    2.指令“jmp far ptr 标号”功能如下：
+        (CS)=标号所在段的段地址
+        (IP)=标号所在段中的偏移地址
+        far ptr 指明了指令用标号的段地址和偏移地址修改cs和ip
+9.5 转移地址在寄存器中的jmp指令
+    指令格式：jmp 16位寄存器
+    功能：修改ip寄存器中的值，把16位寄存器中的值送入到ip寄存器中
+9.6 转移地址在内存中的jmp指令
+    转移地址在内存中的jmp指令有两种格式：
+    1.jmp word ptr 内存单元地址（段内转移）
+        功能：将内存中的那个字视为一个偏移地址，然后跳转到那个偏移地址
+        与【jmp 寄存器】功能相似
+        内存单元地址可用寻址方式的任意格式给出
+    2.jmp dword ptr 内存单元地址（段间转移）
+        (ip)=(内存单元地址)   ;双字中的低位字是给ip的
+        (cs)=(内存单元地址+2) ;双字中的高位字是给cs的
+        跟【jmp 段地址:偏移地址】功能类似
+        内存单元地址可用寻址方式的任意格式给出
+        **补充：不能直接向内存单元中加入立即数
+            要通过寄存器，把立即数加进去
+9.7 jcxz指令
+    1.有条件跳转指令，所有的有条件跳转指令都是短转移
+        对应的机器码中包含转移的位移，而不是目的地址。对ip的修改范围都为：-128~127
+        **另一个有条件跳转指令【loop指令】
+    2.指令格式：jcxz 标号
+        如果（cx）=0，则跳转到标号处执行
+    3.jcxz 标号 指令的操作：
+        1.当(cx)=0时，(ip)=(ip)+8位位移
+        2.当(cx)!=0时，什么也不做（程序继续向下执行）
+9.8 loop指令
+    1.循环指令，所有的循环指令都是短转移，在对应的机器码中包含转移的位移
+    2.指令格式：loop 标号
+    3.指令的内部操作
+        1.cx=cx-1
+        2.如果cx!=0，(ip)=(ip)+8位位移，跳转
+        3.(cx)=0，什么也不做，程序向下执行
+        cx用来控制循环的次数
+9.9 根据位移进行转移的意义
+    1.根据位移进行转移，这样设计，方便了程序段在内存中的浮动装配
+        可以实现代码的复用
+    2.如果在机器码中直接给出【段地址:偏移地址】，
+        这段程序在内存中换一个位置，则会运行不正确
+    3.段内近转移、段内短转移都是根据位移进行转移，一共有四种方式
+        1.jmp short ptr 标号
+        2.jmp near ptr 标号
+        3.jcxz 标号
+        4.loop 标号
+9.10 编译器对转移位移超界的检测
+    注意，根据位移进行转移的指令，他们的转移范围会受到限制
+    如果在源程序中出现了转移范围超界的问题，在编译的时候，编译器将报错
+【实验八、九】【这个实验要重点看】
+</code></pre></div>
+<h1 id="10-callret">10 call和ret指令<a class="headerlink" href="#10-callret" title="Permanent link">&para;</a></h1>
+<p>call 和 ret 都是转移指令，他们都修改 ip，或同时修改 cs 和 ip</p>
+<h2 id="101-ret-retf">10.1 ret / retf<a class="headerlink" href="#101-ret-retf" title="Permanent link">&para;</a></h2>
+<p>ret指令用栈中的数据修改 ip，从而实现近转移</p>
+<p>执行 <strong>ret 指令</strong> 时 ，cpu 进行的操作：</p>
+<ul>
+<li>(ip) = ((ss)*16+(sp))</li>
+<li>(sp) = (sp)+2</li>
+</ul>
+<p>retf指令用栈中的数据修改 cs 和 ip，从而实现远转移</p>
+<p>执行 <strong>retf指令</strong> 时，cpu进行的操作：</p>
+<ul>
+<li>(ip) = ((ss)*16+(sp))</li>
+<li>(sp) = (sp)+2</li>
+<li>(cs) = ((ss)*16+(sp))</li>
+<li>(sp) = (sp)+2</li>
+</ul>
+<h2 id="102-call">10.2 call<a class="headerlink" href="#102-call" title="Permanent link">&para;</a></h2>
+<p>执行 <strong>call指令</strong> 时，cpu进行的操作：</p>
+<ul>
+<li>将当前的 ip 或 cs 和 ip 压入栈中</li>
+<li>转移（jmp）</li>
+</ul>
+<p>call 指令不能实现短转移</p>
+<h2 id="103-call">10.3 依据位移进行转移的call指令<a class="headerlink" href="#103-call" title="Permanent link">&para;</a></h2>
+<p>格式： call 标号（将当前的 ip 压栈后，转移到标号出进行执行）</p>
+<p>16位位移 = “标号”处的地址-call指令后的第一个字节的地址</p>
+<h2 id="104-call">10.4 依据目的地址在指令中的call指令<a class="headerlink" href="#104-call" title="Permanent link">&para;</a></h2>
+<p>格式： call far ptr 标号 （实现的是段间转移）</p>
+<p>执行这种格式时，cpu的操作：</p>
+<ul>
+<li>
+<p>(sp) = (sp)-2</p>
+</li>
+<li>
+<p>((ss)*16+(sp)) = (cs)</p>
+</li>
+<li>
+<p>(sp) = (sp)-2</p>
+</li>
+<li>
+<p>((ss)*16+(sp)) = (ip)</p>
+</li>
+<li>
+<p>(cs) = 标号段地址</p>
+</li>
+</ul>
+<p>(ip) = 标号偏移地址</p>
+<p>相当于</p>
+<ul>
+<li>push cs</li>
+<li>push ip</li>
+<li>jmp far ptr 标号</li>
+</ul>
+<h2 id="105-call">10.5 转移地址在寄存器中的call指令<a class="headerlink" href="#105-call" title="Permanent link">&para;</a></h2>
+<p>格式： call 16位寄存器 </p>
+<p>具体操作：</p>
+<ul>
+<li>(sp) = (sp)-2</li>
+<li>((ss)*16+(sp)) = (ip)</li>
+<li>(ip) = (16位寄存器)</li>
+</ul>
+<p>相当于</p>
+<ul>
+<li>push ip</li>
+<li>jmp 16位寄存器</li>
+</ul>
+<h2 id="106-call">10.6 转移地址在内存中的call指令<a class="headerlink" href="#106-call" title="Permanent link">&para;</a></h2>
+<p>有2种格式：</p>
+<ul>
+<li>call word ptr 内存单元地址</li>
+</ul>
+<p>具体操作：</p>
+<ul>
+<li>push ip</li>
+<li>
+<p>jmp word ptr 内存单元地址</p>
+</li>
+<li>
+<p>call dword ptr 内存单元地址</p>
+</li>
+</ul>
+<p>具体操作：</p>
+<ul>
+<li>push cs</li>
+<li>push ip</li>
+<li>jmp dword ptr 内存单元地址（内存单元中高位的时 cs，地位的是 ip）</li>
+</ul>
+<h2 id="107-call-ret">10.7 call 和 ret 的配合使用<a class="headerlink" href="#107-call-ret" title="Permanent link">&para;</a></h2>
+<p>两者配合使用可实现子程序，就是函数调用  </p>
+<p>子程序格式</p>
+<div class="highlight"><pre><span></span><code>code segment 
+main:
+        ...
+        call sub1
+        ...
+        mov 4c00h
+        int 21h
+
+sub1:   ...
+        ret
+sub2:   ...
+        ret
+code ends
+end main
+</code></pre></div>
+<h2 id="108-mul">10.8 mul<a class="headerlink" href="#108-mul" title="Permanent link">&para;</a></h2>
+<p>乘法指令</p>
+<p>相乘的两个数，要么都是 8 位的，要么都是 16 位的</p>
+<ul>
+<li>8位：al 和一个 8 位寄存器 或者 内存字节单元中</li>
+</ul>
+<p>结果在 ax 中</p>
+<ul>
+<li>16位： ax 和一个 16 位寄存器 或者 内存字单元中</li>
+</ul>
+<p>结果在 dx（高位） 和 ax（低位） 中 </p>
+<p>格式：</p>
+<p>mul 寄存器</p>
+<p>mul 内存单元</p>
+<h2 id="109">10.9 参数和结果的传递问题<a class="headerlink" href="#109" title="Permanent link">&para;</a></h2>
+<p>用寄存器存放</p>
+<p>如果参数很多就把参数放在内存中，然后传递内存空间的首地址</p>
+<h1 id="11">11 标志寄存器<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
+<h2 id="111-flag">11.1 flag<a class="headerlink" href="#111-flag" title="Permanent link">&para;</a></h2>
+<p>8086CPU的标志寄存器都是 16 位，其中存储的信息被称为程序状态字</p>
+<p>flag寄存器是按位起作用的，每一位都有专门的含义</p>
+<p>8086CPU中只有0，2，4，6，7，8，9，10，11位有特殊含义</p>
+<table>
+<thead>
+<tr>
+<th>位数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0（CF）</td>
+<td>进位标志位</td>
+</tr>
+<tr>
+<td>2（PF）</td>
+<td>奇偶标志位</td>
+</tr>
+<tr>
+<td>4（AF）</td>
+<td></td>
+</tr>
+<tr>
+<td>6（ZF）</td>
+<td>零标志位</td>
+</tr>
+<tr>
+<td>7（SF）</td>
+<td>符号标志位</td>
+</tr>
+<tr>
+<td>8（TF）</td>
+<td></td>
+</tr>
+<tr>
+<td>9（IF）</td>
+<td></td>
+</tr>
+<tr>
+<td>10（DF）</td>
+<td>方向标志位</td>
+</tr>
+<tr>
+<td>11（OF）</td>
+<td>溢出标志位</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ZF（zero）</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mov ax,1
+sub ax,1   ;zf = 1
+</code></pre></div>
+<ul>
+<li>PF（parity）</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mov al,1
+add al,10   ;结果为(1011b)，有3个奇数，pf = 0
+</code></pre></div>
+<ul>
+<li>SF （sign），对有符号数而言</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mov al,10000001b
+add al,1          ;负数，sf = 1
+</code></pre></div>
+<ul>
+<li>CF（carry）</li>
+</ul>
+<p>记录进位或者借位，对无符号数而言</p>
+<div class="highlight"><pre><span></span><code>mov al,98h
+add al,al         ;cf = 1
+
+mov al,97h
+sub al,98h        ;cf = 1，借位，结果是197h-98h
+</code></pre></div>
+<ul>
+<li>OF</li>
+</ul>
+<p>溢出，对有符号数而言</p>
+<div class="highlight"><pre><span></span><code>mov al,10001000b  ;-120
+add al,11110000b  ;-16
+;结果是-136，溢出
+</code></pre></div>
+<ul>
+<li>DF（direction）</li>
+</ul>
+<p>在串处理指令中，控制每次操作后si，di的增减</p>
+<ul>
+<li>df = 0：每次操作后si，di递增</li>
+<li>df = 1：每次操作后si，di递减</li>
+</ul>
+<p><strong>movsb</strong>的功能是 将 ds:si 指向的内存单元的字节送入 es:di 中，然后根据 df位的值对 di和si 递增或递减1</p>
+<p><strong>movsw</strong>传送字， si和di 递增或递减2</p>
+<p><strong>rep</strong> movsb的功能是根据 cx 的值重复执行后面的串传送指令</p>
+<p>8086CPU提供了两条指令对 df 进行设置：</p>
+<p>cld：df 置0（clear</p>
+<p>std：df 置1（set</p>
+<p>DEBUG 中的表示</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>值为1的标记</th>
+<th>值为0的标记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OF</td>
+<td>OV</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>NG</td>
+<td>PL</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>ZR</td>
+<td>NZ</td>
+</tr>
+<tr>
+<td>PF</td>
+<td>PE</td>
+<td>PO</td>
+</tr>
+<tr>
+<td>CF</td>
+<td>CY</td>
+<td>NC</td>
+</tr>
+<tr>
+<td>DF</td>
+<td>DN</td>
+<td>UP</td>
+</tr>
+</tbody>
+</table>
+<h2 id="112-adc">11.2 adc<a class="headerlink" href="#112-adc" title="Permanent link">&para;</a></h2>
+<p>带进位的加法指令</p>
+<p>需要注意的是，在计算大数相加时，遍历大数时，如果要 si+2，最好进行2次 inc si，因为 inc 不会影响 cf</p>
+<div class="highlight"><pre><span></span><code>adc ax,bx
+;实现的功能是 (ax) = (ax)+(bx)+cf
+
+add al,bl
+adc ah,bh   ;等效于add ax,bx
+</code></pre></div>
+<h2 id="113-sbb">11.3 sbb<a class="headerlink" href="#113-sbb" title="Permanent link">&para;</a></h2>
+<p>带借位减法指令</p>
+<h2 id="114-cmp">11.4 cmp<a class="headerlink" href="#114-cmp" title="Permanent link">&para;</a></h2>
+<p>比较指令，功能相当于减法指令，但是不保存结果</p>
+<p>cmp 指令执行后，只会对标志寄存器产生影响</p>
+<p>格式：cmp 操作对象1，操作对象2（执行后2个操作对象不会改变）</p>
+<div class="highlight"><pre><span></span><code>;cmp ax bx 在无符号数的情况下对标志寄存器的影响
+zf = 1   ;(ax) = (bx)
+zf = 0   ;(ax) != (bx)
+cf = 1   ;(ax) &lt; (bx)
+cf = 0   ;(ax) &gt;= (bx)
+zf = 0 且 cf = 0  ;(ax) &gt; (bx)
+zf = 1 或 cf = 1  ;(ax) &lt;= (bx)
+
+;cmp ax bx 在有符号数的情况下对标志寄存器的影响
+;要同时考虑 sf 和 of 和 zf
+</code></pre></div>
+<h2 id="115">11.5 检测比较结果的条件转移指令<a class="headerlink" href="#115" title="Permanent link">&para;</a></h2>
+<p><strong>无符号</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>含义</th>
+<th>相关标志位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>je</td>
+<td>等于则转移</td>
+<td>zf = 1</td>
+</tr>
+<tr>
+<td>jne</td>
+<td>不等于则转移</td>
+<td>zf = 0</td>
+</tr>
+<tr>
+<td>jb</td>
+<td>低于则转移</td>
+<td>cf = 1</td>
+</tr>
+<tr>
+<td>jnb</td>
+<td>不低于则转移</td>
+<td>cf = 0</td>
+</tr>
+<tr>
+<td>ja</td>
+<td>高于则转移</td>
+<td>cf= 0,zf = 0</td>
+</tr>
+<tr>
+<td>jna</td>
+<td>不高于则转移</td>
+<td>cf = 1 或 zf = 1</td>
+</tr>
+</tbody>
+</table>
+<p>j: jmp  e: euqal    n: not  b: below    a: above</p>
+<h2 id="116-pushf-popf">11.6 pushf / popf<a class="headerlink" href="#116-pushf-popf" title="Permanent link">&para;</a></h2>
+<p>pushf：将标志寄存器压栈</p>
+<p>popf：弹出栈中数据给标志寄存器</p>
+<h1 id="_3">第十二章 内中断<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>**引言和简介
+    1.中断是CPU处理外部突发事件的一个重要技术
+    2.它能使CPU在运行过程中对外部事件发出的中断请求及时地进行处理，处理完成后
+        又立即返回断点，继续进行CPU原来的工作。
+    3.引起中断的原因【即：发出中断请求的来源叫作中断源】
+    4.根据中断源的不同，可以把中断分为：【软件中断】和【硬件中断】两大类
+        而硬件中断又可以分为【外部中断】和【内部中断】两类
+12.1 内中断的产生
+    1.外部中断一般是指计算机外设发出的中断请求，如：键盘中断、打印机中断、定时器中断。
+        外部中断是可以屏蔽的中断，也就是说，利用中断控制器可以屏蔽这些外部设备的中断请求。
+    2.内部中断是指因硬件出错（如突然掉电、奇偶校验错等）或运算出错（除数为零、运算溢出、单步中断）所引起的中断。
+        内部中断是不可屏蔽的中断
+    3.软件中断其实并不是真正的中断，他们只是可被调用执行的一般程序，
+        DOS的系统功能调用（int 21h）都是软件中断
+    4.CPU为了处理并发的中断请求，规定了中断的优先权，优先权由高到低的顺序是：
+        1.除法错、溢出中断、软件中断
+        2.不可屏蔽中断
+        3.可屏蔽中断
+        4.单步中断
+12.2 中断处理程序简介
+    1.CPU的设计者必须在中断信息和其处理程序的入口地址之间建立某种联系
+        使得CPU根据中断信息可以找到要执行的处理程序。
+    2.中断信息中包含有表示中断的类型码。根据CPU的设计，中断类型码的作用就是用来定位中断处理程序的。
+    3.CPU用8位的中断类型码通过中断向量表找到相应的中断处理程序的入口地址
+        即中断类型码是中断向量在中断向量表中的索引
+12.3 中断向量表【中断向量表就是中断向量的列表】
+    1.中断向量表在内存中保存，其中存放着256个【2^8,8位中断类型码】中断源所对应的中断处理程序的入口
+        对于8086PC机，中断向量表指定放在内存地址0处
+    2.从0:0-0:03ffh的1024个字节【256*4，物理地址使用段地址和偏移地址存放，需要4个字节】中存放着中断向量表
+12.4 中断过程
+    1.可以用中断类型码，在中断向量表中找到中断处理程序的入口
+        找到这个入口地址的最终目的是用它设置cs和ip，使CPU执行中断处理程序
+    2.用中断类型码找到中断向量，并用它设置cs和ip，这个工作时由CPU的硬件自动完成的
+        CPU硬件完成这个工作的过程被称为【中断过程】
+    3.中断过程
+        8086CPU的中断过程
+        1.（从中断信息中）取得中断类型码
+        2.标志寄存器的值入栈（保护标志位）
+        3.设置标志寄存器的第8位TF和第9位IF设置为0（后面讲解本步的目的）
+        4.cs内容入栈
+        5.ip内容入栈
+        6.从内存地址为中断类型码*4和中断类型码*4+2的两个子单元中
+            读取中断处理程序的入口地址设置cs和ip
+    4.使用汇编语言描述中断过程，如下
+        1.取得中断类型码N
+        2.pushf
+        3.TF=0，IF=0
+        4.push cs
+        5.push ip
+        6.（ip）=（N*4），（cs）=（N*4+2）
+12.5 中断处理程序
+    1.由于CPU随时都可能检测到中断信息，也就是说，CPU随时都可能执行中断处理程序，
+        所以，中断处理程序必须一致存储在内存某段空间中
+    2.而中断处理程序的入口地址，即【中断向量】，必须存储在对应的中断向量表表项中
+    3.中断处理程序的编写方法和子程序的比较类似，下面是常规的步骤
+        1.保存用到的寄存器
+        2.处理中断
+        3.恢复用到的寄存器
+        4.用iret指令返回
+        **iret指令的功能用汇编语法描述为
+            pop ip
+            pop cs
+            popf
+          iret通常和硬件自动完成的中断过程配合使用
+          iret指令执行后，CPU回到执行中断处理程序前的执行点继续执行程序
+12.6 除法错误中断的处理
+    当CPU执行div等除法指令的时候，如果发生了除法溢出错误，将产生中断类型码为0的终端信息
+    CPU将检测到这个信息，然后引发中断程序，转去执行0号中断对应的中断处理程序
+    例如：
+        mov ax 1000h
+        mov bh，1
+        div bh
+      此程序会产生溢出
+      运行之后，会显示
+</code></pre></div>
+<p><img alt="avatar" src="img_ass/12.1.png" /></p>
+<div class="highlight"><pre><span></span><code>12.7 编程处理0号中断
+    现在重新编写一个0号中断处理程序，它的功能是在屏幕中间显示“Welcome to here!”的广告词，然后返回到操作系统
+    把中断处理程序放到安全空间中
+    中断程序的框架
+</code></pre></div>
+<p><img alt="avatar" src="img_ass/12.2.png" /></p>
+<div class="highlight"><pre><span></span><code>12.8 安装
+    计算中断程序的长度：offset 标号1-offset 标号2
+    在代码段中存放数据        
+12.9 do0
+12.10 设置中断向量
+12.11 单步中断
+    如果检测到标志寄存器的tf位为1，则产生单步中断，引发中断过程
+12.12 响应中断的特殊情况
+</code></pre></div>
+<p><img alt="avatar" src="img_ass/12.3.png" />
+<img alt="avatar" src="img_ass/12.4.png" /></p>
+<h1 id="int">第十三章 int指令<a class="headerlink" href="#int" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>13.1 int指令
+    1.int格式：int n  ;n为中断类型码
+        它的功能是引发中断过程
+    2.CPU执行int n指令，相当于引发一个n号中断的中断过程，执行过程如下
+        1.取中断类型码
+        2.标志寄存器入栈，if=0，tf=0
+        3.cs，ip入栈
+        4.从此处转去执行n号中断的中断处理过程
+    3.可以在程序中使用int指令调用任何一个中断的中断处理程序
+        可以用int指令调用这些子程序，也可以自己编写一些中断处理程序供别人使用
+13.2 编写供应用程序调用的中断例程
+    【实例1】编写、安装中断7ch的中断例程，实现求一个word型数据的平方
+        1.功能：求一word型数据的平方
+        2.参数：（ax）=要计算的数据
+        3.返回值：dx、ax中存放结果的高16位和低16位
+        4.应用举例：求2*3456^2
+</code></pre></div>
+<p><code>;程序1：调用中断程序计算平方
+code segment
+    assume cs: code
+start:
+    mov ax,3456; (ax)=3456
+    int 7ch;调用中断7ch的中断例程，计算ax中的数据的平方
+
+    add ax,ax
+    adc dx,dx ;存放结果，讲结果乘以2
+    mov ax,4c00h
+    int 21h
+code ends
+end start
+
+;程序2：编写中断程序
+;程序2中要做三部分工作
+;   1.编程实现求平方功能的程序
+;   2.安装程序，我们将其安装在0:200处
+;   3.设置中断向量表，将程序的入口地址保存在7ch表项中，使其成为中断7ch的中断例程。
+code segment
+    assume cs:code
+start:
+    mov ax,cs
+    mov ds,ax
+    mov si,offset sqr                   ;设置ds:si指向源地址
+    mov ax,0
+    mov es,ax
+    mov di,200h                         ;设置es:di指向目的地址
+    mov cx,offset sqrend - offset sqr   ;设置cx为传输长度
+    cld                                 ;设置传输方向为正
+    rep movsb
+
+    mov ax,0
+    mov es,ax
+    mov word ptr es:[7ch*4],200h        ;设置中断向量地址，偏移地址
+    mov word ptr es:[7ch*4+2],0         ;设置中断向量地址，段地址
+
+    mov ax,4c00h
+    int 21h
+
+  sqr:  
+        mul ax
+        iret
+sqrend: nop
+
+code ends
+end start</code>
+        【实例2】编写、安装中断7ch的中断例程，实现将一个全是字母，以0结尾的字符串，转化为大写。
+<code>code segment
+    assume cs:code
+start:
+    mov ax,cs
+    mov ds,ax
+    mov si,offset capital
+    mov ax,0
+    mov es,ax
+    mov di,200h
+    mov cx,offset capitalend - offset capital
+    cld
+    rep movsb
+
+    mov ax,0
+    mov es,ax
+    mov word ptr es:[7ch*4],200h
+    mov word ptr es:[7ch*4+2],0
+
+    mov ax,4c00h
+    int 21h
+
+capital:
+    push cx
+    push si
+
+change: 
+    mov cl,[si]
+    mov ch,0
+    jcxz ok
+    and byte ptr [si],11011111b
+    inc si
+    jmp short change
+ok: 
+    pop si
+    pop cx
+    iret
+
+capitalend:
+    nop
+
+code ends
+end start</code>
+    13.3 对int、iret和栈的深入理解
+        【问题】用7ch中断例程完成loop指令的功能
+            不要随便修改sp，可以使用bp进行间接访问
+    13.4 BIOS和DOS所提供的中断例程
+    13.5 BIOS和DOS中断例程的安装过程
+        1.开机后，CPU一加电，初始化（cs）=0ffffh，ip=0，自动从ffff:0单元开始执行程序
+            ffff:0处有一条跳转指令，CPU执行该指令后，转去执行bios中的硬件系统的检测和初始化程序。
+        2.初始化程序将建立bios所支持的中断向量，即将bios提供的中断例程的入口地址登记在中断向量表中。
+        3.硬件系统检测和初始化完成后，调用19h进行操作系统的引导。从此将计算机交由操作系统控制。
+        4.DOS启动后，除完成其他工作外，还将它所提供的中断例程装入内存，并建立相应的中断向量
+    13.6 BIOS中断例程的应用
+        1.int 10h中断例程是bios提供的中断例程，其中包含了多个和屏幕输出相关的子程序
+            一般来说，一个供程序员调用的中断例程中，往往包括多个子程序，中断例程内部用传递进来的参数来决定执行哪个子程序
+        2.bios和dos提供的中断例程，都用ah来传递内部子程序的编号
+    13.7 DOS中断例程应用
+        int 21h中断例程是dos提供的中断例程，其中包含了dos提供给程序员造编程时调用的子程序
+        【实验13】
+    **介绍一本汇编语言的书《The Art of Assembly Language》</p>
+<h1 id="_4">第十四章 端口<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>CPU可以直接读写3个地方的数据
+    1.CPU内部的寄存器
+    2.内存单元
+    3.端口
+14.1 端口的读写
+    1.对端口的读写不能用mov、push、pop等内存读写指令
+        端口的读写指令只有两条：【in】和【out】分别用于从端口读取数据和往端口写入数据
+    2.CPU执行内存访问指令和端口访问指令时，总线上的信息：
+        1.访问内存
+            mov ax,ds:[8];
+            假设执行前（ds）=0
+            执行时，与总线相关的操作：
+            1.CPU通过地址线将地址信息8发出
+            2.CPU通过控制线发出内存读命令，选中存储器芯片，并通知它，将要从中读取数据
+            3.存储器将8号单元中的数据通过数据线送入CPU
+        2.访问端口
+            这里的【端口】是对硬件开放的端口
+            in al,60h; 从60h号端口读入一个字节
+            执行时与总线相关的操作
+            1.CPU通过地址线将地址信息60h发出
+            2.CPU通过控制线发出端口读命令，选中端口所在的芯片，并通知它，将要从中读取数据
+            3.端口所在的芯片将60h端口中的数据通过数据线送入CPU
+            **注意：在in和out指令中，只能使用ax或al来存放从端口中读入的数据或要发送到端口中的数据
+                访问8位端口时用al，访问16位端口时用ax
+        3.对0-255以内的端口进行读写
+            in al,20h       ;从20h端口读一个字节
+            out 20h,al      ;往20h端口写一个字节
+        4.对256-65535的端口进行读写时，端口号放在【dx】中
+            mov dx,3f8h     ;将端口号3f8送入dx
+            in al,dx        ;从3f8h端口读一个字节
+            out dx,al        ;从3f8h端口写一个字节
+14.2 CMOS RAM芯片
+    1.PC机中有一个CMOS RAM芯片，其有如下特征
+        1.包含一个实时钟和一个有128个存储单元的RAM存储器。（早期的计算机为64字节）
+        2.该芯片靠电池供电。因此，关机后其内部的实时钟仍可以正常工作，RAM中的信息不丢失
+        3.128字节的RAM中，内部实时钟占用0-0dh单元来保存时间信息，其余大部分分单元用于
+            保存系统配置信息，供系统启动时bios程序读取
+            bios也提供了相关的程序，使我们可以在开机的时候配置CMOS RAM中的系统信息
+        **补充：BIOS
+            BIOS是英文&quot;Basic Input Output System&quot;的缩略词，直译过来后中文名称就是&quot;基本输入输出系统&quot;。
+              在IBM PC兼容系统上，是一种业界标准的固件接口。BIOS这个字眼是在1975年第一次由CP/M操作系统中出现。
+              BIOS是个人电脑启动时加载的第一个软件
+        4.该芯片内部有两个端口，端口地址为70h和71h。CPU通过这两个端口读写CMOS RAM。
+        5.70h为地址端口，存放要访问的CMOS RAM单元的地址；71h为数据端口，存放从选定的CMOS RAM单元中读取的数据
+            或要写入到其中的数据
+    2.比如：读CMOS RAM的2号单元：
+        1.将2送入端口70h
+        2.从71h读取2号单元的内容
+14.3 shl和shr指令
+    shl和shr是逻辑移位指令，后面的课程中我们要用到移位指令
+    1.shl逻辑左移指令，功能为：
+        1.将一个寄存器或内存单元中的数据向左移位
+        2.将最后移出的移位写入cf中
+        3.最低位用0补充
+        例如有如下指令：
+            mov al,01001000b
+            shl al,1        ;将al中的数据左移一位
+            执行后(al)=100100000b，cf=0.
+        如果移动位数大于1时，必须将移动位数放在cl中
+    2.shr逻辑右移指令，与shl刚好相反
+14.4 CMOS RAM中存储的时间信息
+    在CMOS RAM中存放着当前时间
+      秒：00h
+      分：02h
+      时：04h
+      日：07h
+      月：08h
+      年：09h
+    这6个信息的长度都为1个字节
+    这些数据以BCD码的方式存放，一个字节可以表示两个BCD码
+    CMOS RAM存储时间信息的单元中存储了用两个BCD码表示的两个十进制数
+        高4位的BCD码表示十位，低四位的BCD码表示个位
+    【编程】：在屏幕中间显示当前的月份
+        1.CMOS RAM芯片回顾：
+            1.70h为地址端口，存放要访问的CMOS RAM单元的地址
+            2.71h为数据端口，存放从选定的CMOS RAM单元中【读取】的数据，或【写入】其中的数据
+        2.分析
+          这个程序主要做两部分工作
+            1.从CMOS RAM的8号单元读取当前月份的BCD码
+                要读取CMOS RAM的信息，我们首先要向地址端口70h写入要访问的单元的地址
+                mov al,8
+                out 70h,al
+                然后从数据端口71h中取得指定单元中的数据
+                in al,71h
+            2.将用BCD码表示的月份以十进制的形式显示到屏幕上
+</code></pre></div>
+<p><code>;编程：在屏幕中间显示当前的月份
+code segment
+    assume cs:code
+start:
+    mov al,8
+    out 70h,al
+    in  al,71h
+    mov ah,al
+    mov cl,4
+    shr ah,cl
+    and al,00001111b
+
+    add ah,30h
+    add al,30h
+
+    mov bx,0b800h   ;显存
+    mov es,bx
+    mov byte ptr es:[160*12+40*2],ah     ;显示月份的十位数码
+    mov byte ptr es:[160*12+40*2+2],al   ;显示月份的个位数码
+
+    mov ax,4c00h
+    int 21h
+code ends
+end start</code>
+        【实验十四】编程：以“年/月/日 时:分:秒”的格式，显示当前日期和时间</p>
+<h1 id="_5">第十五章 外中断<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>**CPU除了有运算能力，还有I/O能力
+15.1 接口芯片和端口
+    1.在PC系统的接口卡和主板上，装有各种接口芯片，这些外设接口芯片的内部装有若干寄存器
+        CPU将这些寄存器当做【端口】访问
+    2.外设的输入不直接送入内存和CPU，而是送入相关的接口芯片的【端口】中
+    3.CPU向外设的输出也是要先送入【端口】中，再由相关芯片送入到外设
+    4.CPU可以向外设输出控制命令，这些控制命令也是先送到【端口】中，然后相关芯片根据命令进行相关工作
+    5.可见：CPU与外部设备的交流是通过【端口】进行的
+        CPU在执行完当前指令后，可以检测到发送过来的中断信息，引发中断过程，处理外设的输入  
+15.2 外中断信息
+    1.在PC系统中，外中断源一共有两类
+        1.可屏蔽中断
+        2.不可屏蔽中断
+    2.可屏蔽中断是CPU可以不响应的外中断。CPU是否响应可屏蔽中断
+        要看标志寄存器的IF位的设置
+        当CPU检测到可屏蔽中断信息时：
+        1.若IF=1，则CPU在执行完当前指令后相应中断，引发中断过程
+        2.若IF=0，则不响应可屏蔽中断
+    3.可屏蔽中断所引发的中断过程，除在第一步的实现上与内中断有所不同外，基本上和内中断的中断过程相同
+    4.因为可屏蔽中断信息来自于CPU外部，中断类型码是通过数据总线送入CPU的
+        而内中断的中断码是在CPU内部产生的
+    5.IF设置为0的原因：在进入中断处理程序后，禁止其他的可屏蔽中断
+        当然，如果中断处理程序中需要处理可屏蔽中断，可以用指令将IF设置为1
+    6.8086CPU提供的设置IF的指令如下：
+        sti         ;用于设置IF=1
+        cli         ;用于设置IF=0
+    7.不可屏蔽中断是CPU必须相应的外中断。
+        当CPU检测到不可屏蔽中断信息时，则在执行完当前指令后
+        立即响应，应发中断过程
+    8.8086CPU不可屏蔽中断的中断类型码固定为2，所以中断过程中，不需要取中断类型码
+    9.不可屏蔽中断的中断过程
+        1.标志寄存器入栈，IF=0，TF=0
+        2.CS，IP入栈
+        3.（IP）=（8），（CS）=（0AH）   ;固定地址
+    10.几乎所有外中断，都是可屏蔽中断。当外设有需要处理的事件发生时
+        相关芯片向CPU发出可屏蔽中断信息。
+        不可屏蔽中断是系统中有必须处理的紧急情况发生时用来通知CPU的中断信息，本门课程中，主要讨论可屏蔽中断
+15.3 PC机键盘的处理过程
+    1.下面看一个键盘输入的处理过程，并以此来体会PC机处理外设输入的基本方法
+        1.键盘输入
+        2.引发9号中断
+        3.执行int 9中断例程
+    2.PC机键盘的处理过程
+        1.键盘上每一个键相当于一个开关，键盘中有一个芯片对键盘上的每一触键的开关状态进行扫描。
+        2.按下一个键时，开关接通，该芯片就产生一个扫描码，扫描码说明按下的键在键盘上的位置
+            扫描码被送入主板上的相关接口芯片的寄存器中，该寄存器的端口地址为60H
+        3.松开控下的键时，也产生一个扫描码，扫描码说明了松开的键在键盘上的位置，松开按键时
+            产生的扫描码也被送入60H端口中。
+          一般按下一个键时，产生的扫描码称为通码，松开一个键产生的扫描码称为断码
+          扫描码长度为一个字节，通码的第七位为0，断码的第七位为1
+            即：断码=通码+80H
+          **BIOS提供了int9中断例程，用来进行基本的键盘输入处理，主要的工作如下：
+            1.读出60H端口中的扫描码
+            2.如果是字符键的扫描码，将该扫描码对应的字符码（即：ASCII码）送入内存中的BIOS键盘缓冲区
+            3，如果是控制键和切换键的扫描码，则将其转变为状态字节，写入内存中存储状态字节的单元
+        4.键盘的输入到达60H端口时，相关的芯片会向CPU发出中断类型码为9的可屏蔽中断信息。
+        5.CPU检测到中断信息后，如果IF=1，则相应中断，同时将IF设置为0（不让其他可屏蔽中断进行干扰），引发中断过程，转去执行int9中断例程
+    3.BIOS键盘缓冲区是系统启动后，BIOS用于存放int9中断例程所接受的键盘输入的内存区
+    4.该内存区可以存储15个键盘输入，int9中断例程除了接收扫描码外，还要产生和扫描码对应的字符码，
+        所以在BIOS键盘缓冲区中，一个键盘输入用一个字单元存放，高字节存放扫描码，低字节存放字符码
+    5.0040:17单元存储键盘状态字节，该字节记录了控制键和切换键的状态。键盘状态字节各位记录的信息如下：
+</code></pre></div>
+<p><img alt="avatar" src="img_ass/15.1.png" /></p>
+<div class="highlight"><pre><span></span><code>15.4 编写int9中断例程,并安装
+    梳理键盘输入的处理过程
+        1.键盘产生扫描码
+        2.扫描码送入60H端口
+        3.一旦侦测到60H端口有动静，引发9号中断
+        4.CPU执行int9中断例程处理输入
+      以上的过程，前三步都由硬件系统自动完成，能够修改的只有第四步，修改int9中断程序
+    【任务演示】在屏幕中依次显示“a”~“z”并可以让人看清。在显示过程中，按下Esc键后，该表显示的颜色
+</code></pre></div>
+<p><code>;程序1：实现连续显示“a”~“z”
+;编程：在屏幕中间依次显示“a”~“z”，并可以让人看清。在显示的过程中，按下'Esc'键后，改变显示的颜色。
+;部分功能代码：
+stack segment
+    db 128 dup (0)
+stack ends
+
+code segment
+    assume cs:code
+start:  
+    mov ax,stack
+    mov ss,ax
+    mov sp,128
+
+    mov ax,0b800h
+    mov es,ax
+    mov ah,'a'
+s:  mov es:[160*12+40*2],ah
+    call delay
+    inc ah
+    cmp ah,'z'
+    jna s
+
+    mov ax,4c00h
+    int 21h
+
+delay:  
+    push ax
+    push dx
+    mov dx,0010h    ;循环10000000h次
+    mov ax,0
+s1:                    
+    sub ax,1
+    sbb dx,0
+    cmp ax,0
+    jne s1
+    cmp dx,0
+    jne s1
+    pop dx
+    pop ax
+    ret
+
+code ends
+end start 
+
+;程序2：实现改变颜色
+;编程：在屏幕中间依次显示“a”~“z”，并可以让人看清。在显示的过程中，按下'Esc'键后，改变显示的颜色。
+stack segment
+    db 128 dup (0)
+stack ends
+
+data segment
+    dw 0,0
+data ends
+
+code segment
+    assume cs:code
+start:  
+    mov ax,stack
+    mov ss,ax
+    mov sp,128
+    mov ax,data
+    mov ds,ax
+    mov ax,0
+    mov es,ax
+
+    push es:[9*4]
+    pop ds:[0]
+    push es:[9*4+2]
+    pop ds:[2]          ;将原来的int 9中断例程的入口地址保存在ds:0、ds:2单元中
+
+    mov word ptr es:[9*4],offset int9
+    mov es:[9*4+2],cs   ;在中断向量表中设置新的int 9中断例程的入口地址
+
+    mov ax,0b800h
+    mov es,ax
+    mov ah,'a'
+s:  
+    mov  es:[160*12+40*2],ah
+    call delay
+    inc ah
+    cmp ah,'z'
+    jna s
+    mov ax,0
+    mov es,ax
+
+    push ds:[0]
+    pop es:[9*4]
+    push ds;[2]
+    pop es;[9*4+2]      ;将中断向量表中int 9中断例程的入口恢复为原来的地址
+
+    mov ax,4c00h
+    int 21h
+
+delay:  
+    push ax
+    push dx
+    mov dx,0010h
+    mov ax,0
+s1:     
+    sub ax,1
+    sbb dx,0
+    cmp ax,0
+    jne s1
+    cmp dx,0
+    jne s1
+    pop dx
+    pop ax
+    ret
+
+;------以下为新的int 9中断例程--------------------
+;int9中断例程是在进行键盘输入之后，由系统自动调用
+int9:   
+    push ax
+    push bx
+    push es
+
+    in al,60h
+
+    pushf
+    pushf
+    pop bx
+    and bh,11111100b
+    push bx
+    popf
+    call dword ptr ds:[0]               ;对int指令进行模拟，调用原来的int 9中断例程
+
+    cmp al,1
+    jne int9ret
+
+    mov ax,0b800h
+    mov es,ax
+    inc byte ptr es:[160*12+40*2+1]     ;属性增加1，改变颜色
+
+int9ret:
+    pop es
+    pop bx
+    pop ax
+    iret
+
+code ends
+end start</code></p>
+<h1 id="_6">第十六章 直接定址表<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>16.1 描述了单元长度的标号
+    1.本章讨论如何有效合理地组织数据，以及相关的编程技术
+        1.前面的课程中，我们一直在代码段中使用标号来标记指令、数据、段的起始地址
+        2.还可以使用一种标号，这种标号不但可以表示内存单元的地址，还表示了内存单元的长度
+            即：表示在此标号处的单元，是一个字节单元，还是字单元还是双字单元
+    2.例如
+        1.标号1
+        a : db 1,2,3,4,5,6,7,8
+        b : dw 0
+      此种标号只能标记地址
+      此种加有“:”的地址标号，只能在代码段中使用，不能在其他段中使用
+        2.标号2
+        a db 1,2,3,4,5,6,7,8    ;标号a，描述了地址code:0,和从这个地址开始，以后的内存单元都是字节单元
+        b dw 0                  ;标号b描述了地址code:8，和从这个地址开始，以后的内存单元都是字单元
+      此种标号既可以标记地址，也可以表示此标号处的单元
+    3.使用这种包含单元长度的标号，可以使我们以简洁的形式访问内存中的数据
+      这种标号此后称为数据标号，它标记了存储数据的单元的地址和长度
+    4.数据标号的用法
+        指令：mov ax,b             ;相当于：mov ax,cs:[8]
+        指令：mov b,2              ;相当于：mov word ptr cs:[8],2
+        指令：inc b                ;相当于：inc word ptr cs:[8]
+        指令：mov al,a [si]        ;相当于：mov al,cs:0[si]
+        指令：mov al,a[3]          ;相当于：mov al,cs:0[3]
+        指令：mov al,a[bx+si+3]    ;相当于：mov al,cs:0[bx+si+3]
+16.2 在其他段中使用数据标号
+    1.注意，如果想在代码段中，直接用数据标号访问数据，
+        则需要用伪指令assume 将标号所在的段和一个段寄存器联系起来。
+      否则编译器在编译的时候，无法确定标号的段地址在哪一个寄存器中。
+    2. 当然，这种联系是编译器需要的，但绝对不是说，我们因为编译器的工作需要，
+        用assume指令将段寄存器和某个段相联系，段寄存器中就会真的存放该段的地址。
+    3.我们可以将数据标号当作数据来定义，此时，编译器将标号所表示的地址当作数据的值。 
+      1.把数据标号当做数据来定义时，使用【dw】定义数据
+      比如：     data segment
+                    a db 1,2,3,4,5,6,7,8
+                    b dw 0
+                    c dw a,b        ;数据标号c处存储的两个字型数据为标号a、b 的偏移地址。
+                 data ends
+      数据标号c处存储的两个字型数据为标号a、b 的偏移地址。
+      相当于：
+                data segment
+                    a db 1,2,3,4,5,6,7,8
+                    b dw 0
+                    c dw offset a, offset b
+                 data ends
+      2.把数据标号当做数据来定义时，使用【dd】定义数据
+        再比如：
+            data segment
+                a db 1,2,3,4,5,6,7,8
+                b dw 0
+                c dd a,b    ;数据标号c处存储的两个双字型数据为标号a的偏移地址和段地址、标号b 的偏移地址和段地址。
+             data ends
+        数据标号c处存储的两个双字型数据为标号a的偏移地址和段地址、标号b 的偏移地址和段地址。
+        相当于：
+            data segment
+                    a db 1,2,3,4,5,6,7,8
+                    b dw 0
+                    c dw offset a, seg a, offset b, seg b   ;seg操作符，功能为取得某一标号的段地址。
+                 data ends
+            seg操作符，功能为取得某一标号的段地址。
+16.3 直接定址表
+    本节课，我们将使用“查表”的方法，编写相关程序的技巧
+    【任务】编写子程序，以十六进制的形式在屏幕中间显示给定的byte型数据
+</code></pre></div>
+<p><code>code segment
+    assume cs:code
+start:  
+        mov al,0eh          ;al中存放了byte型数据
+
+        call showbyte
+
+        mov ax,4c00h
+        int 21h
+
+;子程序：
+;用al传送要显示的数据
+
+showbyte:
+        jmp short show
+
+        table db '0123456789ABCDEF' ;字符表
+
+show:   push bx                 ;保护现场
+        push es
+
+        mov ah,al
+        shr ah,1           
+        shr ah,1
+        shr ah,1
+        shr ah,1                ;右移4位，ah中得到高4位的值
+        and al,00001111b        ;al中为低4位的值
+
+        mov bl,ah
+        mov bh,0
+        mov ah,table[bx]        ;用高4位的值作为相对于table的偏移，取得对应的字符
+
+        mov bx,0b800h
+        mov es,bx
+        mov es:[160*12+40*2],ah
+
+        mov bl,al
+        mov bh,0
+        mov al,table[bx]        ;用低4位的值作为相对于table的偏移，取得对应的字符
+
+        mov es:[160*12+40*2+2],al
+
+        pop es
+        pop bx
+        ret
+
+code ends
+end start</code>
+    16.4 程序入口地址的直接定址表
+        【编程】实现一个子程序setscreen，为显示输出提供如下功能：
+            1.清屏
+            2.设置前景色
+            3.设置背景色
+            4.向上滚动一行
+        1.入口参数说明：
+            1.用ah寄存器传递功能号
+                0：清屏；1：设置前景色；2：设置背景色；3：向上滚动一行
+            2.对于2、3号功能，用al传递颜色值
+                al∈{0，1，2，3，4，5，6，7}
+        2.各种功能如何实现
+            1.清屏：
+                将显存中当前屏幕中的字符设为空格符；
+            2.设置前景色：
+                设置显存中当前屏幕中处于奇地址的属性字节的第0、1、2位；
+                012位存放前景色
+            3.设置背景色：
+                设置显存中当前屏幕中处于奇地址的属性字节的第4、5、6位；
+                456位存放背景色
+            4.向上滚动一行：
+                依次将第 n+1行的内容复制到第n行处：最后一行为空。<br />
+<code>;功能子程序1：清屏
+sub1:      push bx      ;保护现场,调用子程序的时候，注意要保护现场，运行子程序的时候，可能会修改一些寄存器的值
+        push cx
+        push es
+        mov bx,0b800h
+        mov es,bx
+        mov bx,0
+        mov cx,2000
+sub1s:    mov byte ptr es:[bx],' '  ;循坏2000次
+        add bx,2
+        loop sub1s
+        pop es          ;恢复现场
+        pop cx
+        pop bx
+        ret     
+;功能子程序2：设置前景
+sub2:   push bx
+    push cx
+    push es
+    mov bx,0b800h
+    mov es,bx
+    mov bx,1
+    mov cx,2000
+sub2s:  and byte ptr es:[bx],11111000b  
+    or es:[bx],al 
+    add bx,2
+    loop sub2s
+
+    pop es
+    pop cx
+    pop bx
+    ret     
+;功能子程序3：设置背景色
+sub3:   push bx
+    push cx
+    push es
+    mov cl,4
+    shl al,cl
+    mov bx,0b800h
+    mov es,bx
+    mov bx,1
+    mov cx,2000
+sub3s:  and byte ptr es:[bx],10001111b
+    or es:[bx],al 
+    add bx,2
+    loop sub2s
+
+    pop es
+    pop cx
+    pop bx
+    ret 
+;功能子程序4：向上滚动一行
+sub4:   
+    push cx
+    push si
+    push di
+    push es
+    push ds
+
+    mov si,0b800h
+    mov es,si
+    mov ds,si
+    mov si,160          ;ds:si指向第n+1行，第1行
+    mov di,0            ;es:di指向第n行，第0行
+    cld
+    mov cx,24;共复制24行
+
+sub4s:  
+    push cx
+    mov cx,160
+    rep movsb           ;复制
+    pop cx
+    loop sub4s
+
+    mov cx,80   
+    mov si,0
+
+sub4s1: 
+    mov byte ptr es:[160*24+si],' '     ;最后一行清空
+    add si,2
+    loop sub4s1
+
+    pop ds
+    pop es
+    pop di
+    pop si
+    pop cx
+    ret ;sub4 ends</code>
+        3.可以将这些功能子程序的入口地址存储在一个表中，他们在表中的位置和功能号相对应
+<code>;编程：实现一个子程序setscreen，为显示输出提供如下功能：
+;(1) 清屏。
+;(2) 设置前景色。
+;(3) 设置背景色。
+;(4) 向上滚动一行。
+;
+;入口参数说明：
+;(1) 用 ah 寄存器传递功能号：0 表示清屏，1表示设置前景色，2 表示设置背景色，3 表示向上滚动一行；
+;(2) 对于2、3号功能，用 al 传送颜色值，(al) ∈{0,1,2,3,4,5,6,7}
+
+setscreen: jmp short set
+
+    table  dw sub1,sub2,sub3,sub4
+
+set:    
+    push bx 
+    cmp ah,3        ;判断传递的是否大于 3
+    ja sret
+    mov bl,ah
+    mov bh,0
+    add bx,bx       ;根据ah中的功能号计算对应子程序的地址在table表中的偏移
+
+    call word ptr table[bx] ;调用对应的功能子程序，学会本句代码，是本章节的【精髓】
+
+sret:   
+    pop bx  
+    iret
+
+;功能子程序1：清屏
+sub1:   
+    push bx
+    push cx
+    push es
+    mov bx,0b800h
+    mov es,bx
+    mov bx,0
+    mov cx,2000
+
+sub1s:  
+    mov byte ptr es:[bx],' '
+    add bx,2
+    loop sub1s
+    pop es
+    pop cx
+    pop bx
+    ret ;sub1 ends
+
+;功能子程序2：设置前景色
+sub2:   
+    push bx
+    push cx
+    push es
+    mov bx,0b800h
+    mov es,bx
+    mov bx,1
+    mov cx,2000
+
+sub2s:  
+    and byte ptr es:[bx],11111000b  
+    or es:[bx],al 
+    add bx,2
+    loop sub2s
+
+    pop es
+    pop cx
+    pop bx
+    ret ;sub2 ends
+
+;功能子程序3：设置背景色
+sub3:   
+    push bx
+    push cx
+    push es
+    mov cl,4
+    shl al,cl
+    mov bx,0b800h
+    mov es,bx
+    mov bx,1
+    mov cx,2000
+
+sub3s:  
+    and byte ptr es:[bx],10001111b
+    or es:[bx],al 
+    add bx,2
+    loop sub2s
+
+    pop es
+    pop cx
+    pop bx
+    ret ; sub3 ends
+
+;功能子程序4：向上滚动一行
+sub4:   
+    push cx
+    push si
+    push di
+    push es
+    push ds
+
+    mov si,0b800h
+    mov es,si
+    mov ds,si
+    mov si,160          ;ds:si指向第n+1行
+    mov di,0            ;es:di指向第n行
+    cld
+    mov cx,24;共复制24行
+
+sub4s:  
+    push cx
+    mov cx,160
+    rep movsb           ;复制
+    pop cx
+    loop sub4s
+
+    mov cx,80   
+    mov si,0
+
+sub4s1: 
+    mov byte ptr es:[160*24+si],' '     ;最后一行清空
+    add si,2
+    loop sub4s1
+
+    pop ds
+    pop es
+    pop di
+    pop si
+    pop cx
+    ret ;sub4 ends</code></p>
+<h1 id="bios">第十七章 使用BIOS进入键盘输入和磁盘读写<a class="headerlink" href="#bios" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>**引言
+    1.大多数有用的程序都需要处理用户的输入，键盘输入是最基本的输入。
+    2.程序和数据通常需要长期存储，磁盘是最常用的存储设备。
+    3.BIOS 为这两种外设的I/O提供了最基本的中断例程，在本章中，我们对它们的应用和相关的问题进行讨论。
+17.1 int9中断例程对键盘输入的处理
+    CPU 在9 号中断发生后，执行int 9中断例程，从60h 端口读出扫描码，
+        并将其转化为相应的ASCII 码或状态信息，存储在内存的指定空间（键盘缓冲区或状态字节）中。
+17.2 使用int16h中断例程读取键盘缓冲区
+    1.BIOS提供了int 16h 中断例程供程序员调用。
+    2.int 16h 中断例程中包含的一个最重要的功能是从键盘缓冲区中读取一个键盘输入，该功能的编号为0。
+    3.下面的指令从键盘缓冲区（缓冲区的最低位）中读取一个键盘输入，并且将其从缓冲区中删除：
+           mov ah,0
+           int 16h
+      结果：(ah)=扫描码，(al)=ASCII码。
+    4.int 16h 中断例程的 0 号功能，进行如下的工作：
+        （1）检测键盘缓冲区中是否有数据；
+        （2）没有则继续做第1 步；（缓冲区随时有可能输入数据）
+        （3）读取缓冲区第一个字单元中的键盘输入；
+        （4）将读取的扫描码送入ah，ASCII 码送入al；
+        （5）将己读取的键盘输入从缓冲区中删除。
+    5.可见，B1OS 的int 9 中断例程和int 16h 中断例程是一对相互配合的程序，
+        int 9 中断例程向键盘缓冲区中写入，
+        int 16h 中断例程从缓冲区中读出。
+      它们写入和读出的时机不同，int 9 中断例程在有键按下的时候向键盘缓冲区中写入数据；
+      而int 16h 中断例程是在应用程序对其进行调用的时候，将数据从键盘缓冲区中读出。
+    【编程】接收用户的键盘输入，输入“r”，将屏幕上的字符设置为红色：输入“g”， 
+        将屏幕上的字符设置为绿色；输入“b ”，将屏幕上的字符设置为蓝色。
+</code></pre></div>
+<p><code>;编程：
+;接收用户的键盘输入，输入“r”，将屏幕上的字符设置为红色：输入“g”， 
+;将屏幕上的字符设置为绿色；输入“b ”，将屏幕上的字符设置为蓝色。
+;A、B、C处的程序指令比较有技巧，请读者自行分析
+code segment
+    assume cs:code
+start:  
+    mov ah,0
+    int 16h             ;int 16h 0号功能实现从键盘缓冲区读取一个键盘输入
+
+    mov ah,1            ;A
+    cmp al,'r'
+    je red
+    cmp al,'g'
+    je green
+    cmp al,'b'
+    je blue
+    jmp short sret
+
+red:    
+    shl ah,1            ;B
+green:  
+    shl ah,1            ;C
+
+blue:   
+    mov bx,0b800h
+    mov es,bx
+    mov bx,1
+    mov cx,2000
+s:  and byte ptr es:[bx],11111000b      ;设置颜色
+    or es:[bx],ah                       ;设置颜色
+    add bx,2
+    loop s
+
+sret:   
+    mov ax,4c00h
+    int 21h
+
+code ends
+end start</code>
+    17.3 字符串的输入
+        int 21h的0a号功能可以实现字符串的输入
+        也可以用int 16h，通过显示键盘缓冲区中的内容，实现字符串的显示
+        1.使用int 16h显示字符串程序的处理过程如下
+            ① 调用int 16h读取键盘输入；
+            ② 如果是字符，进入字符栈，显示字符栈中的所有字符；继续执行① ；
+            ③ 如果是退格键，从字符栈中弹出一个字符，显示字符栈中的所有字符；继续执行① ；
+            ④ 如果是Enter 键，向字符栈中压入0，返回。
+        2.子程序：字符栈的入栈、出栈和显示
+            参数说明
+            (ah)=功能号，0表示入栈，1表示出栈，2表示显示；
+                ds : si 指向字符栈空间；
+            对于0 号功能：(al)=入栈字符；
+            对于1 号功能：(al)=返回的字符；
+            对于2 号功能：(dh)、(dl) =字符串在屏幕上显示的行、列位置。
+<code>;使用int 16h显示字符串的子程序：字符栈
+;最基本的字符串输入程序，需要具备下面的功能：
+;（1） 在输入的同时需要显示这个字符串；
+;（2）一般在输入回车符后，字符串输入结束；
+;（3）能够删除已经输入的字符。
+
+;编写一个接收字符串的输入子程序，实现上面三个基本功能。
+;因为在输入的过程中需要显示，子程序的参数如下：
+;   (dh)、(dl)=字符串在屏幕上显示的行、列位置；
+;   ds:si 指向字符串的存储空间，字符串以O 为结尾符。
+
+;功能子程序实现
+
+charstack:
+    jmp short charstart
+
+    table dw charpush,charpop,charshow
+    top dw 0                            ;栈顶
+
+charstart:
+    push bx
+    push dx
+    push di
+    push es
+
+    cmp ah,2
+    ja sret
+    mov bl,ah
+    mov bh,0
+    add bx,bx
+    jmp word ptr table[bx]      ;使用直接定址表
+
+charpush:
+    mov bx,top
+    mov [si][bx],al
+    inc top
+    jmp sret
+
+charpop:
+    cmp top,0
+    je sret
+    dec top
+    mov bx,top
+    mov al,[si][bx] 
+    jmp sret
+
+charshow:
+    mov bx,0b800h
+    mov es,bx
+    mov al,160
+    mov ah,0    
+    mul dh
+    mov di,ax
+    add dl,dl
+    mov dh,0
+    add di,dx
+
+    mov bx,0
+
+charshows:
+    cmp bx,top
+    jne noempty
+    mov byte ptr es:[di],' '    
+    jmp sret
+
+noempty:
+    mov al,[si][bx]
+    mov es:[di],al
+    mov byte ptr es:[di+2],' '
+    inc bx
+    add di,2
+    jmp charshows
+
+sret:   
+    pop es
+    pop di
+    pop dx
+    pop bx
+    ret</code>
+    17.4 应用int13h中断例程对键盘进行读写
+        1.磁盘的实际访问由磁盘控制器进行，我们可以通过控制磁盘控制器来访问磁盘。
+        2.注意，我们只能以扇区为单位对磁盘进行读写。
+          在读写扇区的时候，要给出面号、磁道号和扇区号。面号和磁道号从0开始，而扇区号从1开始。
+        3.BIOS提供了对扇区进行读写的中断例程，这些中断例程完成了许多复杂的和硬件相关的工作。
+        4.我们可以通过调用BIOS中断例程来访问磁盘。
+            BIOS 提供的访问磁盘的中断例程为int 13h 。
+          如下，读取0面0道1扇区的内容到0:200： 
+<img alt="avatar" src="img_ass/17.1.png" /></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

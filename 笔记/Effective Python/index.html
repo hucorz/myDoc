@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E7%AC%94%E8%AE%B0/Effective%20Python/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Effective Python - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#effective-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Effective Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-pythonic" class="md-nav__link">
+    第1章 培养 Pythonic 思维
+  </a>
+  
+    <nav class="md-nav" aria-label="第1章 培养 Pythonic 思维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-pep-8" class="md-nav__link">
+    2. PEP 8 风格指南
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-str-bytes" class="md-nav__link">
+    3. str 和 bytes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-f-string" class="md-nav__link">
+    4. 支持插值的 f-string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-enmuerate-range" class="md-nav__link">
+    7. enmuerate 取代 range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-zip" class="md-nav__link">
+    8. zip 函数遍历两个迭代器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. 赋值表达式减少重复代码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    第2章 列表与字典
+  </a>
+  
+    <nav class="md-nav" aria-label="第2章 列表与字典">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 序列切片
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-sort-key" class="md-nav__link">
+    14. sort 方法的 key 参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-get" class="md-nav__link">
+    16. 用 get 处理键不在字典的情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-defaultdict" class="md-nav__link">
+    17. defaultdict 处理内部状态中缺失元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-__missing__" class="md-nav__link">
+    18. __missing__ 构造依赖键的默认值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    第3章 函数
+  </a>
+  
+    <nav class="md-nav" aria-label="第3章 函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nonlocal-global" class="md-nav__link">
+    21. nonlocal 和 global
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    22. 数量可变的位置参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    23. 关键字参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-none" class="md-nav__link">
+    24. 用 None 来描述默认值可变的参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-keyword-only-arg-positional-only-arg" class="md-nav__link">
+    25. keyword-only arg 和 positional-only arg
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-functoolswrap" class="md-nav__link">
+    26. functools.wrap 定义函数修饰器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    第4章 推导与生成
+  </a>
+  
+    <nav class="md-nav" aria-label="第4章 推导与生成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    27. 推导式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    29. 用赋值表达式减少推导式中的代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-yield" class="md-nav__link">
+    30. 用 生成器 yield， 不要让函数返回列表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    31. 谨慎迭代函数收到的参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    32. 生成器表达式(替代数据量较大的列表推导式)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-yield-from" class="md-nav__link">
+    33. yield from
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    34.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    35.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    36.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    第5章 类与接口
+  </a>
+  
+    <nav class="md-nav" aria-label="第5章 类与接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    37. 用组合起来的类实现多层结构，不要用嵌套的内置类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    38. 用简单接口接受函数，而不是类的实例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-classmethod" class="md-nav__link">
+    39. @classmethod 多态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40-super" class="md-nav__link">
+    40. 使用 super 初始化超类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-mix-in" class="md-nav__link">
+    41. mix-in 类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-collectionsabc" class="md-nav__link">
+    43. 自定义容器类型从 collections.abc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    第6章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    第7章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    第8章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9_1" class="md-nav__link">
+    第9章
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/笔记/Effective Python.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="effective-python">Effective Python<a class="headerlink" href="#effective-python" title="Permanent link">&para;</a></h1>
+<p>原书第二版</p>
+<h2 id="1-pythonic">第1章 培养 Pythonic 思维<a class="headerlink" href="#1-pythonic" title="Permanent link">&para;</a></h2>
+<h3 id="2-pep-8">2. PEP 8 风格指南<a class="headerlink" href="#2-pep-8" title="Permanent link">&para;</a></h3>
+<p>空白有关</p>
+<ul>
+<li>缩进用 4 个空格代替</li>
+</ul>
+<p>命名相关</p>
+<ul>
+<li>函数，变量及属性用小写字母和下划线连接，类名每个首字母都大写（不用下划线），模块级别的常量所有字母大写并用下划线连接</li>
+<li>类中的实例方法第一个参数为 self（表示对象本身），类方法第一个参数为 cls（表示类本身）</li>
+</ul>
+<p>表达式和语句相关</p>
+<ul>
+<li>判断容器或序列有没有内容要用 if not somelist 或者 if somelist</li>
+<li>多行的表达式用括号括起来，而不要用 <code>\</code> </li>
+</ul>
+<h3 id="3-str-bytes">3. str 和 bytes<a class="headerlink" href="#3-str-bytes" title="Permanent link">&para;</a></h3>
+<p>bytes 是 8 位值所组成的序列，str 是由 Unicode 码点组成的序列，两者不能混用</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_str</span><span class="p">(</span><span class="n">bytes_or_str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bytes_or_str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">bytes_or_str</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">bytes_or_str</span>
+    <span class="k">return</span> <span class="n">value</span>
+<span class="c1"># to_bytes 同理</span>
+</code></pre></div>
+<h3 id="4-f-string">4. 支持插值的 f-string<a class="headerlink" href="#4-f-string" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">places</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mf">1.23456</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my number is </span><span class="si">{</span><span class="n">number</span><span class="si">:</span><span class="s1">.</span><span class="si">{</span><span class="n">places</span><span class="si">}</span><span class="s1">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># python3.6</span>
+
+<span class="o">&gt;&gt;&gt;</span>
+<span class="n">my</span> <span class="n">number</span> <span class="ow">is</span> <span class="mf">1.235</span>
+
+<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">!r}</span><span class="s2">&quot;</span>     <span class="c1"># 调用 repr()</span>
+<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">!a}</span><span class="s2">&quot;</span>    <span class="c1"># 调用 ascii()</span>
+<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">!s}</span><span class="s2">&quot;</span>    <span class="c1"># 调用 str()</span>
+</code></pre></div>
+<h3 id="7-enmuerate-range">7. enmuerate 取代 range<a class="headerlink" href="#7-enmuerate-range" title="Permanent link">&para;</a></h3>
+<h3 id="8-zip">8. zip 函数遍历两个迭代器<a class="headerlink" href="#8-zip" title="Permanent link">&para;</a></h3>
+<p>zip 的循环次数由最短的列表决定，如果要全部迭代完，可以使用 zip_longest</p>
+<h3 id="9">9. 赋值表达式减少重复代码<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
+<p><code>:=</code> 海象操作符，需要 python 3.8</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># 此表达式没有值</span>
+<span class="n">a</span> <span class="o">:=</span> <span class="mi">1</span>     <span class="c1"># 此表达式值为 1</span>
+</code></pre></div>
+<h2 id="2">第2章 列表与字典<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="11">11. 序列切片<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># list 切片赋值时元素个数可以不同,这样会改变 list 的长度</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>   <span class="c1"># 给 a 列表做新的副本</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>      <span class="c1"># 这么做不会给 b 分配新的列表,a 改变后 b 也会变</span>
+</code></pre></div>
+<h3 id="14-sort-key">14. sort 方法的 key 参数<a class="headerlink" href="#14-sort-key" title="Permanent link">&para;</a></h3>
+<p>列表中内置的 sort 函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>
+<p>reverse：用来控制是否逆序</p>
+</li>
+<li>
+<p>key：对于自定义的类型要进行排序，输入一个函数（）：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span> <span class="c1"># 从 x 中取出了 2 个属性来进行比较, 元组可以直接进行比较</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">fun</span><span class="p">)</span>
+</code></pre></div>
+<p>​    如果要对某些属性升序其他属性降序，如果可以用负号就用负号，否则只能多次使用 sort 方法</p>
+<h3 id="16-get">16. 用 get 处理键不在字典的情况<a class="headerlink" href="#16-get" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>  <span class="c1"># val 为 key 不存在时返回的默认值</span>
+</code></pre></div>
+<h3 id="17-defaultdict">17. defaultdict 处理内部状态中缺失元素<a class="headerlink" href="#17-defaultdict" title="Permanent link">&para;</a></h3>
+<p>defaultdict 用来避免普通字典的 keyerror，如果访问时 key 不存在会自动调用参数中的函数，fun 函数不能有参数</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+<span class="c1"># eg</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="18-__missing__">18. __missing__ 构造依赖键的默认值<a class="headerlink" href="#18-__missing__" title="Permanent link">&para;</a></h3>
+<p>继承 dict 并实现 __missing__ 方法，定义了字典中不存在这个 key 时的操作</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Picture</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__missing__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">open_picture</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>   <span class="c1"># 一个函数，返回文件句柄</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">value</span>
+</code></pre></div>
+<h2 id="3">第3章 函数<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="21-nonlocal-global">21. nonlocal 和 global<a class="headerlink" href="#21-nonlocal-global" title="Permanent link">&para;</a></h3>
+<p>nonlocal 在函数中表明某变量为此函数作用域外面的变量，否则会定义一个新的同名变量</p>
+<p>global 在描述某变量并赋值后，系统会把此变量放到全局作用域</p>
+<p>但 nonlocal 和 global 都不应该被滥用，nonlocal 用法比较复杂时最好使用赋值类</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Sorter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">group</span><span class="p">:</span>              <span class="c1"># 如果在 group组中的优先级比较高</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># found 不用 nonlocal</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">sorter</span> <span class="o">=</span> <span class="n">Sorter</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">sorter</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="22">22. 数量可变的位置参数<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">args1</span><span class="p">,</span> <span class="o">*</span><span class="n">varargs</span><span class="p">):</span>  
+    <span class="k">pass</span>
+</code></pre></div>
+<p>这种做法适合参数数量不太多的情况</p>
+<p>且要添加新的参数时比较麻烦，为了避免漏洞，应该使用 keyword-only argument (25条) 或者添加类型注解</p>
+<h3 id="23">23. 关键字参数<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">args1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  
+    <span class="k">pass</span>
+</code></pre></div>
+<p>好处：</p>
+<ul>
+<li>易懂</li>
+<li>带默认值</li>
+<li>易扩展</li>
+</ul>
+<h3 id="24-none">24. 用 None 来描述默认值可变的参数<a class="headerlink" href="#24-none" title="Permanent link">&para;</a></h3>
+<p>如默认返回当前的时间</p>
+<p>不要用如 <code>{}</code> 充当默认参数，会有问题</p>
+<h3 id="25-keyword-only-arg-positional-only-arg">25. keyword-only arg 和 positional-only arg<a class="headerlink" href="#25-keyword-only-arg-positional-only-arg" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># keyword-only arg</span>
+<span class="k">def</span> <span class="nf">safe_div</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">divisor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                            <span class="n">ignore_overflow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># 后面2个参数必须使用关键字指定</span>
+                            <span class="n">ignore_zero_div</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># positional-only arg：python 3.8新特性</span>
+<span class="c1"># 为了避免函数的关键字改名之类的情况</span>
+<span class="k">def</span> <span class="nf">safe_div</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">divisor</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>        <span class="c1"># / 左边的必须按照位置指定</span>
+                            <span class="n">ignore_overflow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># 后面2个参数必须使用关键字指定</span>
+                            <span class="n">ignore_zero_div</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># -------</span>
+<span class="c1"># 处在 / 和 * 之间的参数关键字和位置指定都可以</span>
+<span class="c1"># -------</span>
+</code></pre></div>
+<h3 id="26-functoolswrap">26. functools.wrap 定义函数修饰器<a class="headerlink" href="#26-functoolswrap" title="Permanent link">&para;</a></h3>
+<p>自己写修饰器会有很多问题</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+<span class="nd">@trace</span>
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h2 id="4">第4章 推导与生成<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>comprehension  generator</p>
+<h3 id="27">27. 推导式<a class="headerlink" href="#27" title="Permanent link">&para;</a></h3>
+<p>列表/字典/集合推导式</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># 可以使用多个if，这些 if 表示同时成立</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># 效果相同</span>
+</code></pre></div>
+<h3 id="29">29. 用赋值表达式减少推导式中的代码<a class="headerlink" href="#29" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">has_bug</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">get_batches</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">order</span>
+                        <span class="k">if</span> <span class="n">get_batches</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">8</span><span class="p">)}</span>
+
+<span class="n">has_bug</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">batches</span>          <span class="c1"># 对比上面的写法</span>
+                        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">order</span>
+                        <span class="k">if</span> <span class="n">batches</span> <span class="o">:=</span><span class="n">get_batches</span><span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">8</span><span class="p">)}</span>
+
+<span class="c1"># 赋值表达式会有作用域问题</span>
+</code></pre></div>
+<h3 id="30-yield">30. 用 生成器 yield， 不要让函数返回列表<a class="headerlink" href="#30-yield" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">it</span> <span class="o">=</span> <span class="n">index_word_iter</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>   <span class="c1"># 此函数内用的 yield</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>   <span class="c1"># 用 next 取值</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>      <span class="c1"># 也可以把迭代器传递给 list 得到 list</span>
+</code></pre></div>
+<h3 id="31">31. 谨慎迭代函数收到的参数<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>我的理解是如果参数是一个迭代器，那么这个迭代器只能完整的迭代一次</p>
+<p>解决方案：</p>
+<ul>
+<li>在函数内复制一份数据, list(arg), 缺点是数据量大时内存消耗大</li>
+<li>参数从迭代器变成返回迭代器的函数，可以使用 lambda</li>
+<li>新建一个容器类，实现迭代器协议</li>
+</ul>
+<h3 id="32">32. 生成器表达式(替代数据量较大的列表推导式)<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">it</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_file.txt&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="o">&lt;</span><span class="n">generator</span> <span class="o">...&gt;</span>
+
+<span class="c1"># 可以嵌套</span>
+<span class="n">roots</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span> <span class="c1"># it 为上面得到的 iter</span>
+</code></pre></div>
+<p>要注意生成器只能迭代一次</p>
+<h3 id="33-yield-from">33. yield from<a class="headerlink" href="#33-yield-from" title="Permanent link">&para;</a></h3>
+<h3 id="34">34.<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<p>(买的书缺了9页....)</p>
+<h3 id="35">35.<a class="headerlink" href="#35" title="Permanent link">&para;</a></h3>
+<h3 id="36">36.<a class="headerlink" href="#36" title="Permanent link">&para;</a></h3>
+<h2 id="5">第5章 类与接口<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="37">37. 用组合起来的类实现多层结构，不要用嵌套的内置类型<a class="headerlink" href="#37" title="Permanent link">&para;</a></h3>
+<p>科目成绩-&gt;学生-&gt;成绩册</p>
+<h3 id="38">38. 用简单接口接受函数，而不是类的实例<a class="headerlink" href="#38" title="Permanent link">&para;</a></h3>
+<p>方法也可以作为挂钩(hook)，如果类定义了 __call__，那么类的对象也可以作为挂钩(callable)</p>
+<h3 id="39-classmethod">39. @classmethod 多态<a class="headerlink" href="#39-classmethod" title="Permanent link">&para;</a></h3>
+<h3 id="40-super">40. 使用 super 初始化超类<a class="headerlink" href="#40-super" title="Permanent link">&para;</a></h3>
+<p>如果直接调用父类的初始化函数，在一些情况下会有问题，比如菱形继承</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyBaseClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="k">class</span> <span class="nc">MyChildClass</span><span class="p">(</span><span class="n">MyBaseClass</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">MyBaseClass</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>           <span class="c1"># 直接调用父类的初始化函数</span>
+</code></pre></div>
+<p>使用 super() 在多继承时会遵循 C3 线性化算法，避免多次调用菱形继承中共同基类的构造函数; 且超类改名后也不用改程序</p>
+<p>可以通过 mro() 方法 来查看超类的初始化顺序(P139); MRO(method resolution order): 方法解析顺序</p>
+<h3 id="41-mix-in">41. mix-in 类<a class="headerlink" href="#41-mix-in" title="Permanent link">&para;</a></h3>
+<h3 id="43-collectionsabc">43. 自定义容器类型从 collections.abc<a class="headerlink" href="#43-collectionsabc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
+<span class="k">class</span> <span class="nc">MySequence</span><span class="p">(</span><span class="n">Sequence</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<p>通过这种方式，如果自定义容器有某些方法没有实现的时候，在实例化时会报错</p>
+<h2 id="6">第6章<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="7">第7章<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="8">第8章<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="9_1">第9章<a class="headerlink" href="#9_1" title="Permanent link">&para;</a></h2>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

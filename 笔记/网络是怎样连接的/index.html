@@ -1,0 +1,2016 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>网络是怎样连接的 - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              网络是怎样连接的
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 浏览器生成消息：探索浏览器内部
+  </a>
+  
+    <nav class="md-nav" aria-label="1 浏览器生成消息：探索浏览器内部">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-http" class="md-nav__link">
+    1.1 生成HTTP请求消息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-dns-web-ip" class="md-nav__link">
+    1.2 向DNS 服务器查询 Web 服务器的 IP 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dns" class="md-nav__link">
+    1.3 全世界 DNS 服务器的大接力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 委托协议栈发送消息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tcpip" class="md-nav__link">
+    2 用电信号传输 TCP/IP 数据：探索协议栈和网卡
+  </a>
+  
+    <nav class="md-nav" aria-label="2 用电信号传输 TCP/IP 数据：探索协议栈和网卡">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 创建套接字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 连接服务器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 收发数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 从服务器断开开关并删除套接字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-ip" class="md-nav__link">
+    2.5 IP与以太网的包收发操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-udp" class="md-nav__link">
+    2.6 UDP协议的收发操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 从网线到网络设备：探索集线器，交换机和路由器
+  </a>
+  
+    <nav class="md-nav" aria-label="3 从网线到网络设备：探索集线器，交换机和路由器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 信号在网线和集线器中传输
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 交换机的包转发操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 路由器的包转发操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 路由器的附加功能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 通过接入网进入互联网内部：探索接入网和网络运营商
+  </a>
+  
+    <nav class="md-nav" aria-label="4 通过接入网进入互联网内部：探索接入网和网络运营商">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-adsl" class="md-nav__link">
+    4.1 ADSL 接入网的结构和工作方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-ftth" class="md-nav__link">
+    4.2 光纤接入网（FTTH）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ppp" class="md-nav__link">
+    4.3接入网中使用的 PPP 和 隧道
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 网络运营商的内部
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 跨越运营商的网络包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 服务器端的局域网中有什么玄机
+  </a>
+  
+    <nav class="md-nav" aria-label="5 服务器端的局域网中有什么玄机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-web" class="md-nav__link">
+    5.1 Web 服务器的部署地点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 防火墙的结构和原理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 通过将请求平均分配给多台服务器来平衡负载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 使用缓存服务器分担负载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    5.5 内容分发服务
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-web" class="md-nav__link">
+    6 请求到达 Web 服务器，响应返回浏览器
+  </a>
+  
+    <nav class="md-nav" aria-label="6 请求到达 Web 服务器，响应返回浏览器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 服务器概览
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 服务器的接收操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-web" class="md-nav__link">
+    6.3 Web 服务器程序解释请求消息并作出响应
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    6.4 浏览器接收响应消息并显示内容
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/笔记/网络是怎样连接的.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="_1">网络是怎样连接的<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>《网络是怎样连接的》笔记</p>
+<h2 id="1">1 浏览器生成消息：探索浏览器内部<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11-http">1.1 生成HTTP请求消息<a class="headerlink" href="#11-http" title="Permanent link">&para;</a></h3>
+<p>URL：网址，Uniform Resource Locator，统一资源定位符</p>
+<p>FTP：File Transfer Protocol，文件传输协议 </p>
+<p>HTTP：Hypertext Transfer Protocol，超文本传送协议</p>
+<p>输入 URL 或者点击网站中的链接会向 Web 服务器发送 HTTP 请求，URL 是 Web 服务器的名称加上文件的路径，比如：www.lab.glasscom.com 加上 /fir1/file1/html</p>
+<p>省略文件路径一般会访问默认文件，如 default.html 或者 index.html</p>
+<blockquote>
+<p>浏览器的第一步工作就是对 URL 进行解析</p>
+</blockquote>
+<p>URI：Uniform Resource Identifier，统一资源标识符</p>
+<p>CGI：对 Web 服务器程序调用其他程序的规则所做的定义就是 CGI，按照 CGI 规范工作的程序就是 CGI 程序</p>
+<p>HTTP 协议定义了客户端和服务器之间交互的内容和步骤，客户端向服务器发送的请求消息中包括了 "对什么" 和 "进行怎样的操作"</p>
+<p>"对什么" 就是 URI，一般是存放网页数据的文件名或者 CGI 程序</p>
+<p>"进行怎样的操作" 称为方法，也叫 HTTP 谓词/动词，具体表见 P12</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>获取 URI 指定的信息</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>从客户端向服务器发送数据（填写问卷调查）</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>服务器收到消息然后工作后返回响应消息，开头包含了一个状态码，如 404 Not Found，然后就是头字段和网页数据，客户端收到后把数据现实在屏幕上</p>
+<p>HTTP 请求消息的内容：</p>
+<p>请求消息：</p>
+<div class="highlight"><pre><span></span><code>&lt;方法&gt;&lt;空格&gt;&lt;URI&gt;&lt;空格&gt;&lt;HTTP版本&gt;
+&lt;字段名&gt;:&lt;字段值&gt;
+...
+&lt;空行&gt;
+&lt;消息体&gt;
+</code></pre></div>
+<p>响应消息：</p>
+<div class="highlight"><pre><span></span><code>&lt;HTTP版本&gt;&lt;空格&gt;&lt;状态码&gt;&lt;空格&gt;&lt;响应短语&gt;
+&lt;字段名&gt;:&lt;字段值&gt;
+...
+&lt;空行&gt;
+&lt;消息体&gt;
+</code></pre></div>
+<p>第二行开始是一些消息头，如日期，客户端支持的数据类型，语言，压缩格式，客户端和服务器软件名称和版本....</p>
+<p>消息体中包含要发送的数据，如客户端 POST 发送的表单，服务器返回的数据或者 CGI 输出的数据</p>
+<p>消息头中的主要头字段表见 P17</p>
+<table>
+<thead>
+<tr>
+<th>头字段类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP 状态码概要：</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1xx</td>
+<td>告知请求的处理进度和情况</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>表示需要进一步操作</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>客户端出错</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>服务器出错</td>
+</tr>
+</tbody>
+</table>
+<p>浏览器将数据提取出来后现实在屏幕上，如果有图片等资源会对所有 HTML 中相应的标签的 URI 访问 Web 服务器，每次只会获取一个文件。如果一个网页有 3 张图，需要向 Web 服务器发送 4 次请求</p>
+<p>在这期间 Web 服务器并不关心浏览器的操作，也不关心返回的图片或者文件是不是一个网页上的</p>
+<blockquote>
+<p>1 条请求消息只能写 1 个 URI，如果需要获取多个文件，必须对每个文件单独发送 1 条请求</p>
+</blockquote>
+<h3 id="12-dns-web-ip">1.2 向DNS 服务器查询 Web 服务器的 IP 地址<a class="headerlink" href="#12-dns-web-ip" title="Permanent link">&para;</a></h3>
+<p>浏览器不具有将消息送到网络中的能力，需要委托操作系统；在此之前需要查询网址中服务器域名对应的 IP 地址</p>
+<p>TCP/IP 的结构是一些小的子网，通过路由器连接起来组成的一个大的网络；子网可以理解为用集线器连接起来的计算机</p>
+<p>IP 地址与子网掩码：IP 地址分为网络号和主机号</p>
+<blockquote>
+<p>主机号全为 0 代表整个子网，全为 1 表示对子进行广播</p>
+</blockquote>
+<p>DNS：Domain Name System，域名服务系统</p>
+<p>在网络上通信人使用域名，路由器使用 IP 地址，通过域名查询 IP 的机制就是 DNS</p>
+<p>对于 DNS 服务器，我们计算机上有对应的 DNS 客户端，称为 DNS 解析器，实际上是一段程序，包含在操作系统的 Socket 库中，调用一个叫 gethostbyname 的程序组件</p>
+<blockquote>
+<p>Socket 库是用于调用网络功能的程序组件集合，可以说是网络开发中的一种标准库</p>
+<p>根据域名查询 IP 地址时，浏览器回使用 Socket 库中的解析器</p>
+</blockquote>
+<p>协议栈：操作系统内部的网络控制软件，也叫 "协议驱动" "TCP/IP 驱动"</p>
+<p>解析器发送消息的操作同样要委托给操作系统中的协议栈进行，向 DNS 服务器发送消息时也需要知道 DNS 服务器的 IP 地址，这个时事先设置好的</p>
+<h3 id="13-dns">1.3 全世界 DNS 服务器的大接力<a class="headerlink" href="#13-dns" title="Permanent link">&para;</a></h3>
+<p>DNS 服务器的基本工作就是接受来自客户端的查询消息，然后根据消息的内容返回响应，查询消息包含以下 3 种信息：</p>
+<ul>
+<li>域名</li>
+<li>Class：现在永远是代表互联网的 IN</li>
+<li>记录类型：A（Address） 表示域名对应的是 IP 地址；MX（Mail eXchange） 表示域名对应的是邮件服务器；PTR：根据 IP 反查域名；CNAME；NS；SOA；</li>
+</ul>
+<blockquote>
+<p>DNS 服务器会从域名与 IP 地址的对照表中查找对应的记录，并返回 IP 地址</p>
+</blockquote>
+<p>信息是保存再多台 DNS 服务器中的</p>
+<p>域名越靠右的位置表示其层级越高，相当于一个层级的部分称为域，一个域的信息会作为一个整体存放在 DNS 服务器中，一台 DNS 服务器可以存放多个域的信息，但是不能将一个域拆开来存放在多台 DNS 服务器中；上级域可以分配多个下级域来管理</p>
+<p>要寻找到对应的 DNS 服务器，首先负责管理下级域的 DNS 服务器的 IP 地址注册到上级 DNS 服务器中，再注册到更上级... com，jp 这种域并不是最高级的域，还有一个根域来负责这些域的信息；然后再将根域的信息保存在所有的 DNS 服务器上；于是客户端只要能找到任意一台 DNS 服务器就行</p>
+<p>加快 DNS 服务器的响应速度：</p>
+<p>上级域和下级域中共享 DNS 服务器时</p>
+<p>DNS 服务器中有缓存信息，并不是每次都是从根域开始查起，如果缓存有就从缓存中存储的位置开始查起；信息被缓存后，原本注册的信息可能会被改变，所以缓存的信息可能是错的，所以缓存会设置有效期定期删除；返回响应信息是也会告知客户端这一响应是来自缓存还是负责管理该域名的 DNS 服务器</p>
+<p>域名不存在时也会被响应</p>
+<h3 id="14">1.4 委托协议栈发送消息<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>得到了 IP 地址后，委托操作系统内部的协议栈向这个 IP地址发送消息</p>
+<blockquote>
+<p>向操作系统内部的协议栈发送委托时，需要按照指定的顺序来调用 Socket 库中的程序组件</p>
+</blockquote>
+<p>收发数据的两台计算机之间连接一条数据通道，数据沿着这条通道流动；通道需要事先建立好，建立通道的关键是管道两端的出入口，也叫做套接字；先创建套接字，然后连接起来；</p>
+<p>首先服务器一方创建好套接字，然后等待客户端向该套接字连接管道（服务器一般会在启动后就创建好套接字并等待连接）；客户端要连接时也会先创建套接字然后连接到服务器的套接字；连接起来后通信准备就完成了</p>
+<p>数据发送完毕后管道会断开；管道在连接时是由客户端发起，但断开时 2 方都可以，一方断开后另一方也会断开，套接字也会删除</p>
+<p>收发数据大致总结为 4 个阶段：</p>
+<ul>
+<li>创建套接字（</li>
+<li>将管道连接到服务器的套接字上</li>
+<li>收发数据</li>
+<li>断开管道并删除套接字</li>
+</ul>
+<p>连接管道和放入数据都是浏览器等委托协议栈来代劳，这些委托都是调用 Socket 库来执行；</p>
+<p>以下内容第 2 章会详细说明</p>
+<p><em>创建套接字阶段</em>：</p>
+<p>访问 DNS 服务器时是调用 Socket 库中的 gethostbyname，创建套接字时是调用 socket（小写） 组件，并返回一个描述符（用来识别不同的套接字）保存在内存中</p>
+<blockquote>
+<p>应用程序时通过 "描述符" 这一类似号码牌的东西来识别套接字的</p>
+</blockquote>
+<p><em>连接阶段：把管道接上去</em>：</p>
+<p>接下来委托协议栈将创建的套接字和服务器的套接字连接起来，应用程序通过调用 Socket 库中的 connect 程序，调用时需要指定 2 个参数：</p>
+<ul>
+<li>描述符</li>
+<li>服务器 IP 地址</li>
+<li>端口号：IP 地址 + 端口号 可以识别出某台具体计算机上的某个套接字（描述符是和委托创建套接字的应用程序进行交互时使用的，所以另一方不知道这个描述符，即描述符用于计算机内部，端口号用来让通信的另一方能够识别出套接字），端口号是事先规定好的，比如 Web 是 80 端口号，电子邮件是 25 端口号；客户端在创建套接字时会分配端口号，然后在执行连接操作时告知服务器</li>
+</ul>
+<p><em>通信阶段：传递消息</em>：</p>
+<p>套接字连接后通过 Socket 中的 write 组件将数据送入套接字</p>
+<p>接受消息通过 Socket 中的 read 组件来完成，将收到的响应消息放入到接收缓冲区</p>
+<p><em>断开阶段：收发数据结束</em>：</p>
+<p>收发数据结束后调用 Socket 的 close 组件断开管道并删除套接字；每获取一次数据都需要执行一次连接，发送请求，接收响应消息，断开的过程；HTTP1.1 中可以在所有数据请求完成后，浏览器主动触发断开连接的操作</p>
+<h2 id="2-tcpip">2 用电信号传输 TCP/IP 数据：探索协议栈和网卡<a class="headerlink" href="#2-tcpip" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 创建套接字<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>协议栈是网络控制软件，网卡是网络硬件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/note/网络是怎样连接的/2.1.1.drawio.png"></p>
+<p>上面的部分会向下的部分委派工作；Socket 中的解析器用来向 DNS 服务器发出查询</p>
+<blockquote>
+<p>浏览器，邮件等一般的应用程序收发数据用 TCP 协议</p>
+<p>DNS 查询等收发较短的控制数据用 UDP 协议</p>
+</blockquote>
+<p>IP 协议会将数据分成一个一个的网络包然后发送；此外 IP 中还包括 ICMP（2.5节） 协议和 ARP 协议（2.5节）</p>
+<p>ICMP 用以告知网络包传输过程中产生的错误和各种控制信息，ARP 用于根据 IP 地址查询相应的以太网 MAC 地址</p>
+<p>MAC 地址：符合 IEEE 规格的局域网设备都使用同一规格的地址，叫做 MAC 地址</p>
+<p>套接字并不存在实体，或者说套接字就是协议栈中存放通信对象的 IP 地址，端口号，通信操作，进行状态的一块内存地址，还要记录是否已收到响应，以及数据发送后经过了多长时间</p>
+<blockquote>
+<p>协议栈是根据套接字中记录的控制信息来工作的</p>
+</blockquote>
+<p>在 cmd 中输入 netstat 可以现实套接字内容</p>
+<p>调用 Socket 组件时协议栈的工作：创建套接字时先分配一块空间并填入初始状态的控制信息，然后将描述符告知应用程序</p>
+<h3 id="22">2.2 连接服务器<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>创建好套接字后浏览器会调用 connect 与服务器套接字进行连接；以太网的网线是一直连接的状态，这里的连接指通信双方交换控制信息</p>
+<p>控制信息大体上分为 2 类：</p>
+<p>第一类是客户端和服务器相互联络时交换的控制信息，这些信息会放在网络包的头部，TCP 头部格式表见 P71</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>长度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>第二类是保存在套接字中用来控制协议栈操作的信息</p>
+<p>不同设备的协议栈的控制信息不同，但这不影响通信，因为只需要根据相同的规则将必要的信息填入头部即可</p>
+<p>连接操作的具体过程：应用程序调用 Socket 库的 connect，此函数的参数提供了 IP 地址和端口号并传送给 TCP 模块，然后 TCP 模块会与对应服务器交换控制信息</p>
+<p>这个交互过程包括以下步骤：</p>
+<p>客户端先创建一个包含表示开始数据收发操作的控制信息的头部（重点是发送方和接收方的端口号），这样客户端的套接字就找到了服务器的套接字；然后将头部中的控制位的 SYN 比特设置为 1，表示连接（后面会讲），并设置适当的序号和窗口大小</p>
+<p>TCP头部创建好后 TCP 模块将信息传递给 IP 模块并委托其发送；然后服务器的 IP 模块收到后会将数据传递给 TCP 模块，TCP 模块根据头部信息找到端口号对应的套接字，也就是从处于等待状态的套接字中找到与 TCP 头部的中记录的端口号相同的套接字；然后在套接字中写入相应的信息并将状态改为正在连接；然后返回响应，与客户端发送时一致（如果不接受连接 SYN 设为 0），只是 TCP 头部中还需要将 ACK 控制位设为 1，表示接收到了网络包；然后 TCP 模块委托 IP 模块向客户端返回响应</p>
+<p>网络包返回客户端后，通过 IP 模块到达 TCP 模块，如果 SYN 是 1 表示连接成功，这时会向套接字中写入服务器的 IP 地址，端口号等信息，并将状态改为连接成功；最后返回一个 ACK 为 1 的网络包</p>
+<p>以上协议栈的连接操作就完成了，控制流程返回到应用程序</p>
+<h3 id="23">2.3 收发数据<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p><strong>将 HTTP 请求交给协议栈</strong>：</p>
+<p>收发数据从应用程序调用 write 开始</p>
+<p>MTU：Maximum Transmission Unit，最大传输单元</p>
+<p>MSS：Maximum Segment Size，最大分段大小，MTU 减去 TCP 头部和 IP 头部</p>
+<p>SFD：Start Frame Delimiter，起始帧分界符，网络包头部</p>
+<p>FCS：Frame Check Sequence，帧校验序列，网络包结尾</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/note/网络是怎样连接的/2.3.1.drawio.png"></p>
+<p>协议栈并不是收发数据就会直接发送，而是会放入内部的发送缓冲区，为了避免发送的大量的小包；积累多少数据才发送不同的操作系统不同，会根据以下要素判断：</p>
+<ol>
+<li>每个网络包能包容的数据长度，即 MTU 和 MSS</li>
+<li>时间，经过一定时间后都会把网络包发送出去</li>
+</ol>
+<p>以上 2 要素是相互矛盾的，仅靠协议栈来判断发送时机会带来一些问题，所以协议栈给了应用程序控制发送时机的余地；浏览器这种会话型的应用程序在向服务器发送数据时，等待缓冲区满会产生很大的影响，所以一般都是直接发送</p>
+<p><strong>对较大数据进行拆分</strong>：</p>
+<p>当缓冲区的数据超过 MSS 时，缓冲区的数据会以 MSS 为单位划分并放进单独的网络包</p>
+<p><strong>使用 ACK 号确认网络包已收到</strong>：</p>
+<p>TCP 模块在拆分数据时会算好每一块数据相当于从头开始的第几个字节并写入 TCP 头部，数据长度接收方可以自己计算，这样接受方就可以知道网络包有没有漏，在返回响应消息时会把接收到多少字节写入 ACK 号中（返回 ACK 号需要把控制位中 ACK 比特设置为 1，表示有效，并填入 ACK 的值）；实际操作时包的开始序号并不是从 1 开始，是用随机数作为初值防止被攻击；这个随机数会在 SYN （Synchronize，同步）控制位设为 1 的时候填入初始序号</p>
+<p>通信时双方都会发送网络包，所以客户端和服务器都会有各自的序号初始值</p>
+<p>这个机制非常强大，所以网卡，集线器，路由器没有错误补偿机制，一旦检查到错误就直接丢弃相应的包</p>
+<p><strong>根据网络包平均往返时间调整 ACK 号的等待时间</strong>：</p>
+<p>实际上网络的错误检测和补偿机制十分复杂，对于 ACK 号的返回等待时间（超时时间）会根据实际返回的时间动态调整</p>
+<p><strong>使用窗口有效管理 ACK 号</strong>：</p>
+<p>发送一个包后等待 ACK 号的返回会浪费时间，所以 TCP 采用滑动窗口的方式来管理数据发送和 ACK 号的操作，即不等待 ACK 号的返回，直接发送后续一系列的包</p>
+<p>为了防止发送的数据过多，接收方的输入缓冲区装不下，接收方会告知对方自己最多能接收多少数据；通过 TCP 头部中的窗口字段告知对方，和 ACK 号 和序号一样，数双向进行的</p>
+<p><strong>ACK 与 窗口 的合并</strong>：</p>
+<p>更新窗口大小的时机是在应用程序从接收缓冲区取出数据导致接收缓冲区的容量增大；ACK 号是在完成接收操作时就需要返回；都发送单独的包会让网络效率下降，所以在接收方发送 ACK 号和窗口更新时，会等待一段时间；如果要连续发送 ACK 号或者连续更新窗口时，只需要发送最后的一次</p>
+<p><strong>接收 HTTP 响应消息</strong>：</p>
+<p>浏览器在委托协议栈发送请求消息后，会调用 read 程序来获取响应消息。控制流程会转移到协议栈，如果响应消息还没有返回，协议栈会将应用程序的委托挂机</p>
+<p>协议栈接收数据时会检查收到的数据块和  TCP 头部的内容，判断是否有数据丢失，没有问题就返回 ACK 号，并将数据块按照顺序连接起来还原原始的数据，然后交给应用程序（将接收的数据复制到应用程序指定的内存地址）；然后还需要找到合适的时机返回窗口更新</p>
+<h3 id="24">2.4 从服务器断开开关并删除套接字<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>HTTP1.0 中 Web 服务器返回响应消息后会发起断开过程（HTTP1.1中客户端可以继续发起下一个请求，一些特殊请款客户端发送完数据就结束了，那客户端会先发起断开过程），协议栈在设计上允许任何一方发起断开过程</p>
+<p>以服务器一方发起断开过程为例，服务器一方的应用程序会调用 Socket 库的 close 程序；然后服务器的协议栈会生成控制位中 FIN 比特设为 1 的 TCP 头部，表示断开，然后委托 IP 模块发送，同时服务器的套接字会记录断开操作；客户端收到后会将自己的套接字进入断开状态，然后返回一个 ACK 号，并等待客户端应用程序取数据；应用程序调用 read 后协议栈不会向应用程序传递数据，而是告知它数据全部收到了；这时客户端应用程序会调用 close 来结束收发操作，客户端协议栈也会发送一个 FIN 为 1 的 TCP 包，待服务器返回 ACK 号后通信就结束了</p>
+<p>通信结束后会删除套接字，不过不是马上删除，会等待一段时间防止误操作</p>
+<h3 id="25-ip">2.5 IP与以太网的包收发操作<a class="headerlink" href="#25-ip" title="Permanent link">&para;</a></h3>
+<p><strong>包的基本知识</strong>：</p>
+<p>一个设备既可以作为发送方和接收方，所以统称为终端节点，转发设备被称为转发节点或者中间节点</p>
+<p>集线器是按照以太网规则传输包的设备，而路由器是按照 IP 规则传输包的设备</p>
+<p>TCP/IP 头部包含 MAC 头部和 IP 头部；在包传输的过程中，经过集线器时，集线器内有一张用于以太网协议的表，会根据 MAC 头部确定传输方向；经过路由器时，路由器内有一张 IP 协议的表，会根据 IP 头部确定下一个路由器的地址并将其 MAC 地址写入 MAC 头部（集线器只是转发设备，无 MAC 地址，而路由器有 MAC 地址，可以作为 MAC 地址的接收方）</p>
+<p>以太网也可以变成其他，比如无线局域网，ADSL，FTTH等都可以代替以太网协助 IP 协议传输网络包</p>
+<p><strong>包手法操作概览</strong>：</p>
+<p>TCP 模块在收到数据加上 TCP 头部传给 IP 模块，IP 模块再加上 IP 头部和 MAC 头部；IP 头部是将包发往目的地所需的控制信息，MAC 头部是将包通过以太网传给最近的路由器需要的控制信息</p>
+<p>IP 模块的职责就是将委托的东西打包送到对方手中，或者将对方送来的包接收</p>
+<blockquote>
+<p>无论要收发的包是控制包还是数据包，IP 对各种类型的包的收发操作都是相同的</p>
+</blockquote>
+<p><strong>生成包含接收方 IP 地址的 IP 头部</strong>：</p>
+<p>IP 模块收到 TCP 模块的委托进行收发工作，它会生成 IP 头部附加在 TCP 头部前，其中最重要的是 IP 地址，这是 TCP 模块告诉的</p>
+<p>IP头部格式：P103</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>长度 bit</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送方IP</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>接收方IP</td>
+<td>32</td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>计算机有多张网卡时需要判断用哪一个 IP 地址发送包，操作和路由器使用 IP 表判断下一路由器位置类似，此 IP 表叫做路由表，cmd 中输入 "route print"，即可查看，第三章会具体说明，其中 Gateway（下一个路由器的 IP 地址） 表示网关，就是路由器的意思，如果 Gateway 和 Interface（发送包的网络接口）地址相同，表示无需转发可以直接到达接收方的 IP 地址</p>
+<p><strong>生成以太网用的 MAC 头部</strong>：</p>
+<p>MAC 头部地址由 IP 模块生成放在 IP 头部前，用以在以太网中传输</p>
+<p>IP 头部有层次化结构（子网掩码），MAC 头部可以看作是一个整体；网卡的 MAC 地址是在生产时就写入 ROM 中的</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>长度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>接收方MAC地址</td>
+<td>48</td>
+<td></td>
+</tr>
+<tr>
+<td>发送方MAC地址</td>
+<td>48</td>
+<td></td>
+</tr>
+<tr>
+<td>以太类型</td>
+<td>16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>发送方 MAC 地址：如果有多张网卡，因为在设置发送方 IP 地址时已经指定了网卡，所以不会有问题</p>
+<p>接收方 MAC 地址：路由表中（route print）只有网关（Gateway）的 IP 地址，所以现在需要根据 IP 地址查询 MAC 地址</p>
+<p><strong>通过 ARP 查询目标路由器的 MAC 地址</strong>：</p>
+<p>ARP：Address Resolution Protocol，地址解析协议，根据 IP 地址查询 MAC 地址</p>
+<p>在以太网中通过广播的方式询问对应 IP 地址的设备的 MAC 地址；为了防止网络中出现过多的 ARP 包，会将查询结果放在 ARP 缓存中，如果 ARP 缓存中不存在对方的 MAC 地址再进行广播查询</p>
+<p>显示 ARP 缓存的命令：arp -a</p>
+<p>为了防止 IP 地址变化而导致的错误，ARP 缓存中的内容一般会在几分钟左右全部删掉；如果 IP 地址刚发生变化而导致错误的话，可以查看 ARP 缓存的内容并手动删除</p>
+<p><strong>以太网的基本知识</strong>：</p>
+<p>以太网在发送消息时会进行广播，网络中的其他所有设备都会收到这个包，再与这个消息的头部的 MAC 地址匹配，匹配正确的保存下来，不正确的直接丢弃</p>
+<p>中继式集线器：简称集线器，会对消息放大并在网络中进行广播</p>
+<p>交换式集线器：简称交换机，会根据 MAC 地址发送给指定设备</p>
+<p><strong>将 IP 包转换成电或光信号发送出去</strong>：</p>
+<p>数字信号转换成电或光信号发送出去由网卡来完成，网卡的工作需要驱动程序，主要厂商的网卡驱动程序会内置在操作系统中；网卡初始化除了错误检验，初始设置等外，还需要在控制以太网收发操作的 MAC 模块中设置 MAC 地址，即读出 ROM 中自己的 MAC 地址（全世界唯一）</p>
+<blockquote>
+<p>网卡中保存的 MAC 地址会由网卡驱动程序读取并分配给 MAC 模块</p>
+</blockquote>
+<p>MAC：Media Access Control</p>
+<p>网卡驱动从 IP 模块获取包后会复制到网卡内的缓冲区中，然后向 MAC 模块发送发送包命令；MAC 模块将包从缓冲区中取出并在开头加上报头（56 bit）和起始帧分界符（SFD，8 bit），在末尾加上帧校验序列（FCS，32 bit，比如 CRC 校验）</p>
+<p>报头的作用是让接收方观察时钟信号变化的周期，发送数据时会将数据与时钟信号叠加在一起发送，利用上升沿或者下降沿来判断 0/1</p>
+<p><strong>向集线器发送网络包</strong>：</p>
+<p>集线器半双工，交换机全双工</p>
+<p>MAU：Medium Attach Unit，介质连接单元</p>
+<p>PHY：Physical Layer Device，物理层装置</p>
+<blockquote>
+<p>网卡的 MAC 模块生成通用信号，然后由 PHY（MAU 根据以太网信号方式的不同而叫法不同）模块转换成可在网线中传输的格式，并通过网线发送出去</p>
+</blockquote>
+<p>根据以太网的规格两台设备不能超过100 m；在半双工的模式下可能会发生碰撞，并发送阻塞信号，时间是由 MAC 地址生成的一个随机数</p>
+<p><strong>接收返回包</strong>：</p>
+<p>PHY（MAU）将信号转换成通过格式发送给 MAC 模块，MAC 模块再将信号转换为数字信息放到缓冲区，检查 FCS；如果 FCS 没有问题再检查 MAC 地址与自己的是否一致，不是则直接丢弃（混杂模式下不会检查 MAC 地址，会接受所有的包）；接受到包后利用中断机制调用网卡驱动处理</p>
+<p><strong>将服务器的响应包从 IP 传递给 TCP</strong>：</p>
+<p>如果接收方的 IP 地址不是自己的地址，那一定是发送了错误，客户端计算机不负责进行转发（服务器会），IP 模块会通过 ICMP 消息将错误通知给发送方</p>
+<p>主要的 ICMP 消息：</p>
+<table>
+<thead>
+<tr>
+<th>消息</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>分片的包会在 IP 头部字段中进行标记，收到分片的包后 IP 模块会将其暂存再内部的存储空间，等到 IP 头部中具有同样 ID 的包全部到达（包的所有分片具有相同的 ID），再根据 IP 头部中分片偏移量还原成原始的包，这个操作叫分片重组；这里 IP 模块的工作就结束了，包会交给 TCP 模块</p>
+<p>TCP 模块会根据 IP 头部中接收方和发送方的 IP 地址和 TCP 头部中的接收方和发送方的端口号来查询对应的套接字，然后根据套接字中的通信状态执行相应的操作</p>
+<h3 id="26-udp">2.6 UDP协议的收发操作<a class="headerlink" href="#26-udp" title="Permanent link">&para;</a></h3>
+<p>向 DNS 服务器查询 IP 地址的时候我们使用 UDP 协议</p>
+<p>TCP 协议为了实现可靠性需要确认对方是否收到了我们发送的数据，没有还需要发送一遍；为了实现高效的传输，我们要避免重发已经发过的包，而且只重发那些出错或者未送达的包；TCP 之所以复杂就是为了实现这一点</p>
+<p>在数据很短，不需要考虑重发哪个包的情况下就不需要 TCP 复杂的机制，也不需要用来建立和断开连接的控制包；只要将回复的数据当作接收确认的就行，也不需要专门的接收确认包</p>
+<p>UDP 没有 TCP 的接收确认，窗口等机制，不需要交换控制信息，建立和断开连接的步骤；出错时就收不到来自对方的回复，重发一遍数据即可</p>
+<p>UDP 头部的控制信息：</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>长度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送方端口号</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>接收方端口号</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>数据长度</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>校验和</td>
+<td>16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其他使用 DUP 的场景：音频和视频，这种情况时效性很重要，如果发生了错误那也没必要重发数据和错误检查</p>
+<h2 id="3">3 从网线到网络设备：探索集线器，交换机和路由器<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 信号在网线和集线器中传输<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>转发设备会根据包头部中的控制信息，在转发设备内部一个写有转发规则的表中进行查询，以此来判断包的目的地并进行转发；就像邮递员在送信的过程中只看信封，不看内容</p>
+<p><strong>防止网线中信号的衰减</strong>：</p>
+<p>网卡中 PHY（MAU）模块负责将包转换成电信号</p>
+<p>网卡的 PHY（MAU）模块直接连接 RJ-45 接口，信号从这个接口的 1 号和 2 号针脚流入网线</p>
+<blockquote>
+<p>RJ-45：RJ45是布线系统中信息插座（即通信引出端）连接器的一种，连接器由插头（接头、水晶头）和插座（模块）组成，水晶头中会有 2 根线作为接发送，2 根线作为接送</p>
+</blockquote>
+<p>信号在网线的传输过程中，能量会逐渐损失，网线越长衰减越严重；损失能量会让信号的拐角变圆，这是因为电信号的频率越高，能量的损失率越大；如果加上噪声失真会更厉害，出现对 0/1 的误判</p>
+<p><strong>双绞 是为了抑制噪声</strong>：</p>
+<p>双绞指两根线缠绕在一起，是为了抑制噪声</p>
+<p>影响网线的电磁波分为两种：</p>
+<p>网线之外的设备：两根线的螺旋绞合会让噪声（电磁波）产生的电流抵消</p>
+<p>网线中相邻的信号线：通过对内部间隔的设计让影响相互抵消</p>
+<p>双绞线的种类：P146</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>五类（CAT-5）</td>
+<td></td>
+</tr>
+<tr>
+<td>超五类（CAT-5e）</td>
+<td></td>
+</tr>
+<tr>
+<td>六类（CAT-6）</td>
+<td></td>
+</tr>
+<tr>
+<td>超六类（CAT-6A）</td>
+<td></td>
+</tr>
+<tr>
+<td>七类（CAT-7）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>集线器将信号发往所有线路</strong>:</p>
+<p>以太网的基本架构：信号到达集线器后广播到整个网络，根据目标 MAC 地址选择是否接收</p>
+<p>集线器中接口的 MDI/MDI-X 开关，MDI 就是对 RJ-45接口和信号收发模块直连接线，MDI-X 则是交叉接线</p>
+<p>因为需要 发送方的发送线路 和 接收方的接受线路连接（568A 和 568B 的水晶头都有8根线），所以如果 2 台设备都是 MDI 或者 MDI-X，则需要用交叉网线（发送和接收信号线反过来接），否则可以直接接线</p>
+<p>信号到达集线器的 PHY（MAU）模块后进入中继电路，中继电路的功能是将输入信号广播到集线器的所有端口上，还有信号整整形，错误抑制等</p>
+<blockquote>
+<p>信号将信号发送给所有连接在它上面的线路</p>
+</blockquote>
+<h3 id="32">3.2 交换机的包转发操作<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>信号到达网线接口并由 PHY（MAU）接收，这部分交换机中和集线器是相同的；然后 PHY（MAU）将信号转换成通用格式，MAC 模块转换成数字信号，检错并放入缓冲区，这部分操作和网卡一样，可以认为交换机每个接口后面都是一个网卡；不同的是网卡是有 MAC 地址的，而交换机没有</p>
+<blockquote>
+<p>交换机的 MAC 模块不具有 MAC 地址</p>
+</blockquote>
+<p>包放入缓冲区后需要查询这个包的接收方 MAC 地址是否在 MAC 地址表中；MAC 地址表中记录端口和端口连接设备的 MAC 地址，查询到对应的 MAC 地址后通过交换电路发送到对应的端口；交换电路的结构图 P152</p>
+<p>网络包到达发送端口后，端口的 MAC 模块和 PHY（MAU）模块会执行发送操作，如果是半双工的模式需要检测线路中是否有信号在传输</p>
+<p><strong>MAC 地址表的维护</strong>：</p>
+<p>交换机在转发包的过程中需要对 MAC 地址表进行维护，维护操作分为 2 种：</p>
+<ul>
+<li>收到包时，将发送方的 MAC 地址和对应端口号写入 MAC 地址表</li>
+<li>删除某条记录，防止设备移动产生问题，一条记录在一段时间后会自动删除</li>
+</ul>
+<p>如果因为记录过时而导致错误，重启交换机即可重置地址表</p>
+<p><strong>特殊操作</strong>：</p>
+<ul>
+<li>当交换机发现一个包需要发回到原端口时，会直接丢弃这个包（因为这个包是从集线器发过来的，已经在子网中广播了）</li>
+<li>地址表中找不到指定的 MAC 地址，将包发送到除了源端口之外的所有端口；发送后目标设备会做出响应，交换机也就将它的地址写入地址表</li>
+<li>如果接收方 MAC 地址是一个 广播地址，那么交换机会将包发送给除源端口之外的所有端口</li>
+</ul>
+<blockquote>
+<p>交换机的全双工模式可以同时发送和接收信息</p>
+</blockquote>
+<p><strong>自动协商：确定最优的传输速率</strong>：</p>
+<p>切换全双工和半双工很麻烦，于是后面出现了自动切换工作模式的功能，可以实现双方探测是否支持全双工，还能探测对方的传输速率并进行自动切换，这种切换的功能被称为自动协商</p>
+<p>以太网中，在没有数据传输时网络中会有一种被称作连接脉冲的脉冲信号，从而检测对方是否在正常工作；在双绞线以太网规范刚制定时只规定了按一定间隔发送脉冲信号来确认网络是否正常；后来，设计了特定排列的脉冲信号来告知自己支持的工作模式和传输速率，并从中选择一个最优的组合</p>
+<p><strong>交换机可同时支持多个转发操作</strong>：</p>
+<p>交换机多个端口可以同时传输，同时转发多个包；从设备的整体转发能力来看，交换机高于集线器</p>
+<h3 id="33">3.3 路由器的包转发操作<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p><strong>路由器的基本知识</strong>：</p>
+<p>路由器是基于 IP 设计的，而交换机是基于以太网设计的；路由器有两部分：转发模块和端口模块，负责判断包的转发目的地和包的收发操作</p>
+<p>路由器在转发包时，首先会通过端口将发过来的包接收进来，这一步取决于端口的通信技术；然后转发模块根据接收到的包的 IP 头部记录记录接收方的 IP 地址，在路由器表中查询；然后转发到对应的端口，再按照硬件的规则发出去</p>
+<p>端口模块时以实际的发送方或者接收方来收发网络包的，以以太网端口为例，路由器的端口具有 MAC 地址；和交换机不同的是，交换机只是将进来的包转发出去，自己不会成为接收方或者发送方</p>
+<blockquote>
+<p>路由器的各个端口都具有 MAC 地址和 IP 地址</p>
+</blockquote>
+<p><strong>路由表中的信息</strong>：</p>
+<blockquote>
+<p>路由器根据 IP 地址判断转发目标</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>目标地址(Destination)</th>
+<th>子网掩码(Net)</th>
+<th>网关</th>
+<th>接口</th>
+<th>越点数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>在路由器对路由表进行匹配时，只会与目标地址的网络号匹配而忽略主机号；<strong>交换机在地址表中只匹配完全一致的记录，而路由器则会忽略主机号部分，只匹配网络号部分</strong></p>
+<p>有时目标地址的子网掩码和路由表中的子网掩码不一致，是因为路由聚合的结果，即将几个子网合并为一个子网；比如 10.10.1.0/24 与 10.10.3.0/24 与 10.10.2.0/24 合并为 10.10.0.0/16</p>
+<p>路由表的子网掩码只是用来匹配目标地址时告诉路由器要匹配多少个比特</p>
+<p>网络号匹配成功后路由器就会从路由表中对应行的接口转发，发往指定网关；跃点计数表示离 IP 目标的远近，数字越大表示越远</p>
+<p>路由表的维护方式和交换机有所不同，交换机对 MAC 地址的维护是包转发时的一个操作，而路由器对路由表的维护与转发操作是独立的，分为 2 类：</p>
+<ul>
+<li>由人手动维护路由记录</li>
+<li>根据路由协议机制，通过路由器之间的信息交换路由器自行维护</li>
+</ul>
+<p><strong>路由器的包接收操作</strong>:</p>
+<p>路由器的端口都具有 MAC 地址，只接收与自身地址匹配的包，遇到不匹配的包则直接丢弃</p>
+<p><strong>查询路由表确定输出端口</strong>：</p>
+<p>完成包接收操作后，路由器就会丢弃包开头的 MAC 头部（MAC 头部的任务完成了）</p>
+<blockquote>
+<p>通过路由器转发的包，其接收方的 MAC 地址为路由器端口的 MAC 地址</p>
+</blockquote>
+<p>接下来路由器会根据 MAC 头部后方的 IP 头部对包进行转发；对路由表与接收方 IP 进行匹配，匹配时如果有多条记录匹配成功（匹配时只需要匹配路由表中子网掩码的部分）选择网络号最长的，因为这样说明子网中可分配的主机数越少；如果是长度相同的多条记录，选择跃点数较小的</p>
+<p>如果无法匹配到记录，路由器会直接丢弃这个包然后通过 ICMP 消息通知对方；这里的处理和交换机不同，交换机时直接广播，因为交换机连接的网络的规模不大</p>
+<p><strong>找不到匹配路由时选择默认路由</strong>：</p>
+<p>路由表中有一条子网掩码是 0:0:0:0 的记录，即不用任何匹配都可以匹配成功，这条记录配置的网关也叫默认网关；因为匹配成功多条时匹配长度的 bit 数越长优先级越高，所以也不会选择默认网关</p>
+<p><strong>包的有效期</strong>：</p>
+<p>包在路由器转发之前，需要更新 IP 头部的 TTL（Time to live，生存时间，IP头部见 P103）；每经过一个路由器的转发 TTL 会减 1，当这个值变成 0 时 会被丢弃，这个机制是为了防止包陷入死循环；发送方在发送时 TTL 会设置为 64 或 128</p>
+<p><strong>通过分片功能拆分大网络包</strong>：</p>
+<p>PPPoE：PPP to Ethernet，控制 ADSL，FTTH 等网络宽带的方式</p>
+<p>不同的线路和局域网类型各自能传输的最大包长度不同，所以路由器输出端口的最大包长度可能会小于输入端口；遇到这种情况可以使用 IP 协议中定义的分片功能对包进行拆分，缩短每个包的长度</p>
+<p>TCP 拆分数据是在将数据装到包里之前进行的，然后分片是对一个完整的包进行拆分</p>
+<p>首先，需要知道输出端口的 MTU，能不能直接发送，这个最大包长度是由端口类型决定的；如果需要分片，还要查询一下 IP 头部中是否允许（两种情况下不允许，发送发设置了不允许 或者 这个包已经是分片过的了）；如果不允许分片就只能丢弃这个包然后通过 ICMP 消息通知对方；在分片中，分片的对象是 TCP 头部和后面的内容，然后在每个分片前加上 IP 头部，大部分内容和原本的 IP 头部一致，有一些信息需要更新</p>
+<p><strong>路由器的发送操作和计算机相同</strong>：</p>
+<p>发送前的准备工作完成，进入发送包的阶段；这部操作取决于输出端口类型，如果是 以太网/ADSL 就按照 以太网/ADSL 规则将包转换为电信号发送；这里以路由器位于公司等局域网的内部，即输出端口是以太网为例：</p>
+<p>首先为了判断 MAC 地址头部中的 MAC 地址是什么，要根据路由表的网关列判断对方地址（如果是空则 IP 头部中的接收方 IP 地址就是要转发到的目标地址），然后根据 ARP 根据 IP 地址查询 MAC 地址，作为接收方 MAC 地址（会先在 ARP 缓存中查询）</p>
+<p><strong>路由器与交换机的关系</strong>：</p>
+<p>路由器是基于 IP 设计的，交换机是基于以太网设计的；路由器将包的传输工作委托给以太网进行，实际的路由器内置交换机功能，比如用于连接互联网的家用路由器</p>
+<p>IP 并不是委托以太网将包传输到最终目的地，而是传输到下一个路由器，更新的 MAC 地址是下一个路由器的 MAC 地址</p>
+<p>网络并非只有以太网一种，还有无线局域网等；如果和下一个路由器之间是无线局域网连接的，就委托无线局域网传输；IP 本身并不负责包的传输，而是委托各种通信技术将包传输到下一个路由器，这是 IP 的特点</p>
+<h3 id="34">3.4 路由器的附加功能<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<p>路由器最重要的两个功能：地址转换，包过滤</p>
+<p><strong>通过地址转换有效利用 IP 地址</strong>：</p>
+<p>为了防止地址不够用的情况利用地址转换；如果 A，B 两公司的内网是完全独立的，两家内网之间不会进行通信，那么 A 公司和 B 公司客户端之间有相同的 IP 也没有关系，因为他们不会进行通信；公司内部的设备不需要分配固定地址，从而节省 IP 地址；也不是随便分配地址，需要有一定的规则，规定某些地址是用于内网的，这些地址叫做私有地址，原来的地址叫做公有地址，私有地址的范围：</p>
+<ul>
+<li>10.0.0.0 ~ 10.255.255.255</li>
+<li>172.16.0.0 ~ 172.31.255.255</li>
+<li>192.168.0.0 ~ 192.168.255.255</li>
+</ul>
+<p>这些地址只是将共有地址中没分配的一部分拿出来规定只能在内网中使用，不同公司间的地址重复也没有关系，这些地址不做统一管理，不需要申请，当然内网中还是需要避免重复地址的</p>
+<p>当公司内网和互联网连接时，公司内网分为 2 个部分，一部分对互联网开放的服务器，另一部分是公司内部设备，开放的部分分配共有地址，内部设备分配私有地址，不能和互联网直接收发网络包，而是通过一种特殊的机制连接，叫做地址转换</p>
+<p><strong>地址转换的基本原理</strong>：</p>
+<p>地址转换的基本原理是对 IP 头部中的 IP 地址和 端口进行改写</p>
+<p>TCP 连接操作第一个包被转发到互联网时，会将发送方的 IP 地址改写成 地址转换设备（路由器）的互联网接入端口地址，端口号会随机选择一个空闲端口，然后改写前后的 IP 地址和 端口号会填入表中；服务器发送过来的包也可以改写为对应表找到响应的私有地址和端口，然后发给内网；家庭网络中的工作过程也是完全相同的，只是规模不同</p>
+<p>地址和端口对应表：</p>
+<table>
+<thead>
+<tr>
+<th>共有地址</th>
+<th>端口号</th>
+<th>私有地址</th>
+<th>端口号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>改写端口号的原因</strong>：</p>
+<p>早期的地址转换是只改写地址的，但是这要要求共有地址的数量等同于同时访问互联网设备的数量，人多了就不行；端口号 16 bit，可以分配几万个端口，提高了公有地址的利用率</p>
+<p><strong>从互联网访问公司内网</strong>：</p>
+<p>内网到互联网的包如果表中没有是可以随机分配一个端口的，但是互联网到内网的包如表中没有是无法正常转发的；这意味这对于没有访问互联网的内网设备，是无法从互联网向其发送网络包的，除非公司主动允许，这种机制可以防止非法入侵</p>
+<p>如果要从互联网访问内网，需要进行手动添加记录</p>
+<p><strong>路由器的包过滤功能</strong>：</p>
+<p>在对包进行转发时，根据 MAC 头部，IP 头部，TCP 头部的内容，按照事先设置好的规则决定是转发这个包还是丢弃这个包；防火墙设备或者软件大多都是利用这一机制来防止非法入侵的</p>
+<h2 id="4">4 通过接入网进入互联网内部：探索接入网和网络运营商<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-adsl">4.1 ADSL 接入网的结构和工作方式<a class="headerlink" href="#41-adsl" title="Permanent link">&para;</a></h3>
+<h3 id="42-ftth">4.2 光纤接入网（FTTH）<a class="headerlink" href="#42-ftth" title="Permanent link">&para;</a></h3>
+<h3 id="43-ppp">4.3接入网中使用的 PPP 和 隧道<a class="headerlink" href="#43-ppp" title="Permanent link">&para;</a></h3>
+<h3 id="44">4.4 网络运营商的内部<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<h3 id="45">4.5 跨越运营商的网络包<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<h2 id="5">5 服务器端的局域网中有什么玄机<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51-web">5.1 Web 服务器的部署地点<a class="headerlink" href="#51-web" title="Permanent link">&para;</a></h3>
+<h3 id="52">5.2 防火墙的结构和原理<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<h3 id="53">5.3 通过将请求平均分配给多台服务器来平衡负载<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<h3 id="54">5.4 使用缓存服务器分担负载<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<h3 id="55">5.5 内容分发服务<a class="headerlink" href="#55" title="Permanent link">&para;</a></h3>
+<h2 id="6-web">6 请求到达 Web 服务器，响应返回浏览器<a class="headerlink" href="#6-web" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 服务器概览<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<h3 id="62">6.2 服务器的接收操作<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<h3 id="63-web">6.3 Web 服务器程序解释请求消息并作出响应<a class="headerlink" href="#63-web" title="Permanent link">&para;</a></h3>
+<h3 id="64">6.4 浏览器接收响应消息并显示内容<a class="headerlink" href="#64" title="Permanent link">&para;</a></h3>
+<h1 id="_2">术语<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>URL：网址，Uniform Resource Locator，统一资源定位符</p>
+<p>FTP：File Transfer Protocol，文件传输协议 </p>
+<p>HTTP：Hypertext Transfer Protocol，超文本传送协议</p>
+<p>URI：Uniform Resource Identifier，统一资源标识符</p>
+<p>CGI：对 Web 服务器程序调用其他程序的规则所做的定义就是 CGI，按照 CGI 规范工作的程序就是 CGI 程序</p>
+<p>DNS：Domain Name System，域名服务系统</p>
+<p>协议栈：操作系统内部的网络控制软件，也叫 "协议驱动" "TCP/IP 驱动"</p>
+<p>MAC 地址：符合 IEEE 规格的局域网设备都使用同一规格的地址，叫做 MAC 地址</p>
+<p>MTU：Maximum Transmission Unit，最大传输单元</p>
+<p>MSS：Maximum Segment Size，最大分段大小，MTU 减去 TCP 头部和 IP 头部</p>
+<p>SFD：Start Frame Delimiter，起始帧分界符，网络包头部</p>
+<p>FCS：Frame Check Sequence，帧校验序列，网络包结尾</p>
+<p>ARP：Address Resolution Protocol，地址解析协议，根据 IP 地址查询 MAC 地址</p>
+<p>中继式集线器：简称集线器，会对消息放大并在网络中进行广播</p>
+<p>交换式集线器：简称交换机，会根据 MAC 地址发送给指定设备</p>
+<p>MAC：Media Access Control</p>
+<p>MAU：Medium Attach Unit，介质连接单元</p>
+<p>PHY：Physical Layer Device，物理层装置，以太网有多重派生方式，每种方式中信号收发模块的名称都不一样，现在 100 Mbit/s 以上的以太网中叫做 PHY，以前低速方式中则叫做 MAU</p>
+<p>PPPoE：PPP to Ethernet，控制 ADSL，FTTH 等网络宽带的方式</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

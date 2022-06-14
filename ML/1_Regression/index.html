@@ -1,0 +1,1561 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/1_Regression/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Regression - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#regression" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regression
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Regression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Regression
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression_1" class="md-nav__link">
+    Regression 具体过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-model" class="md-nav__link">
+    Linear Model 线性模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent 梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    非线性的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization-overfitting" class="md-nav__link">
+    regularization 解决 overfitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" class="md-nav__link">
+    Adaptive Learning rates
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Learning rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradicent-descent" class="md-nav__link">
+    Stochastic Gradicent Descent
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    Feature Scaling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-variance" class="md-nav__link">
+    Bias and Variance
+  </a>
+  
+    <nav class="md-nav" aria-label="Bias and Variance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-or-variance" class="md-nav__link">
+    如何处理 bias 大 or variance 大的情况呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-set-validation-set" class="md-nav__link">
+    training set 和 validation set
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    Regression
+  </a>
+  
+    <nav class="md-nav" aria-label="Regression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regression_1" class="md-nav__link">
+    Regression 具体过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-model" class="md-nav__link">
+    Linear Model 线性模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent 梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    非线性的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization-overfitting" class="md-nav__link">
+    regularization 解决 overfitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" class="md-nav__link">
+    Adaptive Learning rates
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Learning rates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradicent-descent" class="md-nav__link">
+    Stochastic Gradicent Descent
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-scaling" class="md-nav__link">
+    Feature Scaling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias-and-variance" class="md-nav__link">
+    Bias and Variance
+  </a>
+  
+    <nav class="md-nav" aria-label="Bias and Variance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bias-or-variance" class="md-nav__link">
+    如何处理 bias 大 or variance 大的情况呢？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-set-validation-set" class="md-nav__link">
+    training set 和 validation set
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/1_Regression.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Regression</h1>
+
+<h2 id="regression">Regression<a class="headerlink" href="#regression" title="Permanent link">&para;</a></h2>
+<h3 id="regression_1">Regression 具体过程<a class="headerlink" href="#regression_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>定义一个 model 即 function set</li>
+<li>定义一个 goodness of function 损失函数去评估该 function 的好坏</li>
+<li>找一个最好的 function</li>
+</ul>
+<h3 id="linear-model">Linear Model 线性模型<a class="headerlink" href="#linear-model" title="Permanent link">&para;</a></h3>
+<p>Model (function set)：  <span class="arithmatex">\(y=b+w \cdot X_{cp}\)</span> ，可以扩展为 <span class="arithmatex">\(y=b+ \sum w_ix_i\)</span> </p>
+<p>Loss function： <span class="arithmatex">\(L(f)=L(w,b)=\sum_{n=1}^{10}(\widehat{y}^n-(b+w \cdot x^{n}_{cp}))^2\)</span> </p>
+<h3 id="gradient-descent">Gradient Descent 梯度下降<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h3>
+<p>单个参数直接求微分，多个参数求偏微分</p>
+<div class="arithmatex">\[
+\begin{align}
+L(w,b)=\sum\limits_{n=1}^{10}(\widehat{y}^n-(b+w\cdot x_{cp}^n))^2 \\
+\frac{\partial L}{\partial w}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-x_{cp}^n) \\
+\frac{\partial L}{\partial b}=\sum\limits_{n=1}^{10}2(\widehat{y}^n-(b+w\cdot x_{cp}^n))(-1)
+\end{align}
+\]</div>
+<div class="arithmatex">\[
+\begin{align}
+w^1=w^0-η\frac{\partial L}{\partial w}|_{w=w^0,b=b^0} \ \ \ \ \ \ \ \  \ b^1=b^0-η\frac{\partial L}{\partial b}|_{w=w^0,b=b^0} \\
+w^2=w^1-η\frac{\partial L}{\partial w}|_{w=w^1,b=b^1} \ \ \ \ \ \ \ \  \ b^2=b^1-η\frac{\partial L}{\partial b}|_{w=w^1,b=b^1} \\
+... \\
+w^{i+1}=w^{i}-η\frac{\partial L}{\partial w}|_{w=w^{i},b=b^{i}} \ \ \ \ \ \ \ \  \ b^{i+1}=b^{i}-η\frac{\partial L}{\partial b}|_{w=w^{i},b=b^{i}} \\
+if(\frac{\partial L}{\partial w}==0 \&amp;\&amp; \frac{\partial L}{\partial b}==0) \ \ \ then \ \ stop
+\end{align}
+\]</div>
+<p>缺点：找到的点未必是极小值点</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># eg: y = b + w * x 计算梯度微分的函数 getGrad()</span>
+<span class="k">def</span> <span class="nf">getGrad</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+    <span class="c1"># initial b_grad and w_grad</span>
+    <span class="n">b_grad</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="n">w_grad</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">b_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="n">w_grad</span><span class="o">+=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">w</span><span class="o">*</span><span class="n">x_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b_grad</span><span class="p">,</span><span class="n">w_grad</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_1">非线性的模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><span class="arithmatex">\((x_{cp})^2\)</span> 的 model ：training data 中 model 越复杂 error 会越低，但 testing data 中 error 会变大，overfitting</p>
+</li>
+<li>
+<p>考虑种族、类别的影响</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+\begin{align}
+if \ \ x_s=Pidgey: \ \ \ \ \ \ \ y=b_1+w_1\cdot x_{cp} \\
+if \ \ x_s=Weedle: \ \ \ \ \ \ y=b_2+w_2\cdot x_{cp} \\
+if \ \ x_s=Caterpie: \ \ \ \ y=b_3+w_3\cdot x_{cp} \\
+if \ \ x_s=Eevee: \ \ \ \ \ \ \ \ \ y=b_4+w_4\cdot x_{cp}
+\end{align}
+\]</div>
+<h3 id="regularization-overfitting">regularization 解决 overfitting<a class="headerlink" href="#regularization-overfitting" title="Permanent link">&para;</a></h3>
+<p>正则化解决过拟合问题
+$$
+L=\sum\limits_i^n(\widehat{y}^i-(b+\sum\limits_{j}w_jx_j))^2+\lambda\sum(w_i)^2
+$$
+希望 <span class="arithmatex">\(w_i\)</span> 比较小而得到一个平滑的曲线，这里的 λ 需要我们手动去调整以取得最好的值，也叫 weight decay，权重衰减</p>
+<h3 id="adaptive-learning-rates">Adaptive Learning rates<a class="headerlink" href="#adaptive-learning-rates" title="Permanent link">&para;</a></h3>
+<p>learning rate 大了小了都不好</p>
+<p>一个简答的原则：learning rate 通常是随着参数的 update 越来越小的</p>
+<p>eg：<span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> （第 t 次 update）</p>
+<h4 id="adagrad">Adagrad<a class="headerlink" href="#adagrad" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Divide the learning rate of each parameter by the root mean square(方均根) of its previous derivatives</p>
+</blockquote>
+<p>Adagrad 将不同参数的 learning rate 分开考虑，update到后面速度会越来越慢，这是adaptive算法中最简单的一种</p>
+<div class="arithmatex">\[
+\begin{equation}
+\begin{split}
+&amp;Adagrad\\
+&amp;w^1=w^0-\frac{\eta^0}{\sigma^0}\cdot g^0, \ \ \ \sigma^0=\sqrt{(g^0)^2} \\
+&amp;w^2=w^1-\frac{\eta^1}{\sigma^1}\cdot g^1, \ \ \ \sigma^1=\sqrt{\frac{1}{2}[(g^0)^2+(g^1)^2]} \\
+&amp;w^3=w^2-\frac{\eta2}{\sigma^2}\cdot g^2, \ \ \ \sigma^2=\sqrt{\frac{1}{3}[(g^0)^2+(g^1)^2+(g^2)^2]} \\
+&amp;... \\
+&amp;w^{t+1}=w^t-\frac{\eta^t}{\sigma^t}\cdot g^t, \ \ \ \sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}
+\end{split}
+\end{equation}
+\]</div>
+<p><span class="arithmatex">\(g^t\)</span> 表示 Loss 对 w 的偏微分</p>
+<p>由于 <span class="arithmatex">\(\eta^t=\eta/ \sqrt{t+1}\)</span> 和 <span class="arithmatex">\(\sigma^t=\sqrt{\frac{1}{1+t}\sum\limits_{i=0}^{t}(g^i)^2}\)</span> 中都有一个 <span class="arithmatex">\(\sqrt{\frac{1}{1+t}}\)</span> 的因子，两者相消，即可得到 adagrad 的最终表达式：</p>
+<p>$$
+w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t
+$$
+<strong>Adagrad 的 contradiction 解释</strong></p>
+<p>我们在做 gradient descent 的时候，希望的是当梯度值即微分值<span class="arithmatex">\(g^t\)</span>越大的时候更新的步伐要更大一些，但是 Adagrad 的表达式中，分母表示梯度越大步伐越小，分子却表示梯度越大步伐越大，两者似乎相互矛盾</p>
+<p>在一些 paper 里是这样解释的：Adagrad 要考虑的是，这个 gradient 有多 surprise，即反差有多大，假设 t=4 的时候 <span class="arithmatex">\(g^4\)</span> 与前面的 gradient 反差特别大，那么 <span class="arithmatex">\(g^t\)</span> 与 <span class="arithmatex">\(\sqrt{\frac{1}{t+1}\sum\limits_{i=0}^t(g^i)^2}\)</span> 之间的大小反差就会比较大，它们的商就会把这一反差效果体现出来</p>
+<p><strong>gradient 越大，离最低点越远这件事情在有多个参数的情况下是不一定成立的</strong> </p>
+<p>实际上，对于一个二次函数 <span class="arithmatex">\(y=ax^2+bx+c\)</span> 来说，最小值点的 <span class="arithmatex">\(x=-\frac{b}{2a}\)</span>，而对于任意一点<span class="arithmatex">\(x_0\)</span>，它迈出最好的步伐长度是 <span class="arithmatex">\(|x_0+\frac{b}{2a}|=|\frac{2ax_0+b}{2a}|\)</span> (这样就一步迈到最小值点了)，联系该函数的一阶和二阶导数 <span class="arithmatex">\(y'=2ax+b\)</span>、<span class="arithmatex">\(y''=2a\)</span>，可以发现the best step is <span class="arithmatex">\(|\frac{y'}{y''}|\)</span>，也就是说他不仅跟一阶导数(gradient)有关，还跟二阶导师有关，因此我们可以通过这种方法重新比较上面的a和c点，就可以得到比较正确的答案</p>
+<p>再来回顾 Adagrad 的表达式：<span class="arithmatex">\(w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t\)</span></p>
+<p><span class="arithmatex">\(g^t\)</span> 就是一次微分，而分母中的 <span class="arithmatex">\(\sum\limits_{i=0}^t(g^i)^2\)</span> 反映了二次微分的大小，所以 Adagrad 想要做的事情就是，在不增加任何额外运算的前提下，想办法去估测二次微分的值</p>
+<h4 id="stochastic-gradicent-descent">Stochastic Gradicent Descent<a class="headerlink" href="#stochastic-gradicent-descent" title="Permanent link">&para;</a></h4>
+<p>随机梯度下降的方法可以让训练更快速，传统的 gradient descent 的思路是看完所有的样本点之后再构建 loss function，然后去 update 参数；而 stochastic gradient descent 的做法是，看到一个样本点就 update 一次，因此它的 loss function 不是所有样本点的 error 平方和，而是这个随机样本点的 error 平方</p>
+<h3 id="feature-scaling">Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permanent link">&para;</a></h3>
+<p>特征缩放，当多个特征的分布范围很不一样时，最好将这些不同 feature 的范围缩放成一样，即将特征的指标标准化</p>
+<p><strong>如何做 feature scaling</strong> </p>
+<p>假设有 R 个 example (上标i表示第i个样本点)，<span class="arithmatex">\(x^1,x^2,x^3,...,x^r,...x^R\)</span>，每一笔 example，它里面都有一组 feature (下标j表示该样本点的第j个特征)</p>
+<p>对每一个 <span class="arithmatex">\(demension_i\)</span>，都去算出它的平均值 <span class="arithmatex">\(mean=m_i\)</span>，以及标准差 <span class="arithmatex">\(standard\ deviation=\sigma_i\)</span></p>
+<p>对第 r 个 example 的第 i 个 component，减掉均值，除以标准差，即 <span class="arithmatex">\(x_i^r=\frac{x_i^r-m_i}{\sigma_i}\)</span>，即把每一个参数化成标准的正态分布</p>
+<p><strong>对gradient decent的帮助</strong></p>
+<p>帮助我们更好的 update 参数</p>
+<h3 id="bias-and-variance">Bias and Variance<a class="headerlink" href="#bias-and-variance" title="Permanent link">&para;</a></h3>
+<p>比较简单的model，variance比较小，bias比较大，甚至它的范围没有包含真正的 target</p>
+<p>而比较复杂的model，bias比较小，variance比较大</p>
+<p>必须要知道自己的 error 主要来自于哪里，现在的问题是 bias 大，还是 variance 大？</p>
+<ul>
+<li>如果 model 没有办法 fit training data 的 examples，代表 bias 比较大，这时是 underfitting</li>
+<li>如果 model 可以 fit training data，在 training data 上得到小的 error，但是在 testing data 上，却得到一个大的 error，代表 variance 比较大，这时是 overfitting</li>
+</ul>
+<h4 id="bias-or-variance"><strong>如何处理 bias 大 or variance 大的情况呢？</strong><a class="headerlink" href="#bias-or-variance" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>bias 比较大</strong> </li>
+</ul>
+<p>redesign，重新设计你的 model</p>
+<ul>
+<li>
+<p>增加更多的 features 作为 model 的 input 输入变量</p>
+<p>比如 pokemon 的例子里，只考虑进化前 cp 值可能不够，还要考虑 hp 值、species 种类...作为model 新的 input 变量</p>
+</li>
+<li>
+<p>让 model 变得更复杂，增加高次项</p>
+<p>比如原本只是 linear model，现在考虑增加二次项、三次项...</p>
+</li>
+<li>
+<p><strong>variance 比较大</strong> </p>
+</li>
+<li>
+<p>增加data</p>
+<ul>
+<li>如果没有办法 collect 更多的 data，其实有一招，根据你对这个问题的理解，自己去generate 更多“假的” data </li>
+<li>比如手写数字识别，因为每个人手写数字的角度都不一样，那就把所有 training data 里面的数字都左转15°，右转15°</li>
+<li>比如做火车的影像辨识，只有从左边开过来的火车影像资料，没有从右边开过来的火车影像资料，该怎么办？实际上可以把每张图片都左右颠倒，就 generate 出右边的火车数据了，这样就多了一倍 data 出来</li>
+<li>比如做语音辨识的时候，只有男生说的“你好”，没有女生说的“你好”，那就用男生的声音用一个变声器把它转化一下，这样男女生的声音就可以互相转化，这样 data 就可以多出来</li>
+<li>比如现在你只有录音室里录下的声音，但是 detection 实际要在真实场景下使用的，那你就去真实场景下录一些噪音加到原本的声音里，就可以 generate 出符合条件的 data 了</li>
+</ul>
+</li>
+<li>
+<p>Regularization(正规化)</p>
+<ul>
+<li>就是在 loss function 里面再加一个与 model 高次项系数相关的 term，它会希望你的 model 里高次项的参数越小越好，也就是说希望你今天找出来的曲线越平滑越好；这个新加的 term前面可以有一个 weight，代表你希望你的曲线有多平滑</li>
+<li>加了 regularization 以后，因为你强迫所有的曲线都要比较平滑，所以这个时候也会让你的variance 变小；但 regularization 是可能会伤害 bias 的，因为它实际上调整了 function set 的 space 范围，变成它只包含那些比较平滑的曲线，这个缩小的 space 可能没有包含原先在更大 space 内的 <span class="arithmatex">\(\widehat{f}\)</span>，因此伤害了 bias，所以当你做 regularization 的时候，需要调整 regularization 的 weight，在 variance 和 bias 之间取得平衡</li>
+</ul>
+</li>
+<li>
+<p>不应该做的事</p>
+</li>
+</ul>
+<p>拿做好的 model 通过 testing data 得出的 error 来评价这个 model，然后觉得这个 model 不好，回去修改参数 </p>
+<h4 id="training-set-validation-set">training set 和 validation set<a class="headerlink" href="#training-set-validation-set" title="Permanent link">&para;</a></h4>
+<p>把你的 training set 分成两组：</p>
+<ul>
+<li>一组是真正拿来 training model 的，叫做 training set (训练集)</li>
+<li>另外一组不拿它来 training model，而是拿它来选 model，叫做 validation set (验证集)</li>
+</ul>
+<p>先在 training set 上找出每个 model 最好的 function <span class="arithmatex">\(f^*\)</span>，然后用 validation set 来选择你的 model </p>
+<p>如果感觉分成 2 部分 training data 变少的话，可以这样做：已经从 validation 决定 model3 是最好的model，那就定住 model3 不变 (function的表达式不变)，然后用全部的 data 在 model3 上面再训练一次 (使用全部的 data 去更新 model3 表达式的参数)</p>
+<p>这个时候，如果你把这个训练好的 model 的 <span class="arithmatex">\(f^*\)</span>apply 到 public testing set 上面，你可能会得到一个大于0.5的 error，虽然这么做，你得到的 error 表面上看起来是比较大的，但是<strong>这个时候你在 public set 上的 error 才能够真正反映你在 private set 上的 error</strong> </p>
+<p><strong>如何划分 training set 和 validation set？</strong> </p>
+<p>validation set 可能自带 bias，对结果不利</p>
+<ul>
+<li><strong>N-flod Cross Validation</strong> </li>
+</ul>
+<p>如果你不相信某一次分 train 和 validation 的结果的话，那你就分很多种不同的样子</p>
+<p>比如说，如果你做 3-flod 的 validation，意思就是你把 training set 分成三份，你每一次拿其中一份当做 validation set，另外两份当 training</p>
+<p>分别在每个情境下都计算一下3个model 的 error，然后计算一下它的 average error，选择一个 error 最小的</p>
+<p>然后把用整个完整的 training data 重新训练一遍参数，再去 testing data 上 test</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../%E8%AF%B4%E6%98%8E/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 说明" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              说明
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2_Classification/" class="md-footer__link md-footer__link--next" aria-label="Next: Classification" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Classification
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

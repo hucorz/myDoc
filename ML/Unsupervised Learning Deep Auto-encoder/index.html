@@ -1,0 +1,1398 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/Unsupervised%20Learning%20Deep%20Auto-encoder/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Unsupervised Learning: Deep Auto-encoder - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unsupervised-learning-deep-auto-encoder" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unsupervised Learning: Deep Auto-encoder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare-with-pca" class="md-nav__link">
+    Compare with PCA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-auto-encoder" class="md-nav__link">
+    Deep Auto-encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Deep Auto-encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-layer" class="md-nav__link">
+    Multi Layer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualize" class="md-nav__link">
+    Visualize
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-retrieval" class="md-nav__link">
+    Text Retrieval
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bag-of-word" class="md-nav__link">
+    Bag-of-word
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-encoder" class="md-nav__link">
+    Auto-encoder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similar-image-search" class="md-nav__link">
+    Similar Image Search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-training-dnn" class="md-nav__link">
+    Pre-training DNN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cnn" class="md-nav__link">
+    CNN
+  </a>
+  
+    <nav class="md-nav" aria-label="CNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cnn-as-encoder" class="md-nav__link">
+    CNN as Encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpooling" class="md-nav__link">
+    Unpooling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deconvolution" class="md-nav__link">
+    Deconvolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-auto-encoder" class="md-nav__link">
+    Other Auto-encoder
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Auto-encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-noising-auto-encoder" class="md-nav__link">
+    De-noising Auto-encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contractive-auto-encoder" class="md-nav__link">
+    Contractive Auto-encoder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seq2seq-auto-encoder" class="md-nav__link">
+    Seq2Seq Auto-encoder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate" class="md-nav__link">
+    Generate
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/Unsupervised Learning Deep Auto-encoder.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="unsupervised-learning-deep-auto-encoder">Unsupervised Learning: Deep Auto-encoder<a class="headerlink" href="#unsupervised-learning-deep-auto-encoder" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Deep Auto-encoder：自编码器</p>
+</blockquote>
+<h4 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h4>
+<p><strong>Auto-encoder 其实是一个自我压缩和解压的过程</strong>，想要获取压缩后的code（降维），因为是 Unsupervised 的，所以单用一个 Encoder 是没办法 train 的（没有 output），一个单独的 Decoder 也没有办法 train（没有 input），但如果把他们接在一起，target 是 minimize inoput 与 output 的差距就可以 train 了</p>
+<ul>
+<li>Encoder(编码器)，它可以把原先的图像压缩成更低维度的向量</li>
+<li>Decoder(解码器)，它可以把压缩后的向量还原成图像</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto.png" width="60%"/></center></p>
+<h4 id="compare-with-pca">Compare with PCA<a class="headerlink" href="#compare-with-pca" title="Permanent link">&para;</a></h4>
+<p>实际上 PCA 降维时用到的思想与之非常类似</p>
+<p>在 PCA 中，我们先把均一化后的 <span class="arithmatex">\(x\)</span> 根据组件 <span class="arithmatex">\(W\)</span> 分解到更低维度的 <span class="arithmatex">\(c\)</span>，然后再将组件权重 <span class="arithmatex">\(c\)</span> 乘上组件的反置<span class="arithmatex">\(W^T\)</span> 得到重组后的 <span class="arithmatex">\(\hat x\)</span>，同样我们期望重构后的 <span class="arithmatex">\(\hat x\)</span> 与原始的 <span class="arithmatex">\(x\)</span> 越接近越好，即 minimize <span class="arithmatex">\((x-\hat{x})^2\)</span> </p>
+<p>如果把这个过程看作是神经网络，那么原始的 <span class="arithmatex">\(x\)</span> 就是 input layer，重构 <span class="arithmatex">\(\hat x\)</span> 就是 output layer，中间组件分解权重 <span class="arithmatex">\(c\)</span> 就是 hidden layer，在 PCA 中它是 linear 的，我们通常又叫它瓶颈层 (Bottleneck layer，是一个低维的 vector，降维的结果)</p>
+<p>图中并没有减去 <span class="arithmatex">\(\bar{x}\)</span>，因为一般在拿到 data 起手都会做 normalization</p>
+<p>而且这个 network 是可以 deep 的 </p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-pca.png" width="60%"/></center></p>
+<h4 id="deep-auto-encoder">Deep Auto-encoder<a class="headerlink" href="#deep-auto-encoder" title="Permanent link">&para;</a></h4>
+<h5 id="multi-layer">Multi Layer<a class="headerlink" href="#multi-layer" title="Permanent link">&para;</a></h5>
+<p>对 deep 的自编码器来说，实际上就是通过多级编码降维，再经过多级解码还原的过程</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-deep.png" width="60%"/></center></p>
+<p>如果按照 PCA 的思路，则 Encoder 的参数 <span class="arithmatex">\(W_i\)</span> 需要和 Decoder 的参数 <span class="arithmatex">\(W_i^T\)</span> 保持一致的对应关系，这可以通过给两者相同的初始值并设置同样的更新过程得到，这样做的好处是，可以节省一半的参数，降低 overfitting 的概率</p>
+<p>但这件事情并不是必要的，实际操作的时候，完全可以对神经网络进行直接训练而不用保持编码器和解码器的参数一致</p>
+<h5 id="visualize">Visualize<a class="headerlink" href="#visualize" title="Permanent link">&para;</a></h5>
+<p>下图给出了 Hinton 分别采用 PCA 和 Deep Auto-encoder 对手写数字进行编码解码后的结果，从 784 维降到30 维，可以看出，Deep 的自编码器还原效果比 PCA 要更好</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-deep2.png" width="60%"/></center></p>
+<p>如果将其降到二维平面做可视化，不同颜色代表不同的数字，明显 Deep Auto-Encoding 的效果更好</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-visual.png" width="60%"/></center></p>
+<h4 id="text-retrieval">Text Retrieval<a class="headerlink" href="#text-retrieval" title="Permanent link">&para;</a></h4>
+<p>Auto-encoder 也可以被用在文字处理上</p>
+<p>比如我们要做文字检索，很简单的一个做法是 Vector Space Model，把每一篇文章都表示成空间中的一个 vector</p>
+<p>假设查询者输入了某个词汇，那我们就把该查询词汇也变成空间中的一个点，并计算 query 和每一篇 document 之间的内积 (inner product) 或余弦相似度 (cos-similarity) </p>
+<p>注：余弦相似度有均一化的效果，可能会得到更好的结果</p>
+<p>下图中跟query向量最接近的几个向量的cosine-similarity是最大的，于是可以从这几篇文章中去检索</p>
+<p>这个模型的好坏，就取决于从 document 转化而来的 vector 的好坏，它是否能够充分表达文章信息</p>
+<h5 id="bag-of-word">Bag-of-word<a class="headerlink" href="#bag-of-word" title="Permanent link">&para;</a></h5>
+<p>最简单的 vector 表示方法是 Bag-of-word，维数等于所有词汇的总数，某一维等表示该词汇在这篇文章中出现的次数，此外还可以根据词汇的重要性将其加权；但这个模型是非常脆弱的，对它来说每个词汇都是相互独立的，无法体现出词汇之间的语义 (semantic)</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-text.png" width="60%"/></center></p>
+<h5 id="auto-encoder">Auto-encoder<a class="headerlink" href="#auto-encoder" title="Permanent link">&para;</a></h5>
+<p>虽然 Bag-of-word 不能直接用于表示文章，但我们可以把它作为 Auto-encoder 的 input，通过降维来抽取有效信息，以获取所需的 vector</p>
+<p>同样为了可视化，这里将Bag-of-word降维到二维平面上，下图中每个点都代表一篇文章，不同颜色则代表不同的文章类型</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-visual2.png" width="60%"/></center></p>
+<p>如果用户做查询，就把查询的语句用相同的方式映射到该二维平面上，并找出属于同一类别的所有文章即可</p>
+<p>在矩阵分解 (Matrix Factorization) 中，我们介绍了 LSA 算法，它可以用来寻找每个词汇和每篇文章背后的隐藏关系 (vector)，如果在这里我们采用 LSA，并使用二维 latent vector 来表示每篇文章，得到的可视化结果如上图右下角所示，可见效果并没有 Auto-encoder 好</p>
+<h4 id="similar-image-search">Similar Image Search<a class="headerlink" href="#similar-image-search" title="Permanent link">&para;</a></h4>
+<p>Auto-encoder 同样可以被用在图像检索上，比如以图搜图</p>
+<p>最简单的做法就是直接对输入的图片与数据库中的图片计算 pixel 的相似度，并挑出最像的图片，但这种方法的效果很差，因为单纯的 pixel 所能够表达的信息太少了</p>
+<p>我们需要使用 Auto-encoder 对图像进行降维和特征提取，并在编码得到的 code 所在空间做相似度的检索</p>
+<p>这么做的好处如下：</p>
+<ul>
+<li>Auto-encoder 可以通过降维提取出一张图像中最有用的特征信息，包括 pixel 与 pixel 之间的关系</li>
+<li>降维之后数据的 size 变小了，这意味着模型所需的参数也变少了，同样的数据量对参数更少的模型来说，可以训练出更精确的结果，一定程度上避免了过拟合的发生</li>
+<li>Auto-encoder 是一个无监督学习的方法，数据不需要人工打上标签，这意味着我们只需简单处理就可以获得大量的可用数据</li>
+</ul>
+<p>下图给出了分别以原图的 pixel 计算相似度和以 auto-encoder 后的 code 计算相似度的两种方法在图像检索上的结果</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-img2.png" width="60%"/></center></p>
+<p>可能有些人脸在原图的 pixel 上看起来并不像，但把它们投影到 256 维的空间中却是相像的，可能在投影空间中某一维就代表了人脸的特征，因此能够被检索出来</p>
+<h4 id="pre-training-dnn">Pre-training DNN<a class="headerlink" href="#pre-training-dnn" title="Permanent link">&para;</a></h4>
+<p>在训练神经网络的时候，我们一般都会对如何初始化参数比较困扰，预训练 (pre-training) 是一种寻找比较好的参数初始化值的方法，而我们可以用Auto-encoder来做pre-training</p>
+<p>以MNIST数据集为例，我们对每层hidden layer都做一次auto-encoder，<strong>使每一层都能够提取到上一层最佳的特征向量</strong></p>
+<p>为了方便表述，这里用<span class="arithmatex">\(x-z-x\)</span>来表示一个自编码器，其中<span class="arithmatex">\(x\)</span>表述输入输出层的维数，<span class="arithmatex">\(z\)</span>表示隐藏层的维数</p>
+<ul>
+<li>
+<p>首先使input通过一个<span class="arithmatex">\(784-1000-784\)</span>的自编码器，当该自编码器训练稳定后，就把参数<span class="arithmatex">\(W^1\)</span>固定住，然后将数据集中所有784维的图像都转化为1000维的vector</p>
+<p>注意：这里做的不是降维而是升维，当编码后的维数比输入维数要高时，需要注意可能会出现编码前后原封不动的情况，为此需要额外加一个正则项，比如L1 regularization，强迫使code的分布是分散的</p>
+</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-pre.png" width="60%"/></center></p>
+<ul>
+<li>接下来再让这些1000维的vector通过一个<span class="arithmatex">\(1000-1000-1000\)</span>的编码器，当其训练稳定后，再把参数<span class="arithmatex">\(W^2\)</span>固定住，对数据集再做一次转换</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-pre2.png" width="60%"/></center></p>
+<ul>
+<li>接下来再用转换后的数据集去训练第三个<span class="arithmatex">\(1000-500-1000\)</span>的自编码器，训练稳定后固定<span class="arithmatex">\(W^3\)</span>，数据集再次更新转化为500维</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-pre3.png" width="60%"/></center></p>
+<ul>
+<li>
+<p>此时三个隐藏层的参数<span class="arithmatex">\(W^1\)</span>、<span class="arithmatex">\(W^2\)</span>、<span class="arithmatex">\(W^3\)</span>就是训练整个神经网络时的参数初始值</p>
+</li>
+<li>
+<p>然后随机初始化最后一个隐藏层到输出层之间的参数<span class="arithmatex">\(W^4\)</span></p>
+</li>
+<li>
+<p>再用反向传播去调整一遍参数，因为<span class="arithmatex">\(W^1\)</span>、<span class="arithmatex">\(W^2\)</span>、<span class="arithmatex">\(W^3\)</span>都已经是很好的参数值了，这里只是做微调，这个步骤也因此得名为<strong>Find-tune</strong></p>
+</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-pre4.png" width="60%"/></center></p>
+<p>由于现在训练机器的条件比以往更好，因此pre-training并不是必要的，但它也有自己的优势</p>
+<p>如果你只有大量的unlabeled data和少量的labeled data，那你可以先用这些unlabeled data把<span class="arithmatex">\(W^1\)</span>、<span class="arithmatex">\(W^2\)</span>、<span class="arithmatex">\(W^3\)</span>先初始化好，最后再用labeled data去微调<span class="arithmatex">\(W^1\)</span>~<span class="arithmatex">\(W^4\)</span>即可</p>
+<p>因此pre-training在有大量unlabeled data的场景下(如半监督学习)是比较有用的</p>
+<h4 id="cnn">CNN<a class="headerlink" href="#cnn" title="Permanent link">&para;</a></h4>
+<h5 id="cnn-as-encoder">CNN as Encoder<a class="headerlink" href="#cnn-as-encoder" title="Permanent link">&para;</a></h5>
+<p>处理图像通常都会用卷积神经网络CNN，它的基本思想是交替使用卷积层和池化层，让图像越来越小，最终展平，这个过程跟Encoder编码的过程其实是类似的</p>
+<p>理论上要实现自编码器，Decoder只需要做跟Encoder相反的事即可，那对CNN来说，解码的过程也就变成了交替使用去卷积层和去池化层即可</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-cnn.png" width="60%"/></center></p>
+<p>那什么是去卷积层(Deconvolution)和去池化层(Unpooling)呢？</p>
+<h5 id="unpooling">Unpooling<a class="headerlink" href="#unpooling" title="Permanent link">&para;</a></h5>
+<p>做pooling的时候，假如得到一个4×4的matrix，就把每4个pixel分为一组，从每组中挑一个最大的留下，此时图像就变成了原来的四分之一大小</p>
+<p>如果还要做Unpooling，就需要提前记录pooling所挑选的pixel在原图中的位置，下图中用灰色方框标注</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-unpooling.png" width="60%"/></center></p>
+<p>然后做Unpooling，就要把当前的matrix放大到原来的四倍，也就是把2×2 matrix里的pixel按照原先记录的位置插入放大后的4×4 matrix中，其余项补0即可</p>
+<p>当然这不是唯一的做法，在Keras中，pooling并没有记录原先的位置，做Unpooling的时候就是直接把pixel的值复制四份填充到扩大后的matrix里即可</p>
+<h5 id="deconvolution">Deconvolution<a class="headerlink" href="#deconvolution" title="Permanent link">&para;</a></h5>
+<p>实际上，Deconvolution就是convolution</p>
+<p>这里以一维的卷积为例，假设输入是5维，过滤器(filter)的大小是3</p>
+<p>卷积的过程就是每三个相邻的点通过过滤器生成一个新的点，如下图左侧所示</p>
+<p>在你的想象中，去卷积的过程应该是每个点都生成三个点，不同的点对生成同一个点的贡献值相加；但实际上，这个过程就相当于在周围补0之后再次做卷积，如下图右侧所示，两个过程是等价的</p>
+<p>卷积和去卷积的过程中，不同点在于，去卷积需要补零且过滤器的weight与卷积是相反的：</p>
+<ul>
+<li>在卷积过程中，依次是橙线、蓝线、绿线</li>
+<li>在去卷积过程中，依次是绿线、蓝线、橙线</li>
+</ul>
+<p>因此在实践中，做去卷积的时候直接对模型加卷积层即可</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-deconvolution.png" width="60%"/></center></p>
+<h4 id="other-auto-encoder">Other Auto-encoder<a class="headerlink" href="#other-auto-encoder" title="Permanent link">&para;</a></h4>
+<h5 id="de-noising-auto-encoder">De-noising Auto-encoder<a class="headerlink" href="#de-noising-auto-encoder" title="Permanent link">&para;</a></h5>
+<p>去噪自编码器的基本思想是，把输入的<span class="arithmatex">\(x\)</span>加上一些噪声(noise)变成<span class="arithmatex">\(x'\)</span>，再对<span class="arithmatex">\(x'\)</span>依次做编码(encode)和解码(decode)，得到还原后的<span class="arithmatex">\(y\)</span></p>
+<p>值得注意的是，一般的自编码器都是让输入输出尽可能接近，但在去噪自编码器中，我们的目标是让解码后的<span class="arithmatex">\(y\)</span>与加噪声之前的<span class="arithmatex">\(x\)</span>越接近越好</p>
+<p>这种方法可以增加系统的鲁棒性，因为此时的编码器Encoder不仅仅是在学习如何做编码，它还学习到了如何过滤掉噪声这件事情</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-noise.png" width="60%"/></center></p>
+<p>参考文献：<em>Vincent, Pascal, et al. "Extracting and composing robust features with denoising autoencoders." ICML, 2008.</em></p>
+<h5 id="contractive-auto-encoder">Contractive Auto-encoder<a class="headerlink" href="#contractive-auto-encoder" title="Permanent link">&para;</a></h5>
+<p>收缩自动编码器的基本思想是，在做encode编码的时候，要加上一个约束，它可以使得：input的变化对编码后得到的code的影响最小化</p>
+<p>这个描述跟去噪自编码器很像，只不过去噪自编码器的重点在于加了噪声之后依旧可以还原回原先的输入，而收缩自动编码器的重点在于加了噪声之后能够保持编码结果不变</p>
+<p>参考文献：<em>Rifai, Salah, et al. "Contractive auto-encoders: Explicit invariance during feature extraction.“ Proceedings of the 28th International Conference on Machine Learning (ICML-11). 2011.</em></p>
+<h5 id="seq2seq-auto-encoder">Seq2Seq Auto-encoder<a class="headerlink" href="#seq2seq-auto-encoder" title="Permanent link">&para;</a></h5>
+<p>在之前介绍的自编码器中，输入都是一个固定长度的vector，但类似文章、语音等信息实际上不应该单纯被表示为vector，那会丢失很多前后联系的信息</p>
+<p>Seq2Seq就是为了解决这个问题提出的，具体内容将在RNN部分介绍</p>
+<h4 id="generate">Generate<a class="headerlink" href="#generate" title="Permanent link">&para;</a></h4>
+<p>在用自编码器的时候，通常是获取Encoder之后的code作为降维结果，但实际上Decoder也是有作用的，我们可以拿它来生成新的东西</p>
+<p>以MNIST为例，训练好编码器之后，取出其中的Decoder，输入一个随机的code，就可以生成一张图像</p>
+<p>假设将28×28维的图像通过一层2维的hidden layer投影到二维平面上，得到的结果如下所示，不同颜色的点代表不同的数字，然后在红色方框中，等间隔的挑选二维向量丢进Decoder中，就会生成许多数字的图像</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-gene.png" width="60%"/></center></p>
+<p>此外，我们还可以对code加L2 regularization，以限制code分布的范围集中在0附近，此时就可以直接以0为中心去随机采取样本点，再通过Decoder生成图像</p>
+<p>观察生成的数字图像，可以发现横轴的维度表示是否含有圆圈，纵轴的维度表示是否倾斜</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/auto-gene2.png" width="60%"/></center></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

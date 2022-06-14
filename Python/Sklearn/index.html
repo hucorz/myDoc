@@ -1,0 +1,2233 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/Python/Sklearn/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Sklearn - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sklearn" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sklearn
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnlinear_model" class="md-nav__link">
+    sklearn.linear_model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-decision_functionx-threshold" class="md-nav__link">
+    - decision_function(X)：计算决策分数，比如可以自己决定 threshold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearntree" class="md-nav__link">
+    sklearn.tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnsvm" class="md-nav__link">
+    sklearn.svm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnensemble" class="md-nav__link">
+    sklearn.ensemble
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voting" class="md-nav__link">
+    voting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bagging-pasting" class="md-nav__link">
+    bagging 和 pasting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    随即补丁和随机子空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    随机森林
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boosting" class="md-nav__link">
+    boosting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stacking" class="md-nav__link">
+    stacking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnmetrics" class="md-nav__link">
+    sklearn.metrics
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-metrics" class="md-nav__link">
+    Classification metrics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnmodel_selection" class="md-nav__link">
+    sklearn.model_selection
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.model_selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#splitter-classes" class="md-nav__link">
+    Splitter Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitter-functions" class="md-nav__link">
+    Splitter Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyper-parameter-optimizers" class="md-nav__link">
+    Hyper-parameter optimizers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-validation" class="md-nav__link">
+    Model validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing" class="md-nav__link">
+    preprocessing
+  </a>
+  
+    <nav class="md-nav" aria-label="preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minmaxscaler" class="md-nav__link">
+    MinMaxScaler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strandardscaler" class="md-nav__link">
+    StrandardScaler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    处理离散变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binarizer" class="md-nav__link">
+    Binarizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kbindiscretizer" class="md-nav__link">
+    KBinDiscretizer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearndatasets" class="md-nav__link">
+    sklearn.datasets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnimpute" class="md-nav__link">
+    sklearn.impute
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.impute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simpleimputer" class="md-nav__link">
+    SimpleImputer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearnpipeline" class="md-nav__link">
+    sklearn.pipeline
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    降维
+  </a>
+  
+    <nav class="md-nav" aria-label="降维">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sklearndecomposition" class="md-nav__link">
+    sklearn.decomposition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sklearnmanifold" class="md-nav__link">
+    sklearn.manifold
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sklearncompose" class="md-nav__link">
+    sklearn.compose
+  </a>
+  
+    <nav class="md-nav" aria-label="sklearn.compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#columntransformer" class="md-nav__link">
+    ColumnTransformer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#save-load" class="md-nav__link">
+    模型 save &amp;&amp; load
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自定义转换器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    决策树可视化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/Python/Sklearn.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="sklearn">Sklearn<a class="headerlink" href="#sklearn" title="Permanent link">&para;</a></h1>
+<p><a href="https://www.bilibili.com/video/BV1vJ41187hk?spm_id_from=333.999.0.0">菜菜的机器学习 sklearn【全85集】Python进阶 bilibili</a></p>
+<h2 id="sklearnlinear_model">sklearn.linear_model<a class="headerlink" href="#sklearnlinear_model" title="Permanent link">&para;</a></h2>
+<p>Atrbutes 和 Mehods 并不一定每个类都有</p>
+<p>Methods：</p>
+<h2 id="-decision_functionx-threshold">- decision_function(<em>X</em>)：计算决策分数，比如可以自己决定 threshold<a class="headerlink" href="#-decision_functionx-threshold" title="Permanent link">&para;</a></h2>
+<p>Linear classifiers</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression"><code>linear_model.LogisticRegression</code></a>([penalty, ...])</td>
+<td>Logistic Regression (aka logit, MaxEnt) classifier.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV"><code>linear_model.LogisticRegressionCV</code></a>(*[, Cs, ...])</td>
+<td>Logistic Regression CV (aka logit, MaxEnt) classifier.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.PassiveAggressiveClassifier.html#sklearn.linear_model.PassiveAggressiveClassifier"><code>linear_model.PassiveAggressiveClassifier</code></a>(*)</td>
+<td>Passive Aggressive Classifier.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html#sklearn.linear_model.Perceptron"><code>linear_model.Perceptron</code></a>(*[, penalty, alpha, ...])</td>
+<td>Linear perceptron classifier.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html#sklearn.linear_model.RidgeClassifier"><code>linear_model.RidgeClassifier</code></a>([alpha, ...])</td>
+<td>Classifier using Ridge regression.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifierCV.html#sklearn.linear_model.RidgeClassifierCV"><code>linear_model.RidgeClassifierCV</code></a>([alphas, ...])</td>
+<td>Ridge classifier with built-in cross-validation.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier"><code>linear_model.SGDClassifier</code></a>([loss, penalty, ...])</td>
+<td>Linear classifiers (SVM, logistic regression, etc.) with SGD training.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDOneClassSVM.html#sklearn.linear_model.SGDOneClassSVM"><code>linear_model.SGDOneClassSVM</code></a>([nu, ...])</td>
+<td>Solves linear One-Class SVM using Stochastic Gradient Descent.</td>
+</tr>
+</tbody>
+</table>
+<p>Classical linear regressors</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression"><code>linear_model.LinearRegression</code></a>(*[, ...])</td>
+<td>Ordinary least squares Linear Regression.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge"><code>linear_model.Ridge</code></a>([alpha, fit_intercept, ...])</td>
+<td>Linear least squares with l2 regularization.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV"><code>linear_model.RidgeCV</code></a>([alphas, ...])</td>
+<td>Ridge regression with built-in cross-validation.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor"><code>linear_model.SGDRegressor</code></a>([loss, penalty, ...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sklearntree">sklearn.tree<a class="headerlink" href="#sklearntree" title="Permanent link">&para;</a></h2>
+<p>决策树不需要对数据进行无量纲化处理</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>            <span class="c1"># 导入需要的模块</span>
+<span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span> <span class="c1"># 实例化</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>      <span class="c1"># 用训练集数据训练模型</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>   <span class="c1"># 导入测试集,从接口中调用需要的信息，返回测试集的准确度</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>                    <span class="c1"># apply返回每个测试样本所在的叶子节点的索引</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>                  <span class="c1"># predict返回每个测试样本的分类/回归结果</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+<span class="c1"># 对应特征的重要性</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># 画出决策树</span>
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span>
+                               <span class="p">,</span><span class="n">feature_name</span> <span class="c1"># 顺序对应 data</span>
+                               <span class="p">,</span><span class="n">class_names</span>  <span class="c1"># 顺序对应 target</span>
+                               <span class="p">,</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># 填充颜色</span>
+                               <span class="p">,</span><span class="n">rounded</span><span class="o">=</span><span class="kc">True</span> <span class="c1"># 圆角</span>
+                               <span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>
+<span class="n">graph</span>
+
+<span class="c1"># 保存决策树为图片</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tree.dot&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
+<span class="c1"># 然后在 cmd 中运行 dot -Tpng tree.dot -o tree.png</span>
+</code></pre></div>
+<p>sklearn 使用 CART 算法 （Classifiation and Regression Tree，也称增长树）训练决策树，分类问题时使用最小化不纯度来拆分训练集，回归问题时最小化 mse</p>
+<p>剪枝参数：</p>
+<ul>
+<li>max_depth：最大深度</li>
+<li>min_samples_leaf：结点最少训练样本数</li>
+<li>min_samples_split：结点允许分支的最小训练样本量</li>
+<li>min_weight_fraction_leaf：与 min_samples_leaf 一样，但表现为加权实例总数的占比</li>
+<li>max_leaf_nodes：最大叶结点数</li>
+<li>max_features：分裂每个结点评估的最大特征数量</li>
+<li>min_impurity_devrease：</li>
+</ul>
+<p>DecisionTreeClassifier</p>
+<p>分类树</p>
+<div class="highlight"><pre><span></span><code><span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span>
+                            <span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="kc">None</span>
+                            <span class="p">,</span><span class="n">splitter</span>
+                            <span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span>
+                            <span class="p">,</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="kc">None</span>
+                            <span class="p">,</span><span class="n">min_samples_split</span><span class="o">=</span><span class="kc">None</span>
+                            <span class="p">,</span><span class="n">max_features</span>
+                            <span class="p">,</span><span class="n">min_impurity_decrease</span>
+                           <span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>criterion：决定不纯度的计算方法，entropy 或者 gini</li>
+<li>random_state：随机模式参数，指定后生成的树会是固定的</li>
+<li>splitter：也是控制决策树的随即选项，best 或者 random</li>
+<li>max_depth：剪枝参数，最大深度</li>
+<li>min_samples_leaf：剪枝参数，子结点最少训练样本数</li>
+<li>min_samples_split：剪枝参数，结点允许分支的最小训练样本量</li>
+<li>max_features：剪枝参数</li>
+<li>min_impurity_devrease：剪枝参数</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="n">featrue_names</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">)]</span> <span class="c1"># 查看对应特征的重要性</span>
+</code></pre></div>
+<p>DecisionTreeRegressor</p>
+<p>回归树</p>
+<p>export_graphviz</p>
+<p>可视化</p>
+<p>ExtraTreeClassifier</p>
+<p>ExtraTreeRegression</p>
+<h2 id="sklearnsvm">sklearn.svm<a class="headerlink" href="#sklearnsvm" title="Permanent link">&para;</a></h2>
+<p><a href="https://scikit-learn.org/stable/modules/classes.html?highlight=svm#module-sklearn.svm">API Reference — scikit-learn 1.0.2 documentation</a> </p>
+<p>对一个二元分类器，如果传入的是多元分类的任务，sklearn 会自动训练多个二元分类器来实现。可以使用 OneVsOneClassifier 或者 OneVsRestClassifier 来强制使用一对一或者一对多策略</p>
+<h2 id="sklearnensemble">sklearn.ensemble<a class="headerlink" href="#sklearnensemble" title="Permanent link">&para;</a></h2>
+<h3 id="voting">voting<a class="headerlink" href="#voting" title="Permanent link">&para;</a></h3>
+<p>投票分类器每个预测器使用不同的算法</p>
+<p>硬投票和软投票：硬投票选择投票数最多的类，软投票平均每个分类器的类别后给出预测，通常效果更好，因为会给予高度自信的投票更高的权重（voting="hard" &amp;&amp; voting="soft"）</p>
+<h3 id="bagging-pasting">bagging 和 pasting<a class="headerlink" href="#bagging-pasting" title="Permanent link">&para;</a></h3>
+<p>每个预测器使用相同的算法；可以通过不同的 CPU 内核甚至不同的服务器并行的训练和预测，非常易于扩展</p>
+<p>bagging：自举汇聚法，采样时有放回，pasting：采样时无放回；换句话说，两者都允许一个样本被多次采样，但只有 bagging 允许一个样本被一个预测器多次采样 </p>
+<p>bagging 因为自举法给训练子集引入了更高的多样性所以偏差比 pasting 略高，但也意味着预测器之间的关联度更低，所以集成的方差小</p>
+<p>包外评估：</p>
+<div class="highlight"><pre><span></span><code><span class="n">clf</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">obb_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">oob_score_</span><span class="p">)</span>               <span class="c1"># 包外评估分数</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">oob_decision_function_</span><span class="p">)</span>   <span class="c1"># 包外决策函数，返回概率</span>
+</code></pre></div>
+<h3 id="_1">随即补丁和随机子空间<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>随机补丁：对训练样本和特征都进行抽样</p>
+<p>随机子空间：保留所有训练实例（bootstrap=False, max_samples=1.0），但对特征进行抽样（bootstrap_features=True, max_features&lt;1.0）</p>
+<h3 id="_2">随机森林<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>随机森林是决策树的集成</p>
+<p>极端随机树（ExtraTrees）：</p>
+<ul>
+<li>
+<p>随机森林在单棵树每个结点分裂时对每个特征使用随机阈值，而不是搜索得出最佳阈值</p>
+</li>
+<li>
+<p>以更高的偏差换取了更低的方差，且训练起来快得多（因为寻找最佳阈值是决策树生长中最耗时的任务）</p>
+</li>
+</ul>
+<p>特征重要性：</p>
+<p>随机森林可以计算特征重要性；通过查看所有树上使用该特征的树结点 加权平均 减少不纯度的程度来衡量重要性，权重为其关联的训练样本的数量</p>
+<div class="highlight"><pre><span></span><code><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span>
+</code></pre></div>
+<h3 id="boosting">boosting<a class="headerlink" href="#boosting" title="Permanent link">&para;</a></h3>
+<p>提升法；缺点是无法并行，所以在扩展方面不如 bagging 和 pasting；</p>
+<p>AdaBoost：对前面的分类器分类错的样本加大权重再训练一个新的分类器</p>
+<p>梯度提升：</p>
+<ul>
+<li>让新的预测器针对前一个预测器的残差进行拟合，然后结果相加；比如 GBRT（梯度提升回归树）</li>
+<li>超参数 learning_rate 对每棵树的贡献进行缩放，如果是低值则需要更多的树来拟合，但预测的泛化效果通常更好</li>
+<li>要找到树的最佳数量可以使用提前停止法 (staged_predict() 或者 warm_start())</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># staged_predict() </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">gbrt</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">gbrt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">y_pred</span> <span class="ow">in</span> <span class="n">gbrt</span><span class="o">.</span><span class="n">staged_predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)]</span>
+<span class="n">bst_n_estimators</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># 重新训练一个</span>
+<span class="n">gbrt_best</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">bst_n_estimators</span><span class="p">)</span>
+<span class="n">gbrt_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># warm_start()</span>
+<span class="n">gbrt</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+   <span class="n">min_val_error</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+   <span class="n">error_going_up</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="k">for</span> <span class="n">n_estimators</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">120</span><span class="p">):</span>
+       <span class="n">gbrt</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span>
+       <span class="n">gbrt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+       <span class="n">y_pred</span> <span class="o">=</span> <span class="n">gbrt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+       <span class="n">val_error</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+       <span class="k">if</span> <span class="n">val_error</span> <span class="o">&lt;</span> <span class="n">min_val_error</span><span class="p">:</span>
+           <span class="n">min_val_error</span> <span class="o">=</span> <span class="n">val_error</span>
+           <span class="n">error_going_up</span> <span class="o">=</span> <span class="mi">0</span>
+       <span class="k">else</span><span class="p">:</span>
+           <span class="n">error_going_up</span> <span class="o">+=</span> <span class="mi">1</span>
+           <span class="k">if</span> <span class="n">error_going_up</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>  <span class="c1"># 验证集误差连续5此未改善</span>
+               <span class="k">break</span>  <span class="c1"># early stopping</span>
+</code></pre></div>
+<ul>
+<li>XGBoost （Extreme Gradient Boosting）提供了梯度提升的优化实现，且 API 和 sklearn 相似</li>
+</ul>
+<h3 id="stacking">stacking<a class="headerlink" href="#stacking" title="Permanent link">&para;</a></h3>
+<p>堆叠法</p>
+<p>将训练集分成 n 部分，第 1 部分训练第一层的 m 个预测器，然后把第 2 部分的样本输入第一层的预测器得到新的样本来训练第二层的预测器 ........ 最上层用一个预测器来得到最终的结果</p>
+<p>sklearn 不支持堆叠，需要自己手动实现 或者 使用开源的方案，如 DESlib</p>
+<p>RandomForestClassifier</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">ensemble</span><span class="o">.</span><span class="n">RandomForestClassifier</span> <span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">min_impurity_split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>n_estimators：树的个数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>estimators_</td>
+<td>查看森林中所有树的列表</td>
+</tr>
+<tr>
+<td>oob_score_</td>
+<td>out of bag score，袋外得分</td>
+</tr>
+<tr>
+<td>feature_importances_</td>
+<td>特征重要性</td>
+</tr>
+</tbody>
+</table>
+<p>接口：apply，fit，predict，score，predict_proba(返回每个测试样本对应的被分到每一类标签的概率)</p>
+<h2 id="sklearnmetrics">sklearn.metrics<a class="headerlink" href="#sklearnmetrics" title="Permanent link">&para;</a></h2>
+<h3 id="classification-metrics">Classification metrics<a class="headerlink" href="#classification-metrics" title="Permanent link">&para;</a></h3>
+<p>See the <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics">Classification metrics</a> section of the user guide for further details.</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score"><code>metrics.accuracy_score</code></a>(y_true, y_pred, *[, ...])</td>
+<td>Accuracy classification score.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html#sklearn.metrics.auc"><code>metrics.auc</code></a>(x, y)</td>
+<td>Compute Area Under the Curve (AUC) using the trapezoidal rule.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score"><code>metrics.average_precision_score</code></a>(y_true, ...)</td>
+<td>Compute average precision (AP) from prediction scores.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score"><code>metrics.balanced_accuracy_score</code></a>(y_true, ...)</td>
+<td>Compute the balanced accuracy.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.brier_score_loss.html#sklearn.metrics.brier_score_loss"><code>metrics.brier_score_loss</code></a>(y_true, y_prob, *)</td>
+<td>Compute the Brier score loss.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report"><code>metrics.classification_report</code></a>(y_true, y_pred, *)</td>
+<td>Build a text report showing the main classification metrics.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html#sklearn.metrics.cohen_kappa_score"><code>metrics.cohen_kappa_score</code></a>(y1, y2, *[, ...])</td>
+<td>Cohen's kappa: a statistic that measures inter-annotator agreement.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix"><code>metrics.confusion_matrix</code></a>(y_true, y_pred, *)</td>
+<td>混淆矩阵。Compute confusion matrix to evaluate the accuracy of a classification.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.dcg_score.html#sklearn.metrics.dcg_score"><code>metrics.dcg_score</code></a>(y_true, y_score, *[, k, ...])</td>
+<td>Compute Discounted Cumulative Gain.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.det_curve.html#sklearn.metrics.det_curve"><code>metrics.det_curve</code></a>(y_true, y_score[, ...])</td>
+<td>Compute error rates for different probability thresholds.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score"><code>metrics.f1_score</code></a>(y_true, y_pred, *[, ...])</td>
+<td>F1度量。Compute the F1 score, also known as balanced F-score or F-measure.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score"><code>metrics.fbeta_score</code></a>(y_true, y_pred, *, beta)</td>
+<td>Compute the F-beta score.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hamming_loss.html#sklearn.metrics.hamming_loss"><code>metrics.hamming_loss</code></a>(y_true, y_pred, *[, ...])</td>
+<td>Compute the average Hamming loss.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss"><code>metrics.hinge_loss</code></a>(y_true, pred_decision, *)</td>
+<td>Average hinge loss (non-regularized).</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.jaccard_score.html#sklearn.metrics.jaccard_score"><code>metrics.jaccard_score</code></a>(y_true, y_pred, *[, ...])</td>
+<td>Jaccard similarity coefficient score.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss"><code>metrics.log_loss</code></a>(y_true, y_pred, *[, eps, ...])</td>
+<td>Log loss, aka logistic loss or cross-entropy loss.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html#sklearn.metrics.matthews_corrcoef"><code>metrics.matthews_corrcoef</code></a>(y_true, y_pred, *)</td>
+<td>Compute the Matthews correlation coefficient (MCC).</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html#sklearn.metrics.multilabel_confusion_matrix"><code>metrics.multilabel_confusion_matrix</code></a>(y_true, ...)</td>
+<td>Compute a confusion matrix for each class or sample.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ndcg_score.html#sklearn.metrics.ndcg_score"><code>metrics.ndcg_score</code></a>(y_true, y_score, *[, k, ...])</td>
+<td>Compute Normalized Discounted Cumulative Gain.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve"><code>metrics.precision_recall_curve</code></a>(y_true, ...)</td>
+<td>精度召回率曲线。Compute precision-recall pairs for different probability thresholds.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support"><code>metrics.precision_recall_fscore_support</code></a>(...)</td>
+<td>Compute precision, recall, F-measure and support for each class.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score"><code>metrics.precision_score</code></a>(y_true, y_pred, *[, ...])</td>
+<td>精度。Compute the precision.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score"><code>metrics.recall_score</code></a>(y_true, y_pred, *[, ...])</td>
+<td>召回率。Compute the recall.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score"><code>metrics.roc_auc_score</code></a>(y_true, y_score, *[, ...])</td>
+<td>计算 AUC。Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC) from prediction scores.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve"><code>metrics.roc_curve</code></a>(y_true, y_score, *[, ...])</td>
+<td>ROC曲线。Compute Receiver operating characteristic (ROC).</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html#sklearn.metrics.top_k_accuracy_score"><code>metrics.top_k_accuracy_score</code></a>(y_true, y_score, *)</td>
+<td>Top-k Accuracy classification score.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.zero_one_loss.html#sklearn.metrics.zero_one_loss"><code>metrics.zero_one_loss</code></a>(y_true, y_pred, *[, ...])</td>
+<td>Zero-one classification loss.</td>
+</tr>
+</tbody>
+</table>
+<p>mean_squared_error</p>
+<h2 id="sklearnmodel_selection">sklearn.model_selection<a class="headerlink" href="#sklearnmodel_selection" title="Permanent link">&para;</a></h2>
+<h3 id="splitter-classes">Splitter Classes<a class="headerlink" href="#splitter-classes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupKFold.html#sklearn.model_selection.GroupKFold"><code>model_selection.GroupKFold</code></a>([n_splits])</td>
+<td>K-fold iterator variant with non-overlapping groups.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupShuffleSplit.html#sklearn.model_selection.GroupShuffleSplit"><code>model_selection.GroupShuffleSplit</code></a>([...])</td>
+<td>Shuffle-Group(s)-Out cross-validation iterator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold"><code>model_selection.KFold</code></a>([n_splits, shuffle, ...])</td>
+<td>K-Folds cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneGroupOut.html#sklearn.model_selection.LeaveOneGroupOut"><code>model_selection.LeaveOneGroupOut</code></a>()</td>
+<td>Leave One Group Out cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeavePGroupsOut.html#sklearn.model_selection.LeavePGroupsOut"><code>model_selection.LeavePGroupsOut</code></a>(n_groups)</td>
+<td>Leave P Group(s) Out cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeaveOneOut.html#sklearn.model_selection.LeaveOneOut"><code>model_selection.LeaveOneOut</code></a>()</td>
+<td>Leave-One-Out cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.LeavePOut.html#sklearn.model_selection.LeavePOut"><code>model_selection.LeavePOut</code></a>(p)</td>
+<td>Leave-P-Out cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.PredefinedSplit.html#sklearn.model_selection.PredefinedSplit"><code>model_selection.PredefinedSplit</code></a>(test_fold)</td>
+<td>Predefined split cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedKFold.html#sklearn.model_selection.RepeatedKFold"><code>model_selection.RepeatedKFold</code></a>(*[, n_splits, ...])</td>
+<td>Repeated K-Fold cross validator.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html#sklearn.model_selection.RepeatedStratifiedKFold"><code>model_selection.RepeatedStratifiedKFold</code></a>(*[, ...])</td>
+<td>Repeated Stratified K-Fold cross validator.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html#sklearn.model_selection.ShuffleSplit"><code>model_selection.ShuffleSplit</code></a>([n_splits, ...])</td>
+<td>Random permutation cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html#sklearn.model_selection.StratifiedKFold"><code>model_selection.StratifiedKFold</code></a>([n_splits, ...])</td>
+<td>Stratified K-Folds cross-validator.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html#sklearn.model_selection.StratifiedShuffleSplit"><code>model_selection.StratifiedShuffleSplit</code></a>([...])</td>
+<td>Stratified ShuffleSplit cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedGroupKFold.html#sklearn.model_selection.StratifiedGroupKFold"><code>model_selection.StratifiedGroupKFold</code></a>([...])</td>
+<td>Stratified K-Folds iterator variant with non-overlapping groups.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html#sklearn.model_selection.TimeSeriesSplit"><code>model_selection.TimeSeriesSplit</code></a>([n_splits, ...])</td>
+<td>Time Series cross-validator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="splitter-functions">Splitter Functions<a class="headerlink" href="#splitter-functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.check_cv.html#sklearn.model_selection.check_cv"><code>model_selection.check_cv</code></a>([cv, y, classifier])</td>
+<td>Input checker utility for building a cross-validator</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split"><code>model_selection.train_test_split</code></a>(*arrays[, ...])</td>
+<td>Split arrays or matrices into random train and test subsets.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hyper-parameter-optimizers">Hyper-parameter optimizers<a class="headerlink" href="#hyper-parameter-optimizers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV"><code>model_selection.GridSearchCV</code></a>(estimator, ...)</td>
+<td>Exhaustive search over specified parameter values for an estimator.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.HalvingGridSearchCV.html#sklearn.model_selection.HalvingGridSearchCV"><code>model_selection.HalvingGridSearchCV</code></a>(...[, ...])</td>
+<td>Search over specified parameter values with successive halving.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ParameterGrid.html#sklearn.model_selection.ParameterGrid"><code>model_selection.ParameterGrid</code></a>(param_grid)</td>
+<td>Grid of parameters with a discrete number of values for each.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ParameterSampler.html#sklearn.model_selection.ParameterSampler"><code>model_selection.ParameterSampler</code></a>(...[, ...])</td>
+<td>Generator on parameters sampled from given distributions.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV"><code>model_selection.RandomizedSearchCV</code></a>(...[, ...])</td>
+<td>Randomized search on hyper parameters.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.HalvingRandomSearchCV.html#sklearn.model_selection.HalvingRandomSearchCV"><code>model_selection.HalvingRandomSearchCV</code></a>(...[, ...])</td>
+<td>Randomized search on hyper parameters.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="model-validation">Model validation<a class="headerlink" href="#model-validation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html#sklearn.model_selection.cross_validate"><code>model_selection.cross_validate</code></a>(estimator, X)</td>
+<td>Evaluate metric(s) by cross-validation and also record fit/score times.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict"><code>model_selection.cross_val_predict</code></a>(estimator, X)</td>
+<td>Generate cross-validated estimates for each input data point.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score"><code>model_selection.cross_val_score</code></a>(estimator, X)</td>
+<td>Evaluate a score by cross-validation.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html#sklearn.model_selection.learning_curve"><code>model_selection.learning_curve</code></a>(estimator, X, ...)</td>
+<td>Learning curve.</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.permutation_test_score.html#sklearn.model_selection.permutation_test_score"><code>model_selection.permutation_test_score</code></a>(...)</td>
+<td>Evaluate the significance of a cross-validated score with permutations</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.validation_curve.html#sklearn.model_selection.validation_curve"><code>model_selection.validation_curve</code></a>(estimator, ...)</td>
+<td>Validation curve.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>train_test_split()</strong></p>
+<p>分数据集和测试集</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+</code></pre></div>
+<p>args:</p>
+<ul>
+<li>test_size：If float，表示取多少比例当测试集；If int，表示取多少个当测试集；If None：取 1-train_size，如果 train_size 也是 None 取 0.25</li>
+<li>train_size：同 test_size，If None，取 1-test_size</li>
+<li>random_state：随机数种子</li>
+</ul>
+<p>returns:</p>
+<ul>
+<li>list, length=2 * len(arrays)</li>
+</ul>
+<p><strong>cross_val_score()</strong></p>
+<p>k折交叉验证，sklearn 的交叉验证更倾向于使用效用函数（越大越好）</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">rfc_s</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p>args：</p>
+<ul>
+<li>estimator：算法模型</li>
+<li>X：数据</li>
+<li>y：标签</li>
+<li>cv：折数</li>
+</ul>
+<p>Returns：</p>
+<ul>
+<li><strong>scores</strong> ：<em>ndarray of float of shape=(len(list(cv)),)</em> </li>
+</ul>
+<p><strong>StratifiedShuffleSplit()</strong> </p>
+<p>提供分层抽样功能，确保每个标签对应的样本的比例</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">sss</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRAIN:&quot;</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="s2">&quot;TEST:&quot;</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+<span class="o">...</span>     <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+<span class="n">TRAIN</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span> <span class="n">TEST</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">TRAIN</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">]</span> <span class="n">TEST</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">TRAIN</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">2</span><span class="p">]</span> <span class="n">TEST</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">TRAIN</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="n">TEST</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">TRAIN</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">1</span><span class="p">]</span> <span class="n">TEST</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<p>args:</p>
+<ul>
+<li>n_splits (<em>int</em>)：split 迭代次数</li>
+</ul>
+<p>methods：</p>
+<ul>
+<li>splits</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>GridSearchCV</strong></p>
+<p>网格搜索</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pre_dispatch</span><span class="o">=</span><span class="s1">&#39;2*n_jobs&#39;</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="n">nan</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>estimator</li>
+<li>param_grid：字典类型，要穷举的变量，可以是一个字典列表</li>
+<li>cv：K折交叉验证</li>
+<li>refit：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#调整max_depth</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+<span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">39</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">GS</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">rfc</span><span class="p">,</span><span class="n">param_grid</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">GS</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">GS</span><span class="o">.</span><span class="n">best_params_</span>      <span class="c1"># 返回最好的参数</span>
+<span class="n">GS</span><span class="o">.</span><span class="n">best_score_</span>       <span class="c1"># 返回最高的分数</span>
+<span class="n">GS</span><span class="o">.</span><span class="n">best_estimator_</span>       <span class="c1"># 返回最好的估算器</span>
+</code></pre></div>
+<p><strong>RandomizedSearchCV()</strong></p>
+<p><strong>cross_val_predict()</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">cross_val_predict</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fit_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pre_dispatch</span><span class="o">=</span><span class="s1">&#39;2*n_jobs&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Args：</p>
+<ul>
+<li>method：eg："decision_function"，"dict_proba"</li>
+</ul>
+<h2 id="preprocessing">preprocessing<a class="headerlink" href="#preprocessing" title="Permanent link">&para;</a></h2>
+<p>数据预处理</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 以MinMaxScaler为例子</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">]]</span>
+
+<span class="c1">#实现归一化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span> <span class="c1">#实例化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#fit，在这里本质是生成min(x)和max(x)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#通过接口导出结果</span>
+<span class="n">result</span>
+<span class="c1"># 上面的代码等同于下面这句</span>
+<span class="n">result_</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#训练和导出结果一步达成</span>
+
+<span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1">#将归一化后的结果逆转</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>无量纲化类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StandardScaler</td>
+<td></td>
+</tr>
+<tr>
+<td>MinMaxScaler</td>
+<td></td>
+</tr>
+<tr>
+<td>MaxAbsScaler</td>
+<td></td>
+</tr>
+<tr>
+<td>RobustScaler</td>
+<td></td>
+</tr>
+<tr>
+<td>Normalizer</td>
+<td></td>
+</tr>
+<tr>
+<td>PowerTransformer</td>
+<td></td>
+</tr>
+<tr>
+<td>QuantileTransformer</td>
+<td></td>
+</tr>
+<tr>
+<td>KernelCenterer</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="minmaxscaler">MinMaxScaler<a class="headerlink" href="#minmaxscaler" title="Permanent link">&para;</a></h3>
+<p>数据归一化
+$$
+x=\frac{x-min}{max-min}
+$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>feature_range：归一化范围，默认 <span class="arithmatex">\([0,1]\)</span> </li>
+</ul>
+<p><strong>Attributes</strong>：</p>
+<ul>
+<li>data_min_</li>
+<li>data_max_</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#当X中的特征数量非常多的时候，fit会报错并表示，数据量太大了我计算不了</span>
+<span class="c1">#此时使用partial_fit作为训练接口</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="strandardscaler">StrandardScaler<a class="headerlink" href="#strandardscaler" title="Permanent link">&para;</a></h3>
+<p>数据标准化
+$$
+x=\frac{x-\mu}{\sigma}
+$$</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Attributes</strong>：</p>
+<ul>
+<li>mean_</li>
+<li>var_</li>
+</ul>
+<h3 id="_3">处理离散变量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>LabelEncoder：标签编码器，离散类变成数值类，输出只有一列</li>
+<li>OrdinalEncoder：特征编码器，相当于 LabelEncoder 支持多列的版本</li>
+<li>OneHotEncoder：独热编码，哑变量；也可以使用 Pandas 处理；会使用稀疏矩阵存储</li>
+</ul>
+<h3 id="binarizer">Binarizer<a class="headerlink" href="#binarizer" title="Permanent link">&para;</a></h3>
+<p>连续数值根据阈值二值化</p>
+<h3 id="kbindiscretizer">KBinDiscretizer<a class="headerlink" href="#kbindiscretizer" title="Permanent link">&para;</a></h3>
+<p>连续数值分箱</p>
+<h2 id="sklearndatasets">sklearn.datasets<a class="headerlink" href="#sklearndatasets" title="Permanent link">&para;</a></h2>
+<p>自带的数据集</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 以红酒数据集为例</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_wine</span>
+<span class="n">wine</span> <span class="o">=</span> <span class="n">load_wine</span><span class="p">()</span>
+<span class="c1"># wine 数据集中的属性</span>
+<span class="n">wine</span><span class="o">.</span><span class="n">key</span>
+<span class="n">wine</span><span class="o">.</span><span class="n">data</span>
+<span class="n">wine</span><span class="o">.</span><span class="n">target</span>
+<span class="n">wine</span><span class="o">.</span><span class="n">feature_names</span>
+<span class="n">wine</span><span class="o">.</span><span class="n">target_names</span>
+</code></pre></div>
+<p>load_wine()</p>
+<p>fetch_openml()</p>
+<div class="highlight"><pre><span></span><code><span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="sklearnimpute">sklearn.impute<a class="headerlink" href="#sklearnimpute" title="Permanent link">&para;</a></h2>
+<p>估算器</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+<span class="n">imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="simpleimputer">SimpleImputer<a class="headerlink" href="#simpleimputer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">impute</span><span class="o">.</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_indicator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Attributes:</p>
+<ul>
+<li>statistics_ (<em>array of shape</em>)：The imputation fill value for each feature</li>
+</ul>
+<p>Methods:</p>
+<ul>
+<li>fit()</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>transform()</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>fit_transform()</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="sklearnpipeline">sklearn.pipeline<a class="headerlink" href="#sklearnpipeline" title="Permanent link">&para;</a></h2>
+<h3 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">sklearn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Pipeline of transforms with a final estimator. 最后一个是估算器前面都是转换器（也就是说，必须要有 fit_transform() 方法）；当调用流水线的 fit() 方法时依次调用转换器的 fit_transform() 然后调用最后的估算器的 fit()</p>
+<div class="highlight"><pre><span></span><code><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;svc&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</code></pre></div>
+<h2 id="_4">降维<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>随机投影 random_projection</p>
+<p>多维缩放</p>
+<h3 id="sklearndecomposition">sklearn.decomposition<a class="headerlink" href="#sklearndecomposition" title="Permanent link">&para;</a></h3>
+<p>PCA</p>
+<h3 id="sklearnmanifold">sklearn.manifold<a class="headerlink" href="#sklearnmanifold" title="Permanent link">&para;</a></h3>
+<p>LLE</p>
+<h2 id="sklearncompose">sklearn.compose<a class="headerlink" href="#sklearncompose" title="Permanent link">&para;</a></h2>
+<h3 id="columntransformer">ColumnTransformer<a class="headerlink" href="#columntransformer" title="Permanent link">&para;</a></h3>
+<p>能够处理所有列的转换器</p>
+<h2 id="save-load">模型 save &amp;&amp; load<a class="headerlink" href="#save-load" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">joblib</span>
+<span class="c1"># save</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span> <span class="s2">&quot;my_model.pkl&quot;</span><span class="p">)</span>
+<span class="c1"># load</span>
+<span class="n">my_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;my_model.pkl&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_5">参数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>tol (<em>float</em>)：Tolerance for stopping criteria. 损失下降小于 tol 时停止训练</li>
+</ul>
+<h2 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">自定义转换器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">决策树可视化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">conda</span> <span class="n">install</span> <span class="n">graphviz</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">graphviz</span>
+</code></pre></div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

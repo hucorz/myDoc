@@ -1,0 +1,1836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/%E7%AC%94%E8%AE%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>线性代数 - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              线性代数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_what-are-we-going-to-learn" class="md-nav__link">
+    1_What are we going to learn?
+  </a>
+  
+    <nav class="md-nav" aria-label="1_What are we going to learn?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system" class="md-nav__link">
+    System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-properties" class="md-nav__link">
+    Two properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_system-of-linear-equations" class="md-nav__link">
+    2_System of linear equations
+  </a>
+  
+    <nav class="md-nav" aria-label="2_System of linear equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    术语
+  </a>
+  
+    <nav class="md-nav" aria-label="术语">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    定义域 &amp;&amp; 值域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    一对一 &amp;&amp; 映成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    线性系统 与 线性方程组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_vector" class="md-nav__link">
+    3_Vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_matrix" class="md-nav__link">
+    4_Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_matrix-vector-product" class="md-nav__link">
+    5_Matrix-vector product
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6_having-solution-or-not" class="md-nav__link">
+    6_Having solution or not
+  </a>
+  
+    <nav class="md-nav" aria-label="6_Having solution or not">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#span" class="md-nav__link">
+    Span
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7_how-many-solutions" class="md-nav__link">
+    7_How many solutions
+  </a>
+  
+    <nav class="md-nav" aria-label="7_How many solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependent" class="md-nav__link">
+    Dependent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rank-nullity" class="md-nav__link">
+    Rank &amp;&amp; Nullity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8_solving-system-of-linear-equations" class="md-nav__link">
+    8_Solving system of linear equations
+  </a>
+  
+    <nav class="md-nav" aria-label="8_Solving system of linear equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rref" class="md-nav__link">
+    RREF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9_what-can-we-know-from-rref" class="md-nav__link">
+    9_What can we know from RREF
+  </a>
+  
+    <nav class="md-nav" aria-label="9_What can we know from RREF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rref-vs-linear-combination" class="md-nav__link">
+    RREF v.s. Linear Combination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rref-vs-independent" class="md-nav__link">
+    RREF v.s. Independent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rref-vs-rank" class="md-nav__link">
+    RREF v.s. Rank
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rref-vs-span" class="md-nav__link">
+    RREF v.s. Span
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10_matrix-multiplication" class="md-nav__link">
+    10_Matrix Multiplication
+  </a>
+  
+    <nav class="md-nav" aria-label="10_Matrix Multiplication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    Definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property" class="md-nav__link">
+    Property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-matrix" class="md-nav__link">
+    Special Matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11_matrix-inverse" class="md-nav__link">
+    11_Matrix Inverse
+  </a>
+  
+    <nav class="md-nav" aria-label="11_Matrix Inverse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_1" class="md-nav__link">
+    Definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property_1" class="md-nav__link">
+    Property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invertible" class="md-nav__link">
+    Invertible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-of-elementary-matrices" class="md-nav__link">
+    Inverse of Elementary Matrices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-of-general-matrices" class="md-nav__link">
+    Inverse of General Matrices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12_subspace" class="md-nav__link">
+    12_Subspace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13_basis" class="md-nav__link">
+    13_Basis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14_column-space-null-space-row-space" class="md-nav__link">
+    14_Column Space, Null Space, Row Space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15_coordinate-system" class="md-nav__link">
+    15_Coordinate System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16_linear-function-in-coordinate-system" class="md-nav__link">
+    16_Linear Function in Coordinate System
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17_determinant" class="md-nav__link">
+    17_Determinant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18_eigenvalues-and-eigenvectors" class="md-nav__link">
+    18_Eigenvalues and Eigenvectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19_diagonalization" class="md-nav__link">
+    19_Diagonalization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20_page-rank" class="md-nav__link">
+    20_Page Rank
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21_orthogonality" class="md-nav__link">
+    21_Orthogonality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22_orthogonal-projection" class="md-nav__link">
+    22_Orthogonal Projection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23_orthogonal-basis" class="md-nav__link">
+    23_Orthogonal Basis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24_orthogonal-matrix-and-symmetric-matrix" class="md-nav__link">
+    24_Orthogonal Matrix and Symmetric Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25_general-vectors" class="md-nav__link">
+    25_General Vectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26_singular-value-decomposition" class="md-nav__link">
+    26_Singular Value Decomposition
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/笔记/线性代数.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="_1">线性代数<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">说明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>李宏毅老师的线性代数笔记</p>
+<p>Youtube：<a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ">Hung-yi Lee - YouTube</a> </p>
+<p>课程视频：<a href="https://www.bilibili.com/video/BV1gW41117by">【李宏毅】Linear Algebra 線性代數 (2018,Fall)</a></p>
+<p>笔记参考：</p>
+<p><a href="https://gitee.com/rainseasion/leela-notes">leela-notes: 李宏毅《线性代数》笔记</a> </p>
+<p><a href="https://blog.csdn.net/cprimesplus/article/details/95247030?utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link">李宏毅《Linear Algebra》学习笔记_李宏毅线性代数笔记</a> </p>
+<h2 id="1_what-are-we-going-to-learn">1_What are we going to learn?<a class="headerlink" href="#1_what-are-we-going-to-learn" title="Permanent link">&para;</a></h2>
+<h3 id="system">System<a class="headerlink" href="#system" title="Permanent link">&para;</a></h3>
+<p>system 表示一个有 input 和 output 的系统，也可以叫做 function，transformation，operator</p>
+<p>比如：语言识别，语音助手，电话</p>
+<p><img alt="chapter1-2" src="C:\Users\znk\Desktop\现代\chapter1-2.png" /></p>
+<h3 id="two-properties">Two properties<a class="headerlink" href="#two-properties" title="Permanent link">&para;</a></h3>
+<ol>
+<li>persevering multiplication</li>
+<li>persevering addition</li>
+</ol>
+<p><img alt="chapter1-3" src="C:\Users\znk\Desktop\现代\chapter1-3.png" /></p>
+<p>举个反例：<span class="arithmatex">\(input:x,\ output:x^2\)</span> 就不是一个 Linear System</p>
+<p>这 2 个性质对多输入的 system 同样适用</p>
+<p><img alt="chapter1-5" src="C:\Users\znk\Desktop\现代\chapter1-5.png" /></p>
+<h3 id="application">Application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Circuits</li>
+</ul>
+<p>电路中 input 是电压源或者电流源，output 是负载上的电源和电流</p>
+<ul>
+<li>信号与系统</li>
+</ul>
+<p>Fourier Transorm 其实是 Linear System，只是从 2 给不同的角度观看同一个信号</p>
+<ul>
+<li>PageRank</li>
+</ul>
+<p>搜索引擎中对不同网页的排序，后面会细讲</p>
+<ul>
+<li>Computer Graphics</li>
+</ul>
+<p>图形的变换，比如旋转</p>
+<h2 id="2_system-of-linear-equations">2_System of linear equations<a class="headerlink" href="#2_system-of-linear-equations" title="Permanent link">&para;</a></h2>
+<p>System of Linear Equations：多元一次联立方程式</p>
+<h3 id="_3">术语<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">定义域 &amp;&amp; 值域<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><img alt="chapter2-4" src="C:\Users\znk\Desktop\现代\chapter2-4.png" /></p>
+<p>Domain(定义域)：input 的集合</p>
+<p>Range(值域) 是 output 的集合，比 Co-domain(对应域) 小或者相同</p>
+<p>Co-domain 指的是对一个 function 不假思索的 output的范围，比如 <span class="arithmatex">\(y=x^2\)</span>，input 是实数，不分析这个 function 的内涵， output 也一定是实数，所以 Co-domain 是实数</p>
+<h4 id="_5">一对一 &amp;&amp; 映成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><img alt="chapter2-5" src="C:\Users\znk\Desktop\现代\chapter2-5.png" /></p>
+<p>One-to-one：一对一，单射</p>
+<p>Onto：Range 等于 Co-domain，满射</p>
+<h3 id="_6">线性系统 与 线性方程组<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>只需要满足 Linear System 的两个 properties 就是线性系统</p>
+<p>Linear system 并不是一条斜着的直线，比如 <code>微分</code> 与 <code>积分</code> 同样也是线性系统（所以说 Fourier Transorm 是线性系统），因为他们满足两个 properties</p>
+<p><img alt="chapter2-7" src="C:\Users\znk\Desktop\现代\chapter2-7.png" /></p>
+<p>这门课研究的 Linear System 输入是一个 n 维的 向量，输出是一个 m 维向量，这种表示方式可以 apply 在非常多的地方</p>
+<p>这种 Linear System 可以写成 System of linear equations</p>
+<p><img alt="chapter2-8" src="C:\Users\znk\Desktop\现代\chapter2-8.png" /></p>
+<h2 id="3_vector">3_Vector<a class="headerlink" href="#3_vector" title="Permanent link">&para;</a></h2>
+<p>如果不刻意说明，向量都认为是 <code>列向量</code></p>
+<p><span class="arithmatex">\(R^n\)</span> 代表所有 n 维向量的集合，比如 <span class="arithmatex">\(R^2\)</span> 表示整个 2 维平面</p>
+<h2 id="4_matrix">4_Matrix<a class="headerlink" href="#4_matrix" title="Permanent link">&para;</a></h2>
+<p>讲 Vector 放在一起，就变成了 Matrix</p>
+<div class="arithmatex">\[
+A=[a_1,a_2,a_3]=\begin{bmatrix}
+2 &amp;3  &amp;5 \\ 
+3 &amp; 1 &amp; -1\\ 
+ -2&amp;  1&amp; 1
+\end{bmatrix}
+\]</div>
+<p><span class="arithmatex">\(M_{n\times m}\)</span> 表示所有 n 行 m 列的 Matrix（先 row 再 column）</p>
+<p>特殊矩阵：</p>
+<p><span class="arithmatex">\(O\)</span>：所有 element 都是 0 的矩阵，可以是任何的 size，<span class="arithmatex">\(O_{2\times3}\)</span> 指定大小</p>
+<p><span class="arithmatex">\(I\)</span>：Identity matrix，单位矩阵，必须是正方形且左上到右下的元素是1，其他是 0，<span class="arithmatex">\(I_2\)</span> 表示是 <span class="arithmatex">\(2\times 2\)</span> 的大小</p>
+<h2 id="5_matrix-vector-product">5_Matrix-vector product<a class="headerlink" href="#5_matrix-vector-product" title="Permanent link">&para;</a></h2>
+<p>假设 <span class="arithmatex">\(A\)</span> 是 Matrix，<span class="arithmatex">\(x\)</span> 是 Vector</p>
+<p><span class="arithmatex">\(Ax\)</span> 可以看成是多元联立方程式</p>
+<ul>
+<li>从行的角度：<span class="arithmatex">\(Ax\)</span> 可以看成 Matrix 的每一行和 <span class="arithmatex">\(x\)</span> 做内积组成的 Vector</li>
+<li>从列的角度：<span class="arithmatex">\(A\)</span> 中的每列（每列是一个Vector）做 <span class="arithmatex">\(x\)</span> 的线性组合</li>
+</ul>
+<p>如果 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 都是 <span class="arithmatex">\(m\times n\)</span> 的 Matrix，<span class="arithmatex">\(Aw=Bw\)</span> 对任意的 <span class="arithmatex">\(w\)</span> 成立，<span class="arithmatex">\(A=B\)</span> </p>
+<h2 id="6_having-solution-or-not">6_Having solution or not<a class="headerlink" href="#6_having-solution-or-not" title="Permanent link">&para;</a></h2>
+<p>System of Linear Equations 是否有解？</p>
+<p>方程有解就说是 consistent（相容的），不然就是 inconsistent</p>
+<p>二维中 2 个非平行的 Vector 可以表示任何的 Vector（高维不一定），二维中非平行一定有解，有解不一定非平行</p>
+<h3 id="span">Span<a class="headerlink" href="#span" title="Permanent link">&para;</a></h3>
+<p>一个 Vector Set <span class="arithmatex">\(S=\{v_1, v_2, ...\}\)</span> 的所有 Linear Combination 的集合，叫做 Span S</p>
+<p>假如一个 Vector Set <span class="arithmatex">\(V\)</span> = Span <span class="arithmatex">\(S\)</span>，那 <span class="arithmatex">\(S\)</span> 就是 <span class="arithmatex">\(V\)</span> 的 generating set</p>
+<p>Standard Vector：标准向量</p>
+<p>有没有解的问题可以变成 <span class="arithmatex">\(A\)</span> 的 所有 column 进行 Span 得到的 Vector Set V 中是否有 B</p>
+<h2 id="7_how-many-solutions">7_How many solutions<a class="headerlink" href="#7_how-many-solutions" title="Permanent link">&para;</a></h2>
+<p>有解的情况下有多少解？</p>
+<p>唯一解：<span class="arithmatex">\(A\)</span> 的 column 是 independent 或者 <span class="arithmatex">\(Rank\ A = n\)</span> 或者 <span class="arithmatex">\(Nullity\ A=0\)</span> </p>
+<p>无穷多解：<span class="arithmatex">\(A\)</span> 的 column 是 dependent 等于 <span class="arithmatex">\(Rank\ A &lt; n\)</span> 或者 <span class="arithmatex">\(Nullity\ A&gt;0\)</span>  </p>
+<p>其中 <span class="arithmatex">\(Rank+Nullity=n\)</span> </p>
+<p><strong>homogeneous</strong>：齐次的，若有一个 system linear equation 的 constant term 等于 0（<span class="arithmatex">\(b=0\)</span>），那么就说是齐次的， homogeneous linear equation一定有解，至少有一组解是 Zero Vector</p>
+<p>geneous：非齐次</p>
+<p><strong>证明有解时 dependent 有无穷多解</strong>：</p>
+<p>易证 <span class="arithmatex">\(Au=0\)</span> 有无穷解，又 <span class="arithmatex">\(Av=b\)</span> 有解，相加即可 </p>
+<h3 id="dependent">Dependent<a class="headerlink" href="#dependent" title="Permanent link">&para;</a></h3>
+<p>线性相关（dependent）与 线性无关（independent）</p>
+<p>一组 Vector Set 是 dependent 的满足：能找到一组 scalar 不全为 0，对 Vector Set 作 Linear Combination 后为 zero Vector，否则就是 independent</p>
+<h3 id="rank-nullity">Rank &amp;&amp; Nullity<a class="headerlink" href="#rank-nullity" title="Permanent link">&para;</a></h3>
+<p>Rank：Matrix 中最多的 independent columns 的数目</p>
+<p>Nullity：<span class="arithmatex">\(n-Rank\)</span></p>
+<h2 id="8_solving-system-of-linear-equations">8_Solving system of linear equations<a class="headerlink" href="#8_solving-system-of-linear-equations" title="Permanent link">&para;</a></h2>
+<p>三种等价变化：</p>
+<ol>
+<li>Interchange any two rows of the matrix </li>
+<li>Multiply every entry of some row by the same nonzero scalar</li>
+<li>Add a multiple of one row of the matrix to another row</li>
+</ol>
+<h3 id="rref">RREF<a class="headerlink" href="#rref" title="Permanent link">&para;</a></h3>
+<p>RREF：Reduced Row Echelon Form，简化列梯形矩阵</p>
+<p>Row Echelon Form：</p>
+<ol>
+<li>Each nonzero row lies  above every zero row </li>
+<li>The leading entries are in echelon form</li>
+</ol>
+<p><strong>RREF</strong>：</p>
+<ol>
+<li>Row Echelon Form</li>
+<li>The columns containing  the leading entries are  standard vectors</li>
+</ol>
+<p><strong>Gaussian elimination</strong>：an algorithm for finding the  reduced row echelon form of a matrix</p>
+<h2 id="9_what-can-we-know-from-rref">9_What can we know from RREF<a class="headerlink" href="#9_what-can-we-know-from-rref" title="Permanent link">&para;</a></h2>
+<p>Augmented Matrix：增广矩阵</p>
+<h3 id="rref-vs-linear-combination">RREF v.s. Linear Combination<a class="headerlink" href="#rref-vs-linear-combination" title="Permanent link">&para;</a></h3>
+<p>Column Correspondence Theorem：初等变换不改变列与列之间的线性组合关系</p>
+<p>假设 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(A\)</span> 的 RREF，Span <span class="arithmatex">\(A\)</span> = Span <span class="arithmatex">\(R\)</span> </p>
+<h3 id="rref-vs-independent">RREF v.s. Independent<a class="headerlink" href="#rref-vs-independent" title="Permanent link">&para;</a></h3>
+<p>pivot columns：RREF 中的 Leading entries 所在列对应到 <span class="arithmatex">\(A\)</span> 的列，是 independent 的</p>
+<p><img alt="chapter9-1" src="C:\Users\znk\Desktop\现代\chapter9-1.png" /></p>
+<p>The non-pivot columns are the linear combination of the  previous pivot columns</p>
+<p><img alt="chapter9-2" src="C:\Users\znk\Desktop\现代\chapter9-2.png" /></p>
+<p>Independent：Every column in  RREF(A) is standard  vector 或者 Every column is a  pivot column</p>
+<p>矮胖型的 Matrix：行数 &lt; 列数   =&gt;   dependent</p>
+<p>More than m vectors（列向量） in <span class="arithmatex">\(R^m\)</span> must be dependent</p>
+<p>以 <span class="arithmatex">\(2\times3\)</span> 的矮胖型 Matrix 举例，可以理解为 input 3维，output 2 维，也就是降维，那么 output（b）在高维（input）上的映射就可以是无穷多个点</p>
+<h3 id="rref-vs-rank">RREF v.s. Rank<a class="headerlink" href="#rref-vs-rank" title="Permanent link">&para;</a></h3>
+<p>Rank = Maximum number of Independent Columns </p>
+<p>​        = Number of Pivot Column </p>
+<p>​        = Number of Non-zero rows in RREF</p>
+<p>Properties of Rank from RREF：</p>
+<ol>
+<li>Rank A ≤ min(m, n)</li>
+<li>If m &lt; n, the columns of A is dependent</li>
+<li>In <span class="arithmatex">\(R^m\)</span>, you cannot find more than m vectors that are  independent</li>
+</ol>
+<p>Rank = Maximum number of  Independent Columns 或者 Number of Pivot  Column 或者 Number of Non-zero  rows of RREF 或者 Number of Basic  Variables</p>
+<p>Nullity = no. column - rank 或者 Number of Free  Equations</p>
+<p>Nullity <span class="arithmatex">\(\not =\)</span> Number of zero rows of RREF</p>
+<h3 id="rref-vs-span">RREF v.s. Span<a class="headerlink" href="#rref-vs-span" title="Permanent link">&para;</a></h3>
+<p>Given <span class="arithmatex">\(Ax=b\)</span> </p>
+<p>Rank A <span class="arithmatex">\(\not=\)</span> rank [A b]</p>
+<p>Ax = b is consistent for <strong>every</strong> b </p>
+<p><span class="arithmatex">\(\Harr\)</span> RREF of [A b] cannot have a row whose  only non-zero entry is at the last column </p>
+<p><span class="arithmatex">\(\Harr\)</span> RREF of A cannot have zero row </p>
+<p><span class="arithmatex">\(\Harr\)</span> Rank A = no. of rows </p>
+<h2 id="10_matrix-multiplication">10_Matrix Multiplication<a class="headerlink" href="#10_matrix-multiplication" title="Permanent link">&para;</a></h2>
+<h3 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(C=AB\)</span>，<span class="arithmatex">\(C\)</span> 这个变换可以理解成 input 先经过 <span class="arithmatex">\(B\)</span> 变换再经过 <span class="arithmatex">\(A\)</span> 变化</p>
+<p>4 个不同的角度看 Matrix Multiplication</p>
+<ul>
+<li>行列，inner product，<span class="arithmatex">\(c_{ij}\)</span> 为 <span class="arithmatex">\(A\)</span> 的 <span class="arithmatex">\(i\)</span> 行 与 <span class="arithmatex">\(B\)</span> 的 <span class="arithmatex">\(j\)</span> 列的内积</li>
+</ul>
+<p><img alt="chapter10-1" src="C:\Users\znk\Desktop\现代\chapter10-1.png" /></p>
+<ul>
+<li>列列，Linear combination of columns，对 <span class="arithmatex">\(A\)</span> 中 column 做 <span class="arithmatex">\(B\)</span> 的列数次不同的线性组合，然后横向组合起来</li>
+</ul>
+<p><img alt="chapter10-2" src="C:\Users\znk\Desktop\现代\chapter10-2.png" /></p>
+<ul>
+<li>行行，Linear combination of rows，对 <span class="arithmatex">\(B\)</span> 中 row 做 <span class="arithmatex">\(A\)</span> 的列数次不同的线性组合，然后纵向组合起来</li>
+</ul>
+<p><img alt="chapter10-3" src="C:\Users\znk\Desktop\现代\chapter10-3.png" /></p>
+<ul>
+<li>列行，summation of matrices，<span class="arithmatex">\(C=AB=a_1b_1^T+a_2b_2^T+...+a_nb_n^T\)</span>，可以看成是一堆 Rank=1 的 Matrix 相加</li>
+</ul>
+<p><img alt="chapter10-4" src="C:\Users\znk\Desktop\现代\chapter10-4.png" /></p>
+<p>Block Multiplication</p>
+<p>分 Block 的方式：A 中列的划分和 B 中行的划分对应，A 中行的划分对应 B 中列的划分</p>
+<p><img alt="chapter10-5" src="C:\Users\znk\Desktop\现代\chapter10-5.png" /></p>
+<h3 id="property">Property<a class="headerlink" href="#property" title="Permanent link">&para;</a></h3>
+<ul>
+<li><span class="arithmatex">\(AB\not=BA\)</span> </li>
+<li><span class="arithmatex">\((AC)^T=C^TA^T\)</span> </li>
+<li><span class="arithmatex">\(A(CP)=(AC)P\)</span>，但是不同的方式运算量区别会很大</li>
+</ul>
+<h3 id="special-matrix">Special Matrix<a class="headerlink" href="#special-matrix" title="Permanent link">&para;</a></h3>
+<p>Diagonal Matrix：对角矩阵</p>
+<p>Symmetric Matrix：对称矩阵</p>
+<h2 id="11_matrix-inverse">11_Matrix Inverse<a class="headerlink" href="#11_matrix-inverse" title="Permanent link">&para;</a></h2>
+<h3 id="definition_1">Definition<a class="headerlink" href="#definition_1" title="Permanent link">&para;</a></h3>
+<p>给定 2 个 function <span class="arithmatex">\(A\)</span>，<span class="arithmatex">\(B\)</span>，如果 for any <span class="arithmatex">\(v\)</span>，<span class="arithmatex">\(g(f(v))=v\)</span> 且 <span class="arithmatex">\(f(g(v))=v\)</span>，那么 <span class="arithmatex">\(g\)</span> 和 <span class="arithmatex">\(v\)</span> 是互逆的</p>
+<p>对矩阵来说，如果 <span class="arithmatex">\(AB=I\)</span> 且 <span class="arithmatex">\(BA=I\)</span>，那 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 是互逆的</p>
+<p>利用逆矩阵求解 system of linear  equations：<span class="arithmatex">\(Ax=b\Rightarrow x=A^{-1}b\)</span>（手算的效率并不高，不如直接求 RREF）</p>
+<h3 id="property_1">Property<a class="headerlink" href="#property_1" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(A\)</span> 的互逆矩阵是唯一的，证明：有 <span class="arithmatex">\(AB=I,BA=I,AC=I,CA=I\)</span>，那么 <span class="arithmatex">\(B=BI=B(AC)=(BA)C=IC=C\)</span> </p>
+<p>如果 <span class="arithmatex">\(A\)</span> 不是 square，那必不是 invertible 的，因为 <span class="arithmatex">\(AB\)</span> 或者 <span class="arithmatex">\(BA\)</span> 表示的 function 必定有一种情况是表示先从高维变化到低维然后变回高维，无法回到原样</p>
+<p><span class="arithmatex">\((AB)^{-1}=B^{-1}A^{-1}\)</span> </p>
+<p><span class="arithmatex">\((A^T)^{-1}=(A^{-1})^T\)</span>，可以证明 <span class="arithmatex">\(A\)</span> 是 invertible 时，<span class="arithmatex">\(A^T\)</span> 也是 invertible</p>
+<h3 id="invertible">Invertible<a class="headerlink" href="#invertible" title="Permanent link">&para;</a></h3>
+<p>One-to-one 的情况下，那至多一个解（<span class="arithmatex">\(b\)</span> 可能不在 Range 里）</p>
+<p>Onto 的情况下，永远有解（Co-domain 和 Range 一样大，<span class="arithmatex">\(b\)</span> 永远在 Range 中）</p>
+<p>Domain 和 Co-domain 必须要同维度才是 invertible 的</p>
+<p>如果 <span class="arithmatex">\(A\)</span> 是 Square 的，One-to-one <span class="arithmatex">\(\Leftrightarrow\)</span> Onto</p>
+<p><span class="arithmatex">\(A\)</span> 是 invertible 等效于</p>
+<p><img alt="chapter11-1" src="C:\Users\znk\Desktop\现代\chapter11-1.png" /></p>
+<p>一般情况下检查是否 Invertible 都直接算 RREF 是否为 <span class="arithmatex">\(I\)</span> </p>
+<p>如果 <span class="arithmatex">\(A_{n\times n}\)</span> 存在 <span class="arithmatex">\(BA=I\)</span>，那 <span class="arithmatex">\(A\)</span> 是 invertible 的，<span class="arithmatex">\(AB=I\)</span> 一样</p>
+<p>利用反证法，假设 存在 <span class="arithmatex">\(v\not= 0\)</span> 使 <span class="arithmatex">\(Av=0\)</span> </p>
+<p><img alt="chapter11-2" src="C:\Users\znk\Desktop\现代\chapter11-2.png" /></p>
+<h3 id="inverse-of-elementary-matrices">Inverse of Elementary Matrices<a class="headerlink" href="#inverse-of-elementary-matrices" title="Permanent link">&para;</a></h3>
+<p>Elementary Matrices：初等矩阵，即初等行变换对应的矩阵</p>
+<p><img alt="chapter11-3" src="C:\Users\znk\Desktop\现代\chapter11-3.png" /></p>
+<p>这些 Matrix 的 inverse 按照其初等行变换的意义即可算出其 inverse</p>
+<p>invertible 的 Matrix 相乘仍然是 invertible 的</p>
+<p>invertible 的 Matrix 可以写成 product of elementary matrix</p>
+<h3 id="inverse-of-general-matrices">Inverse of General Matrices<a class="headerlink" href="#inverse-of-general-matrices" title="Permanent link">&para;</a></h3>
+<p>通过 <span class="arithmatex">\(E_1...E_nA=R\)</span> 得到 <span class="arithmatex">\(A\)</span> 的 inverse，其中 <span class="arithmatex">\(R\)</span> 是 RREF</p>
+<p>方法是 Transform <span class="arithmatex">\([A\ I_n]\)</span> to its <span class="arithmatex">\([R\ B]\)</span>，其中 <span class="arithmatex">\(B=E_n...E_1\)</span>，就是 <span class="arithmatex">\(A\)</span> 的 inverse</p>
+<p>如果要求 <span class="arithmatex">\(A^{-1}C\)</span>，那把上面的 <span class="arithmatex">\([A\ I_n]\)</span> 变成 <span class="arithmatex">\([A\ C]\)</span> 即可</p>
+<h2 id="12_subspace">12_Subspace<a class="headerlink" href="#12_subspace" title="Permanent link">&para;</a></h2>
+<p>定义：</p>
+<p><img alt="chapter12-1" src="C:\Users\znk\Desktop\现代\chapter12-1.png" /></p>
+<p>Subspace 和 Span 的关系</p>
+<p><img alt="chapter12-2" src="C:\Users\znk\Desktop\现代\chapter12-2.png" /></p>
+<p>Null Space 定义：</p>
+<p><img alt="chapter12-3" src="C:\Users\znk\Desktop\现代\chapter12-3.png" /></p>
+<p>Column Space and Row Space：</p>
+<p><img alt="chapter12-4" src="C:\Users\znk\Desktop\现代\chapter12-4.png" /></p>
+<p>Original Matrix A and its RREF R 中
+$$
+Col A \not = Col R \
+Row A = Row A
+$$</p>
+<h2 id="13_basis">13_Basis<a class="headerlink" href="#13_basis" title="Permanent link">&para;</a></h2>
+<p>Basis：基</p>
+<p>要找 Matrix A 的 Col A 的 basis，找 RREF 的 pivot columns</p>
+<p><img alt="Chapter13-1" src="C:\Users\znk\Desktop\现代\Chapter13-1.png" /></p>
+<p>要确定一组 vector 是否是一个 Subspace 的 basis，看两者对应的维度是否一致即可</p>
+<h2 id="14_column-space-null-space-row-space">14_Column Space, Null Space, Row Space<a class="headerlink" href="#14_column-space-null-space-row-space" title="Permanent link">&para;</a></h2>
+<p>三个 Space 所在的维度：</p>
+<p><img alt="chapter14-1" src="C:\Users\znk\Desktop\现代\chapter14-1.png" /></p>
+<p>三个 Space 的 Basis：</p>
+<p><strong>Col A：</strong></p>
+<p>The pivot columns of A form a basis for Col A</p>
+<p>Basis：<span class="arithmatex">\(Col \ A=Span\{pivot\ columns\}\)</span> </p>
+<p>Dim(Col A) = number of pivot columns = rank A</p>
+<p><strong>Null A:</strong></p>
+<p>Basis:  </p>
+<ul>
+<li>
+<p>Solving Ax = 0 </p>
+</li>
+<li>
+<p>Each free variable in the parametric representation of  the general solution is multiplied by a vector. </p>
+</li>
+<li>
+<p>The vectors form the basis. </p>
+</li>
+</ul>
+<p>Dim (Null A) = number of free variables = Nullity A = n - Rank A</p>
+<p><strong>Row A：</strong></p>
+<p>Basis: Nonzero rows of RREF(A)</p>
+<p>Dim (Row A) = Number of Nonzero rows = Rank A</p>
+<p><strong>Rank 能代表的含义：</strong></p>
+<p><img alt="chapter14-2" src="C:\Users\znk\Desktop\现代\chapter14-2.png" /></p>
+<div class="arithmatex">\[
+Rank\ A = Dim(Col\ A) \\
+Rank\ A = Dim(Row\ A) = Dim(Col\ A^T)=Rank\ A^T
+\]</div>
+<p>可以得到 <span class="arithmatex">\(Rank\ A = Rank\ A^T\)</span> </p>
+<p><strong>总结：</strong></p>
+<p><img alt="chapter14-3" src="C:\Users\znk\Desktop\现代\chapter14-3.png" /></p>
+<h2 id="15_coordinate-system">15_Coordinate System<a class="headerlink" href="#15_coordinate-system" title="Permanent link">&para;</a></h2>
+<p>Coordinate System：坐标系</p>
+<p>Basis 的转换：</p>
+<p><img alt="chapter15-1" src="C:\Users\znk\Desktop\现代\chapter15-1.jpg" /></p>
+<p>其他的 Coordinate System 与 Cartesian（笛卡尔坐标系）之间的转变：</p>
+<p><img alt="chapter15-2" src="C:\Users\znk\Desktop\现代\chapter15-2.jpg" /></p>
+<p><img alt="chapter15-3" src="C:\Users\znk\Desktop\现代\chapter15-3.jpg" /></p>
+<p><img alt="chapter15-4" src="C:\Users\znk\Desktop\现代\chapter15-4.jpg" /></p>
+<h2 id="16_linear-function-in-coordinate-system">16_Linear Function in Coordinate System<a class="headerlink" href="#16_linear-function-in-coordinate-system" title="Permanent link">&para;</a></h2>
+<h2 id="17_determinant">17_Determinant<a class="headerlink" href="#17_determinant" title="Permanent link">&para;</a></h2>
+<p>行列式</p>
+<h2 id="18_eigenvalues-and-eigenvectors">18_Eigenvalues and Eigenvectors<a class="headerlink" href="#18_eigenvalues-and-eigenvectors" title="Permanent link">&para;</a></h2>
+<h2 id="19_diagonalization">19_Diagonalization<a class="headerlink" href="#19_diagonalization" title="Permanent link">&para;</a></h2>
+<p>对角化，可以很方便的计算 <span class="arithmatex">\(A^n\)</span> 
+$$
+A=PDP^{-1}
+$$</p>
+<h2 id="20_page-rank">20_Page Rank<a class="headerlink" href="#20_page-rank" title="Permanent link">&para;</a></h2>
+<h2 id="21_orthogonality">21_Orthogonality<a class="headerlink" href="#21_orthogonality" title="Permanent link">&para;</a></h2>
+<p>Norm：范数，<span class="arithmatex">\(||v||_p=(\sum|v_i|^p)^{1/p}\)</span> </p>
+<p>Distance：<span class="arithmatex">\(||u-v||\)</span> </p>
+<p>Dot Product：点乘</p>
+<p>Orthogonal：if <span class="arithmatex">\(u\cdot v=0\)</span>，<span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> are  Orthogonal，and <span class="arithmatex">\(||u+v||^2=||u||^2+||v||^2\)</span>（勾股定理）</p>
+<p>​                   <span class="arithmatex">\(||u+v||^2=||u||^2+||v||^2+2(u\cdot v)\)</span>（余弦定理）</p>
+<h2 id="22_orthogonal-projection">22_Orthogonal Projection<a class="headerlink" href="#22_orthogonal-projection" title="Permanent link">&para;</a></h2>
+<p>假设有一个 vector set <span class="arithmatex">\(S\)</span>，<span class="arithmatex">\(S^{\perp}\)</span> 表示一个 vector set，其中的所有 vector <span class="arithmatex">\(v\)</span> 与 <span class="arithmatex">\(S\)</span> 中的 <span class="arithmatex">\(u\)</span>，有 <span class="arithmatex">\(u\cdot v=0\)</span> </p>
+<p>Orthogonal Projection：正交投影，<span class="arithmatex">\(P_w=C(C^TC)^{-1}C^T\)</span> </p>
+<h2 id="23_orthogonal-basis">23_Orthogonal Basis<a class="headerlink" href="#23_orthogonal-basis" title="Permanent link">&para;</a></h2>
+<p>Orthogonal Set：两两垂直的 Vector Set，不一定是 independent 的（<strong>0</strong>向量）</p>
+<p>Orthonormal Set：Orthogonal Set 中每个向量的长度都为 1，一定是 independent 的</p>
+<p><img alt="Chapter23-1" src="C:\Users\znk\Desktop\现代\Chapter23-1.png" /></p>
+<p>Orthogonal Projection：</p>
+<p><img alt="Chapter23-2" src="C:\Users\znk\Desktop\现代\Chapter23-2.png" /></p>
+<p>How to find a orthogonal basis？</p>
+<p>施密特正交化（Schmidt orthogonalization）：第一个向量直接用，第二个向量去掉其在第一个向量上投影的部分....</p>
+<p><img alt="Chapter23-3" src="C:\Users\znk\Desktop\现代\Chapter23-3.png" /></p>
+<h2 id="24_orthogonal-matrix-and-symmetric-matrix">24_Orthogonal Matrix and Symmetric Matrix<a class="headerlink" href="#24_orthogonal-matrix-and-symmetric-matrix" title="Permanent link">&para;</a></h2>
+<p>Norm-preserving：<span class="arithmatex">\(||T(u)||=||u||\ for\ all\ u\)</span>，不改变输入长度的 linear operation，这样 function 的 Matrix 的特点：方阵，列向量是 Orthnognoal 的并且长度是 1，如果有特征值那么只有 正负1</p>
+<p>Orthogonal Matrix：column 是 Orthonormal 的</p>
+<p>Norm-preserving 当且仅当 Orthogonal Matrix</p>
+<p><img alt="Chapter24-1" src="C:\Users\znk\Desktop\现代\Chapter24-1.png" />
+$$
+Qu\cdot Qv=(Qu)^TQv=u^TQ^TQv=u^Tv
+$$
+<img alt="Chapter24-2" src="C:\Users\znk\Desktop\现代\Chapter24-2.png" /></p>
+<p>Symmetric Matrix：对称矩阵</p>
+<p>性质：</p>
+<p><img alt="Chapter24-3" src="C:\Users\znk\Desktop\现代\Chapter24-3.png" /></p>
+<p><img alt="Chapter24-4" src="C:\Users\znk\Desktop\现代\Chapter24-4.png" /></p>
+<p><img alt="Chapter24-5" src="C:\Users\znk\Desktop\现代\Chapter24-5.png" /></p>
+<p><span class="arithmatex">\(Rank(P_i)=1\)</span> </p>
+<h2 id="25_general-vectors">25_General Vectors<a class="headerlink" href="#25_general-vectors" title="Permanent link">&para;</a></h2>
+<h2 id="26_singular-value-decomposition">26_Singular Value Decomposition<a class="headerlink" href="#26_singular-value-decomposition" title="Permanent link">&para;</a></h2>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/Unsupervised%20Learning%20Neighbor%20Embedding/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Unsupervised Learning Neighbor Embedding - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unsupervised-learning-neighbor-embedding" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unsupervised Learning Neighbor Embedding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manifold-learning" class="md-nav__link">
+    Manifold Learning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locally-linear-embedding" class="md-nav__link">
+    Locally Linear Embedding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#laplacian-eigenmaps" class="md-nav__link">
+    Laplacian Eigenmaps
+  </a>
+  
+    <nav class="md-nav" aria-label="Laplacian Eigenmaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#review-of-smoothness-assumption" class="md-nav__link">
+    Review of Smoothness Assumption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-in-unsupervised-task" class="md-nav__link">
+    Application in Unsupervised Task
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t-sne" class="md-nav__link">
+    t-SNE
+  </a>
+  
+    <nav class="md-nav" aria-label="t-SNE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-t-sne-works" class="md-nav__link">
+    How t-SNE works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-divergence" class="md-nav__link">
+    KL Divergence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    How to use
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#similarity-measure" class="md-nav__link">
+    Similarity Measure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/Unsupervised Learning Neighbor Embedding.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="unsupervised-learning-neighbor-embedding">Unsupervised Learning Neighbor Embedding<a class="headerlink" href="#unsupervised-learning-neighbor-embedding" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>PCA 和 Word Embedding 都是线性的，本章主要讲非线性的降维方法</p>
+<p>非线性降维的一些算法：LLE、t-SNE</p>
+</blockquote>
+<h2 id="manifold-learning">Manifold Learning<a class="headerlink" href="#manifold-learning" title="Permanent link">&para;</a></h2>
+<p>样本点的分布可能是在高维空间里的一个流行 (Manifold)，也就是说，样本点其实是低维空间的图像被扭曲的塞在了高维空间里</p>
+<p>显然高维空间中只有当 2 个点在很近的距离时用欧氏距离来表示相似程度才是可靠的</p>
+<p>Manifold Learning 做的就是把高维图像向低维摊平然后用欧式距离来表示样本间的相似程度</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/manifold.png" width="60%" /></center></p>
+<h2 id="locally-linear-embedding">Locally Linear Embedding<a class="headerlink" href="#locally-linear-embedding" title="Permanent link">&para;</a></h2>
+<p>局部线性嵌入，locally linear embedding，简称 <strong>LLE</strong> </p>
+<p>如下图所示，用 <span class="arithmatex">\(w_{ij}\)</span>​​​ 来描述 <span class="arithmatex">\(x_i\)</span>​​ ​和 <span class="arithmatex">\(x_j\)</span>​​ ​​的关系</p>
+<p>假设每一个样本点都可以用周围 K 个点的线性组合（linear combination）来表示，那现在的问题就是找能够使得所有样本点与周围点线性组合的差距最小的参数 <span class="arithmatex">\(w_{ij}\)</span>​
+$$
+min\sum\limits_i||x^i-\sum\limits_j w_{ij}x^j ||_2
+$$
+接下来就要做 Dimension Reduction，把 <span class="arithmatex">\(w_{ij}\)</span> fix 住，然后去找 <span class="arithmatex">\(z_i,z_j\)</span> <span class="arithmatex">\(min\sum\limits_i||z^i-\sum\limits_j w_{ij}z^j ||_2\)</span>​，这时 <span class="arithmatex">\(w_{ij}\)</span> 是已知的，而且 <span class="arithmatex">\(z\)</span> 的维度比 <span class="arithmatex">\(x\)</span> 小得多，但 <span class="arithmatex">\(x_i,z_i\)</span> 可以用相同的 linear combination 来表示，即与其他点的关系是不变的</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/lle.png" width="60%" /></center></p>
+<p>LLE的具体做法如下：</p>
+<ul>
+<li>
+<p>在原先的高维空间中找到 <span class="arithmatex">\(x^i\)</span> 和 <span class="arithmatex">\(x^j\)</span> 之间的关系 <span class="arithmatex">\(w_{ij}\)</span> 以后就把它固定住</p>
+</li>
+<li>
+<p>使 <span class="arithmatex">\(x^i\)</span> 和 <span class="arithmatex">\(x^j\)</span> 降维到新的低维空间上的 <span class="arithmatex">\(z^i\)</span> 和 <span class="arithmatex">\(z^j\)</span>，且满足
+  $$
+  min\sum\limits_i||z^i-\sum\limits_j w_{ij}z^j ||_2
+  $$
+  即要求降维后的 <span class="arithmatex">\(w_{ij}\)</span> 同样能够满足原来的要求</p>
+</li>
+</ul>
+<p>实际上，LLE并没有给出明确的降维函数，只是给出了降维前后的约束条件</p>
+<p>我们需要挑选合适的 K，下图给出了原始paper中的实验结果，K 太小或太大得到的结果都不太好</p>
+<p>K 如果很大就会选中一些因为空间扭曲才很接近的点</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/lle2.png" width="60%" /></center></p>
+<h2 id="laplacian-eigenmaps">Laplacian Eigenmaps<a class="headerlink" href="#laplacian-eigenmaps" title="Permanent link">&para;</a></h2>
+<p>拉普拉斯特征映射，Laplacian Eigenmaps</p>
+<h3 id="review-of-smoothness-assumption">Review of Smoothness Assumption<a class="headerlink" href="#review-of-smoothness-assumption" title="Permanent link">&para;</a></h3>
+<p>在 semi-supervised learning 提到的 smoothness assumption 中仅知道两点之间的欧氏距离是不够的，还需要观察两个点在 high density 区域下的距离，如果两个点在high density的区域里比较近，那才算是真正的接近</p>
+<div class="arithmatex">\[
+L=\sum\limits_{x^r} C(y^r,\hat y^r) + \lambda S\\
+S=\frac{1}{2}\sum\limits_{i,j} w_{i,j}(y^i-y^j)^2=y^TLy
+\]</div>
+<p>其中 <span class="arithmatex">\(C(y^r,\hat y^r)\)</span> 表示labeled data项，<span class="arithmatex">\(\lambda S\)</span> 表示unlabeled data项，如果点 <span class="arithmatex">\(x^i\)</span> 与 <span class="arithmatex">\(x^j\)</span> 是相连的，则 <span class="arithmatex">\(w_{i,j}\)</span> 等于相似度，否则为 0</p>
+<h3 id="application-in-unsupervised-task">Application in Unsupervised Task<a class="headerlink" href="#application-in-unsupervised-task" title="Permanent link">&para;</a></h3>
+<p>降维要做到的是如果在高维中 <span class="arithmatex">\(x_i\)</span> 和 <span class="arithmatex">\(x_j\)</span> 距离很近，那么在低维空间中也要很近，即相似度 <span class="arithmatex">\(x_{ij}\)</span> 很大，总的来说就是要 minimize 下式：
+$$
+minimize:S=\frac{1}{2}\sum\limits_{i,j} w_{i,j}||z^i-z^j||_2
+$$
+与 semi 不同的是这里没有 label 的项，所以不加约束的话所有的 <span class="arithmatex">\(z\)</span> 都是 0 就能到达最小；在 semi-supervised中，如果所有 label <span class="arithmatex">\(z^i\)</span> 都设成一样，会使得 supervised 部分的 <span class="arithmatex">\(\sum\limits_{x^r} C(y^r,\hat y^r)\)</span> 变得很大</p>
+<p>在 unsupervised 中，需要加一些约束：</p>
+<ul>
+<li>假设降维后 <span class="arithmatex">\(z\)</span> 所处的空间为 <span class="arithmatex">\(M\)</span> 维，则 <span class="arithmatex">\(\{z^1,z^2,...,z^N\}=R^M\)</span>，我们希望降维后的 <span class="arithmatex">\(z\)</span> 占据整个 <span class="arithmatex">\(M\)</span> 维的空间，而不希望它在一个比 <span class="arithmatex">\(M\)</span> 更低维的空间里</li>
+<li>最终解出来的 <span class="arithmatex">\(z\)</span> 其实就是 Graph Laplacian <span class="arithmatex">\(L\)</span> 比较小的特征值所对应的特征向量</li>
+</ul>
+<p>这也是 Laplacian Eigenmaps 名称的由来，我们找的 <span class="arithmatex">\(z\)</span> 就是 Laplacian matrix 的特征向量</p>
+<p>如果通过拉普拉斯特征映射找到 <span class="arithmatex">\(z\)</span> 之后再对其利用 K-means 做聚类，就叫做谱聚类 (spectral clustering)</p>
+<p>相关 paper：<em>Belkin, M., Niyogi, P. Laplacian eigenmaps and spectral techniques for embedding and clustering. Advances in neural information processing systems . 2002</em></p>
+<h2 id="t-sne">t-SNE<a class="headerlink" href="#t-sne" title="Permanent link">&para;</a></h2>
+<p>t-SNE，全称为 T-distributed Stochastic Neighbor Embedding，t 分布随机邻居嵌入</p>
+<p>前面的方法只要求相邻的点要接近，但没有假设不相邻的点要分开</p>
+<p>COIL-20 数据集包含了同一张图片进行旋转之后的不同形态，对其使用 LLE 降维后得到的结果是，同一个圆圈代表同张图像旋转的不同姿态，但许多圆圈之间存在重叠</p>
+<p>如下图：</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/tsne.png" width="60%" /></center></p>
+<h3 id="how-t-sne-works">How t-SNE works<a class="headerlink" href="#how-t-sne-works" title="Permanent link">&para;</a></h3>
+<p>做 t-SNE 同样要降维，在原来 <span class="arithmatex">\(x\)</span> 的分布空间上计算所有 <span class="arithmatex">\(x^i\)</span> 与 <span class="arithmatex">\(x^j\)</span> 之间的相似度 <span class="arithmatex">\(S(x^i,x^j)\)</span></p>
+<p>然后需要将其做归一化：<span class="arithmatex">\(P(x^j|x^i)=\frac{S(x^i,x^j)}{\sum_{k\ne i}S(x^i,x^k)}\)</span>，即 <span class="arithmatex">\(x^j\)</span> 与 <span class="arithmatex">\(x^i\)</span> 的相似度占所有与 <span class="arithmatex">\(x^i\)</span> 相关的相似度的比例</p>
+<p>将 <span class="arithmatex">\(x\)</span>​ 降维到 <span class="arithmatex">\(z\)</span>​，同样可以计算相似度 <span class="arithmatex">\(S'(z^i,z^j)\)</span>​，并做归一化：<span class="arithmatex">\(Q(z^j|z^i)=\frac{S'(z^i,z^j)}{\sum_{k\ne i}S'(z^i,z^k)}\)</span>​</p>
+<p>归一化的目的是将其映射到一个统一的概率区间</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/tsne2.png" width="60%" /></center></p>
+<p>我们希望找到的投影空间 <span class="arithmatex">\(z\)</span>​，可以让 <span class="arithmatex">\(P(x^j|x^i)\)</span>​ 和 <span class="arithmatex">\(Q(z^j|z^i)\)</span>​ 的分布越接近越好</p>
+<p>用于衡量两个分布之间相似度的方法就是 <strong>KL散度 (KL divergence)</strong>，我们的目标就是让 <span class="arithmatex">\(L\)</span>​ 越小越好：
+$$
+L=\sum\limits_i KL(P(<em>|x^i)||Q(</em>|z^i))\
+=\sum\limits_i \sum\limits_jP(x^j|x^i)log \frac{P(x^j|x^i)}{Q(z^j|z^i)}
+$$</p>
+<h3 id="kl-divergence">KL Divergence<a class="headerlink" href="#kl-divergence" title="Permanent link">&para;</a></h3>
+<p>信息熵：
+$$
+H=-\sum\limits_{i=1}^N p(x_i)\cdot log\ p(x_i)
+$$
+其中<span class="arithmatex">\(p(x_i)\)</span>表示事件<span class="arithmatex">\(x_i\)</span>发生的概率，反映的就是要表示一个概率分布所需要的平均信息量</p>
+<p>在信息熵的基础上，我们定义 KL散度 为：
+$$
+D_{KL}(p||q)=\sum\limits_{i=1}^N p(x_i)\cdot (log\ p(x_i)-log\ q(x_i))\
+=\sum\limits_{i=1}^N p(x_i)\cdot log\frac{p(x_i)}{q(x_i)}
+$$
+<span class="arithmatex">\(D_{KL}(p||q)\)</span>​ 表示的就是概率 <span class="arithmatex">\(q\)</span>​ 与概率 <span class="arithmatex">\(p\)</span>​ 之间的差异，很显然，KL散度越小，说明概率 <span class="arithmatex">\(q\)</span> ​与概率 <span class="arithmatex">\(p\)</span> ​之间越接近，那么预测的概率分布与真实的概率分布也就越接近</p>
+<h3 id="how-to-use">How to use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h3>
+<p>因为要计算所有样本点间的距离，运算量很大</p>
+<p>常见的作法是先用 PCA 之类的做法降维，然后用t-SNE对这个简单降维空间再做一次更深层次的降维，以期减少运算量</p>
+<p>值得注意的是，t-SNE的式子无法对新的样本点进行处理，一旦出现新的<span class="arithmatex">\(x^i\)</span>，就需要重新跑一遍该算法，所以<strong>t-SNE通常不是用来训练模型的，它更适合用于做基于固定数据的可视化</strong> </p>
+<p>t-SNE常用于将固定的高维数据可视化到二维平面上</p>
+<h3 id="similarity-measure">Similarity Measure<a class="headerlink" href="#similarity-measure" title="Permanent link">&para;</a></h3>
+<p>如果根据欧氏距离计算降维前的相似度，往往采用<strong>RBF function</strong> <span class="arithmatex">\(S(x^i,x^j)=e^{-||x^i-x^j||_2}\)</span>，这个表达式的好处是，只要两个样本点的欧氏距离稍微大一些，相似度就会下降得很快</p>
+<p>还有一种叫做SNE的方法，它在降维后的新空间采用与上述相同的相似度算法<span class="arithmatex">\(S'(z^i,z^j)=e^{-||z^i-z^j||_2}\)</span></p>
+<p>对t-SNE来说，它在降维后的新空间所采取的相似度算法是与之前不同的，它选取了<strong>t-distribution</strong>中的一种，即<span class="arithmatex">\(S'(z^i,z^j)=\frac{1}{1+||z^i-z^j||_2}\)</span></p>
+<p>以下图为例，假设横轴代表了在原先<span class="arithmatex">\(x\)</span>空间上的欧氏距离或者做降维之后在<span class="arithmatex">\(z\)</span>空间上的欧氏距离，红线代表RBF function，是降维前的分布；蓝线代表了t-distribution，是降维后的分布</p>
+<p>你会发现，降维前后相似度从RBF function到t-distribution：</p>
+<ul>
+<li>如果原先两个点距离(<span class="arithmatex">\(\Delta x\)</span>)比较近，则降维转换之后，它们的相似度(<span class="arithmatex">\(\Delta y\)</span>)依旧是比较接近的</li>
+<li>如果原先两个点距离(<span class="arithmatex">\(\Delta x\)</span>)比较远，则降维转换之后，它们的相似度(<span class="arithmatex">\(\Delta y\)</span>)会被拉得更远</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/tsne3.png" width="60%" /></center></p>
+<p>也就是说t-SNE可以聚集相似的样本点，同时还会放大不同类别之间的距离，从而使得不同类别之间的分界线非常明显，特别适用于可视化，下图则是对MNIST和COIL-20先做PCA降维，再做t-SNE降维可视化的结果：</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/tsne4.png" width="60%" /></center></p>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>小结一下，本文主要介绍了三种非线性降维的算法：</p>
+<ul>
+<li>LLE(Locally Linear Embedding)，局部线性嵌入算法，主要思想是降维前后，每个点与周围邻居的线性组合关系不变，<span class="arithmatex">\(x^i=\sum\limits_j w_{ij}x^j\)</span>、<span class="arithmatex">\(z^i=\sum\limits_j w_{ij}z^j\)</span></li>
+<li>Laplacian Eigenmaps，拉普拉斯特征映射，主要思想是在high density的区域，如果<span class="arithmatex">\(x^i\)</span>、<span class="arithmatex">\(x^j\)</span>这两个点相似度<span class="arithmatex">\(w_{i,j}\)</span>高，则投影后的距离<span class="arithmatex">\(||z^i-z^j||_2\)</span>要小</li>
+<li>t-SNE(t-distribution Stochastic Neighbor Embedding)，t分布随机邻居嵌入，主要思想是，通过降维前后计算相似度由RBF function转换为t-distribution，在聚集相似点的同时，拉开不相似点的距离，比较适合用在数据固定的可视化领域</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

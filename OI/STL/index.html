@@ -1,0 +1,1740 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/OI/STL/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>STL - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              STL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%8F%82%E8%80%83/" class="md-tabs__link md-tabs__link--active">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          STL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        STL
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector" class="md-nav__link">
+    vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack" class="md-nav__link">
+    stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pair" class="md-nav__link">
+    pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    queue
+  </a>
+  
+    <nav class="md-nav" aria-label="queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority_queue" class="md-nav__link">
+    priority_queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deque" class="md-nav__link">
+    deque
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lower_bound" class="md-nav__link">
+    lower_bound()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next_permutation" class="md-nav__link">
+    next_permutation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min_elementmax_element" class="md-nav__link">
+    min_element/max_element
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    string
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector" class="md-nav__link">
+    vector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack" class="md-nav__link">
+    stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pair" class="md-nav__link">
+    pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue" class="md-nav__link">
+    queue
+  </a>
+  
+    <nav class="md-nav" aria-label="queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority_queue" class="md-nav__link">
+    priority_queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deque" class="md-nav__link">
+    deque
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lower_bound" class="md-nav__link">
+    lower_bound()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next_permutation" class="md-nav__link">
+    next_permutation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min_elementmax_element" class="md-nav__link">
+    min_element/max_element
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/OI/STL.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="stl">STL<a class="headerlink" href="#stl" title="Permanent link">&para;</a></h1>
+<h2 id="string">string<a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
+<p>字符串</p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s2</span><span class="w"></span>
+</code></pre></div>
+<p>增加元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s2</span><span class="w">  </span><span class="c1">//直接用 + 即可</span>
+<span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;new string&quot;</span><span class="w"></span>
+</code></pre></div>
+<p>删除元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">erase</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">         </span><span class="c1">//删除从pos开始的n个字符</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">erase</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iterator</span><span class="p">)</span><span class="w">                        </span><span class="c1">//删除一个</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">erase</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="c1">//删除范围</span>
+
+<span class="n">iterator</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="n">remove</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="c1">//删除特定字符</span>
+</code></pre></div>
+<p>迭代器</p>
+<div class="highlight"><pre><span></span><code><span class="n">iterator</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span><span class="w">  </span><span class="c1">//头迭代器</span>
+<span class="n">iterator</span><span class="w"> </span><span class="nf">end</span><span class="p">();</span><span class="w">   </span><span class="c1">//尾迭代器</span>
+</code></pre></div>
+<p>其他</p>
+<div class="highlight"><pre><span></span><code><span class="n">sort</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="c1">//排序 [l, r) </span>
+<span class="n">string</span><span class="w"> </span><span class="n">substr</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">        </span><span class="c1">//获取连续子串，从 pos 开始的 n 个字符，-1表示到最后</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">                         </span><span class="c1">//判断是否为空</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">                           </span><span class="c1">//字符个数</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isalnum</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是字母或数字，返回 true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isalpha</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="p">)</span><span class="w">                  </span><span class="c1">//如果c是字母，返回true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">iscntrl</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是控制符，返回true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isdigit</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是数字，返回true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isgraph</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c不是空格，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">islower</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是小写字母，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isupper</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是大写字符，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isprint</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是可打印的字符，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">ispunct</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是标点符号，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isspace</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                   </span><span class="c1">//如果c是空白字符，返回为true</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isxdigit</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w">                  </span><span class="c1">//如果c是十六进制数，返回为true</span>
+</code></pre></div>
+<h2 id="vector">vector<a class="headerlink" href="#vector" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;vector&gt;\)</span></p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="p">()</span><span class="w">                    </span><span class="c1">//创建一个空vector</span>
+<span class="n">vector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSize</span><span class="p">)</span><span class="w">           </span><span class="c1">//创建一个vector,元素个数为nSize</span>
+<span class="n">vector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nSize</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="c1">//创建一个vector，元素个数为nSize,且值均为t</span>
+<span class="n">vector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vector</span><span class="o">&amp;</span><span class="p">)</span><span class="w">       </span><span class="c1">//复制构造函数</span>
+<span class="n">vector</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">)</span><span class="w">           </span><span class="c1">//复制[begin,end)区间内另一个数组的元素到vector中</span>
+</code></pre></div>
+<p>增加元素</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">push_back</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">                               </span><span class="c1">//向量尾部增加一个元素X</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">                  </span><span class="c1">//迭代器指向元素前增加一个元素x</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">            </span><span class="c1">//迭代器指向元素前增加n个相同的元素x</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="p">,</span><span class="n">iterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="n">iterator</span><span class="w"> </span><span class="n">last</span><span class="p">)</span><span class="c1">//迭代器指向元素前插入另一个向量的[first,last)的数据</span>
+</code></pre></div>
+<p>删除元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">iterator</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="p">)</span><span class="w">                 </span><span class="c1">//删除迭代器指向元素</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="n">iterator</span><span class="w"> </span><span class="n">last</span><span class="p">)</span><span class="c1">//删除[first,last)中元素</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">pop_back</span><span class="p">()</span><span class="w">                             </span><span class="c1">//删除向量中最后一个元素</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">clear</span><span class="p">()</span><span class="w">                                </span><span class="c1">//清空向量中所有元素</span>
+</code></pre></div>
+<p>迭代器</p>
+<div class="highlight"><pre><span></span><code><span class="n">reference</span><span class="w"> </span><span class="n">at</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span><span class="w">       </span><span class="c1">//返回pos位置元素的引用</span>
+<span class="n">reference</span><span class="w"> </span><span class="n">front</span><span class="p">()</span><span class="w">           </span><span class="c1">//返回首元素的引用</span>
+<span class="n">reference</span><span class="w"> </span><span class="n">back</span><span class="p">()</span><span class="w">            </span><span class="c1">//返回尾元素的引用</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w">            </span><span class="c1">//返回向量头指针，指向第一个元素</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">end</span><span class="p">()</span><span class="w">              </span><span class="c1">//返回向量尾指针，指向向量最后一个元素的下一个位置</span>
+<span class="n">reverse_iterator</span><span class="w"> </span><span class="n">rbegin</span><span class="p">()</span><span class="w">   </span><span class="c1">//反向迭代器，指向最后一个元素</span>
+<span class="n">reverse_iterator</span><span class="w"> </span><span class="n">rend</span><span class="p">()</span><span class="w">     </span><span class="c1">//反向迭代器，指向第一个元素之前的位置</span>
+</code></pre></div>
+<p>其他</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">              </span><span class="c1">//返回向量中元素的个数</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">          </span><span class="c1">//返回当前向量所能容纳的最大元素值</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">max_size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">          </span><span class="c1">//返回最大可允许的vector元素数量值</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">            </span><span class="c1">//判断向量是否为空，若为空，则向量中无元素</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">vector</span><span class="o">&amp;</span><span class="p">)</span><span class="w">            </span><span class="c1">//交换两个同类型向量的数据</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">assign</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">//设置向量中前n个元素的值为x</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">assign</span><span class="p">(</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">last</span><span class="p">)</span><span class="c1">//向量中[first,last)中元素设置成当前向量元素</span>
+</code></pre></div>
+<h2 id="stack">stack<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;stack&gt;\)</span> </p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c0</span><span class="w">                       </span><span class="c1">//空链表</span>
+<span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c1</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">                    </span><span class="c1">//建一个含3个默认值是0的元素的链表</span>
+<span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c2</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w">                  </span><span class="c1">//建一个含5个元素的链表，值都是2</span>
+<span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c4</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span><span class="w">                   </span><span class="c1">//复制</span>
+<span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c5</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">beg</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w">              </span><span class="c1">//区间[beg, end)做为元素初值</span>
+
+<span class="n">push</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">                   </span><span class="c1">//入栈</span>
+<span class="n">T</span><span class="w"> </span><span class="n">pop</span><span class="p">()</span><span class="w">                            </span><span class="c1">//出栈</span>
+<span class="n">T</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w">                            </span><span class="c1">//获取栈顶</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">                       </span><span class="c1">//判断空栈</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">                         </span><span class="c1">//返回栈元素个数</span>
+</code></pre></div>
+<h2 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include &lt;list&gt;\)</span> </p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c2</span><span class="w">             </span><span class="c1">//复制</span>
+<span class="n">assign</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w">      </span><span class="c1">//赋值n个elem</span>
+<span class="n">assign</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w">   </span><span class="c1">//区间[beg,end）内的元素赋值给c</span>
+<span class="n">swap</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w">        </span><span class="c1">//交换 </span>
+</code></pre></div>
+<p>增加元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">push_front</span><span class="p">()</span><span class="w">        </span><span class="c1">//首加</span>
+<span class="n">push_back</span><span class="p">()</span><span class="w">         </span><span class="c1">//尾加</span>
+<span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">num</span><span class="p">)</span><span class="w">     </span><span class="c1">//在pos位置插入元素num，返回新元素位置</span>
+<span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">elem</span><span class="p">)</span><span class="w">  </span><span class="c1">//在pos位置上插入n个elem副本，无返回值</span>
+<span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">beg</span><span class="p">,</span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="c1">//在pos位置上插入区间[beg,end)内的所有元素的副本，没有返回值</span>
+</code></pre></div>
+<p>删除元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">pop_front</span><span class="p">()</span><span class="w">         </span><span class="c1">//首删</span>
+<span class="n">pop_back</span><span class="p">()</span><span class="w">          </span><span class="c1">//尾删</span>
+<span class="n">erase</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w">　　　　   </span><span class="c1">//删除pos位置的元素，返回下一个元素的位置</span>
+<span class="n">erase</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span><span class="n">end</span><span class="p">)</span><span class="w">      </span><span class="c1">//移除[beg, end)区间内的所有元素，返回下一个元素的位置</span>
+<span class="n">remove</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w">         </span><span class="c1">//删除链表中匹配num的元素</span>
+<span class="n">remove_if</span><span class="p">(</span><span class="n">cmp</span><span class="p">)</span><span class="w">      </span><span class="c1">//删除条件满足的元素,参数为自定义的回调函数</span>
+<span class="n">clear</span><span class="p">()</span><span class="w">             </span><span class="c1">//清空</span>
+</code></pre></div>
+<p>迭代器</p>
+<div class="highlight"><pre><span></span><code><span class="n">list</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="w"></span>
+<span class="n">c</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w">  </span>
+<span class="n">c</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w">   </span>
+<span class="n">c</span><span class="p">.</span><span class="n">rbegin</span><span class="p">()</span><span class="w">          </span><span class="c1">//逆向链表的第一个元素,即c链表的最后一个数据。</span>
+<span class="n">c</span><span class="p">.</span><span class="n">rend</span><span class="p">()</span><span class="w">            </span><span class="c1">//返回逆向链表的最后一个元素的下一个位置,即c链表的第一个数据再往前的位置。it++</span>
+</code></pre></div>
+<p>其他</p>
+<div class="highlight"><pre><span></span><code><span class="n">T</span><span class="w"> </span><span class="n">front</span><span class="p">()</span><span class="w">             </span><span class="c1">//首元素</span>
+<span class="n">T</span><span class="w"> </span><span class="n">back</span><span class="p">()</span><span class="w">              </span><span class="c1">//尾元</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">          </span><span class="c1">//判断是否为空</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">            </span><span class="c1">//有效元素个数</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">max_size</span><span class="p">()</span><span class="w">        </span><span class="c1">//返回容器最大的可以存储的元素</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="w">         </span><span class="c1">//比较</span>
+<span class="n">sort</span><span class="p">()</span><span class="w">                </span><span class="c1">//单链表排序</span>
+<span class="n">unique</span><span class="p">()</span><span class="w">              </span><span class="c1">//去重，要先排序</span>
+<span class="n">c1</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span><span class="w">          </span><span class="c1">//合并2个有序的链表并使之有序,从新放到c1里,释放c2</span>
+<span class="n">c1</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span><span class="n">cmp</span><span class="p">)</span><span class="w">      </span><span class="c1">//合并2个有序的链表并使之按照自定义规则排序之后从新放到c1中,释放c2</span>
+<span class="n">reverse</span><span class="p">()</span><span class="w">             </span><span class="c1">//反转</span>
+<span class="n">resize</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w">           </span><span class="c1">//重置有效元素个数</span>
+</code></pre></div>
+<h2 id="set">set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;set&gt;\)</span></p>
+<p>平衡二叉搜索树，不会存储重复的元素</p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">swap</span><span class="p">(</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="p">)</span><span class="w">        </span><span class="c1">//  交换两个集合变量</span>
+<span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s2</span><span class="w"></span>
+</code></pre></div>
+<p>增加元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">insert</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">     </span><span class="c1">//  在集合中插入元素</span>
+</code></pre></div>
+<p>删除元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">clear</span><span class="p">()</span><span class="w">       </span><span class="c1">//  清除所有元素</span>
+<span class="n">erase</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">      </span><span class="c1">//  删除集合中的元素</span>
+</code></pre></div>
+<p>迭代器</p>
+<div class="highlight"><pre><span></span><code><span class="n">set</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">it</span><span class="w"></span>
+<span class="n">begin</span><span class="p">()</span><span class="w">       </span><span class="c1">//  返回指向首元素的迭代器</span>
+<span class="n">end</span><span class="p">()</span><span class="w">         </span><span class="c1">//  返回指向尾元素的后一位的迭代器</span>
+<span class="n">rbegin</span><span class="p">()</span><span class="w">      </span><span class="c1">//  反向迭代器</span>
+<span class="n">rend</span><span class="p">()</span><span class="w">        </span><span class="c1">// </span>
+</code></pre></div>
+<p>其他</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">              </span><span class="c1">//  返回某个元素的个数,0或1，只能判断是否存在</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">              </span><span class="c1">//  判断集合为空</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">                </span><span class="c1">//  集合中元素的数目</span>
+<span class="n">max_size</span><span class="p">()</span><span class="w">                </span><span class="c1">//  返回集合能容纳的元素的最大限值</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">          </span><span class="c1">//  返回一个指向被查找到元素的迭代器,无则返回end()</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">   </span><span class="c1">//  返回指向大于或等于某值的第一个元素的迭代器</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">   </span><span class="c1">//  返回大于某个值元素的迭代器</span>
+</code></pre></div>
+<h2 id="pair">pair<a class="headerlink" href="#pair" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;utility&gt;\)</span></p>
+<p>两任意类型元素的结构体</p>
+<div class="highlight"><pre><span></span><code><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">    </span><span class="c1">//默认构造函数</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">);</span><span class="w">   </span><span class="c1">//含参构造函数</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span><span class="w">   </span><span class="c1">//拷贝构造函数  p1 = p2</span>
+
+<span class="n">p1</span><span class="p">.</span><span class="n">first</span><span class="w">                 </span><span class="c1">//获取 第一个元素</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">second</span><span class="w">                </span><span class="c1">//获取 第二个元素</span>
+<span class="n">p1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">p2</span><span class="w">                  </span><span class="c1">//可以直接比较,先比较first，再比较second</span>
+</code></pre></div>
+<h2 id="map">map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;map&gt;\)</span></p>
+<p>建立Key－value的对应，key 和 value 可以是任意类型。</p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span><span class="w">   </span><span class="c1">//索引为 int型</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w">   </span><span class="c1">//索引为 string</span>
+</code></pre></div>
+<p>增加元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">insert</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;string1&quot;</span><span class="p">))</span><span class="w">   </span><span class="c1">//这里的元素可以是元素类型与声明匹配的2元素结构体或者pair，insert不能覆盖原值</span>
+
+
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m1</span><span class="w">    </span><span class="c1">//数组可以覆盖原值</span>
+<span class="n">m1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;string1&quot;</span><span class="w">     </span><span class="c1">//如果没有对应 key 值会自动添加</span>
+<span class="n">m1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;string2&quot;</span><span class="w"></span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m2</span><span class="w"></span>
+<span class="n">m2</span><span class="p">[</span><span class="s">&quot;string1&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">m2</span><span class="p">[</span><span class="s">&quot;string2&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+</code></pre></div>
+<p>删除元素</p>
+<div class="highlight"><pre><span></span><code><span class="n">erase</span><span class="p">(</span><span class="n">iter</span><span class="p">)</span><span class="w"></span>
+<span class="n">erase</span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w">  </span><span class="c1">//删除范围 </span>
+<span class="n">clear</span><span class="p">(</span><span class="err">）</span><span class="w">                                </span><span class="c1">//删除所有元素</span>
+</code></pre></div>
+<p>迭代器</p>
+<div class="highlight"><pre><span></span><code><span class="n">iterator</span><span class="w"> </span><span class="nf">begin</span><span class="p">()</span><span class="w"></span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">end</span><span class="p">()</span><span class="w"></span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">rbegin</span><span class="p">()</span><span class="w">        </span><span class="c1">//返回一个指向map尾部的逆向迭代器</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">rend</span><span class="p">()</span><span class="w">          </span><span class="c1">//返回一个指向map头部的逆向迭代器</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">iter</span><span class="p">;</span><span class="w">  </span>
+<span class="k">for</span><span class="p">(</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w">    </span><span class="c1">//遍历</span>
+<span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="sc">&#39; &#39;</span><span class="o">&lt;&lt;</span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>其他</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">                    </span><span class="c1">// 获取大小 </span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w">              </span><span class="c1">//  T 是 value 类型，没找到返回 end()</span>
+<span class="n">swap</span><span class="p">(</span><span class="n">m1</span><span class="p">[</span><span class="n">key1</span><span class="p">],</span><span class="w"> </span><span class="n">m1</span><span class="p">[</span><span class="n">key2</span><span class="p">])</span><span class="w">      </span><span class="c1">//交换 value</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">                  </span><span class="c1">//如果map为空则返回true</span>
+<span class="kt">int</span><span class="w">  </span><span class="n">count</span><span class="p">()</span><span class="w">                  </span><span class="c1">//返回指定元素出现的次数</span>
+</code></pre></div>
+<h2 id="queue">queue<a class="headerlink" href="#queue" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(include&lt;queue&gt;\)</span></p>
+<p>先进先出（FIFO），只能尾加和首删，只能访问队首和队尾元素，</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">  </span><span class="c1">//队列为空返回真</span>
+<span class="n">T</span><span class="w"> </span><span class="n">front</span><span class="p">()</span><span class="w">  </span><span class="c1">//返回第一个元素</span>
+<span class="n">T</span><span class="w"> </span><span class="n">back</span><span class="p">()</span><span class="w">   </span><span class="c1">//返回最后一个元素 </span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">   </span><span class="c1">//返回元素个数</span>
+
+<span class="n">push</span><span class="p">()</span><span class="w">   </span><span class="c1">//队尾加入元素</span>
+<span class="n">pop</span><span class="p">()</span><span class="w">    </span><span class="c1">//删除队首元素</span>
+<span class="n">swap</span><span class="p">()</span><span class="w">   </span><span class="c1">//交换内容</span>
+</code></pre></div>
+<p>清空队列的三种方法（没有clear操作）</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//用空队列赋值</span>
+<span class="n">q1</span><span class="o">=</span><span class="n">queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="c1">//不断首删</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<span class="c1">//自己定义clear</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="n">queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">q</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="n">queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="n">empty</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">swap</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="priority_queue">priority_queue<a class="headerlink" href="#priority_queue" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(include&lt;queue&gt;\)</span></p>
+<p>默认大根堆</p>
+<blockquote>
+<p>priority_queue<Type, Container, Functional></p>
+<p>数据类型 容器 比较方式  其中 Container需要用数组实现的容器</p>
+</blockquote>
+<p>声明</p>
+<div class="highlight"><pre><span></span><code><span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="c1">//小根堆    在sort里greater是从大到小</span>
+<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="n">p</span><span class="p">;</span><span class="w">    </span><span class="c1">//大根堆</span>
+<span class="cm">/*自定义优先级的2种方式*/</span><span class="w"></span>
+<span class="c1">//</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="p">{</span><span class="w">     </span>
+<span class="w">　　</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">     </span>
+<span class="w">　　</span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">node</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w">     </span><span class="p">{</span><span class="w">         </span>
+<span class="w">　　　　</span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">    </span><span class="c1">//小根堆     </span>
+<span class="w">　　</span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">cmp</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
+<span class="w">　　</span><span class="kt">bool</span><span class="w"> </span><span class="nf">operator</span><span class="w"> </span><span class="p">()(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
+<span class="w">　　　　 </span><span class="k">return</span><span class="w">　</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">//小根堆</span>
+<span class="w">　　</span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">cmp</span><span class="o">&gt;</span><span class="n">q</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<p>成员函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">top</span><span class="p">()</span><span class="w">      </span><span class="c1">//访问队头元素</span>
+<span class="n">empty</span><span class="p">()</span><span class="w">    </span><span class="c1">//队列是否为空</span>
+<span class="n">size</span><span class="p">()</span><span class="w">     </span><span class="c1">//返回队列内元素个数</span>
+
+<span class="n">push</span><span class="p">()</span><span class="w">     </span><span class="c1">//队尾加入元素（并排序）</span>
+<span class="n">pop</span><span class="p">()</span><span class="w">      </span><span class="c1">//弹出队顶元素    </span>
+<span class="n">swap</span><span class="p">()</span><span class="w">     </span><span class="c1">//交换内容</span>
+</code></pre></div>
+<h3 id="deque">deque<a class="headerlink" href="#deque" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(include&lt;queue&gt;\)</span></p>
+<p>构造函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">deque</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">deq</span><span class="p">;</span><span class="w">               </span><span class="c1">//空deque</span>
+<span class="n">deque</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">                    </span><span class="c1">//元素个数为n</span>
+<span class="n">deque</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">elem</span><span class="p">)</span><span class="w">               </span><span class="c1">//元素个数为n,且值均为elem</span>
+<span class="n">deque</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span><span class="n">end</span><span class="p">)</span><span class="w">              </span><span class="c1">//[beg, end)</span>
+<span class="n">deque</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">deque</span><span class="w"> </span><span class="o">&amp;</span><span class="n">deq</span><span class="p">)</span><span class="w">     </span><span class="c1">//复制构造函数</span>
+</code></pre></div>
+<p>增加函数</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">push_front</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span><span class="w">    </span><span class="c1">//头插</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">push_back</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span><span class="w">     </span><span class="c1">//尾插</span>
+<span class="o">?</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">elem</span><span class="p">)</span><span class="w">       </span><span class="c1">//某一元素前增加一个元素x</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">elem</span><span class="p">)</span><span class="w">  </span><span class="c1">//某一元素前增加n个相同的元素x</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">beg</span><span class="p">,</span><span class="n">endt</span><span class="p">)</span><span class="c1">//某一元素前插入另一个相同类型向量的[forst,last)间的数据</span>
+</code></pre></div>
+<p>删除函数</p>
+<div class="highlight"><pre><span></span><code><span class="o">?</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w">     </span><span class="c1">//删除某一个元素,返回下一个元素位置</span>
+<span class="o">?</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span><span class="n">end</span><span class="p">)</span><span class="w">   </span><span class="c1">//删除[first,last）中的元素,返回下一个元素位置</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">pop_front</span><span class="p">()</span><span class="w">          </span><span class="c1">//头删</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">pop_back</span><span class="p">()</span><span class="w">           </span><span class="c1">//尾删</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">clear</span><span class="p">()</span><span class="w">                              </span>
+</code></pre></div>
+<p>遍历函数</p>
+<div class="highlight"><pre><span></span><code><span class="n">reference</span><span class="w"> </span><span class="n">at</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w">         </span><span class="c1">//返回pos位置元素的引用</span>
+<span class="n">reference</span><span class="w"> </span><span class="n">front</span><span class="p">()</span><span class="w">         </span><span class="c1">//返回首元素的引用</span>
+<span class="n">reference</span><span class="w"> </span><span class="n">back</span><span class="p">()</span><span class="w">          </span><span class="c1">//返回尾元素的引用</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">begin</span><span class="p">()</span><span class="w">          </span><span class="c1">//返回头迭代器</span>
+<span class="n">iterator</span><span class="w"> </span><span class="n">end</span><span class="p">()</span><span class="w">            </span><span class="c1">//返回尾迭代器（最后一个元素的下一个</span>
+<span class="n">reverse_iterator</span><span class="w"> </span><span class="n">rbegin</span><span class="p">()</span><span class="w"> </span><span class="c1">//反向迭代器，指向最后一个元素</span>
+<span class="n">reverse_iterator</span><span class="w"> </span><span class="n">rend</span><span class="p">()</span><span class="w">   </span><span class="c1">//反向迭代器，指向第一个元素的前一个元素</span>
+</code></pre></div>
+<p>其他函数</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w">        </span><span class="c1">//向量是否为空</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w">          </span><span class="c1">//返回元素的个数</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">max_size</span><span class="p">()</span><span class="w">      </span><span class="c1">//返回最大可允许的元素数量</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">deque</span><span class="o">&amp;</span><span class="p">)</span><span class="w">   </span><span class="c1">//交换两个同类型deque的数据</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">assign</span><span class="p">(</span><span class="n">beg</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w">    </span><span class="c1">//将[beg, end)区间中的数据拷贝赋值给本身。</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">assign</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w">     </span><span class="c1">//将n个elem拷贝赋值给本身。</span>
+</code></pre></div>
+<h2 id="algorithm">algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
+<h3 id="lower_bound">lower_bound()<a class="headerlink" href="#lower_bound" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>二分查找</p>
+<p>对于升序数组：</p>
+<p>lower_bound( begin, end, num)：查找第一个<strong>大于等于</strong> num 的数并返回其地址，不存在返回end。返回值减去begine即索引下标</p>
+<p>upper_bound( begin, end, num)：                   <strong>大于</strong></p>
+<p>对于降序数组：需要重载</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">//升序 a数组中 k 的个数</span>
+<span class="n">upper_bound</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h3 id="next_permutation">next_permutation<a class="headerlink" href="#next_permutation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//求按照字典序的全排列</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="k">while</span><span class="p">(</span><span class="n">next_permutation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="min_elementmax_element">min_element/max_element<a class="headerlink" href="#min_elementmax_element" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">maxx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../%E5%85%B6%E4%BB%96/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 其他" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              其他
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--next" aria-label="Next: 数据库系统" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              数据库系统
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

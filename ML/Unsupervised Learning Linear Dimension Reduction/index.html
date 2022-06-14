@@ -1,0 +1,1566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/Unsupervised%20Learning%20Linear%20Dimension%20Reduction/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Unsupervised Learning - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unsupervised-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unsupervised Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clustering" class="md-nav__link">
+    Clustering
+  </a>
+  
+    <nav class="md-nav" aria-label="Clustering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    K-means
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hac" class="md-nav__link">
+    HAC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimension-reduction" class="md-nav__link">
+    Dimension Reduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimension Reduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction_1" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-dimension-reduction-help" class="md-nav__link">
+    Why Dimension Reduction Help?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-do-dimension-reduction" class="md-nav__link">
+    How to do Dimension Reduction？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    PCA
+  </a>
+  
+    <nav class="md-nav" aria-label="PCA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-to-1-d" class="md-nav__link">
+    Reduce to 1-D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce-to-n-d" class="md-nav__link">
+    Reduce to n-D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lagrange-multiplier" class="md-nav__link">
+    Lagrange multiplier
+  </a>
+  
+    <nav class="md-nav" aria-label="Lagrange multiplier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculate-w1" class="md-nav__link">
+    calculate \(w^1\)​
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-w2" class="md-nav__link">
+    calculate \(w^2\)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pca-decorrelation" class="md-nav__link">
+    PCA-decorrelation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconstruction-component" class="md-nav__link">
+    Reconstruction Component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nn-for-pca" class="md-nav__link">
+    NN for PCA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/Unsupervised Learning Linear Dimension Reduction.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="unsupervised-learning">Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>对于无监督学习(Unsupervised Learning)来说，我们通常只会拥有 <span class="arithmatex">\((x,\hat y)\)</span> 中的 <span class="arithmatex">\(x\)</span> 或 <span class="arithmatex">\(\hat y\)</span> </p>
+<p>无监督学习 (Unsupervised Learning) 可以分为两种：</p>
+<ul>
+<li>化繁为简：没有 output</li>
+<li>聚类(Clustering)</li>
+<li>降维(Dimension Reduction)</li>
+<li>无中生有(Generation)：没有 input</li>
+</ul>
+<h3 id="clustering">Clustering<a class="headerlink" href="#clustering" title="Permanent link">&para;</a></h3>
+<p>聚类，顾名思义，就是把相近的样本划分为同一类</p>
+<p>问题是：我们到底要分几个 cluster？</p>
+<h4 id="k-means">K-means<a class="headerlink" href="#k-means" title="Permanent link">&para;</a></h4>
+<p>最常用的方法是 <strong>K-means</strong>：需要事先确定 cluster 的个数</p>
+<ul>
+<li>我们有一大堆的 unlabeled data <span class="arithmatex">\(\{x^1,...,x^n,...,x^N\}\)</span>，我们要把它划分为 K 个 cluster</li>
+<li>对每个 cluster 都要找一个 center <span class="arithmatex">\(c^i,i\in \{1,2,...,K\}\)</span>​（维度与 <span class="arithmatex">\(x\)</span> 相同），initial 的时候可以从 training data 里随机挑 K 个object <span class="arithmatex">\(x^n\)</span> 出来作为 K 个 center <span class="arithmatex">\(c^i\)</span>​ 的初始值</li>
+<li>遍历所有的 object <span class="arithmatex">\(x^n\)</span>​​，并判断它属于哪一个 cluster，如果 <span class="arithmatex">\(x^n\)</span>​​ 与第 i 个 cluster 的 center <span class="arithmatex">\(c^i\)</span>​ ​最接近，那它就属于该 cluster，我们用 <span class="arithmatex">\(b_i^n=1\)</span>​​ 来表示第 n 个 object 属于第 i 个 cluster，<span class="arithmatex">\(b_i^n=0\)</span>​​ 表示不属于</li>
+<li>更新所有 center：把每个 cluster 里的所有 object 取平均值作为新的 center 值，即 <span class="arithmatex">\(c^i=\sum\limits_{x^n}b_i^n x^n/\sum\limits_{x^n} b_i^n\)</span>​​</li>
+<li>反复进行以上的操作</li>
+</ul>
+<p>注：如果不是从原先的 data set 里取 center 的初始值，可能会导致部分 cluster 没有样本点</p>
+<h4 id="hac">HAC<a class="headerlink" href="#hac" title="Permanent link">&para;</a></h4>
+<p>HAC（Hierarchical Agglomerative Clustering），层次聚类</p>
+<p>假设现在有 5 个样本点：</p>
+<ul>
+<li>build a tree：</li>
+</ul>
+<p>过程类似建 Huffman Tree，这里每次选取最相似的 2 个样本点 merge（比如取 vector 的平均）形成新的样本点，直至剩一个样本点</p>
+<ul>
+<li>pick a threshold：</li>
+</ul>
+<p>选取阈值，形象来说就是在构造好的 tree 上横着切一刀，相连的叶结点属于同一个 cluster</p>
+<p>下图中，不同颜色的横线和叶结点上不同颜色的方框对应着切法与 cluster 的分法</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/HAC.png" width="60%"/></center></p>
+<p>HAC 中 cluster 的数量取决于切的地方，而 K-means 是要事先确定的</p>
+<h3 id="dimension-reduction">Dimension Reduction<a class="headerlink" href="#dimension-reduction" title="Permanent link">&para;</a></h3>
+<h4 id="introduction_1">Introduction<a class="headerlink" href="#introduction_1" title="Permanent link">&para;</a></h4>
+<p>clustering 的缺点是以偏概全，每个 object 都要属于一个 cluster，而实际上某个 object 可能拥有多种属性，cluster 会失去很多信息；用 vector 来表示每一种属性来代表一个 object，这种做法就叫做 Distributed Representation，或者说 Dimension Reduction（高维 object 用 低维 vector 来表示）</p>
+<h4 id="why-dimension-reduction-help">Why Dimension Reduction Help?<a class="headerlink" href="#why-dimension-reduction-help" title="Permanent link">&para;</a></h4>
+<p>以下图为例，用 3D 空间来表示这个 data 是很浪费的，完全可以把它摊平了表示</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/DR2.png" width="60%"/></center></p>
+<p>以手写数字 MNIST 为例，在 28*28 的 dimension 中的大部分图片都不是数字，所以其实用来表示数字所需要的 dim 远比 28*28 小</p>
+<p>我们只要抓住 data 的关键的点就可以做到 去芜存菁，化繁为简</p>
+<h4 id="how-to-do-dimension-reduction">How to do Dimension Reduction？<a class="headerlink" href="#how-to-do-dimension-reduction" title="Permanent link">&para;</a></h4>
+<p>在 Dimension Reduction 里就是要找一个 function，input 是高维的 x，output 是低维的 z</p>
+<p>最简单的方法是 <strong>Feature Selection</strong>，即从原有的 dimension 中直接去掉一些对结果没有影响的 dim，但这个方法并不普适，比如上面的螺旋图</p>
+<p>另一个常见的方法叫做 <strong>PCA</strong> (Principe Component Analysis)，即主成分分析</p>
+<p>PCA 的 input x 和 output z 之间是 linear transform，即<span class="arithmatex">\(z=Wx\)</span>​​​；PCA 要做的，就是根据一大堆的 x <strong>把 W 给找出来</strong> (<span class="arithmatex">\(z\)</span> 未知)</p>
+<h2 id="pca">PCA<a class="headerlink" href="#pca" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>PCA：主成分分析</p>
+</blockquote>
+<p>PCA 的 input x 和 output z 之间是 linear transform，即<span class="arithmatex">\(z=Wx\)</span>​；PCA 要做的，就是根据一大堆的 x <strong>把 W 给找出来</strong> (<span class="arithmatex">\(z\)</span>​ 未知)</p>
+<p>假设 <span class="arithmatex">\(W\)</span>​​ 是 <span class="arithmatex">\(k*m\)</span>​​ 的，<span class="arithmatex">\(x\)</span>​​ 是 <span class="arithmatex">\(m*n\)</span>​​ 的，那 <span class="arithmatex">\(k\)</span>​​ 表示降维后的表示一个样本点的维数，<span class="arithmatex">\(m\)</span>​​ 表示降维前表示一个样本点的维数，<span class="arithmatex">\(n\)</span>​​ 表示样本量</p>
+<h3 id="reduce-to-1-d">Reduce to 1-D<a class="headerlink" href="#reduce-to-1-d" title="Permanent link">&para;</a></h3>
+<p>为了简化问题，先只看把 x 投影到一维的情况</p>
+<p><span class="arithmatex">\(z_1=w^1\cdot x\)</span>​​​​​，其中 <span class="arithmatex">\(w^1\)</span>​​​​​ 表示 <span class="arithmatex">\(w\)</span>​​​​​ 的第一个 row vector，先假设 <span class="arithmatex">\(w^1\)</span>​​​​​ 的长度为 1，即 <span class="arithmatex">\(||w^1||_2=1\)</span>​​​​​，此时 <span class="arithmatex">\(z_1\)</span>​​​​​ 就是 <span class="arithmatex">\(x\)</span>​​​ ​​在 <span class="arithmatex">\(w^1\)</span>​​​​ ​​方向上的投影，其中 <span class="arithmatex">\(w^i\)</span>​ 和 <span class="arithmatex">\(x\)</span>​ 都是列向量</p>
+<p>那我们到底要找什么样的 <span class="arithmatex">\(w^1\)</span>​ 呢？</p>
+<p>下面的图是宝可梦的样本点，横坐标代表攻击力，纵坐标代表防御力，我们希望选这样一个 <span class="arithmatex">\(w^1\)</span>，它使得 <span class="arithmatex">\(x\)</span> 经过投影之后得到的 <span class="arithmatex">\(z_1\)</span>（variance）分布越大越好，我们不希望 projection 使这些 data point 通通挤在一起，导致点与点之间的奇异度消失，就是要 maximize <span class="arithmatex">\(Var(z_1)=\frac{1}{N}\sum\limits_{z_1}(z_1-\bar{z_1})^2, ||w^1||_2=1\)</span>，<span class="arithmatex">\(\bar {z_1}\)</span> 是 <span class="arithmatex">\(z_1\)</span> 的平均值</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/PCA1.png" width="60%"/></center></p>
+<h3 id="reduce-to-n-d">Reduce to n-D<a class="headerlink" href="#reduce-to-n-d" title="Permanent link">&para;</a></h3>
+<p>当然我们不可能只投影到一维空间，更经常的是投影到更高维的空间</p>
+<p>对 <span class="arithmatex">\(z=Wx\)</span> 来说：其中 <span class="arithmatex">\(w^i\)</span> 和 <span class="arithmatex">\(x\)</span> 都是列向量</p>
+<ul>
+<li><span class="arithmatex">\(z_1=w^1\cdot x\)</span>​，表示 <span class="arithmatex">\(x\)</span>​ 在 <span class="arithmatex">\(w^1\)</span>​​ 方向上的投影（第一个新维度）</li>
+<li><span class="arithmatex">\(z_2=w^2\cdot x\)</span>​，表示 <span class="arithmatex">\(x\)</span>​ 在 <span class="arithmatex">\(w^2\)</span>​ 方向上的投影（第二个新维度）</li>
+<li>...</li>
+</ul>
+<div class="arithmatex">\[
+\begin{align}
+z&amp;=[z_1,z_2,...] \\
+W&amp;=
+\begin{bmatrix}
+(w^1)^T \\
+(w^2)^T \\
+...
+\end{bmatrix}
+\end{align}
+\]</div>
+<p>需要注意的是，这里的 <span class="arithmatex">\(w^i\)</span>​​​​ 必须相互正交，此时 <span class="arithmatex">\(W\)</span>​​​​ 是正交矩阵 (orthogonal matrix)，如果不加这个 constraint，则找到的 <span class="arithmatex">\(w^1,w^2,...\)</span>​​​​ 都是 <span class="arithmatex">\(w^1\)</span>，而且 <span class="arithmatex">\(||w^i||_2=1\)</span></p>
+<h3 id="lagrange-multiplier">Lagrange multiplier<a class="headerlink" href="#lagrange-multiplier" title="Permanent link">&para;</a></h3>
+<p>求解 PCA，实际上已经有现成的函数可以调用，此外也可以把 PCA 描述成 neural network，然后用 gradient descent 的方法来求解</p>
+<p>下面是 PCA 的推导过程（warning of math）</p>
+<h4 id="calculate-w1">calculate <span class="arithmatex">\(w^1\)</span>​<a class="headerlink" href="#calculate-w1" title="Permanent link">&para;</a></h4>
+<p>目标：maximize <span class="arithmatex">\(Var(z_1)\)</span>，条件：<span class="arithmatex">\((w^1)^Tw^1=1\)</span> </p>
+<ul>
+<li>首先计算出 <span class="arithmatex">\(\bar{z_1}\)</span>​：</li>
+</ul>
+<p>$$
+  \begin{split}
+  &amp;z_1=w^1\cdot x\
+  &amp;\bar{z_1}=\frac{1}{N}\sum z_1=\frac{1}{N}\sum w^1\cdot x=w^1\cdot \frac{1}{N}\sum x=w^1\cdot \bar x
+  \end{split}
+  $$</p>
+<ul>
+<li>然后计算 maximize 的对象 <span class="arithmatex">\(Var(z_1)\)</span>​：</li>
+</ul>
+<p>$$
+  \begin{split}
+  Var(z_1)&amp;=\frac{1}{N}\sum\limits_{z_1} (z_1-\bar{z_1})^2\
+  &amp;=\frac{1}{N}\sum\limits_{x} (w^1\cdot x-w^1\cdot \bar x)^2\
+  &amp;=\frac{1}{N}\sum (w^1\cdot (x-\bar x))^2
+  \end{split}
+  $$
+  因为
+  $$
+  (a·b)^2=(a^Tb)^2=a^Tba^Tb=a^Tb(a^Tb)^T=a^Tbb^Ta
+  $$
+  注意这里 <span class="arithmatex">\(a·b\)</span> 是向量内积，<span class="arithmatex">\(a^Tb\)</span> 是矩阵相乘，<span class="arithmatex">\(a^Tb\)</span> 是 scale</p>
+<p>所以
+  $$
+  \begin{split}
+  Var(z_1)&amp;=\frac{1}{N}\sum (w^1\cdot (x-\bar x))^2\
+  &amp;=\frac{1}{N}\sum(w^1)^T(x-\bar x)(x-\bar x)^T w^1\
+  &amp;=(w^1)^T\frac{1}{N}\ [\sum(x-\bar x)(x-\bar x)^T]\ w^1\
+  &amp;=(w^1)^T Cov(x)w^1
+  \end{split}
+  $$</p>
+<p>要 maximize <span class="arithmatex">\(Var(z_1)=(w^1)^TCov(x)w^1\)</span>​​，需要加上 <span class="arithmatex">\(||w^1||_2=(w^1)^Tw^1=1\)</span>​​ 的约束条件，否则显然 <span class="arithmatex">\(w^1\)</span> ​​可以取无穷大</p>
+<ul>
+<li>令 <span class="arithmatex">\(S=Cov(x)\)</span>​，接下来就是求 maximize <span class="arithmatex">\(Var(z_1)=(w^1)^TSw^1\)</span>​，且 <span class="arithmatex">\((w^1)^Tw^1=1\)</span> </li>
+</ul>
+<p>对 <span class="arithmatex">\(S=Cov(x)\)</span>​​，它是：</p>
+<ul>
+<li>对称的 (symmetric)</li>
+<li>半正定的 (positive-semidefine)</li>
+<li>
+<p>所有特征值 (eigenvalues) 非负的 (non-negative)</p>
+</li>
+<li>
+<p>使用拉格朗日乘数法（Lagrange multiplier），利用目标和约束条件构造函数：</p>
+</li>
+</ul>
+<p>$$
+  g(w^1)=(w^1)^TSw^1-\alpha((w^1)^Tw^1-1)
+  $$
+  然后对 <span class="arithmatex">\(w^1\)</span> 这个 vector 里的每一个 element 做偏微分：</p>
+<p>$$
+  \partial g(w^1)/\partial w_1^1=0\
+  \partial g(w^1)/\partial w_2^1=0\
+  \partial g(w^1)/\partial w_3^1=0\
+  ...
+  $$
+  整理上述推导式，可以得到：<span class="arithmatex">\(Sw^1=\alpha w^1\)</span></p>
+<ul>
+<li>注意到满足 <span class="arithmatex">\((w^1)^Tw^1=1\)</span>​​ 的特征向量 <span class="arithmatex">\(w^1\)</span>​​ 有很多，我们要找的是可以 maximize <span class="arithmatex">\((w^1)^TSw^1\)</span>​​ 的那一个，于是利用上一个式子：</li>
+</ul>
+<p>$$
+  (w^1)^TSw^1=(w^1)^T \alpha w^1=\alpha (w^1)^T w^1=\alpha
+  $$</p>
+<ul>
+<li>
+<p>此时 maximize <span class="arithmatex">\((w^1)^TSw^1\)</span>​ 就变成了 maximize <span class="arithmatex">\(\alpha\)</span>​，也就是当 <span class="arithmatex">\(S\)</span>​ 的特征值 <span class="arithmatex">\(\alpha\)</span>​ 最大时对应的那个特征向量 <span class="arithmatex">\(w^1\)</span>​ 就是我们要找的目标</p>
+</li>
+<li>
+<p>结论：<strong><span class="arithmatex">\(w^1\)</span> ​​是 <span class="arithmatex">\(S=Cov(x)\)</span>​​ 这个 matrix 中的特征向量，对应最大的特征值 <span class="arithmatex">\(\lambda_1\)</span>​​</strong></p>
+</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/cov.png" width="60%"/></center></p>
+<h4 id="calculate-w2">calculate <span class="arithmatex">\(w^2\)</span><a class="headerlink" href="#calculate-w2" title="Permanent link">&para;</a></h4>
+<p>在推导 <span class="arithmatex">\(w^2\)</span>​ ​时，相较于 <span class="arithmatex">\(w^1\)</span>​​，多了一个限制条件：<span class="arithmatex">\(w^2\)</span>​​ 必须与 <span class="arithmatex">\(w^1\)</span>​​ 正交 (orthogonal)</p>
+<p>目标：maximize <span class="arithmatex">\(Var(z_2)\)</span>，条件：<span class="arithmatex">\((w^2)^Tw^2=1,(w^2)^Tw^1=0\)</span></p>
+<p>结论：<strong><span class="arithmatex">\(w^2\)</span>​​ 也是 <span class="arithmatex">\(S=Cov(x)\)</span> ​​这个matrix中的特征向量，对应第二大的特征值 <span class="arithmatex">\(\lambda_2\)</span>​​</strong></p>
+<ul>
+<li>同样是用拉格朗日乘数法求解，先写一个关于 <span class="arithmatex">\(w^2\)</span>​ 的 function，包含要 maximize 的对象，以及两个约束条件</li>
+</ul>
+<p>$$
+  g(w^2)=(w^2)^TSw^2-\alpha((w^2)^Tw^2-1)-\beta((w^2)^Tw^1-0)
+  $$</p>
+<ul>
+<li>对 <span class="arithmatex">\(w^2\)</span>​ 的每个 element 做偏微分：</li>
+</ul>
+<p>$$
+  \partial g(w^2)/\partial w_1^2=0\
+  \partial g(w^2)/\partial w_2^2=0\
+  \partial g(w^2)/\partial w_3^2=0\
+  ...
+  $$</p>
+<ul>
+<li>整理后得到：</li>
+</ul>
+<p>$$
+  Sw^2-\alpha w^2-\beta w^1=0
+  $$</p>
+<ul>
+<li>上式两侧同乘 <span class="arithmatex">\((w^1)^T\)</span>​，得到：</li>
+</ul>
+<p>$$
+  (w^1)^TSw^2-\alpha (w^1)^Tw^2-\beta (w^1)^Tw^1=0
+  $$</p>
+<ul>
+<li>其中 <span class="arithmatex">\(\alpha (w^1)^Tw^2=0,\beta (w^1)^Tw^1=\beta\)</span>​，</li>
+</ul>
+<p>而由于 <span class="arithmatex">\((w^1)^TSw^2\)</span>​ 是 vector×matrix×vector=scalar，因此在外面套一个transpose不会改变其值，因此该部分可以转化为：</p>
+<p>注：S是symmetric的，因此<span class="arithmatex">\(S^T=S\)</span></p>
+<p>$$
+  \begin{split}
+  (w^1)^TSw^2&amp;=((w^1)^TSw^2)^T\
+  &amp;=(w^2)^TS^Tw^1\
+  &amp;=(w^2)^TSw^1
+  \end{split}
+  $$</p>
+<p>我们已经知道<span class="arithmatex">\(w^1\)</span>满足<span class="arithmatex">\(Sw^1=\lambda_1 w^1\)</span>，代入上式：
+  $$
+  \begin{split}
+  (w^1)^TSw^2&amp;=(w^2)^TSw^1\
+  &amp;=\lambda_1(w^2)^Tw^1\
+  &amp;=0
+  \end{split}
+  $$</p>
+<ul>
+<li>因此有<span class="arithmatex">\((w^1)^TSw^2=0\)</span>，<span class="arithmatex">\(\alpha (w^1)^Tw^2=0\)</span>，<span class="arithmatex">\(\beta (w^1)^Tw^1=\beta\)</span>，又根据</li>
+</ul>
+<p>$$
+  (w^1)^TSw^2-\alpha (w^1)^Tw^2-\beta (w^1)^Tw^1=0
+  $$</p>
+<p>可以推得<span class="arithmatex">\(\beta=0\)</span></p>
+<ul>
+<li>此时<span class="arithmatex">\(Sw^2-\alpha w^2-\beta w^1=0\)</span>就转变成了<span class="arithmatex">\(Sw^2-\alpha w^2=0\)</span>，即</li>
+</ul>
+<p>$$
+  Sw^2=\alpha w^2
+  $$</p>
+<ul>
+<li>
+<p>由于<span class="arithmatex">\(S\)</span>是symmetric的，因此在不与<span class="arithmatex">\(w_1\)</span>冲突的情况下，这里<span class="arithmatex">\(\alpha\)</span>选取第二大的特征值<span class="arithmatex">\(\lambda_2\)</span>时，可以使<span class="arithmatex">\((w^2)^TSw^2\)</span>最大</p>
+</li>
+<li>
+<p>结论：<strong><span class="arithmatex">\(w^2\)</span>也是<span class="arithmatex">\(S=Cov(x)\)</span>这个matrix中的特征向量，对应第二大的特征值<span class="arithmatex">\(\lambda_2\)</span></strong></p>
+</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/cov2.png" width="60%"/></center></p>
+<h3 id="pca-decorrelation">PCA-decorrelation<a class="headerlink" href="#pca-decorrelation" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(z=W\cdot x\)</span></p>
+<p>神奇之处在于<span class="arithmatex">\(Cov(z)=D\)</span>，即z的covariance是一个diagonal matrix，推导过程如下图所示</p>
+<p>PCA可以让不同dimension之间的covariance变为0，即不同new feature之间是没有correlation的，这样做的好处是，<strong>减少feature之间的联系从而减少model所需的参数量</strong></p>
+<p>如果你把原来的input data通过PCA之后再给其他model使用，那这些model就可以使用简单的形式，而无需考虑不同dimension之间类似<span class="arithmatex">\(x_1\cdot x_2,x_3\cdot x_5^3,...\)</span>这些交叉项，此时model得到简化，参数量大大降低，相同的data量可以得到更好的训练结果，从而可以避免overfitting的发生</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/cov3.png" width="60%"/></center></p>
+<h3 id="reconstruction-component">Reconstruction Component<a class="headerlink" href="#reconstruction-component" title="Permanent link">&para;</a></h3>
+<p>假设我们现在考虑的是手写数字识别，这些数字是由一些类似于笔画的basic component组成的，本质上就是一个vector，记做<span class="arithmatex">\(u_1,u_2,u_3,...\)</span>，以MNIST为例，不同的笔画都是一个28×28的vector，把某几个vector加起来，就组成了一个28×28的digit</p>
+<p>写成表达式就是：<span class="arithmatex">\(x≈c_1u^1+c_2u^2+...+c_ku^k+\bar x\)</span></p>
+<p>其中<span class="arithmatex">\(x\)</span>代表某张digit image中的pixel，它等于k个component的加权和<span class="arithmatex">\(\sum c_iu^i\)</span>加上所有image的平均值<span class="arithmatex">\(\bar x\)</span></p>
+<p>比如7就是<span class="arithmatex">\(x=u^1+u^3+u^5\)</span>，我们可以用<span class="arithmatex">\(\left [\begin{matrix}c_1\ c_2\ c_3...c_k \end{matrix} \right]^T\)</span>来表示一张digit image，如果component的数目k远比pixel的数目要小，那这个描述就是比较有效的</p>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/bc.png" width="60%"/></center></p>
+<p>实际上目前我们并不知道<span class="arithmatex">\(u^1\)</span>~<span class="arithmatex">\(u^k\)</span>具体的值，因此我们要找这样k个vector，使得<span class="arithmatex">\(x-\bar x\)</span>与<span class="arithmatex">\(\hat x\)</span>越接近越好：
+$$
+x-\bar x≈c_1u^1+c_2u^2+...+c_ku^k=\hat x
+$$
+而用未知component来描述的这部分内容，叫做Reconstruction error，即<span class="arithmatex">\(||(x-\bar x)-\hat x||\)</span></p>
+<p>接下来我们就要去找k个vector <span class="arithmatex">\(u^i\)</span>去minimize这个error：
+$$
+L=\min\limits_{u^1,...,u^k}\sum||(x-\bar x)-(\sum\limits_{i=1}^k c_i u^i) ||_2
+$$
+回顾PCA，<span class="arithmatex">\(z=W\cdot x\)</span>，实际上我们通过PCA最终解得的<span class="arithmatex">\(\{w^1,w^2,...,w^k\}\)</span>就是使reconstruction error最小化的<span class="arithmatex">\(\{u^1,u^2,...,u^k\}\)</span>，简单证明如下：</p>
+<ul>
+<li>我们将所有的<span class="arithmatex">\(x^i-\bar x≈c_1^i u^1+c_2^i u^2+...\)</span>都用下图中的矩阵相乘来表示，我们的目标是使等号两侧矩阵之间的差距越小越好</li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/re.png" width="60%"/></center></p>
+<ul>
+<li>可以使用SVD将每个matrix <span class="arithmatex">\(X_{m×n}\)</span>都拆成matrix <span class="arithmatex">\(U_{m×k}\)</span>、<span class="arithmatex">\(\Sigma_{k×k}\)</span>、<span class="arithmatex">\(V_{k×n}\)</span>的乘积，其中k为component的数目</li>
+<li>值得注意的是，使用SVD拆解后的三个矩阵相乘，是跟等号左边的矩阵<span class="arithmatex">\(X\)</span>最接近的，此时<span class="arithmatex">\(U\)</span>就对应着<span class="arithmatex">\(u^i\)</span>那部分的矩阵，<span class="arithmatex">\(\Sigma\cdot V\)</span>就对应着<span class="arithmatex">\(c_k^i\)</span>那部分的矩阵</li>
+<li>根据SVD的结论，组成矩阵<span class="arithmatex">\(U\)</span>的k个列向量(标准正交向量, orthonormal vector)就是<span class="arithmatex">\(XX^T\)</span>最大的k个特征值(eignvalue)所对应的特征向量(eigenvector)，而<span class="arithmatex">\(XX^T\)</span>实际上就是<span class="arithmatex">\(x\)</span>的covariance matrix，因此<span class="arithmatex">\(U\)</span>就是PCA的k个解</li>
+<li>因此我们可以发现，通过PCA找出来的Dimension Reduction的transform，实际上就是把<span class="arithmatex">\(X\)</span>拆解成能够最小化Reconstruction error的component的过程，通过PCA所得到的<span class="arithmatex">\(w^i\)</span>就是component <span class="arithmatex">\(u^i\)</span>，而Dimension Reduction的结果就是参数<span class="arithmatex">\(c_i\)</span></li>
+<li>简单来说就是，用PCA对<span class="arithmatex">\(x\)</span>进行降维的过程中，我们要找的投影方式<span class="arithmatex">\(w^i\)</span>就相当于恰当的组件<span class="arithmatex">\(u^i\)</span>，投影结果<span class="arithmatex">\(z^i\)</span>就相当于这些组件各自所占的比例<span class="arithmatex">\(c_i\)</span></li>
+</ul>
+<p><center><img src="https://gitee.com/Sakura-gh/ML-notes/raw/master/img/svd.png" width="60%"/></center></p>
+<ul>
+<li>下面的式子简单演示了将一个样本点<span class="arithmatex">\(x\)</span>划分为k个组件的过程，其中<span class="arithmatex">\(\left [\begin{matrix}c_1 \ c_2\ ... c_k \end{matrix} \right ]^T\)</span>是每个组件的比例；把<span class="arithmatex">\(x\)</span>划分为k个组件即从n维投影到k维空间，<span class="arithmatex">\(\left [\begin{matrix}c_1 \ c_2\ ... c_k \end{matrix} \right ]^T\)</span>也是投影结果</li>
+</ul>
+<p>注：<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(u_i\)</span>均为n维列向量
+  $$
+  \begin{split}
+  &amp;x=
+  \left [
+  \begin{matrix}
+  u_1\ u_2\ ...\ u_k
+  \end{matrix}
+  \right ]\cdot
+  \left [
+  \begin{matrix}
+  c_1\
+  c_2\
+  ...\
+  c_k
+  \end{matrix}
+  \right ]\ \</p>
+<p>&amp;\left [
+  \begin{matrix}
+  x_1\
+  x_2\
+  ...\
+  x_n
+  \end{matrix}
+  \right ]=\left [
+  \begin{matrix}
+  u_1^1\ u_2^1\ ... u_k^1 \
+  u_1^2\ u_2^2\ ... u_k^2 \
+  ...\
+  u_1^n\ u_2^n\ ... u_k^n
+  \end{matrix}
+  \right ]\cdot
+  \left [
+  \begin{matrix}
+  c_1\
+  c_2\
+  ...\
+  c_k
+  \end{matrix}
+  \right ]\
+  \end{split}
+  $$</p>
+<h3 id="nn-for-pca">NN for PCA<a class="headerlink" href="#nn-for-pca" title="Permanent link">&para;</a></h3>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

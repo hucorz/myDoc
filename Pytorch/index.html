@@ -1,0 +1,1819 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/Pytorch/">
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Pytorch - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pytorch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pytorch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ML/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/3_Logistic%20Regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ML/Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tensor" class="md-nav__link">
+    Tensor 操作和处理
+  </a>
+  
+    <nav class="md-nav" aria-label="Tensor 操作和处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    创建与初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    维度变换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    增删改查
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    类型转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    计算与统计
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    其他
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#torchnn" class="md-nav__link">
+    torch.nn
+  </a>
+  
+    <nav class="md-nav" aria-label="torch.nn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    Module 的操作和处理
+  </a>
+  
+    <nav class="md-nav" aria-label="Module 的操作和处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module_1" class="md-nav__link">
+    创建自定义Module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    获取中间模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_2" class="md-nav__link">
+    Module 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    激活函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling-layers" class="md-nav__link">
+    池化层 Pooling layers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropout-layers" class="md-nav__link">
+    丢弃层 Dropout layers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-layers" class="md-nav__link">
+    标准化层 Normalization layers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    Parameter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizer" class="md-nav__link">
+    优化器 optimizer
+  </a>
+  
+    <nav class="md-nav" aria-label="优化器 optimizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimizer_1" class="md-nav__link">
+    optimizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-rate-schedule" class="md-nav__link">
+    Learning rate schedule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#torchvision" class="md-nav__link">
+    torchvision
+  </a>
+  
+    <nav class="md-nav" aria-label="torchvision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    datasets
+  </a>
+  
+    <nav class="md-nav" aria-label="datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    自带数据集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    构造 dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchvisiontransforms" class="md-nav__link">
+    torchvision.transforms
+  </a>
+  
+    <nav class="md-nav" aria-label="torchvision.transforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crop" class="md-nav__link">
+    Crop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flip-and-rotation" class="md-nav__link">
+    Flip and Rotation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-in-value" class="md-nav__link">
+    change in value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforms" class="md-nav__link">
+    对 transforms 操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reproducibility" class="md-nav__link">
+    可复现 reproducibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchjit" class="md-nav__link">
+    torch.jit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/Pytorch.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="pytorch">Pytorch<a class="headerlink" href="#pytorch" title="Permanent link">&para;</a></h1>
+<p>参考：https://space.bilibili.com/18161609</p>
+<p>工具：TensorBoard</p>
+<h2 id="tensor">Tensor 操作和处理<a class="headerlink" href="#tensor" title="Permanent link">&para;</a></h2>
+<h3 id="_1">创建与初始化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">sizes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>      <span class="c1"># 均匀分布 [0, 1)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">sizes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># 正态分布</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>    <span class="c1"># Returns a tensor filled with uninitialized data</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">zeors</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">steps</span><span class="p">)</span>                   <span class="c1"># [s, e], 均分出 steps 个数</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_2">维度变换<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>transpose 针对 2 个维度的变换</p>
+<p>permute 相当于多次 permute，内存中存储的方式不变</p>
+<p>view 必须操作在一个 contiguous 的矩阵上，因为它是先把 Tensor 展成一维后再处理</p>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span>      <span class="c1"># Returns the number of dimensions</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">ndim</span>   <span class="c1"># alias dim()</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">sequeeze</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">unsequeeze</span><span class="p">()</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">)</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dims</span><span class="p">)</span> <span class="c1"># dims: tuple of ints</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="o">*</span><span class="n">dims</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">tensor</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>    <span class="c1"># 类似广播机制？</span>
+</code></pre></div>
+<h3 id="_3">增删改查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>    <span class="c1"># 类似广播机制？</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># inputs 中的 Tensor 维度相同，在一个新的 dim 上连接</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>      <span class="c1"># inputs 中的 Tensor 在指定维度外维度要相同，在已有的维度上连接</span>
+
+<span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">pad</span><span class="p">)</span>   <span class="c1"># pad 为 tuple，且表示的维度从后往前</span>
+
+
+<span class="n">tensor</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># mask: BoolTensor, shape 必须可以进行广播</span>
+</code></pre></div>
+<h3 id="_4">类型转换<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_5">计算与统计<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">bincount</span><span class="p">()</span>  <span class="c1"># 统计频数</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">()</span>  <span class="c1"># 获取对角线的元素</span>
+</code></pre></div>
+<h3 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># eg</span>
+<span class="c1"># 原来 x = [[1, 2], [3, 4]] 在内存中为 1, 2, 3, 4</span>
+<span class="c1"># transpose 后 x = [[1, 3], [2, 4]] 在内存中还是 1, 2, 3, 4</span>
+<span class="c1"># contiguous 后 x = [[1, 3], [2, 4]] 在内存是 1, 3, 2, 4</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+<span class="n">tensor</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">shifts</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># 在指定维度上滚动 shifts 次 (比如在 Swin Transformer 的 SW-MSA 会用到)</span>
+
+<span class="n">tensor</span><span class="o">.</span><span class="n">new_full</span><span class="p">()</span>    <span class="c1"># 创建一个新Tensor</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">expand_as</span><span class="p">()</span>   <span class="c1"># 扩展到和另一个Tensor相同的维度</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>   <span class="c1"># 对指定维度进行分割</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">topk</span><span class="p">()</span>
+<span class="n">tensor</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span><span class="nb">max</span><span class="p">)</span>   <span class="c1"># 裁剪</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">ge</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">logical_and</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">()</span>  <span class="c1"># 要注意和 torch.nonzero() 返回值的区别</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="torchnn">torch.nn<a class="headerlink" href="#torchnn" title="Permanent link">&para;</a></h2>
+<h3 id="module">Module 的操作和处理<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
+<h4 id="module_1">创建自定义Module<a class="headerlink" href="#module_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="k">class</span> <span class="nc">mynn</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">mynn</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span> <span class="c1"># 调用父类构造函数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span> <span class="c1"># Sequential 的定义方式参考 nn.Sequential</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+            <span class="p">])</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span> <span class="c1"># 参数为 *list 或者 OrderedDict </span>
+<span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="_7">获取中间模块<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>children() 返回直接子模块，modules() 会递归的遍历所有子模块</p>
+<p><strong>Module.children() &amp;&amp; Module.named_children()</strong> </p>
+<p><strong>model.modules() &amp;&amp; model.named_modules()</strong> </p>
+<h4 id="module_2">Module 方法<a class="headerlink" href="#module_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">Module</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="c1"># Applies fn recursively to every submodule (as returned by .children())</span>
+
+<span class="c1"># https://blog.csdn.net/weixin_38145317/article/details/104917218</span>
+<span class="n">Module</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       <span class="c1"># 向模块添加持久缓冲区, 以字典形式，不会因为 step 而更新</span>
+</code></pre></div>
+<h3 id="_8">激活函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nn.Sigmoid()</td>
+<td></td>
+</tr>
+<tr>
+<td>nn.ReLU()</td>
+<td></td>
+</tr>
+<tr>
+<td>nn.ReLU6()</td>
+<td></td>
+</tr>
+<tr>
+<td>nn.GELU()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pooling-layers">池化层 Pooling layers<a class="headerlink" href="#pooling-layers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>池化层</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nn.AdaptiveAvgPool2d((H, W))</td>
+<td>自适应平均池化层，参数指定输出的 <span class="arithmatex">\(H\times W\)</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropout-layers">丢弃层 Dropout layers<a class="headerlink" href="#dropout-layers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在 forward 中使用 F.dropout()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>  <span class="c1"># model.train()时,self.training=True，model.eval()时为False</span>
+<span class="c1"># 使用 F.dropout() 的封装 nn.Dropout()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 在初始化中</span>
+<span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                            <span class="c1"># 在 forward 中</span>
+</code></pre></div>
+<h3 id="normalization-layers">标准化层 Normalization layers<a class="headerlink" href="#normalization-layers" title="Permanent link">&para;</a></h3>
+<p>为什么是 Normalization 而不是 Standardization？
+$$
+\hat{x}=a\frac{x-\mu}{\sigma} + b
+$$
+<strong>nn.BatchNorm1d() / 2d() / 3d()</strong> </p>
+<p>使用BN 时需要注意的问题：</p>
+<ul>
+<li>batch size 不宜过小，不然求出的均值和方差误差会很大</li>
+<li>bn 层建议放在 Conv 和 激活层 之间，并且  Conv 不需要使用 bias</li>
+</ul>
+<h3 id="parameter">Parameter<a class="headerlink" href="#parameter" title="Permanent link">&para;</a></h3>
+<p>让 Tensor 作为可训练的参数，如 Transformer 中的 position 信息</p>
+<p>是 Tensor 的子类</p>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="optimizer">优化器 optimizer<a class="headerlink" href="#optimizer" title="Permanent link">&para;</a></h2>
+<h3 id="optimizer_1">optimizer<a class="headerlink" href="#optimizer_1" title="Permanent link">&para;</a></h3>
+<p>看到的新的优化器：SWA</p>
+<p><a href="https://distill.pub/2017/momentum/">Why Momentum Really Works (distill.pub)</a> </p>
+<p><strong>optim.SGD()</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">step_size</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>weight_decay：权重衰减（L2 penalty）的系数</li>
+</ul>
+<p><strong>optim.Adagrad()</strong></p>
+<p>可变学习率的优化算法；但是随着迭代次数的变大学习效率会变低，当一直出现大的 grad 时会导致 lr 迅速下降，学习效率也会变低；</p>
+<div class="arithmatex">\[
+w^{t+1}=w^t-\frac{\eta}{\sqrt{\sum\limits_{i=0}^t(g^i)^2}}\cdot g^t
+\]</div>
+<p><strong>optim.RMSprop()</strong> </p>
+<p>Root Mean Square prop</p>
+<p>在 Adagrad 的基础上对学习率的分母部分用的加权和，越早的 grad 的权重越低
+$$
+w^{t+1}=w^t-\frac{\eta}{\sigma^t}\cdot g^t \
+\sigma^t=\sqrt{\alpha(\sigma^{t-1})^2+(1-\alpha)(g^t)^2)}
+$$
+<strong>optim.Adadelta()</strong> </p>
+<p><strong>optim.Adam()</strong> </p>
+<p>RMSProp + Momentum
+$$
+v_t=\beta_1v_{t-1}+(1-\beta_1)g_t \
+s_t=\beta_2s_{t-1}+(1-\beta_2)g_t^2
+$$
+在时间步 <span class="arithmatex">\(t\)</span> 可以得到 <span class="arithmatex">\(v_t=(1-\beta_1)\sum_{i=1}^{t}\beta_1^{t-i}g_i\)</span>，把过去所有梯度的权重相加得 <span class="arithmatex">\((1-\beta_1)\sum_{i=1}^{t}\beta_1^{t-i}g_i=1-\beta^t\)</span>，当 <span class="arithmatex">\(t\)</span> 较小时过去小批量梯度权重之和太小了，为了消除影响做偏差修正
+$$
+\hat{v}_t=\frac{v_t}{1-\beta_1^t} \
+\hat{s}_t=\frac{s_t}{1-\beta_2^t}
+$$
+然后再调整参数：
+$$
+g_t^{'} = \frac{\eta \hat{v}_t}{\sqrt{\hat{s}_t}+\epsilon}
+$$</p>
+<div class="highlight"><pre><span></span><code><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">),</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>lr <em>(float)</em>：learning rate，default：<code>0.001</code></li>
+<li>weight_decay <em>(float)</em>：正则项前面的系数</li>
+<li>betas <em>(Tuple[float, float])</em>：见上述推导</li>
+</ul>
+<p><strong>torch.optim.Adadelta()</strong></p>
+<h3 id="learning-rate-schedule">Learning rate schedule<a class="headerlink" href="#learning-rate-schedule" title="Permanent link">&para;</a></h3>
+<p><strong>为子网设置不同的 lr</strong> </p>
+<p>可以为不同子网络设置不同的学习率，这在finetune时经常用到</p>
+<div class="highlight"><pre><span></span><code><span class="n">optimizer</span> <span class="o">=</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([</span>
+                <span class="c1"># 如果对某个参数不指定学习率，就使用最外层的默认学习率</span>
+                <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="n">subnet1</span><span class="o">.</span><span class="n">parameters</span><span class="p">()},</span> <span class="c1"># lr=0.03</span>
+                <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="n">subnet2</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">}</span>
+            <span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>调整 lr</strong> </p>
+<p>不希望 lr 是一个固定的常数，如 Learning Rate Deacy 希望 lr 随时间变小</p>
+<p>方法1：修改<code>optimizer.param_groups</code>中对应的学习率</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 调整学习率</span>
+<span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
+    <span class="n">param_group</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.1</span> <span class="c1"># 学习率为之前的0.1倍</span>
+</code></pre></div>
+<p>方法2：新建优化器</p>
+<p>optimizer 构建的开销很小，但是对于使用动量的优化器（如Adam）会丢失动量信息，可能会造成损失函数的收敛出现震荡等情况</p>
+<p><strong>optim.lr_scheduler</strong> </p>
+<p>如果要 resume 一个 model 要注意保存训练时的 epoch 或者 iter 数</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用流程 </span>
+<span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># 更新 lr</span>
+<span class="c1"># lr schedule</span>
+<span class="n">lr_scheduler</span><span class="o">.</span><span class="n">LambdaLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_lambda</span><span class="p">,</span> <span class="n">last_epoch</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># lr = lr*lr_lambda(epoch)</span>
+<span class="n">lr_schedule</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>  <span class="c1"># lr = lr*gamma, step 是 iter 还是 epoch 取决于 step 放的位置</span>
+</code></pre></div>
+<h2 id="torchvision">torchvision<a class="headerlink" href="#torchvision" title="Permanent link">&para;</a></h2>
+<h3 id="datasets">datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h3>
+<h4 id="_9">自带数据集<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><a href="https://pytorch.org/docs/1.2.0/torchvision/datasets.html"><code>torchvision.datasets</code></a>中包含了以下与其他更多数据集</p>
+<p>All datasets are subclasses of <a href="https://pytorch.org/docs/1.2.0/data.html#torch.utils.data.Dataset" title="torch.utils.data.Dataset"><code>torch.utils.data.Dataset</code></a> i.e, they have <code>__getitem__</code> and <code>__len__</code> methods implemented. Hence, they can all be passed to a <a href="https://pytorch.org/docs/1.2.0/data.html#torch.utils.data.DataLoader" title="torch.utils.data.DataLoader"><code>torch.utils.data.DataLoader</code></a> which can load multiple samples parallelly using <code>torch.multiprocessing</code> workers.</p>
+<ul>
+<li>MNIST</li>
+<li>COCO（用于图像标注和目标检测）(Captioning and Detection)</li>
+<li>LSUN Classification</li>
+<li>ImageFolder</li>
+<li>Imagenet-12</li>
+<li>CIFAR10 and CIFAR100</li>
+<li>STL10</li>
+</ul>
+<p>eg:</p>
+<div class="highlight"><pre><span></span><code><span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIS</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="dataset">构造 dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h4>
+<p>torchvison 中的 dataset 是小写的，utils 中的 Dataset 是大写的</p>
+<p><strong>datasets.DatasetFolder</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">DatasetFolder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_valid_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p>A generic data loader where the samples are arranged in this way:</p>
+<div class="highlight"><pre><span></span><code>root/class_x/xxx.ext
+root/class_x/xxy.ext
+root/class_x/xxz.ext
+
+root/class_y/123.ext
+root/class_y/nsdf3.ext
+root/class_y/asd932_.ext
+</code></pre></div>
+<p><strong>datasets.ImageFolder</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loader</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">default_loader</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">is_valid_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p>继承自DatasetFolder，A generic data loader where the images are arranged in this way:</p>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">/</span><span class="n">dog</span><span class="o">/</span><span class="n">xxx</span><span class="o">.</span><span class="n">png</span>
+<span class="n">root</span><span class="o">/</span><span class="n">dog</span><span class="o">/</span><span class="n">xxy</span><span class="o">.</span><span class="n">png</span>
+<span class="n">root</span><span class="o">/</span><span class="n">dog</span><span class="o">/</span><span class="n">xxz</span><span class="o">.</span><span class="n">png</span>
+
+<span class="n">root</span><span class="o">/</span><span class="n">cat</span><span class="o">/</span><span class="mf">123.</span><span class="n">png</span>
+<span class="n">root</span><span class="o">/</span><span class="n">cat</span><span class="o">/</span><span class="n">nsdf3</span><span class="o">.</span><span class="n">png</span>
+<span class="n">root</span><span class="o">/</span><span class="n">cat</span><span class="o">/</span><span class="n">asd932_</span><span class="o">.</span><span class="n">png</span>
+</code></pre></div>
+<p>Attr:</p>
+<ul>
+<li>class_to_idx（<em>dictionary</em>）：</li>
+</ul>
+<h3 id="torchvisiontransforms">torchvision.transforms<a class="headerlink" href="#torchvisiontransforms" title="Permanent link">&para;</a></h3>
+<p><a href="https://blog.csdn.net/qq_38410428/article/details/94719553">PyTorch 学习笔记:transforms的二十二个方法 初识-CV的博客</a>  </p>
+<p>关于如何做 augmentation：</p>
+<ul>
+<li>数据增强不会增加样本数量，但是在每个 epoch 中的同一个样本因为随机的因素会有所不同，变相的增加了样本</li>
+<li>使用不同的 transforms 做出不同的 dataset，然后使用 concatdataset</li>
+</ul>
+<p>使用方法：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 Compose 定义一个流水线</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="n">train_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+     <span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+     <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="p">])</span>
+
+<span class="c1"># 使用 transformer 提供的 func</span>
+<span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="crop">Crop<a class="headerlink" href="#crop" title="Permanent link">&para;</a></h4>
+<p><strong>随机裁剪</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">padding</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">pad_if_needed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">fill</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">padding_mode</span> <span class="o">=</span><span class="s1">&#39;constant&#39;</span> <span class="err">）</span>
+</code></pre></div>
+<p><strong>中心裁剪</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> 
+</code></pre></div>
+<p><strong>随机长宽比裁剪</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.3333333333333333</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>size：output size of each edge</li>
+<li>scale：是原图大小多少的区域的随机范围</li>
+<li>ratio：crop 区域的宽高比的随机范围</li>
+</ul>
+<p><strong>上下左右中心裁剪</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">FiveCrop</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>上下左右中心裁剪后翻转</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">TenCrop</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">vertical_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="flip-and-rotation">Flip and Rotation<a class="headerlink" href="#flip-and-rotation" title="Permanent link">&para;</a></h4>
+<p><strong>依概率 p 水平翻转</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># p 默认为 0.5</span>
+</code></pre></div>
+<p><strong>依概率 p 垂直翻转</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomVerticalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>随机旋转</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomRotation</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">resample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>degree</code>：<em>sequence or float or int</em>，如果不是一个范围而是一个数字，那范围是<span class="arithmatex">\((-degree,degree)\)</span> </li>
+</ul>
+<h4 id="change-in-value">change in value<a class="headerlink" href="#change-in-value" title="Permanent link">&para;</a></h4>
+<p><strong>Resize</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>标准化</strong></p>
+<p>在 ToTensor() 后可以进一步归一化到 [-1, 1]，这么做可以加快模型的拟合速度，如果分布在 [0, 1] 之间，可能实际的 bias（神经网络的输入b）会比较大，而模型初始化时 b=0</p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">inplace</span><span class="p">)</span>
+</code></pre></div>
+<p><code>mean</code>：常用值 [0.485, 0.456, 0.406]</p>
+<p><code>std</code>：常用值 [0.229, 0.224, 0.225] </p>
+<p><a href="https://blog.csdn.net/xys430381_1/article/details/85724668?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control">pytorch torchvision.transforms.Normalize()中的mean和std参数---解惑</a> </p>
+<p><strong>转为 Tensor</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+</code></pre></div>
+<p>Converts a PIL Image or numpy.ndarray (H x W x C) in the range [0, 255] to a torch.FloatTensor of shape (C x H x W) in the range [0.0, 1.0]</p>
+<p>输入数据的类型为 PIL 图片或者 np.unit8，输出类型为 torch.float32 的 Tensor</p>
+<p>注意事项：归一化至 [0, 1] 是直接除以255，若自己的 ndarray 数据尺度有变化，则需要自行修改；由于像素值为0到255的整数，所以刚好是uint8所能表示的范围，包括<code>transforms.ToTensor()</code>在内的一些关于图片的函数就默认输入的是uint8型，若不是，可能不会报错但可能得不到想要的结果。所以，<strong>如果用像素值(0-255整数)表示图片数据，那么一律将其类型设置成uint8，避免不必要的bug</strong></p>
+<p><strong>转换为 PILImage</strong> </p>
+<p>Converts a torch.Tensor of shape C x H x W or a numpy ndarray of shape H x W x C to a PIL Image while preserving the value range.  每个元素都会乘以 255</p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">ToPILImage</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>mode：color space and pixel depth of input data，default：<code>None</code>，None 时取决于 input data<ul>
+<li>input 有 4 channels，mode 为 <code>RGBA</code></li>
+<li>input 有 3 channels，mode 为 <code>RGB</code></li>
+<li>input 有 2 channels，mode 为 <code>LA</code></li>
+<li>input 有 1 channel，mode 取决于 datatype（i.e int, float, short）</li>
+</ul>
+</li>
+</ul>
+<p><strong>标准化</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="n">torchvision</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>mean (<em>sequence</em>) ：mean for each channel</li>
+<li>std (<em>sequence</em>) ：std for each channel</li>
+</ul>
+<p><strong>填充</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">Pad</span><span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>修改亮度、对比度和饱和度</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">ColorJitter</span><span class="p">(</span><span class="n">brightness</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>转灰度图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="n">num_output_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>线性变换</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">LinearTransformation</span><span class="p">(</span><span class="n">transformation_matrix</span><span class="p">)</span> 
+</code></pre></div>
+<p><strong>仿射变换</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shear</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+</code></pre></div>
+<p><strong>依概率 p 转为灰度图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomGrayscale</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Lambda</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">lambd</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="transforms">对 transforms 操作<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h4>
+<p><strong>RandomChoice</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomChoice</span><span class="p">(</span><span class="n">transforms</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>RandomApply</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomApply</span><span class="p">(</span><span class="n">transforms</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>RandomOrder</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">transforms</span><span class="o">.</span><span class="n">RandomOrder</span><span class="p">(</span><span class="n">transforms</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_10">其他<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="reproducibility">可复现 reproducibility<a class="headerlink" href="#reproducibility" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">myseed</span> <span class="o">=</span> <span class="mi">42069</span>  <span class="c1"># set a random seed for reproducibility</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">myseed</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">myseed</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">myseed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">myseed</span><span class="p">)</span>
+</code></pre></div>
+<p>torch.backends.cudnn.deterministic = True：每次返回的卷积算法将是确定的，即默认算法</p>
+<p>torch.backends.cudnn.benchmark = False：如果设置为True，可能无法保证结果可以复现。True 的话程序在开始时会为整个网络的每个卷积层搜索最适合它的卷积实现算法</p>
+<h3 id="torchjit">torch.jit<a class="headerlink" href="#torchjit" title="Permanent link">&para;</a></h3>
+<p>https://zhuanlan.zhihu.com/p/370455320</p>
+<p>https://www.cnblogs.com/SuKiWX/p/8804974.html</p>
+<p>https://blog.csdn.net/MumuziD/article/details/113280207</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

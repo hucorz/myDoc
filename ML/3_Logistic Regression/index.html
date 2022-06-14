@@ -1,0 +1,1652 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hucorz.github.io/myDoc/ML/3_Logistic%20Regression/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.4">
+    
+    
+      
+        <title>Logistic Regression - hucorz's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logistic-regression" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-header__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hucorz's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logistic Regression
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-tabs__link">
+        OI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-tabs__link">
+        笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-tabs__link">
+        前端
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-tabs__link">
+        Python
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-tabs__link md-tabs__link--active">
+        ML
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-tabs__link">
+        其他
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hucorz&#39;s Docs" class="md-nav__button md-logo" aria-label="hucorz's Docs" data-md-component="logo">
+      
+  <img src="../../img/cat-solid.svg" alt="logo">
+
+    </a>
+    hucorz's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hucorz/myDoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hucorz/myDoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          OI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          OI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%8F%82%E8%80%83/" class="md-nav__link">
+        参考
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        数论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="md-nav__link">
+        计算几何
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OI/STL/" class="md-nav__link">
+        STL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        数据库系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          线性代数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="线性代数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          线性代数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/说明.md" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../笔记/线性代数/Chapter1.md" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          前端
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="前端" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          前端
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%89%8D%E7%AB%AF/HTML/" class="md-nav__link">
+        HTML
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Matplotlib/" class="md-nav__link">
+        Matplotlib
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Pymssql/" class="md-nav__link">
+        Pymssql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Streamlit.md" class="md-nav__link">
+        Streamlit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ML
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        说明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Regression/" class="md-nav__link">
+        Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Classification/" class="md-nav__link">
+        Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Logistic Regression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Logistic Regression
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-steps-of-machine-learning" class="md-nav__link">
+    Three Steps of machine learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Steps of machine learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1function-set" class="md-nav__link">
+    Step 1：function set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2goodness-of-a-function" class="md-nav__link">
+    Step 2：Goodness of a function
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2：Goodness of a function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy" class="md-nav__link">
+    Cross Entropy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3find-the-best-function" class="md-nav__link">
+    step 3：Find the best function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    Comparison
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression-linear-regression" class="md-nav__link">
+    Logistic Regression &amp;&amp; Linear Regression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression-square-error" class="md-nav__link">
+    Logistic Regression + Square Error ？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discriminative-generative" class="md-nav__link">
+    Discriminative &amp;&amp; Generative
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-class-classification" class="md-nav__link">
+    Multi-class Classification
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-class Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#softmax" class="md-nav__link">
+    Softmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-class-classification_1" class="md-nav__link">
+    multi-class classification 的过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitation-of-logistic-regression" class="md-nav__link">
+    Limitation of Logistic Regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-transformation" class="md-nav__link">
+    Feature Transformation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Deep%20learning/" class="md-nav__link">
+        Deep Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Convolutional%20Neural%20Network/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Recurrent%20Neural%20Network/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Semi-supervised%20Learning/" class="md-nav__link">
+        Semi Supervised Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Unsupervised%20Learning%20Word%20Embedding/" class="md-nav__link">
+        Unsupervised Learning:Word Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Keras/" class="md-nav__link">
+        Keras
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Mkdocs/" class="md-nav__link">
+        Mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%B6%E4%BB%96/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review" class="md-nav__link">
+    Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-steps-of-machine-learning" class="md-nav__link">
+    Three Steps of machine learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Steps of machine learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1function-set" class="md-nav__link">
+    Step 1：function set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2goodness-of-a-function" class="md-nav__link">
+    Step 2：Goodness of a function
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2：Goodness of a function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy" class="md-nav__link">
+    Cross Entropy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3find-the-best-function" class="md-nav__link">
+    step 3：Find the best function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    Comparison
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression-linear-regression" class="md-nav__link">
+    Logistic Regression &amp;&amp; Linear Regression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logistic-regression-square-error" class="md-nav__link">
+    Logistic Regression + Square Error ？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discriminative-generative" class="md-nav__link">
+    Discriminative &amp;&amp; Generative
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-class-classification" class="md-nav__link">
+    Multi-class Classification
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-class Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#softmax" class="md-nav__link">
+    Softmax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-class-classification_1" class="md-nav__link">
+    multi-class classification 的过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitation-of-logistic-regression" class="md-nav__link">
+    Limitation of Logistic Regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-transformation" class="md-nav__link">
+    Feature Transformation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/hucorz/myDoc/edit/master/docs/ML/3_Logistic Regression.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="logistic-regression">Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permanent link">&para;</a></h1>
+<h2 id="review">Review<a class="headerlink" href="#review" title="Permanent link">&para;</a></h2>
+<p>在 Classification 中得出的结果：</p>
+<div class="arithmatex">\[
+\begin{align}
+P_{w,b}(C_1|x)=\sigma(z)=\frac{1}{1+e^{-z}} \\
+z=w\cdot x+b=\sum\limits_i w_ix_i+b 
+\end{align}
+\]</div>
+<p>其中 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(x\)</span> 都是向量，这个 model 是受 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 控制的，因此我们不必要再去像前面一样计算一大堆东西，而是用这个全新的由 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 决定的 model ——<strong>Logistic Regression(逻辑回归)</strong></p>
+<h2 id="three-steps-of-machine-learning">Three Steps of machine learning<a class="headerlink" href="#three-steps-of-machine-learning" title="Permanent link">&para;</a></h2>
+<h3 id="step-1function-set">Step 1：function set<a class="headerlink" href="#step-1function-set" title="Permanent link">&para;</a></h3>
+<p>这里的 function set 就是 Logistic Regression——逻辑回归</p>
+<p><span class="arithmatex">\(x_i\)</span>：input，<span class="arithmatex">\(w_i\)</span>：weight，<span class="arithmatex">\(b\)</span>：bias，<span class="arithmatex">\(\sigma(z)\)</span>：sigmoid function</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_1.png" width="80%;" /></p>
+<h3 id="step-2goodness-of-a-function">Step 2：Goodness of a function<a class="headerlink" href="#step-2goodness-of-a-function" title="Permanent link">&para;</a></h3>
+<p>设计一个 Loss Function</p>
+<p>知道了某一组 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span> 就可以计算出 Posterior Probability（后验概率），然后利用后验概率可以计算出极大似然估计，那么能够使极大似然估计值最大的那组 <span class="arithmatex">\(w^*\)</span> 和 <span class="arithmatex">\(b^*\)</span> 就是最有可能产生当前 Training Data 的一组参数</p>
+<p>这里假定二元分类，class1 的概率是 1-class2 的概率</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_2.png" width="80%;" /></p>
+<p>将上式变形：</p>
+<div class="arithmatex">\[
+w^*,b^*=\arg \max\limits_{w,b} L(w,b)=\arg\min\limits_{w,b}(-\ln L(w,b))
+\]</div>
+<div class="arithmatex">\[
+\begin{align}
+-\ln L(w,b)=&amp;-\ln f_{w,b}(x^1)\\
+&amp;-\ln f_{w,b}(x^2)\\
+&amp;-\ln(1-f_{w,b}(x^3))\\
+&amp;-...
+\end{align}
+\]</div>
+<p>为了统一格式，把 output  <span class="arithmatex">\(\hat{y}=1\)</span>​ 代表 class1，output  <span class="arithmatex">\(\hat{y}=0\)</span>​​ 代表 class2</p>
+<div class="arithmatex">\[
+\begin{align}
+-\ln L(w,b)=&amp;-[\hat{y}^1 \ln f_{w,b}(x^1)+(1-\hat{y}^1)ln(1-f_{w,b}(x^1))]\\
+&amp;-[\hat{y}^2 \ln f_{w,b}(x^2)+(1-\hat{y}^2)ln(1-f_{w,b}(x^2))]\\
+&amp;-[\hat{y}^3 \ln f_{w,b}(x^3)+(1-\hat{y}^3)ln(1-f_{w,b}(x^3))]\\
+&amp;\ -...
+\end{align}
+\]</div>
+<div class="arithmatex">\[
+-\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
+\]</div>
+<p>这个形式其实就是 <strong>两个 Bernoulli distribution (两点分布)的 cross entropy (交叉熵)</strong>，把这个作为 Loss Function</p>
+<p>于是我们把 极大似然估计 的式子变成了 交叉熵 作为 Loss Function 以方便微分</p>
+<h4 id="cross-entropy">Cross Entropy<a class="headerlink" href="#cross-entropy" title="Permanent link">&para;</a></h4>
+<p><a href="https://zhuanlan.zhihu.com/p/54066141">笔记 | 什么是Cross Entropy - 知乎</a></p>
+<p>Cross Entropy: 一般用来量化两个概率分布之间差异的损失函数</p>
+<p>假设对于<strong>一个</strong>数据的真实分布为 p，预测分布为 q</p>
+<p>那么 <span class="arithmatex">\(H(p,q)=-\sum_{x}{p(x)\ log\ q(x)}\)</span>  其中 x 是类别数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_3.png" width="80%;" /></p>
+<p>Cross Entropy 交叉熵的含义是表达两个 distribution 有多接近，如果 p 和 q 这两个 distribution 一模一样的话，那它们算出来的 Cross Entropy 就是 0 (详细解释在“信息论”中)，而这里<span class="arithmatex">\(f(x^n)\)</span>表示 function 的 output，<span class="arithmatex">\(\hat{y}^n\)</span> 表示预期的 target，因此<strong>交叉熵实际上表达的是希望这个 function 的 output和它的 target 越接近越好</strong></p>
+<p>negative log loss（负对数似然估计）是 Cross Entropy 的一个应用，在单样本的情况下假设真实分布为 <strong>p</strong>，表示一个向量，其中 <span class="arithmatex">\(p_k=1\)</span>，其余为 0，那么 <span class="arithmatex">\(H(p, q) =-log(q_k)\)</span> ，也就是说，交叉熵只关心对正确类别的预测概率，希望其尽量大</p>
+<h3 id="step-3find-the-best-function">step 3：Find the best function<a class="headerlink" href="#step-3find-the-best-function" title="Permanent link">&para;</a></h3>
+<p>即找到使 Loss Function 即 Cross Entropy 最小的一组 <span class="arithmatex">\(w^*,b^*\)</span>，这里运用 Gradient Descent</p>
+<div class="arithmatex">\[
+\begin{align}
+P_{w,b}(C_1|x)=\sigma(z)=\frac{1}{1+e^{-z}} \\
+z=w\cdot x+b=\sum\limits_i w_ix_i+b
+\end{align}
+\]</div>
+<div class="arithmatex">\[
+\begin{align}
+f_{w,b}(x)=P_{w,b}(C_1|x)
+\end{align}
+\]</div>
+<div class="arithmatex">\[
+-\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]
+\]</div>
+<p>Sigmoid Function 的微分公式：
+$$
+\frac{\partial \sigma(z)}{\partial z}=\sigma(z)(1-\sigma(z))
+$$
+<center><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_4.png" width="45%;" /></center></p>
+<p>计算 <span class="arithmatex">\(-\ln L(w,b)=\sum\limits_n -[\hat{y}^n \ln f_{w,b}(x^n)+(1-\hat{y}^n) \ln(1-f_{w,b}(x^n))]\)</span> 对 <span class="arithmatex">\(w_i\)</span> 的偏微分，其中 <span class="arithmatex">\(\hat{y}^n\)</span> 和 <span class="arithmatex">\(1-\hat{y}^n\)</span> 是常数，只需要分别求出 <span class="arithmatex">\(\ln f_{w,b}(x^n)\)</span> 和 <span class="arithmatex">\(\ln (1-f_{w,b}(x^n))\)</span> 对 <span class="arithmatex">\(w_i\)</span> 的偏微分即可，整体推导过程如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_5.png" width="80%;" /></p>
+<p>结果带入得：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_6.png" width="80%;" /></p>
+<p>所以：
+$$
+w_{i+1}=w_i-\eta \sum\limits_{n}-(\hat{y}^n-f_{w,b}(x^n))x_i^n
+$$
+<span class="arithmatex">\(-\eta\)</span>：learning rate</p>
+<p><span class="arithmatex">\(x_i\)</span>：data</p>
+<p><span class="arithmatex">\(\hat{y}^n-f_{w,b}(x^n)\)</span>：与理想 function set 的差距，差距越大 update 的步伐越大</p>
+<p>同理可得：
+$$
+b_{i+1}=w_i-\eta \sum\limits_{n}-(\hat{y}^n-f_{w,b}(x^n))
+$$
+我们会发现 Logistic Regression 的结果是和 Linear Regresison 的式子是一样的</p>
+<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<h3 id="logistic-regression-linear-regression">Logistic Regression &amp;&amp; Linear Regression<a class="headerlink" href="#logistic-regression-linear-regression" title="Permanent link">&para;</a></h3>
+<ul>
+<li>两者都是通过对每一个 feature <span class="arithmatex">\(x_i\)</span> 加权求和后加上一个常数，区别在于 Logistic Regression 最后又通过了一个 Sigmoid Function，它的结果是 0~1，而 Linear Regression 不经过 Sigmoid Function，结果可以是任意值</li>
+<li>Logistic Regression 的 Loss Function 用的交叉熵定义，而 Linear Regression 用的 Square Error</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_7.png" width="80%;" /></p>
+<h3 id="logistic-regression-square-error">Logistic Regression + Square Error ？<a class="headerlink" href="#logistic-regression-square-error" title="Permanent link">&para;</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_8.png" width="80%;" /></p>
+<p>假设使用 Logistic Regression + Square Error， 如果此时 <span class="arithmatex">\(\hat{y}^n=1\)</span>，而且 function 的 output <span class="arithmatex">\(f_{w,b}(x^n)=1\)</span> 的话，说明现在离 target 很接近了，<span class="arithmatex">\(f_{w,b}(x)-\hat{y}=0\)</span>，于是得到的微分 <span class="arithmatex">\(\frac{\partial L}{\partial w_i}\)</span> 等于 0，这件事情是很合理的；但是当 function 的 output <span class="arithmatex">\(f_{w,b}(x^n)=0\)</span>的时候，说明离 target 还很遥远，但是由于在step3 中求出来的 update 表达式中有一个<span class="arithmatex">\(f_{w,b}(x^n)\)</span>，因此这个时候也会导致得到的微分 <span class="arithmatex">\(\frac{\partial L}{\partial w_i}\)</span> 也等于 0</p>
+<p>将 Loss Function 选择 Cross Entropy 或 Square Error 的变化情况可视化之后如下所示（黑色：Cross Entropy 红色：Square Error）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_9.png" width="80%;" /></p>
+<p>可见 Square Error 会很慢，甚至可能不会动</p>
+<h3 id="discriminative-generative">Discriminative &amp;&amp; Generative<a class="headerlink" href="#discriminative-generative" title="Permanent link">&para;</a></h3>
+<p>把 Logistic Regression 的方法称之为 Discriminative 的方法，用 Gaussian 来描述 Posterior Probability 的方法称之为 Generative 的方法</p>
+<p>他们的 Function Set 都是一样的，都是 <span class="arithmatex">\(P(C_1|x)=\sigma(w\cdot x+b)\)</span> </p>
+<p>Logistic Regression 是通过 Gradient Descent 的方法直接找出 <span class="arithmatex">\(b\)</span> 和 <span class="arithmatex">\(w\)</span>，而 Generative  Model 的方法是先算 <span class="arithmatex">\(u_1,u_2,\Sigma^{-1}\)</span>，再求 <span class="arithmatex">\(b\)</span> 和 <span class="arithmatex">\(w\)</span> </p>
+<p>但这两者方法的出来的 <span class="arithmatex">\(b\)</span> 和 <span class="arithmatex">\(w\)</span> 是不一样的</p>
+<p>原因是在 Logistic Regression 中<strong>没有做任何实质性的假设</strong>，单纯的去找 <span class="arithmatex">\(w\)</span> 和 <span class="arithmatex">\(b\)</span>，而在 Generative  Model 中假设了 Gaussion Distribution</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_10.png" width="80%;" /></p>
+<p>Discriminative 的方法常常会比 Generative 的方法表现得更好</p>
+<p>discriminative model 并不是在所有的情况下都可以赢过 Generative model，discriminative model 是十分依赖于 data 的，当 data 数量不足或是 data 本身的 label就有一些问题，那Generative model做一些假设，反而可以把 data 的不足或是有问题部分的影响给降到最低</p>
+<p>在 Generative model 中，priors probabilities 和 class-dependent probabilities 是可以拆开来考虑的，以语音辨识为例，现在用的都是 neural network，是一个discriminative 的方法，但事实上整个语音辨识的系统是一个 Generative 的 system，它的 prior probability 是某一句话被说出来的几率，而想要 estimate 某一句话被说出来的几率并不需要有声音的 data，可以去互联网上爬取大量文字，就可以计算出某一段文字出现的几率，并不需要声音的 data，这个就是 language model，而 class-dependent 的部分才需要声音和文字的配合，这样的处理可以把 prior 预测地更精确</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>对于分类问题（主要是二元分类），一般有两种方法处理：Generative 的方法，Discriminative 的方法</p>
+<div class="arithmatex">\[
+\begin{align}
+P(C_i|x)=\frac{P(C_i)P(x|C_i)}{\sum\limits_{j=1}^nP(C_j)P(x|C_j)}  \\
+\sigma(z)=\frac{1}{1+e^{-z}}=\frac{1}{1+e^{-(b+\sum\limits_k w_k x_k)}}
+\end{align}
+\]</div>
+<p>两者的区别在于：</p>
+<p>Generative model 通常会假设一个概率分布，然后去利用极大似然估计计算 <span class="arithmatex">\(b\)</span> 和 <span class="arithmatex">\(w\)</span>；Discriminative model 不做任何假设，利用交叉熵和 gradient descent 计算 <span class="arithmatex">\(b\)</span> 和 <span class="arithmatex">\(w\)</span></p>
+<p>Generative model 的好处是，它对data的依赖并没有像discriminative model 那么严重，在data数量少或者data本身就存在noise的情况下受到的影响会更小，而它还可以做到 Prior 部分与 class-dependent 部分分开处理，如果可以借助其他方式提高 Prior model 的准确率，对整一个 model 是有所帮助的 (比如前面提到的语音辨识)</p>
+<p>而 Discriminative model 的好处是，在 data 充足的情况下，它训练出来的 model 的准确率一般是比 Generative model 要来的高的</p>
+<h2 id="multi-class-classification">Multi-class Classification<a class="headerlink" href="#multi-class-classification" title="Permanent link">&para;</a></h2>
+<h3 id="softmax">Softmax<a class="headerlink" href="#softmax" title="Permanent link">&para;</a></h3>
+<p>假设有三个 Class：<span class="arithmatex">\(C_1,C_2,C_3\)</span>，每一个 Class 都有自己的 weight 和 bias，分别是 <span class="arithmatex">\(w_1,w_2,w_3\)</span> (vector)，<span class="arithmatex">\(b_1,b_2,b_3\)</span> (const)，input x 也是一个 vector</p>
+<p>那么 <span class="arithmatex">\(z_i=w^ix+b_i\)</span> </p>
+<blockquote>
+<p>softmax：强化最大值，因为做 exponential 会让原本大的值变得更大</p>
+</blockquote>
+<p>然后把 <span class="arithmatex">\(z_1,z_2,z_3\)</span>丢进一个 <strong>softmax</strong> 的 function</p>
+<ul>
+<li>取 exponential，得到 <span class="arithmatex">\(e^{z_1},e^{z_2},e^{z_3}\)</span> </li>
+<li>归一化，得到 <span class="arithmatex">\(y_1=\frac{e^{z_1}}{\sum\limits_{j=1}^3 e^{z_j}}\)</span>、<span class="arithmatex">\(y_2=\frac{e^{z_2}}{\sum\limits_{j=1}^3 e^{z_j}}\)</span>、<span class="arithmatex">\(y_3=\frac{e^{z_3}}{\sum\limits_{j=1}^3 e^{z_j}}\)</span></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_11.png" width="80%;" /></p>
+<p>softmax 的 output，就拿来当 z 的 probability</p>
+<h3 id="multi-class-classification_1">multi-class classification 的过程<a class="headerlink" href="#multi-class-classification_1" title="Permanent link">&para;</a></h3>
+<p>input x 经过三个式子后分别生成 <span class="arithmatex">\(z_1,z_2,z_3\)</span>，经过 softmax 后转换成 <span class="arithmatex">\(y_1,y_2,y_3\)</span>，这分别是三个 class 的 posterior probability</p>
+<p>为了计算交叉熵，不能把 targrt 设为 1,2,3，这里使用向量</p>
+<div class="arithmatex">\[
+\hat{y}=
+\begin{bmatrix}
+1\\0\\0
+\end{bmatrix}_{x \ ∈ \ class 1}
+\hat{y}=
+\begin{bmatrix}
+0\\1\\0
+\end{bmatrix}_{x \ ∈ \ class 2}
+\hat{y}=
+\begin{bmatrix}
+0\\0\\1
+\end{bmatrix}_{x \ ∈ \ class 3}
+\]</div>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_12.png" width="80%;" /></p>
+<p>然后计算 <span class="arithmatex">\(y，\hat{y}\)</span> 之间的交叉熵，<span class="arithmatex">\(-\sum\limits_{i=1}^3 \hat{y}_i \ln y_i\)</span> </p>
+<h2 id="limitation-of-logistic-regression">Limitation of Logistic Regression<a class="headerlink" href="#limitation-of-logistic-regression" title="Permanent link">&para;</a></h2>
+<p>Logistic Regression 有很强的限制，因为他的 boundary 是一条直线，而对于下面的例子</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(x_1\)</span></th>
+<th><span class="arithmatex">\(x_2\)</span></th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>class2</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>class1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>class1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>class2</td>
+</tr>
+</tbody>
+</table>
+<p>在坐标轴上是不可能画一条 boundary 来区分 class1 和 class2 的</p>
+<h2 id="feature-transformation">Feature Transformation<a class="headerlink" href="#feature-transformation" title="Permanent link">&para;</a></h2>
+<p>如果原来的 feature 不好做划分，可以用 <strong>Feature Transformation</strong>，转换之后变得可以划分。</p>
+<p>假定新的 x 轴 <span class="arithmatex">\(x'_1\)</span> 表示原来的点到 <span class="arithmatex">\(\begin{bmatrix}0\\0\end{bmatrix}\)</span> 的距离，新的 y 轴 <span class="arithmatex">\(x'_2\)</span> 表示的是原来的点到 <span class="arithmatex">\(\begin{bmatrix}1\\1\end{bmatrix}\)</span> 的距离，重新映射之后就变得可划分了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_13.png" width="80%;" /></p>
+<p>麻烦的是很多时候我们并不知道怎么做 Feature Transformation，于是我们会希望这个 Transformation 是机器自己产生的，怎么让机器自己产生呢？<strong>我们可以让很多Logistic Regression cascade（连接）起来</strong> </p>
+<p>即先通过一个 Logistic Regression 的 Transform 使得新的 feature <span class="arithmatex">\(x'_1,x'_2\)</span> 是可以划分的，然后再经过一个 Logistic Regression 就可以把 class1 和 class2 分开</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_14.png" width="80%;" /></p>
+<p>所以整个流程是：先通过 n（n为每个样本点的feature数量）个 Logistic Regression 做 feature Transformation，然后再用一个 Logistic Regression 做 classification（如果是多元分类需要用到多个 Logistic Regression 画出多条直接划分所有的类）</p>
+<p>我们如果把这其中的每个 Logistic Regression 叫做一个 Neuron，把这些 Logistic Regression 串起来形成的 network 叫做 Neural Network，十九类神经网络，就是 Deep Learning</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hucorz/imgbed/ML/Note/Logistic_Regression/Logistic_Regression_15.png" width="80%;" /></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2_Classification/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Classification" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Classification
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../4_Deep%20learning/" class="md-footer__link md-footer__link--next" aria-label="Next: Deep Learning" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Deep Learning
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f758a944.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
