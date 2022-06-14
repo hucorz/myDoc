@@ -1,4 +1,0 @@
-tips for deep learning：范数
-CNN：
-为什么叫卷积神经网络
-内积后每层相加叫卷积？
